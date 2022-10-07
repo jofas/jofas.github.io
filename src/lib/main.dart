@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vector_math/vector_math.dart' hide Colors;
 
 import 'colors.dart';
 
@@ -95,6 +96,37 @@ class MyHomePageState extends State<MyHomePage> {
                             clipper: CubicClipper(),
                             child: Container(
                               width: viewport.maxWidth,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: <Color>[
+                                    CustomColors.violet[500]!,
+                                    CustomColors.red[500]!,
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 100,
+                        left: 100,
+                        child: Transform.rotate(
+                          angle: 0.0 * math.pi,
+                          child: ClipPath(
+                            clipper: SmoothShapeClipper(
+                              points: <Vector2>[
+                                Vector2(0.1, 0.5),
+                                Vector2(0.6, 0.5),
+                              ],
+                              firstControlPointA: Vector2(0.5, 0.2),
+                              firstControlPointB: Vector2(0.5, 0.2),
+                            ),
+                            child: Container(
+                              width: 200,
                               height: 200,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
@@ -374,5 +406,81 @@ class CubicClipper extends CustomClipper<Path> {
     path.close();
 
     return path;
+  }
+}
+
+class SmoothShapeClipper extends CustomClipper<Path> {
+  final List<Vector2> points;
+  final Vector2 firstControlPointA;
+  final Vector2 firstControlPointB;
+
+  SmoothShapeClipper({
+    required this.points,
+    required this.firstControlPointA,
+    required this.firstControlPointB,
+  }) : super();
+
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+
+    Vector2 a = firstControlPointA;
+    Vector2 b = firstControlPointA;
+
+    Vector2 newA = a.clone();
+    Vector2 newB = b.clone();
+
+    path.moveTo(
+      points[0].x * size.width,
+      points[0].y * size.height,
+    );
+
+    path.cubicTo(
+      newA.x * size.width,
+      newA.y * size.height,
+      newB.x * size.width,
+      newB.y * size.height,
+      points[1].x * size.width,
+      points[1].y * size.height,
+    );
+
+    for (int i = 1; i < points.length - 1; i++) {
+      newA = points[i] * 2 - b;
+      newB = newA * 2 - a - b * 2;
+
+      path.cubicTo(
+        newA.x * size.width,
+        newA.y * size.height,
+        newB.x * size.width,
+        newB.y * size.height,
+        points[i + 1].x * size.width,
+        points[i + 1].y * size.height,
+      );
+
+      a = newA;
+      b = newB;
+    }
+
+    // TODO: different formula for closing
+    newA = points[points.length - 1] * 2 - b;
+    newB = newA * 2 - a - b * 2;
+
+    path.cubicTo(
+      newA.x * size.width,
+      newA.y * size.height,
+      newB.x * size.width,
+      newB.y * size.height,
+      points[0].x * size.width,
+      points[0].y * size.height,
+    );
+
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

@@ -8,6 +8,8 @@
 
 * [x] style: color scheme
 
+* [ ] style: smooth bezier clipper
+
 * [ ] style: layout
 
 * [ ] style: background
