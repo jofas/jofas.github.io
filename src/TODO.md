@@ -8,7 +8,9 @@
 
 * [x] style: color scheme
 
-* [ ] style: smooth bezier clipper
+* [x] style: cyclic smooth clipper
+
+* [ ] style: non-cyclic smooth clipper 
 
 * [ ] style: layout
 

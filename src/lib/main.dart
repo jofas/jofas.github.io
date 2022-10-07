@@ -120,24 +120,19 @@ class MyHomePageState extends State<MyHomePage> {
                             clipper: SmoothShapeClipper(
                               points: <Vector2>[
                                 Vector2(0.1, 0.5),
+                                Vector2(0.5, 0.6),
+                                Vector2(0.2, 0.3),
+                                Vector2(0.5, 0.1),
                                 Vector2(0.6, 0.5),
+                                Vector2(0.8, 0.8),
+                                Vector2(0.5, 0.9),
                               ],
-                              firstControlPointA: Vector2(0.5, 0.2),
-                              firstControlPointB: Vector2(0.5, 0.2),
+                              smoothness: 0.66,
                             ),
                             child: Container(
-                              width: 200,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: <Color>[
-                                    CustomColors.violet[500]!,
-                                    CustomColors.red[500]!,
-                                  ],
-                                ),
-                              ),
+                              width: 600,
+                              height: 600,
+                              color: CustomColors.red[500],
                             ),
                           ),
                         ),
@@ -409,70 +404,61 @@ class CubicClipper extends CustomClipper<Path> {
   }
 }
 
+/// http://scaledinnovation.com/analytics/splines/aboutSplines.html
+///
 class SmoothShapeClipper extends CustomClipper<Path> {
   final List<Vector2> points;
-  final Vector2 firstControlPointA;
-  final Vector2 firstControlPointB;
+  final double smoothness;
 
   SmoothShapeClipper({
     required this.points,
-    required this.firstControlPointA,
-    required this.firstControlPointB,
+    this.smoothness: 0.5,
   }) : super();
+
+  void _computeControlPoints(int i, List<ControlPoints> cps) {}
 
   @override
   Path getClip(Size size) {
-    final path = Path();
+    final scale = Vector2(size.width, size.height);
 
-    Vector2 a = firstControlPointA;
-    Vector2 b = firstControlPointA;
+    final sp = points.map((x) => x.clone()..multiply(scale)).toList();
 
-    Vector2 newA = a.clone();
-    Vector2 newB = b.clone();
-
-    path.moveTo(
-      points[0].x * size.width,
-      points[0].y * size.height,
+    final cps = List<ControlPoints>.generate(
+      points.length,
+      (_) => ControlPoints(),
     );
 
-    path.cubicTo(
-      newA.x * size.width,
-      newA.y * size.height,
-      newB.x * size.width,
-      newB.y * size.height,
-      points[1].x * size.width,
-      points[1].y * size.height,
-    );
+    for (int i = 0; i < sp.length; i++) {
+      final p0 = sp[i % sp.length];
+      final p1 = sp[(i + 1) % sp.length];
+      final p2 = sp[(i + 2) % sp.length];
 
-    for (int i = 1; i < points.length - 1; i++) {
-      newA = points[i] * 2 - b;
-      newB = newA * 2 - a - b * 2;
+      final d01 =
+          math.sqrt(math.pow(p1.x - p0.x, 2) + math.pow(p1.y - p0.y, 2));
+      final d12 =
+          math.sqrt(math.pow(p2.x - p1.x, 2) + math.pow(p2.y - p1.y, 2));
 
-      path.cubicTo(
-        newA.x * size.width,
-        newA.y * size.height,
-        newB.x * size.width,
-        newB.y * size.height,
-        points[i + 1].x * size.width,
-        points[i + 1].y * size.height,
-      );
+      final fa = smoothness * d01 / (d01 + d12);
+      final fb = smoothness * d12 / (d01 + d12);
 
-      a = newA;
-      b = newB;
+      cps[i % cps.length].b = p1 - (p2 - p0) * fa;
+      cps[(i + 1) % cps.length].a = p1 + (p2 - p0) * fb;
     }
 
-    // TODO: different formula for closing
-    newA = points[points.length - 1] * 2 - b;
-    newB = newA * 2 - a - b * 2;
+    final path = Path();
 
-    path.cubicTo(
-      newA.x * size.width,
-      newA.y * size.height,
-      newB.x * size.width,
-      newB.y * size.height,
-      points[0].x * size.width,
-      points[0].y * size.height,
-    );
+    path.moveTo(sp[0].x, sp[0].y);
+
+    for (int i = 0; i < sp.length; i++) {
+      path.cubicTo(
+        cps[i].a!.x,
+        cps[i].a!.y,
+        cps[i].b!.x,
+        cps[i].b!.y,
+        sp[(i + 1) % sp.length].x,
+        sp[(i + 1) % sp.length].y,
+      );
+    }
 
     path.close();
 
@@ -482,5 +468,15 @@ class SmoothShapeClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
+  }
+}
+
+class ControlPoints {
+  Vector2? a;
+  Vector2? b;
+
+  @override
+  String toString() {
+    return "(a: $a b: $b)";
   }
 }
