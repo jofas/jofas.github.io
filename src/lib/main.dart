@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -85,13 +87,18 @@ class MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Stack(
                     children: <Widget>[
-                      ClipPath(
-                        clipper: OvalClipper(),
-                        child: Container(
-                          height: 300,
-                          width: 300,
-                          padding: EdgeInsets.all(50),
-                          color: CustomColors.red[500],
+                      Positioned(
+                        bottom: -1,
+                        child: Transform.rotate(
+                          angle: 0.0 * math.pi,
+                          child: ClipPath(
+                            clipper: CubicClipper(),
+                            child: Container(
+                              height: 300,
+                              width: 300,
+                              color: CustomColors.red[500],
+                            ),
+                          ),
                         ),
                       ),
                       Center(
@@ -104,13 +111,31 @@ class MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        const Text("About"),
-                      ],
-                    ),
+                  Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: -1,
+                        child: Transform.rotate(
+                          angle: math.pi,
+                          child: ClipPath(
+                            clipper: CubicClipper(),
+                            child: Container(
+                              height: 300,
+                              width: 300,
+                              color: CustomColors.red[500],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text("About"),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   Center(
                     child: Column(
@@ -222,6 +247,58 @@ class OvalClipper extends CustomClipper<Path> {
     final path = Path();
 
     path.addOval(rect);
+
+    path.close();
+
+    return path;
+  }
+}
+
+
+class ConicClipper extends CustomClipper<Path> {
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+
+  @override
+  Path getClip(Size size) {
+    final rect = Rect.fromCenter(
+      center: Offset(size.width / 2, size.height / 2),
+      width: size.width,
+      height: size.height,
+    );
+
+    final path = Path();
+
+    path.addOval(rect);
+
+    path.close();
+
+    return path;
+  }
+}
+
+class CubicClipper extends CustomClipper<Path> {
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+
+    path.moveTo(0, size.height);
+
+    path.cubicTo(
+      100,
+      100,
+      size.width,
+      size.height - 100,
+      size.width,
+      size.height,
+    );
 
     path.close();
 
