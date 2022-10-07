@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -124,6 +126,18 @@ class MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Text("Contact"),
+                        TextButton(
+                          child: const Text("Imprint (DE)"),
+                          onPressed: () {
+                            launchUrl(Uri.parse("imprint.html"));
+                          },
+                        ),
+                        TextButton(
+                          child: const Text("Privacy Policy (DE)"),
+                          onPressed: () {
+                            launchUrl(Uri.parse("privacy_policy.html"));
+                          },
+                        ),
                       ],
                     ),
                   ),

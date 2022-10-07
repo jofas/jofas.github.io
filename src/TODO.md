@@ -4,4 +4,4 @@
 
 * [x] Progress bar
 
-* [ ] Imprint and data safety
+* [x] Imprint and data safety
