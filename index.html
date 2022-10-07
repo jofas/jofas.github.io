@@ -51,14 +51,14 @@
 
       #baseline {
         position: absolute;
-        bottom: 2%;
+        bottom: 7.5%;
         left: 50%;
         width: 95%;
         transform: translate(-50%, 0%);
         text-align: center;
       }
 
-      a {
+      #baseline a {
         margin-top: 30px;
         padding: 10px 0px;
         font-size: 5vw;
@@ -72,11 +72,27 @@
         color: inherit;
       }
 
-      a:hover {
+      #baseline a:hover {
         transform: translateY(-5px);
         background-color: #FFF;
         box-shadow: 0px 1px 7px 3px #666;
         color:#000;
+      }
+
+      #legal {
+        position: absolute;
+        bottom: 2%;
+        left: 50%;
+        width: 95%;
+        transform: translate(-50%, 0%);
+        text-align: center;
+        letter-spacing: 0.3em;
+      }
+
+      #legal a {
+        letter-spacing: 0em;
+        text-decoration: none;
+        color: #4a4346;
       }
 
       h1 {
@@ -89,7 +105,7 @@
           width: 600px;
         }
 
-        a {
+        #baseline a {
           font-size:3vh;
         }
 
@@ -99,7 +115,7 @@
       }
 
       @media (min-width: 1024px) {
-        a {
+        #baseline a {
           font-size:1.7vw;
         }
 
@@ -163,6 +179,15 @@
         let fefd = "fassbender.dev";
         c.href = "mailto: " + ffrs + "@" + fefd;
       </script>
+    </div>
+    <div id="legal">
+      <a href="imprint.html">
+        Imprint (DE)
+      </a>
+      <span style="display:inline-block;width:3em"></span>
+      <a href="privacy_policy.html">
+        Privacy Policy (DE)
+      </a>
     </div>
   </body>
 </html>
