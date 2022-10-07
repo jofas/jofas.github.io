@@ -20,13 +20,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.indigo[900],
         textTheme: Theme.of(context).textTheme.copyWith(
-          bodyText2: TextStyle(
-            color: Colors.white,
-          ),
-        ),
+              bodyText2: TextStyle(
+                color: Colors.white,
+              ),
+            ),
         iconTheme: Theme.of(context).iconTheme.copyWith(
-          color: Colors.white,
-        ),
+              color: Colors.white,
+            ),
       ),
       home: MyHomePage(),
     );
@@ -94,9 +94,18 @@ class MyHomePageState extends State<MyHomePage> {
                           child: ClipPath(
                             clipper: CubicClipper(),
                             child: Container(
-                              height: 300,
-                              width: 300,
-                              color: CustomColors.red[500],
+                              width: viewport.maxWidth,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: <Color>[
+                                    CustomColors.violet[500]!,
+                                    CustomColors.red[500]!,
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -121,8 +130,67 @@ class MyHomePageState extends State<MyHomePage> {
                             clipper: CubicClipper(),
                             child: Container(
                               height: 300,
-                              width: 300,
-                              color: CustomColors.red[500],
+                              width: viewport.maxWidth / 3,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: <Color>[
+                                    CustomColors.yellow[500]!,
+                                    CustomColors.red[500]!,
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: -1,
+                        left: viewport.maxWidth / 3 - 1,
+                        child: Transform.rotate(
+                          angle: math.pi,
+                          child: ClipPath(
+                            clipper: CubicClipper(),
+                            child: Container(
+                              height: 300,
+                              width: viewport.maxWidth / 3,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: <Color>[
+                                    CustomColors.yellow[500]!,
+                                    CustomColors.red[500]!,
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: -1,
+                        left: 2 * viewport.maxWidth / 3 - 2,
+                        child: Transform.rotate(
+                          angle: math.pi,
+                          child: ClipPath(
+                            clipper: CubicClipper(),
+                            child: Container(
+                              height: 300,
+                              width: viewport.maxWidth -
+                                  2 * viewport.maxWidth / 3 +
+                                  3,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: <Color>[
+                                    CustomColors.yellow[500]!,
+                                    CustomColors.red[500]!,
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -254,7 +322,6 @@ class OvalClipper extends CustomClipper<Path> {
   }
 }
 
-
 class ConicClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
@@ -289,16 +356,20 @@ class CubicClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
 
-    path.moveTo(0, size.height);
+    path.moveTo(0, size.height / 2);
 
     path.cubicTo(
-      100,
-      100,
+      250,
+      250,
+      size.width - 250,
+      size.height - 250,
       size.width,
-      size.height - 100,
-      size.width,
-      size.height,
+      size.height / 2,
     );
+
+    path.lineTo(size.width, size.height);
+
+    path.lineTo(0, size.height);
 
     path.close();
 
