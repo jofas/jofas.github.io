@@ -10,11 +10,11 @@
 
 * [x] style: cyclic smooth clipper
 
-* [ ] style: non-cyclic smooth clipper 
-
-* [ ] style: layout
+* [x] style: non-cyclic smooth clipper 
 
 * [ ] style: background
+
+* [ ] style: layout
 
 * [ ] style: footer
 
