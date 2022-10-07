@@ -2,6 +2,6 @@
 
 * [x] Skeleton
 
-* [ ] Progress bar
+* [x] Progress bar
 
 * [ ] Imprint and data safety

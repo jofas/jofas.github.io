@@ -19,20 +19,42 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   MyHomePage({super.key});
 
-  final PageController _pageController = PageController();
+  final PageController pageController = PageController();
+
+  @override
+  State<MyHomePage> createState() => MyHomePageState();
+}
+
+class MyHomePageState extends State<MyHomePage> {
+  static const int NUM_PAGES = 7;
+
+  double currPos = 0.0;
+  double prevPos = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.pageController.addListener(() {
+      setState(() {
+        prevPos = currPos;
+        currPos = widget.pageController.page! / (NUM_PAGES - 1);
+      });
+    });
+  }
 
   void _nextPage() {
-    _pageController.nextPage(
+    widget.pageController.nextPage(
       duration: Duration(seconds: 1),
       curve: Curves.ease,
     );
   }
 
   void _prevPage() {
-    _pageController.previousPage(
+    widget.pageController.previousPage(
       duration: Duration(seconds: 1),
       curve: Curves.ease,
     );
@@ -41,115 +63,106 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        scrollDirection: Axis.vertical,
-        children: <Widget>[
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("Intro"),
-                IconButton(
-                  icon: const Icon(Icons.expand_more),
-                  onPressed: _nextPage,
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints viewport) {
+          return Stack(
+            children: <Widget>[
+              PageView(
+                controller: widget.pageController,
+                scrollDirection: Axis.vertical,
+                children: <Widget>[
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("Intro"),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("About"),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("Key Competencies"),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("Professional Projects"),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("Open Source"),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("Personal Pursuits"),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("Contact"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Positioned(
+                bottom: 0,
+                width: viewport.maxWidth,
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: const Icon(Icons.expand_less),
+                      onPressed: _prevPage,
+                    ),
+                    Expanded(
+                      child: TweenAnimationBuilder<double>(
+                        duration: Duration(milliseconds: 100),
+                        curve: Curves.linear,
+                        tween: Tween<double>(
+                          begin: prevPos,
+                          end: currPos,
+                        ),
+                        builder: (BuildContext context, double value, _) {
+                          return LinearProgressIndicator(
+                            value: value,
+                          );
+                        },
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.expand_more),
+                      onPressed: _nextPage,
+                    ),
+                  ],
                 ),
-              ]
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("About"),
-                IconButton(
-                  icon: const Icon(Icons.expand_less),
-                  onPressed: _prevPage,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.expand_more),
-                  onPressed: _nextPage,
-                ),
-              ]
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("Key Competencies"),
-                IconButton(
-                  icon: const Icon(Icons.expand_less),
-                  onPressed: _prevPage,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.expand_more),
-                  onPressed: _nextPage,
-                ),
-              ]
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("Professional Projects"),
-                IconButton(
-                  icon: const Icon(Icons.expand_less),
-                  onPressed: _prevPage,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.expand_more),
-                  onPressed: _nextPage,
-                ),
-              ]
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("Open Source"),
-                IconButton(
-                  icon: const Icon(Icons.expand_less),
-                  onPressed: _prevPage,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.expand_more),
-                  onPressed: _nextPage,
-                ),
-              ]
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("Personal Pursuits"),
-                IconButton(
-                  icon: const Icon(Icons.expand_less),
-                  onPressed: _prevPage,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.expand_more),
-                  onPressed: _nextPage,
-                ),
-              ]
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("Contact"),
-                IconButton(
-                  icon: const Icon(Icons.expand_less),
-                  onPressed: _prevPage,
-                ),
-              ]
-            ),
-          ),
-        ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }
