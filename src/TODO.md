@@ -1,6 +1,6 @@
 # TODO
 
-* [ ] Skeleton
+* [x] Skeleton
 
 * [ ] Progress bar
 
