@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import 'colors.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: CustomColors.indigo[900],
+        textTheme: Theme.of(context).textTheme.copyWith(
+          bodyText2: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        iconTheme: Theme.of(context).iconTheme.copyWith(
+          color: Colors.white,
+        ),
       ),
       home: MyHomePage(),
     );
@@ -73,13 +83,26 @@ class MyHomePageState extends State<MyHomePage> {
                 controller: widget.pageController,
                 scrollDirection: Axis.vertical,
                 children: <Widget>[
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        const Text("Intro"),
-                      ],
-                    ),
+                  Stack(
+                    children: <Widget>[
+                      ClipPath(
+                        clipper: OvalClipper(),
+                        child: Container(
+                          height: 300,
+                          width: 300,
+                          padding: EdgeInsets.all(50),
+                          color: CustomColors.red[500],
+                        ),
+                      ),
+                      Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text("Intro"),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   Center(
                     child: Column(
@@ -179,5 +202,29 @@ class MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
+  }
+}
+
+class OvalClipper extends CustomClipper<Path> {
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+
+  @override
+  Path getClip(Size size) {
+    final rect = Rect.fromCenter(
+      center: Offset(size.width / 2, size.height / 2),
+      width: size.width,
+      height: size.height,
+    );
+
+    final path = Path();
+
+    path.addOval(rect);
+
+    path.close();
+
+    return path;
   }
 }
