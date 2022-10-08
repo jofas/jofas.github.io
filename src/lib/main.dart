@@ -1,12 +1,13 @@
 import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Spacer;
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_math/vector_math.dart' hide Colors;
 
 import 'colors.dart';
 import 'clipper.dart';
+import 'util.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,9 +25,13 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.copyWith(
               bodyText2: TextStyle(
                 color: Colors.white,
+                fontSize: 20,
+                height: 1.5,
+                letterSpacing: 1,
               ),
               headline2: TextStyle(
                 color: Colors.white,
+                letterSpacing: 5,
               ),
             ),
         iconTheme: Theme.of(context).iconTheme.copyWith(
@@ -80,8 +85,35 @@ class MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  double _content_width(double w) {
+  double _contentWidth(double w) {
     return w > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : w;
+  }
+
+  ButtonStyle _buttonStyle(BuildContext context, {double? fontSize}) {
+    return ButtonStyle(
+      overlayColor:
+          MaterialStateProperty.all<Color?>(Colors.white.withOpacity(0)),
+      foregroundColor:
+          MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+        if (states.contains(MaterialState.hovered)) {
+          return Colors.white;
+        }
+        return Colors.grey;
+      }),
+      textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+          (Set<MaterialState> states) {
+        final base = Theme.of(context).textTheme.bodyText2!.copyWith(
+              fontSize: fontSize,
+            );
+
+        if (states.contains(MaterialState.focused)) {
+          return base.copyWith(
+            decoration: TextDecoration.underline,
+          );
+        }
+        return base;
+      }),
+    );
   }
 
   @override
@@ -261,26 +293,65 @@ class MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "Contact",
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
-                        TextButton(
-                          child: const Text("Imprint (DE)"),
-                          onPressed: () {
-                            launchUrl(Uri.parse("imprint.html"));
-                          },
-                        ),
-                        TextButton(
-                          child: const Text("Privacy Policy (DE)"),
-                          onPressed: () {
-                            launchUrl(Uri.parse("privacy_policy.html"));
-                          },
-                        ),
-                      ],
+                    child: SizedBox(
+                      width: _contentWidth(viewport.maxWidth),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "Contact",
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                          Spacer.headlineSpace,
+                          Text(
+                            "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
+                            textAlign: TextAlign.center,
+                          ),
+                          Spacer.paragraphSpace,
+                          Text(
+                            "If you got something funny or wholesome and wish to share it with me, do so as well.",
+                            textAlign: TextAlign.center,
+                          ),
+                          Spacer.paragraphSpace,
+                          TextButton(
+                              style: _buttonStyle(context),
+                              child: const Text(
+                                "jonas@fassbender.dev",
+                                textAlign: TextAlign.center,
+                              ),
+                              onPressed: () {
+                                launchUrl(Uri.parse(
+                                    "mailto://jonas@fassbender.dev?subject=Hi%20There!"));
+                              }),
+                          Spacer.paragraphSpace,
+                          Spacer.paragraphSpace,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              TextButton(
+                                style: _buttonStyle(
+                                  context,
+                                  fontSize: 10,
+                                ),
+                                child: const Text("Imprint (DE)"),
+                                onPressed: () {
+                                  launchUrl(Uri.parse("imprint.html"));
+                                },
+                              ),
+                              TextButton(
+                                style: _buttonStyle(
+                                  context,
+                                  fontSize: 10,
+                                ),
+                                child: const Text("Privacy Policy (DE)"),
+                                onPressed: () {
+                                  launchUrl(Uri.parse("privacy_policy.html"));
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -288,10 +359,11 @@ class MyHomePageState extends State<MyHomePage> {
               Positioned(
                 bottom: 0.025 * viewport.maxHeight,
                 left: viewport.maxWidth / 2 -
-                    _content_width(viewport.maxWidth) / 2,
-                width: _content_width(viewport.maxWidth),
+                    _contentWidth(viewport.maxWidth) / 2,
+                width: _contentWidth(viewport.maxWidth),
                 child: Row(
                   children: <Widget>[
+                    SizedBox(width: 10),
                     Expanded(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),

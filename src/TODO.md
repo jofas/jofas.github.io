@@ -18,7 +18,11 @@
 
 * [ ] style: layout: max width, sensible padding
 
+* [x] style: links and buttons
+
 * [x] style: scrolling progress
+
+* [ ] style: handle overflowing pages (horizontal mobile screens)
 
 * [ ] content: intro
 
@@ -32,4 +36,4 @@
 
 * [ ] content: personal pursuits
 
-* [ ] content: contact
+* [x] content: contact
