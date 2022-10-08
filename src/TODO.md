@@ -35,3 +35,5 @@
 * [ ] style: handle overflowing pages (horizontal mobile screens)
 
 * [ ] style: background
+
+* [ ] animated logo
