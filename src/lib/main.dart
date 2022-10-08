@@ -34,6 +34,10 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
                 letterSpacing: 5,
               ),
+              headline3: TextStyle(
+                color: Colors.white,
+                //letterSpacing: 5,
+              ),
             ),
         iconTheme: Theme.of(context).iconTheme.copyWith(
               color: Colors.white,
@@ -55,7 +59,7 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   static const int NUM_PAGES = 7;
-  static const double MAX_CONTENT_WIDTH = 800;
+  static const double MAX_CONTENT_WIDTH = 1200;
 
   double currPos = 0.0;
   double prevPos = 0.0;
@@ -200,9 +204,31 @@ class MyHomePageState extends State<MyHomePage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
+                                Expanded(
+                                  child: Center(
+                                    child: Text(
+                                      "TODO: big animated logo",
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
+                                    ),
+                                  ),
+                                ),
                                 Text(
-                                  "Intro",
+                                  "Jonas Fassbender",
+                                  textAlign: TextAlign.center,
                                   style: Theme.of(context).textTheme.headline2,
+                                ),
+                                Spacer.paragraphSpace,
+                                Text(
+                                  "Software engineer and freelancer.",
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context).textTheme.headline3,
+                                ),
+                                Spacer.paragraphSpace,
+                                Text(
+                                  "In love with the craft.",
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context).textTheme.headline3,
                                 ),
                               ],
                             ),
@@ -507,37 +533,44 @@ class MyHomePageState extends State<MyHomePage> {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 30),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(
-                              "Contact",
-                              style: Theme.of(context).textTheme.headline2,
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    "Contact",
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                  ),
+                                  Spacer.headlineSpace,
+                                  Text(
+                                    "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Spacer.paragraphSpace,
+                                  Text(
+                                    "If you got something funny or wholesome and wish to share it with me, do so as well.",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Spacer.paragraphSpace,
+                                  TextButton(
+                                    style: _buttonStyle(context),
+                                    child: const Text(
+                                      "jonas@fassbender.dev",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    onPressed: () {
+                                      launchUrl(Uri.parse(
+                                          "mailto://jonas@fassbender.dev?subject=Hi%20There!"));
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                            Spacer.headlineSpace,
-                            Text(
-                              "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.paragraphSpace,
-                            Text(
-                              "If you got something funny or wholesome and wish to share it with me, do so as well.",
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.paragraphSpace,
-                            TextButton(
-                                style: _buttonStyle(context),
-                                child: const Text(
-                                  "jonas@fassbender.dev",
-                                  textAlign: TextAlign.center,
-                                ),
-                                onPressed: () {
-                                  launchUrl(Uri.parse(
-                                      "mailto://jonas@fassbender.dev?subject=Hi%20There!"));
-                                }),
-                            Spacer.paragraphSpace,
-                            Spacer.paragraphSpace,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
                                 TextButton(
                                   style: _buttonStyle(
