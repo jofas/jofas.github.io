@@ -1,24 +1,48 @@
 import 'package:flutter/material.dart';
 
-// TODO: stateful widget
+class Logo extends StatefulWidget {
+  @override
+  State<Logo> createState() => _LogoState();
+}
 
-class Logo extends StatelessWidget {
+class _LogoState extends State<Logo> with TickerProviderStateMixin {
+  late final Animation<double> controller;
+
+  @override
+  void initState() {
+    final c = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    )..repeat(
+        reverse: true,
+      );
+
+    controller = CurvedAnimation(
+      parent: c,
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder<double>(
-      duration: Duration(seconds: 12),
-      curve: Curves.easeInOut,
-      tween: Tween<double>(
-        begin: 0,
-        end: 1,
-      ),
-      builder: (BuildContext context, double value, _) {
-        return CustomPaint(
-          painter: LogoPainter(value),
-          size: Size(300, 300),
-          willChange: true,
-        );
-      },
+    return LogoAnimation(controller: controller);
+  }
+}
+
+class LogoAnimation extends AnimatedWidget {
+  LogoAnimation({
+    super.key,
+    required Animation<double> controller,
+  }) : super(listenable: controller);
+
+  Animation<double> get _progress => listenable as Animation<double>;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: LogoPainter(_progress.value),
+      size: Size(300, 300),
+      willChange: true,
     );
   }
 }
@@ -34,11 +58,10 @@ class LogoPainter extends CustomPainter {
     paint.color = Colors.white;
 
     final pos = Offset(state * s.width, s.height / 2);
-    print("pos: $pos");
 
     c.drawCircle(pos, 20, paint);
   }
 
   @override
-  bool shouldRepaint(LogoPainter old) => true;
+  bool shouldRepaint(LogoPainter old) => old.state != state;
 }

@@ -208,7 +208,7 @@ class MyHomePageState extends State<MyHomePage> {
                             child: Center(
                               child: Logo(),
                             ),
-                              /*
+                            /*
 
                                 ),
                                 // TODO: into "about"
