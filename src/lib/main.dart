@@ -63,6 +63,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   double currPos = 0.0;
   double prevPos = 0.0;
+  bool hasScrolled = false;
 
   @override
   void initState() {
@@ -72,6 +73,7 @@ class MyHomePageState extends State<MyHomePage> {
       setState(() {
         prevPos = currPos;
         currPos = widget.pageController.page! / (NUM_PAGES - 1);
+        hasScrolled = true;
       });
     });
   }
@@ -134,6 +136,7 @@ class MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Stack(
                     children: <Widget>[
+                      /*
                       Positioned(
                         bottom: -1,
                         child: Transform.rotate(
@@ -192,6 +195,7 @@ class MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                       ),
+                      */
                       Align(
                         alignment: Alignment.topCenter,
                         child: Container(
@@ -203,17 +207,14 @@ class MyHomePageState extends State<MyHomePage> {
                             padding: EdgeInsets.symmetric(horizontal: 30),
                             // TODO: just logo animation
                             // TODO: "tooltip" highlighting arrow down
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Expanded(
-                                  child: Center(
-                                    child: Text(
-                                      "TODO: big animated logo",
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
-                                    ),
-                                  ),
+                            child: Center(
+                              child: Text(
+                                "TODO: big animated logo",
+                                style: Theme.of(context).textTheme.headline2,
+                              ),
+                            ),
+                              /*
+
                                 ),
                                 // TODO: into "about"
                                 Text(
@@ -235,6 +236,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 ),
                               ],
                             ),
+                            */
                           ),
                         ),
                       ),
@@ -242,6 +244,7 @@ class MyHomePageState extends State<MyHomePage> {
                   ),
                   Stack(
                     children: <Widget>[
+                      /*
                       Positioned(
                         top: -1,
                         child: Transform.rotate(
@@ -275,6 +278,7 @@ class MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                       ),
+                      */
                       Align(
                         alignment: Alignment.topCenter,
                         child: Container(
