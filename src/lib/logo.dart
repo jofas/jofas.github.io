@@ -57,9 +57,30 @@ class LogoPainter extends CustomPainter {
     final paint = Paint();
     paint.color = Colors.white;
 
-    final pos = Offset(state * s.width, s.height / 2);
+    final double r = 20;
 
-    c.drawCircle(pos, 20, paint);
+    final path = Path();
+
+    path.moveTo(0, s.height / 2 - r);
+
+    path.lineTo(state * s.width, s.height / 2 - r);
+
+    path.arcToPoint(
+      Offset(state * s.width, s.height / 2 + r),
+      radius: Radius.circular(r),
+    );
+
+    path.lineTo(0, s.height / 2 + r);
+
+    path.arcToPoint(
+      Offset(0, s.height / 2 - r),
+      radius: Radius.circular(r),
+    );
+
+    final circlePos = Offset(state * s.width, s.height / 2);
+
+    c.drawPath(path, paint);
+    c.drawCircle(circlePos, r, paint);
   }
 
   @override
