@@ -12,11 +12,9 @@
 
 * [x] style: non-cyclic smooth clipper 
 
-* [ ] style: background
-
-* [ ] style: layout
-
 * [ ] style: layout: max width, sensible padding
+
+* [ ] style: background
 
 * [x] style: links and buttons
 
@@ -34,6 +32,6 @@
 
 * [ ] content: open source
 
-* [ ] content: personal pursuits
+* [x] content: personal pursuits
 
 * [x] content: contact

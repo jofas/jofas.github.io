@@ -431,7 +431,7 @@ class MyHomePageState extends State<MyHomePage> {
                               Spacer.tileSpace,
                               Expanded(
                                 child: Text(
-                                  "Olympic weightlifting. Few sports combine strength, power and overall athleticism in such an aesthetic and rewarding way.",
+                                  "Olympic weightlifting. Few sports combine strength, speed and overall athleticism in such an aesthetic and rewarding way.",
                                 ),
                               ),
                             ],
