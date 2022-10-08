@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'colors.dart';
 import 'clipper.dart';
 import 'util.dart';
+import 'logo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +37,6 @@ class MyApp extends StatelessWidget {
               ),
               headline3: TextStyle(
                 color: Colors.white,
-                //letterSpacing: 5,
               ),
             ),
         iconTheme: Theme.of(context).iconTheme.copyWith(
@@ -205,13 +205,8 @@ class MyHomePageState extends State<MyHomePage> {
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 30),
-                            // TODO: just logo animation
-                            // TODO: "tooltip" highlighting arrow down
                             child: Center(
-                              child: Text(
-                                "TODO: big animated logo",
-                                style: Theme.of(context).textTheme.headline2,
-                              ),
+                              child: Logo(),
                             ),
                               /*
 

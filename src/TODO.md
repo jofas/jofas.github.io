@@ -22,7 +22,11 @@
 
 * [x] content: contact
 
+* [ ] logo widget with animation
+
 * [ ] translate logo from svg/css to native flutter
+
+* [ ] animation highlighting arrow down
 
 * [ ] content: intro
 
