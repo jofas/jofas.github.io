@@ -4,6 +4,7 @@ import 'package:flutter/material.dart' hide Spacer;
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_math/vector_math.dart' hide Colors;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'colors.dart';
 import 'clipper.dart';
@@ -278,18 +279,165 @@ class MyHomePageState extends State<MyHomePage> {
                           "Open Source",
                           style: Theme.of(context).textTheme.headline2,
                         ),
+                        Spacer.headlineSpace,
+                        Text(
+                          "Here are some open source projects I currently work on:",
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            TextButton(
+                              child: GradientIcon(
+                                FontAwesomeIcons.rust,
+                                size: 80,
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomLeft,
+                                  end: Alignment.topRight,
+                                  colors: <Color>[
+                                    CustomColors.purple[900]!,
+                                    CustomColors.purple[700]!,
+                                    CustomColors.blue[400]!,
+                                    CustomColors.green[400]!,
+                                    CustomColors.green[100]!,
+                                  ],
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Meditation. I meditate to experience freedom, calmness and peace of mind.",
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
                   Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "Personal Pursuits",
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
-                      ],
+                    child: SizedBox(
+                      width: _contentWidth(viewport.maxWidth),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "Personal Pursuits",
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                          Spacer.headlineSpace,
+                          Text(
+                            "Besides honing my skills as a dev and professional I particularly enjoy the following activities:",
+                            textAlign: TextAlign.center,
+                          ),
+                          Spacer.paragraphSpace,
+                          // TODO: abstract
+                          Row(
+                            children: <Widget>[
+                              GradientIcon(
+                                Icons.self_improvement,
+                                size: 80,
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: <Color>[
+                                    CustomColors.purple[900]!,
+                                    CustomColors.purple[700]!,
+                                    CustomColors.blue[400]!,
+                                    CustomColors.green[400]!,
+                                    CustomColors.green[100]!,
+                                  ],
+                                ),
+                              ),
+                              Spacer.tileSpace,
+                              Expanded(
+                                child: Text(
+                                  "Meditation. I meditate to experience freedom, calmness and peace of mind.",
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer.paragraphSpace,
+                          Row(
+                            children: <Widget>[
+                              GradientIcon(
+                                Icons.science,
+                                size: 80,
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: <Color>[
+                                    CustomColors.purple[900]!,
+                                    CustomColors.purple[700]!,
+                                    CustomColors.blue[400]!,
+                                    CustomColors.green[400]!,
+                                    CustomColors.green[100]!,
+                                  ],
+                                ),
+                              ),
+                              Spacer.tileSpace,
+                              Expanded(
+                                child: Text(
+                                  "Fermentation. Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer.paragraphSpace,
+                          Row(
+                            children: <Widget>[
+                              GradientIcon(
+                                Icons.hiking,
+                                size: 80,
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: <Color>[
+                                    CustomColors.purple[900]!,
+                                    CustomColors.purple[700]!,
+                                    CustomColors.blue[400]!,
+                                    CustomColors.green[400]!,
+                                    CustomColors.green[100]!,
+                                  ],
+                                ),
+                              ),
+                              Spacer.tileSpace,
+                              Expanded(
+                                child: Text(
+                                  "Long distance hiking. My goal is to one day walk a 2000 mile trail.",
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer.paragraphSpace,
+                          Row(
+                            children: <Widget>[
+                              GradientIcon(
+                                Icons.fitness_center,
+                                size: 80,
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomRight,
+                                  end: Alignment.topLeft,
+                                  colors: <Color>[
+                                    CustomColors.purple[900]!,
+                                    CustomColors.purple[700]!,
+                                    CustomColors.blue[400]!,
+                                    CustomColors.green[400]!,
+                                    CustomColors.green[100]!,
+                                  ],
+                                ),
+                              ),
+                              Spacer.tileSpace,
+                              Expanded(
+                                child: Text(
+                                  "Olympic weightlifting. Few sports combine strength, power and overall athleticism in such an aesthetic and rewarding way.",
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Center(
@@ -387,7 +535,11 @@ class MyHomePageState extends State<MyHomePage> {
                     ),
                     SizedBox(width: 25),
                     Text(
-                        "${(currPos * (NUM_PAGES - 1)).round() + 1}  /  $NUM_PAGES"),
+                      "${(currPos * (NUM_PAGES - 1)).round() + 1}  /  $NUM_PAGES",
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            fontSize: 12,
+                          ),
+                    ),
                     SizedBox(width: 10),
                     IconButton(
                       icon: const Icon(Icons.expand_less),
