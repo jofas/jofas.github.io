@@ -14,13 +14,13 @@
 
 * [x] style: content layout: max width, sensible padding
 
-* [ ] style: background
-
 * [x] style: links and buttons
 
 * [x] style: scrolling progress
 
-* [ ] style: handle overflowing pages (horizontal mobile screens)
+* [x] content: personal pursuits
+
+* [x] content: contact
 
 * [ ] content: intro
 
@@ -32,6 +32,6 @@
 
 * [ ] content: open source
 
-* [x] content: personal pursuits
+* [ ] style: handle overflowing pages (horizontal mobile screens)
 
-* [x] content: contact
+* [ ] style: background
