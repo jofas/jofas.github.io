@@ -201,6 +201,8 @@ class MyHomePageState extends State<MyHomePage> {
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 30),
+                            // TODO: just logo animation
+                            // TODO: "tooltip" highlighting arrow down
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
@@ -213,6 +215,7 @@ class MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 ),
+                                // TODO: into "about"
                                 Text(
                                   "Jonas Fassbender",
                                   textAlign: TextAlign.center,
