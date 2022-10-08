@@ -49,6 +49,7 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   static const int NUM_PAGES = 7;
+  static const double MAX_CONTENT_WIDTH = 800;
 
   double currPos = 0.0;
   double prevPos = 0.0;
@@ -77,6 +78,10 @@ class MyHomePageState extends State<MyHomePage> {
       duration: Duration(seconds: 1),
       curve: Curves.ease,
     );
+  }
+
+  double _content_width(double w) {
+    return w > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : w;
   }
 
   @override
@@ -281,31 +286,47 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               Positioned(
-                bottom: 0,
-                width: viewport.maxWidth,
+                bottom: 0.025 * viewport.maxHeight,
+                left: viewport.maxWidth / 2 -
+                    _content_width(viewport.maxWidth) / 2,
+                width: _content_width(viewport.maxWidth),
                 child: Row(
                   children: <Widget>[
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: TweenAnimationBuilder<double>(
+                          duration: Duration(milliseconds: 100),
+                          curve: Curves.linear,
+                          tween: Tween<double>(
+                            begin: prevPos,
+                            end: currPos,
+                          ),
+                          builder: (BuildContext context, double value, _) {
+                            return LinearProgressIndicator(
+                              value: value,
+                              backgroundColor: Colors.white,
+                              color: CustomColors.red[300],
+                              minHeight: 10,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 25),
+                    Text(
+                        "${(currPos * (NUM_PAGES - 1)).round() + 1}  /  $NUM_PAGES"),
+                    SizedBox(width: 10),
                     IconButton(
                       icon: const Icon(Icons.expand_less),
+                      tooltip: "Page Up",
+                      splashRadius: 1,
                       onPressed: _prevPage,
-                    ),
-                    Expanded(
-                      child: TweenAnimationBuilder<double>(
-                        duration: Duration(milliseconds: 100),
-                        curve: Curves.linear,
-                        tween: Tween<double>(
-                          begin: prevPos,
-                          end: currPos,
-                        ),
-                        builder: (BuildContext context, double value, _) {
-                          return LinearProgressIndicator(
-                            value: value,
-                          );
-                        },
-                      ),
                     ),
                     IconButton(
                       icon: const Icon(Icons.expand_more),
+                      tooltip: "Page Down",
+                      splashRadius: 1,
                       onPressed: _nextPage,
                     ),
                   ],

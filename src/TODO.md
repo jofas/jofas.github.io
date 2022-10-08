@@ -18,7 +18,7 @@
 
 * [ ] style: layout: max width, sensible padding
 
-* [ ] style: footer
+* [x] style: scrolling progress
 
 * [ ] content: intro
 
