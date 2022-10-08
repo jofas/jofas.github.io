@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 100 100" version="2" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes move-circle {
+      10% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(50px);
+        fill: red;
+      }
+      100% {
+        transform: translateX(50px);
+        fill: black;
+      }
+    }
+
+    #one {
+      fill: red;
+      animation-name: move-circle;
+      animation-duration: 12s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes move-line {
+      10% {
+        d: path("M 25 45 L 25 45 A 5 5 0 0 1 25 55 L 25 55 A 5 5 0 0 1 25 45 Z");
+      }
+      50% {
+        d: path("M 25 45 L 75 45 A 5 5 0 0 1 75 55 L 25 55 A 5 5 0 0 1 25 45 Z");
+      }
+      100% {
+        d: path("M 25 45 L 75 45 A 5 5 0 0 1 75 55 L 25 55 A 5 5 0 0 1 25 45 Z");
+      }
+    }
+
+    #line {
+      fill: black;
+      animation-name: move-line;
+      animation-duration: 12s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+    }
+  </style>
+
+  <path id="line" d="M 25 45 L 25 45 A 5 5 0 0 1 25 55 L 25 55 A 5 5 0 0 1 25 45 Z"/>
+
+  <circle id="one" cx = "25" cy = "50" r = "5"/>
+</svg>

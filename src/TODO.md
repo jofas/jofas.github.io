@@ -22,6 +22,8 @@
 
 * [x] content: contact
 
+* [ ] translate logo from svg/css to native flutter
+
 * [ ] content: intro
 
 * [ ] content: about
