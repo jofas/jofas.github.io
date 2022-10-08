@@ -384,7 +384,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Meditation. I meditate to experience freedom, calmness and peace of mind.",
+                                    "Meditation. I meditate to find truth, experience freedom, calmness and peace of mind.",
                                   ),
                                 ),
                               ],
@@ -437,7 +437,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Meditation. I meditate to experience freedom, calmness and peace of mind.",
+                                    "Meditation. I meditate to find truth and experience freedom, calmness and peace of mind.",
                                   ),
                                 ),
                               ],
