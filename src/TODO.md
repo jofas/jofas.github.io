@@ -26,6 +26,8 @@
 
 * [ ] translate logo from svg/css to native flutter
 
+* [ ] create proper logo
+
 * [ ] make sure logo scales appropriately
 
 * [ ] animation highlighting arrow down
