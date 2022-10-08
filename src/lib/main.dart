@@ -441,64 +441,70 @@ class MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Center(
-                    child: SizedBox(
-                      width: _contentWidth(viewport.maxWidth),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "Contact",
-                            style: Theme.of(context).textTheme.headline2,
-                          ),
-                          Spacer.headlineSpace,
-                          Text(
-                            "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
-                            textAlign: TextAlign.center,
-                          ),
-                          Spacer.paragraphSpace,
-                          Text(
-                            "If you got something funny or wholesome and wish to share it with me, do so as well.",
-                            textAlign: TextAlign.center,
-                          ),
-                          Spacer.paragraphSpace,
-                          TextButton(
-                              style: _buttonStyle(context),
-                              child: const Text(
-                                "jonas@fassbender.dev",
-                                textAlign: TextAlign.center,
-                              ),
-                              onPressed: () {
-                                launchUrl(Uri.parse(
-                                    "mailto://jonas@fassbender.dev?subject=Hi%20There!"));
-                              }),
-                          Spacer.paragraphSpace,
-                          Spacer.paragraphSpace,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              TextButton(
-                                style: _buttonStyle(
-                                  context,
-                                  fontSize: 10,
+                    child: Container(
+                      constraints: BoxConstraints(
+                        maxWidth: _contentWidth(viewport.maxWidth),
+                        maxHeight: viewport.maxHeight * 0.80,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "Contact",
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                            Spacer.headlineSpace,
+                            Text(
+                              "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
+                              textAlign: TextAlign.center,
+                            ),
+                            Spacer.paragraphSpace,
+                            Text(
+                              "If you got something funny or wholesome and wish to share it with me, do so as well.",
+                              textAlign: TextAlign.center,
+                            ),
+                            Spacer.paragraphSpace,
+                            TextButton(
+                                style: _buttonStyle(context),
+                                child: const Text(
+                                  "jonas@fassbender.dev",
+                                  textAlign: TextAlign.center,
                                 ),
-                                child: const Text("Imprint (DE)"),
                                 onPressed: () {
-                                  launchUrl(Uri.parse("imprint.html"));
-                                },
-                              ),
-                              TextButton(
-                                style: _buttonStyle(
-                                  context,
-                                  fontSize: 10,
+                                  launchUrl(Uri.parse(
+                                      "mailto://jonas@fassbender.dev?subject=Hi%20There!"));
+                                }),
+                            Spacer.paragraphSpace,
+                            Spacer.paragraphSpace,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                TextButton(
+                                  style: _buttonStyle(
+                                    context,
+                                    fontSize: 10,
+                                  ),
+                                  child: const Text("Imprint (DE)"),
+                                  onPressed: () {
+                                    launchUrl(Uri.parse("imprint.html"));
+                                  },
                                 ),
-                                child: const Text("Privacy Policy (DE)"),
-                                onPressed: () {
-                                  launchUrl(Uri.parse("privacy_policy.html"));
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
+                                TextButton(
+                                  style: _buttonStyle(
+                                    context,
+                                    fontSize: 10,
+                                  ),
+                                  child: const Text("Privacy Policy (DE)"),
+                                  onPressed: () {
+                                    launchUrl(Uri.parse("privacy_policy.html"));
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
