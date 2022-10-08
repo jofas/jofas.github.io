@@ -12,7 +12,7 @@
 
 * [x] style: non-cyclic smooth clipper 
 
-* [ ] style: layout: max width, sensible padding
+* [x] style: content layout: max width, sensible padding
 
 * [ ] style: background
 
