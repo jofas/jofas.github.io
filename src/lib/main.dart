@@ -25,6 +25,9 @@ class MyApp extends StatelessWidget {
               bodyText2: TextStyle(
                 color: Colors.white,
               ),
+              headline2: TextStyle(
+                color: Colors.white,
+              ),
             ),
         iconTheme: Theme.of(context).iconTheme.copyWith(
               color: Colors.white,
@@ -151,7 +154,10 @@ class MyHomePageState extends State<MyHomePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            const Text("Intro"),
+                            Text(
+                              "Intro",
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
                           ],
                         ),
                       ),
@@ -196,7 +202,10 @@ class MyHomePageState extends State<MyHomePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            const Text("About"),
+                            Text(
+                              "About",
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
                           ],
                         ),
                       ),
@@ -206,7 +215,10 @@ class MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text("Key Competencies"),
+                        Text(
+                          "Key Competencies",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
                       ],
                     ),
                   ),
@@ -214,7 +226,10 @@ class MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text("Professional Projects"),
+                        Text(
+                          "Professional Projects",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
                       ],
                     ),
                   ),
@@ -222,7 +237,10 @@ class MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text("Open Source"),
+                        Text(
+                          "Open Source",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
                       ],
                     ),
                   ),
@@ -230,7 +248,10 @@ class MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text("Personal Pursuits"),
+                        Text(
+                          "Personal Pursuits",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
                       ],
                     ),
                   ),
@@ -238,7 +259,10 @@ class MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text("Contact"),
+                        Text(
+                          "Contact",
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
                         TextButton(
                           child: const Text("Imprint (DE)"),
                           onPressed: () {

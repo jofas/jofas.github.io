@@ -16,6 +16,8 @@
 
 * [ ] style: layout
 
+* [ ] style: layout: max width, sensible padding
+
 * [ ] style: footer
 
 * [ ] content: intro
