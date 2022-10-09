@@ -42,7 +42,7 @@
 
 * [ ] animation highlighting arrow down
 
-* [ ] links on lhs (Github, Gitlab)
+* [ ] links on rhs (Github, Gitlab, Resume)
 
 * [ ] content: intro
 

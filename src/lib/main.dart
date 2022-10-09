@@ -603,6 +603,38 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               Positioned(
+                //right: 0.025 * viewport.maxWidth,
+                child: RotatedBox(
+                  quarterTurns: 3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      TextButton(
+                        style: _buttonStyle(context),
+                        child: const Text("GITHUB"),
+                        onPressed: () {
+                          launchUrl(Uri.parse("https://github.com/jofas"));
+                        },
+                      ),
+                      TextButton(
+                        style: _buttonStyle(context),
+                        child: const Text("GITLAB"),
+                        onPressed: () {
+                          launchUrl(Uri.parse("https://gitlab.com/jofas"));
+                        },
+                      ),
+                      TextButton(
+                        style: _buttonStyle(context),
+                        child: const Text("RESUME"),
+                        onPressed: () {
+                          launchUrl(Uri.parse("resume.pdf"));
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
                 bottom: 0.025 * viewport.maxHeight,
                 left: viewport.maxWidth / 2 -
                     _contentWidth(viewport.maxWidth) / 2,
