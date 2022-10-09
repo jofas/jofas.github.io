@@ -8,21 +8,22 @@ class Logo extends StatefulWidget {
 }
 
 class _LogoState extends State<Logo> with TickerProviderStateMixin {
-  late final Animation<double> controller;
+  late final AnimationController controller;
 
   @override
   void initState() {
-    final c = AnimationController(
-      duration: Duration(seconds: 2),
+    controller = AnimationController(
+      duration: Duration(seconds: 8),
       vsync: this,
     )..repeat(
         reverse: true,
       );
+  }
 
-    controller = CurvedAnimation(
-      parent: c,
-      curve: Curves.easeInOut,
-    );
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -49,6 +50,18 @@ class LogoAnimation extends AnimatedWidget {
   }
 }
 
+extension Normalize on double {
+  double normalize({double min: 0, double max: 1}) {
+    return (this - min) / (max - min);
+  }
+}
+
+extension AsOffset on Vector2 {
+  Offset asOffset() {
+    return Offset(this.x, this.y);
+  }
+}
+
 class LogoPainter extends CustomPainter {
   final double state;
 
@@ -63,18 +76,56 @@ class LogoPainter extends CustomPainter {
 
     final p1 = Vector2(0, 0);
     final p2 = Vector2(s.width, 0);
+    final p3 = Vector2(s.width, s.height);
 
-    if (state <= 0.5) {
-      final pos = Vector2(state * 2 * s.width, 0);
+    if (state <= 0.05) {
+      // pause at the beginning
+    }
+    if (state <= 0.1) {
+      // let circle fade in
+
+      double factor = state.normalize(min: 0.05, max: 0.1);
+      factor = Curves.easeIn.transform(factor);
+
+      c.drawCircle(p1.asOffset(), r * factor, black);
+    } else if (state <= 0.3) {
+      // draw first line
+
+      double factor = state.normalize(min: 0.1, max: 0.3);
+      factor = Curves.easeIn.transform(factor);
+
+      final pos = Vector2(factor * s.width, 0);
 
       c.drawPath(line(p1, pos, magnitude: r), white);
+
       c.drawCircle(Offset(pos.x, pos.y), r, black);
-    } else {
-      final pos = Vector2(s.width, ((state - 0.5) / 0.5) * s.height);
+    } else if (state <= 0.5) {
+      // draw second line
+
+      double factor = state.normalize(min: 0.3, max: 0.5);
+      factor = Curves.easeOut.transform(factor);
+
+      final pos = Vector2(s.width, factor * s.height);
 
       c.drawPath(line(p1, p2, magnitude: r), white);
       c.drawPath(line(p2, pos, magnitude: r), white);
-      c.drawCircle(Offset(pos.x, pos.y), r, black);
+
+      c.drawCircle(pos.asOffset(), r, black);
+    } else if (state <= 0.55) {
+      // let circle fade out
+
+      double factor = state.normalize(min: 0.5, max: 0.55);
+      factor = Curves.easeOut.transform(factor);
+
+      c.drawPath(line(p1, p2, magnitude: r), white);
+      c.drawPath(line(p2, p3, magnitude: r), white);
+
+      c.drawCircle(p3.asOffset(), r * (1 - factor), black);
+    } else {
+      // pause at the end
+
+      c.drawPath(line(p1, p2, magnitude: r), white);
+      c.drawPath(line(p2, p3, magnitude: r), white);
     }
   }
 
