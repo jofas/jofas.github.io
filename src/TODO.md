@@ -42,6 +42,8 @@
 
 * [ ] animation highlighting arrow down
 
+* [ ] links on lhs (Github, Gitlab)
+
 * [ ] content: intro
 
 * [ ] content: about

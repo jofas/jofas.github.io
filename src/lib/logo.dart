@@ -144,7 +144,7 @@ class LogoPainter extends CustomPainter {
       // let circle fade in
 
       double factor = state.normalize(min: 0.05, max: 0.1);
-      factor = Curves.easeIn.transform(factor.clamp(0, 1));
+      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
 
       c.drawCircle(
         p1.asOffset(),
@@ -155,10 +155,10 @@ class LogoPainter extends CustomPainter {
         ),
       );
     } else if (state <= 0.5) {
-      // draw first line
+      // draw line
 
       double factor = state.normalize(min: 0.1, max: 0.5);
-      factor = Curves.easeIn.transform(factor.clamp(0, 1));
+      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
 
       final pos = p1 + (p2 - p1) * factor;
 
@@ -176,7 +176,7 @@ class LogoPainter extends CustomPainter {
       // let circle fade out
 
       double factor = state.normalize(min: 0.5, max: 0.55);
-      factor = Curves.easeOut.transform(factor.clamp(0, 1));
+      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
 
       c.drawPath(line(p1, p2, magnitude: r), white);
 
@@ -209,7 +209,7 @@ class LogoPainter extends CustomPainter {
       // let circle fade in
 
       double factor = state.normalize(min: 0.05, max: 0.1);
-      factor = Curves.easeIn.transform(factor.clamp(0, 1));
+      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
 
       c.drawCircle(
         p1.asOffset(),
@@ -223,7 +223,7 @@ class LogoPainter extends CustomPainter {
       // draw first line
 
       double factor = state.normalize(min: 0.1, max: 0.3);
-      factor = Curves.easeIn.transform(factor.clamp(0, 1));
+      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
 
       final pos = p1 + (p2 - p1) * factor;
 
@@ -241,7 +241,7 @@ class LogoPainter extends CustomPainter {
       // draw second line
 
       double factor = state.normalize(min: 0.3, max: 0.5);
-      factor = Curves.easeOut.transform(factor.clamp(0, 1));
+      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
 
       final pos = p2 + (p3 - p2) * factor;
 
@@ -260,7 +260,7 @@ class LogoPainter extends CustomPainter {
       // let circle fade out
 
       double factor = state.normalize(min: 0.5, max: 0.55);
-      factor = Curves.easeOut.transform(factor.clamp(0, 1));
+      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
 
       c.drawPath(line(p1, p2, magnitude: r), white);
       c.drawPath(line(p2, p3, magnitude: r), white);
