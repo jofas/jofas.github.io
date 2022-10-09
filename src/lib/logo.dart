@@ -63,22 +63,19 @@ class LogoPainter extends CustomPainter {
 
     final p1 = Vector2(0, 0);
     final p2 = Vector2(s.width, 0);
-    final p3 = Vector2(s.width, s.height);
-
-    c.drawPath(line(p1, p2, magnitude: r), white);
-    c.drawPath(line(p2, p3, magnitude: r), white);
-
-    late final circlePos;
 
     if (state <= 0.5) {
-      circlePos = Offset(state * 2 * s.width, 0);
+      final pos = Vector2(state * 2 * s.width, 0);
+
+      c.drawPath(line(p1, pos, magnitude: r), white);
+      c.drawCircle(Offset(pos.x, pos.y), r, black);
     } else {
-      circlePos = Offset(s.width, ((state - 0.5) / 0.5) * s.height);
+      final pos = Vector2(s.width, ((state - 0.5) / 0.5) * s.height);
+
+      c.drawPath(line(p1, p2, magnitude: r), white);
+      c.drawPath(line(p2, pos, magnitude: r), white);
+      c.drawCircle(Offset(pos.x, pos.y), r, black);
     }
-
-    // TODO: draw paths according to simulation
-
-    c.drawCircle(circlePos, r, black);
   }
 
   Path line(

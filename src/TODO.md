@@ -24,7 +24,7 @@
 
 * [x] logo widget with animation
 
-* [ ] translate logo from svg/css to native flutter
+* [x] translate logo from svg/css to native flutter
 
 * [ ] create proper logo
 
