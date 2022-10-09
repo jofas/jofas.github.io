@@ -26,6 +26,12 @@
 
 * [x] translate logo from svg/css to native flutter
 
+* [ ] logo animation: start: small pause
+
+* [ ] logo animation: end: pause
+
+* [ ] logo animation: end: fade circle
+
 * [ ] create proper logo
 
 * [ ] make sure logo scales appropriately
