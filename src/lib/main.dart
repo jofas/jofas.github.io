@@ -206,7 +206,7 @@ class MyHomePageState extends State<MyHomePage> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 30),
                             child: Center(
-                              child: Logo(),
+                              child: Logo(_contentWidth(viewport.maxWidth)),
                             ),
                             /*
 
