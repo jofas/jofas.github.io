@@ -63,7 +63,6 @@ class MyHomePageState extends State<MyHomePage> {
 
   double currPos = 0.0;
   double prevPos = 0.0;
-  bool hasScrolled = false;
 
   @override
   void initState() {
@@ -73,7 +72,6 @@ class MyHomePageState extends State<MyHomePage> {
       setState(() {
         prevPos = currPos;
         currPos = widget.pageController.page! / (NUM_PAGES - 1);
-        hasScrolled = true;
       });
     });
   }
@@ -205,9 +203,10 @@ class MyHomePageState extends State<MyHomePage> {
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 30),
-                            child: Center(
-                              child: Logo(_contentWidth(viewport.maxWidth)),
-                            ),
+                            child: Logo(Size(
+                              _contentWidth(viewport.maxWidth) - 30,
+                              viewport.maxHeight * 0.9,
+                            )),
                             /*
 
                                 ),

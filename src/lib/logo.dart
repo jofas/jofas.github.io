@@ -7,9 +7,9 @@ import 'package:vector_math/vector_math.dart' hide Colors;
 import 'colors.dart';
 
 class Logo extends StatefulWidget {
-  final double width;
+  final Size size;
 
-  Logo(this.width, {super.key});
+  Logo(this.size, {super.key});
 
   @override
   State<Logo> createState() => _LogoState();
@@ -36,16 +36,16 @@ class _LogoState extends State<Logo> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return LogoAnimation(width: widget.width, controller: controller);
+    return LogoAnimation(size: widget.size, controller: controller);
   }
 }
 
 class LogoAnimation extends AnimatedWidget {
-  final double width;
+  final Size size;
 
   LogoAnimation({
     super.key,
-    required this.width,
+    required this.size,
     required Animation<double> controller,
   }) : super(listenable: controller);
 
@@ -55,7 +55,7 @@ class LogoAnimation extends AnimatedWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: LogoPainter(_progress.value),
-      size: Size(width, 11 / 15 * width),
+      size: size,
       willChange: true,
     );
   }
@@ -82,33 +82,44 @@ class LogoPainter extends CustomPainter {
 
   @override
   void paint(Canvas c, Size s) {
-    final double w = s.width;
-    final double h = 11 / 15 * w;
+    double w = s.width;
+    double h = s.height;
+
+    double woffset = 0;
+    double hoffset = 0;
+
+    if (11 / 15 * w > h) {
+      woffset = (w - 15 / 11 * h) / 2;
+      w = 15 / 11 * h;
+    } else {
+      hoffset = (h - 11 / 15 * w) / 2;
+      h = 11 / 15 * w;
+    }
 
     final double wunit = w / 15;
     final double hunit = h / 11;
 
     final double r = hunit * 0.75;
 
-    final p1 = Vector2(2 * wunit, 2 * hunit);
-    final p2 = Vector2(6 * wunit, 2 * hunit);
+    final p1 = Vector2(2 * wunit + woffset, 2 * hunit + hoffset);
+    final p2 = Vector2(6 * wunit + woffset, 2 * hunit + hoffset);
 
     animate_short(c, r, p1, p2);
 
-    final p3 = Vector2(2 * wunit, 9 * hunit);
-    final p4 = Vector2(6 * wunit, 9 * hunit);
-    final p5 = Vector2(6 * wunit, 5 * hunit);
+    final p3 = Vector2(2 * wunit + woffset, 9 * hunit + hoffset);
+    final p4 = Vector2(6 * wunit + woffset, 9 * hunit + hoffset);
+    final p5 = Vector2(6 * wunit + woffset, 5 * hunit + hoffset);
 
     animate_long(c, r, p3, p4, p5);
 
-    final p6 = Vector2(13 * wunit, 2 * hunit);
-    final p7 = Vector2(9 * wunit, 2 * hunit);
+    final p6 = Vector2(13 * wunit + woffset, 2 * hunit + hoffset);
+    final p7 = Vector2(9 * wunit + woffset, 2 * hunit + hoffset);
 
     animate_short(c, r, p6, p7);
 
-    final p8 = Vector2(13 * wunit, 5 * hunit);
-    final p9 = Vector2(9 * wunit, 5 * hunit);
-    final p10 = Vector2(9 * wunit, 9 * hunit);
+    final p8 = Vector2(13 * wunit + woffset, 5 * hunit + hoffset);
+    final p9 = Vector2(9 * wunit + woffset, 5 * hunit + hoffset);
+    final p10 = Vector2(9 * wunit + woffset, 9 * hunit + hoffset);
 
     animate_long(c, r, p8, p9, p10);
   }

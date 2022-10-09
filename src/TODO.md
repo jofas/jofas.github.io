@@ -34,9 +34,11 @@
 
 * [x] create proper logo
 
-* [ ] make sure logo scales appropriately
+* [x] make sure logo scales appropriately
 
 * [x] logo coloring
+
+* [x] center logo in available space
 
 * [ ] animation highlighting arrow down
 
