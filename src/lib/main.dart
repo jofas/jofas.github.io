@@ -563,7 +563,8 @@ class MyHomePageState extends State<MyHomePage> {
                                     ),
                                     onPressed: () {
                                       launchUrl(Uri.parse(
-                                          "mailto://jonas@fassbender.dev?subject=Hi%20There!"));
+                                        "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                                      ));
                                     },
                                   ),
                                 ],
@@ -603,28 +604,38 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               Positioned(
-                //right: 0.025 * viewport.maxWidth,
+                right: 5,
+                bottom: 0.065 * viewport.maxHeight,
                 child: RotatedBox(
                   quarterTurns: 3,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       TextButton(
-                        style: _buttonStyle(context),
+                        style: _buttonStyle(
+                          context,
+                          fontSize: 12,
+                        ),
                         child: const Text("GITHUB"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(context),
+                        style: _buttonStyle(
+                          context,
+                          fontSize: 12,
+                        ),
                         child: const Text("GITLAB"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://gitlab.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(context),
+                        style: _buttonStyle(
+                          context,
+                          fontSize: 12,
+                        ),
                         child: const Text("RESUME"),
                         onPressed: () {
                           launchUrl(Uri.parse("resume.pdf"));
@@ -639,51 +650,53 @@ class MyHomePageState extends State<MyHomePage> {
                 left: viewport.maxWidth / 2 -
                     _contentWidth(viewport.maxWidth) / 2,
                 width: _contentWidth(viewport.maxWidth),
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: TweenAnimationBuilder<double>(
-                          duration: Duration(milliseconds: 100),
-                          curve: Curves.linear,
-                          tween: Tween<double>(
-                            begin: prevPos,
-                            end: currPos,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: TweenAnimationBuilder<double>(
+                            duration: Duration(milliseconds: 100),
+                            curve: Curves.linear,
+                            tween: Tween<double>(
+                              begin: prevPos,
+                              end: currPos,
+                            ),
+                            builder: (BuildContext context, double value, _) {
+                              return LinearProgressIndicator(
+                                value: value,
+                                backgroundColor: Colors.white,
+                                color: CustomColors.red[300],
+                                minHeight: 10,
+                              );
+                            },
                           ),
-                          builder: (BuildContext context, double value, _) {
-                            return LinearProgressIndicator(
-                              value: value,
-                              backgroundColor: Colors.white,
-                              color: CustomColors.red[300],
-                              minHeight: 10,
-                            );
-                          },
                         ),
                       ),
-                    ),
-                    SizedBox(width: 25),
-                    Text(
-                      "${(currPos * (NUM_PAGES - 1)).round() + 1}  /  $NUM_PAGES",
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                            fontSize: 12,
-                          ),
-                    ),
-                    SizedBox(width: 10),
-                    IconButton(
-                      icon: const Icon(Icons.expand_less),
-                      tooltip: "Page Up",
-                      splashRadius: 1,
-                      onPressed: _prevPage,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.expand_more),
-                      tooltip: "Page Down",
-                      splashRadius: 1,
-                      onPressed: _nextPage,
-                    ),
-                  ],
+                      SizedBox(width: 25),
+                      Text(
+                        "${(currPos * (NUM_PAGES - 1)).round() + 1}  /  $NUM_PAGES",
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                              fontSize: 12,
+                            ),
+                      ),
+                      SizedBox(width: 10),
+                      IconButton(
+                        icon: const Icon(Icons.expand_less),
+                        tooltip: "Page Up",
+                        splashRadius: 1,
+                        onPressed: _prevPage,
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.expand_more),
+                        tooltip: "Page Down",
+                        splashRadius: 1,
+                        onPressed: _nextPage,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

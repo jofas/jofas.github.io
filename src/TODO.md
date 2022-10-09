@@ -40,9 +40,9 @@
 
 * [x] center logo in available space
 
-* [ ] animation highlighting arrow down
+* [x] links on rhs (Github, Gitlab, Resume)
 
-* [ ] links on rhs (Github, Gitlab, Resume)
+* [ ] animation highlighting arrow down
 
 * [ ] content: intro
 
@@ -58,4 +58,4 @@
 
 * [ ] style: background
 
-* [ ] animated logo
+* [ ] GitHub Pages: ignore folder?
