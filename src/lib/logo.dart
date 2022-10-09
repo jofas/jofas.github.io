@@ -1,6 +1,10 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 import 'package:vector_math/vector_math.dart' hide Colors;
+
+import 'colors.dart';
 
 class Logo extends StatefulWidget {
   final double width;
@@ -71,7 +75,6 @@ extension AsOffset on Vector2 {
 
 class LogoPainter extends CustomPainter {
   final white = Paint()..color = Colors.white;
-  final black = Paint()..color = Colors.black;
 
   final double state;
 
@@ -79,8 +82,6 @@ class LogoPainter extends CustomPainter {
 
   @override
   void paint(Canvas c, Size s) {
-    // TODO: either width or height, depending on what is smaller
-
     final double w = s.width;
     final double h = 11 / 15 * w;
 
@@ -112,6 +113,18 @@ class LogoPainter extends CustomPainter {
     animate_long(c, r, p8, p9, p10);
   }
 
+  Paint circleColor(Vector2 center, double r) {
+    return Paint()
+      ..shader = ui.Gradient.linear(
+        Offset(center.x - r, center.y - r),
+        Offset(center.x + r, center.y + r),
+        [
+          CustomColors.yellow[300]!,
+          CustomColors.red[500]!,
+        ],
+      );
+  }
+
   void animate_short(Canvas c, double r, Vector2 p1, Vector2 p2) {
     if (state <= 0.05) {
       // pause at the beginning
@@ -122,7 +135,14 @@ class LogoPainter extends CustomPainter {
       double factor = state.normalize(min: 0.05, max: 0.1);
       factor = Curves.easeIn.transform(factor.clamp(0, 1));
 
-      c.drawCircle(p1.asOffset(), r * factor, black);
+      c.drawCircle(
+        p1.asOffset(),
+        r * factor,
+        circleColor(
+          p1,
+          r * factor,
+        ),
+      );
     } else if (state <= 0.5) {
       // draw first line
 
@@ -133,7 +153,14 @@ class LogoPainter extends CustomPainter {
 
       c.drawPath(line(p1, pos, magnitude: r), white);
 
-      c.drawCircle(pos.asOffset(), r, black);
+      c.drawCircle(
+        pos.asOffset(),
+        r,
+        circleColor(
+          pos,
+          r,
+        ),
+      );
     } else if (state <= 0.55) {
       // let circle fade out
 
@@ -142,7 +169,14 @@ class LogoPainter extends CustomPainter {
 
       c.drawPath(line(p1, p2, magnitude: r), white);
 
-      c.drawCircle(p2.asOffset(), r * (1 - factor), black);
+      c.drawCircle(
+        p2.asOffset(),
+        r * (1 - factor),
+        circleColor(
+          p2,
+          r * (1 - factor),
+        ),
+      );
     } else {
       // pause at the end
 
@@ -166,7 +200,14 @@ class LogoPainter extends CustomPainter {
       double factor = state.normalize(min: 0.05, max: 0.1);
       factor = Curves.easeIn.transform(factor.clamp(0, 1));
 
-      c.drawCircle(p1.asOffset(), r * factor, black);
+      c.drawCircle(
+        p1.asOffset(),
+        r * factor,
+        circleColor(
+          p1,
+          r * factor,
+        ),
+      );
     } else if (state <= 0.3) {
       // draw first line
 
@@ -177,7 +218,14 @@ class LogoPainter extends CustomPainter {
 
       c.drawPath(line(p1, pos, magnitude: r), white);
 
-      c.drawCircle(pos.asOffset(), r, black);
+      c.drawCircle(
+        pos.asOffset(),
+        r,
+        circleColor(
+          pos,
+          r,
+        ),
+      );
     } else if (state <= 0.5) {
       // draw second line
 
@@ -189,7 +237,14 @@ class LogoPainter extends CustomPainter {
       c.drawPath(line(p1, p2, magnitude: r), white);
       c.drawPath(line(p2, pos, magnitude: r), white);
 
-      c.drawCircle(pos.asOffset(), r, black);
+      c.drawCircle(
+        pos.asOffset(),
+        r,
+        circleColor(
+          pos,
+          r,
+        ),
+      );
     } else if (state <= 0.55) {
       // let circle fade out
 
@@ -199,7 +254,14 @@ class LogoPainter extends CustomPainter {
       c.drawPath(line(p1, p2, magnitude: r), white);
       c.drawPath(line(p2, p3, magnitude: r), white);
 
-      c.drawCircle(p3.asOffset(), r * (1 - factor), black);
+      c.drawCircle(
+        p3.asOffset(),
+        r * (1 - factor),
+        circleColor(
+          p3,
+          r * (1 - factor),
+        ),
+      );
     } else {
       // pause at the end
 

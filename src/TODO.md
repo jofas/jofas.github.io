@@ -32,9 +32,11 @@
 
 * [x] logo animation: end: fade circle
 
-* [ ] create proper logo
+* [x] create proper logo
 
 * [ ] make sure logo scales appropriately
+
+* [x] logo coloring
 
 * [ ] animation highlighting arrow down
 
