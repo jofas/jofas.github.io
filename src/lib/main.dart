@@ -331,6 +331,157 @@ class MyHomePageState extends State<MyHomePage> {
                               style: Theme.of(context).textTheme.headline2,
                               textAlign: TextAlign.center,
                             ),
+                            Spacer.headlineSpace,
+                            Text(
+                              "What I can do to help you successfully realize your idea and mold it into software:",
+                              textAlign: TextAlign.center,
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.architecture,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Software Architecture.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.code,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      colors: <Color>[
+                                        CustomColors.purple[700]!,
+                                        CustomColors.purple[600]!,
+                                        CustomColors.purple[500]!,
+                                        CustomColors.green[600]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Clean Code.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.lan,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Distributed Systems.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.smart_toy,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Machine Learning.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.devices,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Cross Plaform.",
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
