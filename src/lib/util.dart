@@ -49,3 +49,50 @@ class GradientIcon extends StatelessWidget {
     );
   }
 }
+
+class JumpAnimation extends StatefulWidget {
+  final Widget child;
+
+  JumpAnimation({required this.child, super.key});
+
+  @override
+  State<JumpAnimation> createState() => _JumpAnimationState();
+}
+
+class _JumpAnimationState extends State<JumpAnimation>
+    with TickerProviderStateMixin {
+  late final AnimationController controller;
+  late final Animation<Offset> animation;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      duration: Duration(milliseconds: 1500),
+      vsync: this,
+    )..repeat(
+        reverse: true,
+      );
+
+    animation = Tween<Offset>(
+      begin: Offset(0, 0),
+      end: Offset(0, -0.2),
+    ).animate(CurvedAnimation(
+      parent: controller,
+      curve: Curves.elasticIn,
+    ));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(
+      position: animation,
+      child: widget.child,
+    );
+  }
+}

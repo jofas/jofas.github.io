@@ -42,7 +42,7 @@
 
 * [x] links on rhs (Github, Gitlab, Resume)
 
-* [ ] animation highlighting arrow down
+* [x] animation highlighting arrow down
 
 * [ ] content: intro
 
@@ -58,4 +58,4 @@
 
 * [ ] style: background
 
-* [ ] GitHub Pages: ignore folder?
+* [ ] GitHub Pages: publish website in docs/ folder (Action)

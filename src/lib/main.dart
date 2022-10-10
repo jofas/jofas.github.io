@@ -63,6 +63,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   double currPos = 0.0;
   double prevPos = 0.0;
+  bool hasScrolled = false;
 
   @override
   void initState() {
@@ -72,6 +73,7 @@ class MyHomePageState extends State<MyHomePage> {
       setState(() {
         prevPos = currPos;
         currPos = widget.pageController.page! / (NUM_PAGES - 1);
+        hasScrolled = true;
       });
     });
   }
@@ -683,18 +685,8 @@ class MyHomePageState extends State<MyHomePage> {
                             ),
                       ),
                       SizedBox(width: 10),
-                      IconButton(
-                        icon: const Icon(Icons.expand_less),
-                        tooltip: "Page Up",
-                        splashRadius: 1,
-                        onPressed: _prevPage,
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.expand_more),
-                        tooltip: "Page Down",
-                        splashRadius: 1,
-                        onPressed: _nextPage,
-                      ),
+                      _prevPageButton,
+                      _nextPageButton,
                     ],
                   ),
                 ),
@@ -704,5 +696,31 @@ class MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
+  }
+
+  Widget get _prevPageButton {
+    return IconButton(
+      icon: const Icon(Icons.expand_less),
+      tooltip: "Page Up",
+      splashRadius: 1,
+      onPressed: _prevPage,
+    );
+  }
+
+  Widget get _nextPageButton {
+    final button = IconButton(
+      icon: const Icon(Icons.expand_more),
+      tooltip: "Page Down",
+      splashRadius: 1,
+      onPressed: _nextPage,
+    );
+
+    if (hasScrolled) {
+      return button;
+    } else {
+      return JumpAnimation(
+        child: button,
+      );
+    }
   }
 }
