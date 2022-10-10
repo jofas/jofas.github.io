@@ -105,7 +105,7 @@ class MyHomePageState extends State<MyHomePage> {
         if (states.contains(MaterialState.hovered)) {
           return Colors.white;
         }
-        return Colors.grey;
+        return Colors.grey[400]!;
       }),
       textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
           (Set<MaterialState> states) {
@@ -209,30 +209,6 @@ class MyHomePageState extends State<MyHomePage> {
                               _contentWidth(viewport.maxWidth) - 30,
                               viewport.maxHeight * 0.9,
                             )),
-                            /*
-
-                                ),
-                                // TODO: into "about"
-                                Text(
-                                  "Jonas Fassbender",
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context).textTheme.headline2,
-                                ),
-                                Spacer.paragraphSpace,
-                                Text(
-                                  "Software engineer and freelancer.",
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context).textTheme.headline3,
-                                ),
-                                Spacer.paragraphSpace,
-                                Text(
-                                  "In love with the craft.",
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context).textTheme.headline3,
-                                ),
-                              ],
-                            ),
-                            */
                           ),
                         ),
                       ),
@@ -299,12 +275,12 @@ class MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Spacer.paragraphSpace,
                                 Text(
-                                  "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so enamored with programming that I made it my profession.",
+                                  "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
                                   textAlign: TextAlign.center,
                                 ),
                                 Spacer.paragraphSpace,
                                 Text(
-                                  "Since then I've successfully attained two higher education degrees, became a freelancer and open source contributor, maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict, whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
+                                  "Since then I've successfully attained two higher education degrees in computing, became a freelancer and open source contributor, maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -339,8 +315,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
+                                GradientIcon(
                                     Icons.architecture,
                                     size: 80,
                                     gradient: LinearGradient(
@@ -355,8 +330,6 @@ class MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  onPressed: () {},
-                                ),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -368,8 +341,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
+                                  GradientIcon(
                                     Icons.code,
                                     size: 80,
                                     gradient: LinearGradient(
@@ -385,8 +357,6 @@ class MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  onPressed: () {},
-                                ),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -398,8 +368,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
+                                  GradientIcon(
                                     Icons.lan,
                                     size: 80,
                                     gradient: LinearGradient(
@@ -414,8 +383,6 @@ class MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  onPressed: () {},
-                                ),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -427,8 +394,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
+                                  GradientIcon(
                                     Icons.smart_toy,
                                     size: 80,
                                     gradient: LinearGradient(
@@ -443,8 +409,6 @@ class MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  onPressed: () {},
-                                ),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -456,8 +420,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
+                                  GradientIcon(
                                     Icons.devices,
                                     size: 80,
                                     gradient: LinearGradient(
@@ -472,12 +435,10 @@ class MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  onPressed: () {},
-                                ),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Cross Plaform.",
+                                    "Cross Platform.",
                                   ),
                                 ),
                               ],
@@ -504,6 +465,97 @@ class MyHomePageState extends State<MyHomePage> {
                               style: Theme.of(context).textTheme.headline2,
                               textAlign: TextAlign.center,
                             ),
+                            Spacer.headlineSpace,
+                            Text(
+                              "The main projects I am working on or have worked on as a freelancing software engineer:",
+                              textAlign: TextAlign.center,
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.directions_car,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topRight,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Carpolice.de.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.school,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topRight,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "German Sport University Cologne.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.account_balance,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topRight,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Undisclosed German bank.",                                 ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -528,7 +580,7 @@ class MyHomePageState extends State<MyHomePage> {
                             ),
                             Spacer.headlineSpace,
                             Text(
-                              "Here are some open source projects I currently work on:",
+                              "Open source projects I am currently working on:",
                               textAlign: TextAlign.center,
                             ),
                             Spacer.paragraphSpace,

@@ -60,4 +60,8 @@
 
 * [ ] try hero animation with icon
 
+* [ ] proper html meta for links and tabs
+
+* [ ] icon as favicon (logo as svg)
+
 * [ ] GitHub Pages: publish website in docs/ folder (Action)
