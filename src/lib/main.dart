@@ -329,6 +329,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Text(
                               "Key Competencies",
                               style: Theme.of(context).textTheme.headline2,
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),
@@ -350,6 +351,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Text(
                               "Professional Projects",
                               style: Theme.of(context).textTheme.headline2,
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),
@@ -371,6 +373,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Text(
                               "Open Source",
                               style: Theme.of(context).textTheme.headline2,
+                              textAlign: TextAlign.center,
                             ),
                             Spacer.headlineSpace,
                             Text(
@@ -426,6 +429,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Text(
                               "Personal Pursuits",
                               style: Theme.of(context).textTheme.headline2,
+                              textAlign: TextAlign.center,
                             ),
                             Spacer.headlineSpace,
                             Text(
@@ -561,6 +565,7 @@ class MyHomePageState extends State<MyHomePage> {
                                     "Contact",
                                     style:
                                         Theme.of(context).textTheme.headline2,
+                                    textAlign: TextAlign.center,
                                   ),
                                   Spacer.headlineSpace,
                                   Text(
