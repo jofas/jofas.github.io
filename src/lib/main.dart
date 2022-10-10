@@ -299,7 +299,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Spacer.paragraphSpace,
                                 Text(
-                                  "In the summer of 2015 I wrote my first program (a windows forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so enamored with programming that I made it my profession.",
+                                  "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so enamored with programming that I made it my profession.",
                                   textAlign: TextAlign.center,
                                 ),
                                 Spacer.paragraphSpace,
