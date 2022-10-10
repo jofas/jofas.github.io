@@ -46,7 +46,7 @@
 
 * [x] content: intro
 
-* [ ] content: about
+* [x] content: about
 
 * [ ] content: key competencies
 
@@ -57,5 +57,7 @@
 * [ ] style: handle overflowing pages (horizontal mobile screens)
 
 * [ ] style: background
+
+* [ ] try hero animation with icon
 
 * [ ] GitHub Pages: publish website in docs/ folder (Action)

@@ -288,8 +288,24 @@ class MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text(
-                                  "About",
+                                  "Jonas Fassbender",
                                   style: Theme.of(context).textTheme.headline2,
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.headlineSpace,
+                                Text(
+                                  "Software Engineer and Freelancer. In love with the craft.",
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.paragraphSpace,
+                                Text(
+                                  "In the summer of 2015 I wrote my first program (a windows forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so enamored with programming that I made it my profession.",
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.paragraphSpace,
+                                Text(
+                                  "Since then I've successfully attained two higher education degrees, became a freelancer and open source contributor, maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict, whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
+                                  textAlign: TextAlign.center,
                                 ),
                               ],
                             ),
