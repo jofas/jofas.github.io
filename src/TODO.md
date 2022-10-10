@@ -44,7 +44,7 @@
 
 * [x] animation highlighting arrow down
 
-* [ ] content: intro
+* [x] content: intro
 
 * [ ] content: about
 
