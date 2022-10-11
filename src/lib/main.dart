@@ -713,7 +713,7 @@ class MyHomePageState extends State<MyHomePage> {
                             ),
                             Spacer.headlineSpace,
                             Text(
-                              "Besides honing my skills as a dev and professional I particularly enjoy the following activities:",
+                              "Besides honing my skills as a software engineer and professional I particularly enjoy the following activities:",
                               textAlign: TextAlign.center,
                             ),
                             Spacer.paragraphSpace,
