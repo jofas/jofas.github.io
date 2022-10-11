@@ -490,8 +490,9 @@ class MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    launchUrl(
-                                        Uri.parse("https://carpolice.de"));
+                                    launchUrl(Uri.parse(
+                                      "https://carpolice.de",
+                                    ));
                                   },
                                 ),
                                 Spacer.tileSpace,
@@ -522,8 +523,9 @@ class MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    launchUrl(
-                                        Uri.parse("https://www.dshs-koeln.de"));
+                                    launchUrl(Uri.parse(
+                                      "https://www.dshs-koeln.de",
+                                    ));
                                   },
                                 ),
                                 Spacer.tileSpace,
