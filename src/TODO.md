@@ -58,15 +58,19 @@
 
 * [x] tiles: make text to links instead of icons
 
+* [ ] style: handle overflowing pages (horizontal mobile screens)
+
+* [ ] style: font size based on screen size
+
 * [ ] when text scaling is applied, make sure links look good
 
-* [ ] style: handle overflowing pages (horizontal mobile screens)
+* [ ] proper html meta for links and tabs
+
+* [ ] left navbar
 
 * [ ] style: background
 
 * [ ] try hero animation with icon
-
-* [ ] proper html meta for links and tabs
 
 * [ ] icon as favicon (logo as svg)
 
