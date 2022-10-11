@@ -48,7 +48,7 @@
 
 * [x] content: about
 
-* [ ] content: key competencies
+* [x] content: key competencies
 
 * [ ] content: professional projects
 

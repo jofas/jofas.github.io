@@ -340,7 +340,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read software instead of the next data leak.",
+                                    "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read software to prevent the next big data leak.",
                                   ),
                                 ),
                               ],
@@ -370,7 +370,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Machine Learning.",
+                                    "Machine Learning. The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
                                   ),
                                 ),
                               ],
@@ -385,7 +385,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Cross Platform. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground.",
+                                    "Cross Platform. In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
                                   ),
                                 ),
                               ],
