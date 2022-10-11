@@ -97,8 +97,11 @@ class MyHomePageState extends State<MyHomePage> {
     return w > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : w;
   }
 
-  ButtonStyle _buttonStyle(BuildContext context,
-      {double? fontSize, EdgeInsets? padding}) {
+  ButtonStyle _buttonStyle(
+    BuildContext context, {
+    double? fontSize,
+    EdgeInsets? padding,
+  }) {
     return ButtonStyle(
       padding: MaterialStateProperty.all<EdgeInsets?>(padding),
       overlayColor:
