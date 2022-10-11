@@ -270,7 +270,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Spacer.headlineSpace,
                                 Text(
-                                  "Software Engineer and Freelancer. In love with the craft.",
+                                  "Software engineer and freelancer. In love with the craft.",
                                   textAlign: TextAlign.center,
                                 ),
                                 Spacer.paragraphSpace,
@@ -615,12 +615,82 @@ class MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    launchUrl(Uri.parse(
+                                      "https://crates.io/users/jofas",
+                                    ));
+                                  },
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Meditation. I meditate to find truth, experience freedom, calmness and peace of mind.",
+                                    "My Rust crates.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.brush,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topRight,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    launchUrl(Uri.parse(
+                                      "https://github.com/jofas/mgart",
+                                    ));
+                                  },
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Mgart.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                TextButton(
+                                  child: GradientIcon(
+                                    Icons.receipt_long,
+                                    size: 80,
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topRight,
+                                      colors: <Color>[
+                                        CustomColors.purple[900]!,
+                                        CustomColors.purple[700]!,
+                                        CustomColors.blue[400]!,
+                                        CustomColors.green[400]!,
+                                        CustomColors.green[100]!,
+                                      ],
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    launchUrl(Uri.parse(
+                                      "https://github.com/jofas/BAREKEEPER",
+                                    ));
+                                  },
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "BAREKEEPER.",
                                   ),
                                 ),
                               ],

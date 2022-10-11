@@ -54,6 +54,8 @@
 
 * [ ] content: open source
 
+* [ ] style: make clear icons are links
+
 * [ ] style: handle overflowing pages (horizontal mobile screens)
 
 * [ ] style: background
