@@ -54,7 +54,9 @@
 
 * [x] content: open source
 
-* [ ] tiles: make text to links instead of icons
+* [x] tiles: icons just white or one color
+
+* [x] tiles: make text to links instead of icons
 
 * [ ] when text scaling is applied, make sure links look good
 

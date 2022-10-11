@@ -318,20 +318,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.architecture,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -344,21 +333,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.code,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                    colors: <Color>[
-                                      CustomColors.purple[700]!,
-                                      CustomColors.purple[600]!,
-                                      CustomColors.purple[500]!,
-                                      CustomColors.green[600]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -371,20 +348,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.lan,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -397,20 +363,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.smart_toy,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -423,20 +378,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.devices,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -476,32 +420,34 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
-                                    Icons.directions_car,
-                                    size: 80,
-                                    gradient: LinearGradient(
-                                      begin: Alignment.bottomLeft,
-                                      end: Alignment.topRight,
-                                      colors: <Color>[
-                                        CustomColors.purple[900]!,
-                                        CustomColors.purple[700]!,
-                                        CustomColors.blue[400]!,
-                                        CustomColors.green[400]!,
-                                        CustomColors.green[100]!,
-                                      ],
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse(
-                                      "https://carpolice.de",
-                                    ));
-                                  },
+                                Icon(
+                                  Icons.directions_car,
+                                  size: 80,
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
-                                  child: Text(
-                                    "Carpolice.de.",
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: <InlineSpan>[
+                                        WidgetSpan(
+                                          child: Container(
+                                            height: 29,
+                                            child: TextButton(
+                                              style: _buttonStyle(
+                                                context,
+                                                padding: EdgeInsets.all(0),
+                                              ),
+                                              child: Text("Carpolice.de."),
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(
+                                                  "https://carpolice.de",
+                                                ));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -509,32 +455,41 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
-                                    Icons.school,
-                                    size: 80,
-                                    gradient: LinearGradient(
-                                      begin: Alignment.bottomLeft,
-                                      end: Alignment.topRight,
-                                      colors: <Color>[
-                                        CustomColors.purple[900]!,
-                                        CustomColors.purple[700]!,
-                                        CustomColors.blue[400]!,
-                                        CustomColors.green[400]!,
-                                        CustomColors.green[100]!,
-                                      ],
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse(
-                                      "https://www.dshs-koeln.de",
-                                    ));
-                                  },
+                                Icon(
+                                  Icons.school,
+                                  size: 80,
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
-                                  child: Text(
-                                    "German Sport University Cologne.",
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: <InlineSpan>[
+                                        WidgetSpan(
+                                          child: Container(
+                                            height: 29,
+                                            child: TextButton(
+                                              style: _buttonStyle(
+                                                context,
+                                                padding: EdgeInsets.all(0),
+                                              ),
+                                              child: Text(
+                                                  "German Sport University Cologne."),
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(
+                                                  "https://www.dshs-koeln.de",
+                                                ));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: " ",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -542,32 +497,41 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
-                                    Icons.account_balance,
-                                    size: 80,
-                                    gradient: LinearGradient(
-                                      begin: Alignment.bottomLeft,
-                                      end: Alignment.topRight,
-                                      colors: <Color>[
-                                        CustomColors.purple[900]!,
-                                        CustomColors.purple[700]!,
-                                        CustomColors.blue[400]!,
-                                        CustomColors.green[400]!,
-                                        CustomColors.green[100]!,
-                                      ],
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse(
-                                      "cp_for_loan_approval_prediction.pdf",
-                                    ));
-                                  },
+                                Icon(
+                                  Icons.account_balance,
+                                  size: 80,
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
-                                  child: Text(
-                                    "Undisclosed German bank.",
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: <InlineSpan>[
+                                        WidgetSpan(
+                                          child: Container(
+                                            height: 29,
+                                            child: TextButton(
+                                              style: _buttonStyle(
+                                                context,
+                                                padding: EdgeInsets.all(0),
+                                              ),
+                                              child: Text(
+                                                  "Undisclosed German bank."),
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(
+                                                  "cp_for_loan_approval_prediction.pdf",
+                                                ));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: " ",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -602,20 +566,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   FontAwesomeIcons.rust,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomLeft,
-                                    end: Alignment.topRight,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -655,20 +608,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.brush,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomLeft,
-                                    end: Alignment.topRight,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -708,20 +650,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.receipt_long,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomLeft,
-                                    end: Alignment.topRight,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -789,20 +720,9 @@ class MyHomePageState extends State<MyHomePage> {
                             // TODO: abstract
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.self_improvement,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -815,20 +735,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.science,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -841,20 +750,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.hiking,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
@@ -867,20 +765,9 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                GradientIcon(
+                                Icon(
                                   Icons.fitness_center,
                                   size: 80,
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomRight,
-                                    end: Alignment.topLeft,
-                                    colors: <Color>[
-                                      CustomColors.purple[900]!,
-                                      CustomColors.purple[700]!,
-                                      CustomColors.blue[400]!,
-                                      CustomColors.green[400]!,
-                                      CustomColors.green[100]!,
-                                    ],
-                                  ),
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
