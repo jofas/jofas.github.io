@@ -52,9 +52,11 @@
 
 * [ ] content: professional projects
 
-* [ ] content: open source
+* [x] content: open source
 
-* [ ] style: make clear icons are links
+* [ ] tiles: make text to links instead of icons
+
+* [ ] when text scaling is applied, make sure links look good
 
 * [ ] style: handle overflowing pages (horizontal mobile screens)
 

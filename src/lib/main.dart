@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart' hide Spacer;
+import 'package:flutter/gestures.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_math/vector_math.dart' hide Colors;
@@ -96,8 +97,10 @@ class MyHomePageState extends State<MyHomePage> {
     return w > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : w;
   }
 
-  ButtonStyle _buttonStyle(BuildContext context, {double? fontSize}) {
+  ButtonStyle _buttonStyle(BuildContext context,
+      {double? fontSize, EdgeInsets? padding}) {
     return ButtonStyle(
+      padding: MaterialStateProperty.all<EdgeInsets?>(padding),
       overlayColor:
           MaterialStateProperty.all<Color?>(Colors.white.withOpacity(0)),
       foregroundColor:
@@ -280,7 +283,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Spacer.paragraphSpace,
                                 Text(
-                                  "Since then I've successfully attained two higher education degrees in computing, became a freelancer and open source contributor, maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
+                                  "Since then I've successfully attained two higher education degrees in computing, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -599,32 +602,52 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
-                                    FontAwesomeIcons.rust,
-                                    size: 80,
-                                    gradient: LinearGradient(
-                                      begin: Alignment.bottomLeft,
-                                      end: Alignment.topRight,
-                                      colors: <Color>[
-                                        CustomColors.purple[900]!,
-                                        CustomColors.purple[700]!,
-                                        CustomColors.blue[400]!,
-                                        CustomColors.green[400]!,
-                                        CustomColors.green[100]!,
-                                      ],
-                                    ),
+                                GradientIcon(
+                                  FontAwesomeIcons.rust,
+                                  size: 80,
+                                  gradient: LinearGradient(
+                                    begin: Alignment.bottomLeft,
+                                    end: Alignment.topRight,
+                                    colors: <Color>[
+                                      CustomColors.purple[900]!,
+                                      CustomColors.purple[700]!,
+                                      CustomColors.blue[400]!,
+                                      CustomColors.green[400]!,
+                                      CustomColors.green[100]!,
+                                    ],
                                   ),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse(
-                                      "https://crates.io/users/jofas",
-                                    ));
-                                  },
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
-                                  child: Text(
-                                    "My Rust crates.",
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: <InlineSpan>[
+                                        WidgetSpan(
+                                          child: Container(
+                                            height: 29,
+                                            child: TextButton(
+                                              style: _buttonStyle(
+                                                context,
+                                                padding: EdgeInsets.all(0),
+                                              ),
+                                              child: Text("My Rust crates."),
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(
+                                                  "https://crates.io/users/jofas",
+                                                ));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              " Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and maybe you'll find something that can help you with your rust project.",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -632,32 +655,52 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
-                                    Icons.brush,
-                                    size: 80,
-                                    gradient: LinearGradient(
-                                      begin: Alignment.bottomLeft,
-                                      end: Alignment.topRight,
-                                      colors: <Color>[
-                                        CustomColors.purple[900]!,
-                                        CustomColors.purple[700]!,
-                                        CustomColors.blue[400]!,
-                                        CustomColors.green[400]!,
-                                        CustomColors.green[100]!,
-                                      ],
-                                    ),
+                                GradientIcon(
+                                  Icons.brush,
+                                  size: 80,
+                                  gradient: LinearGradient(
+                                    begin: Alignment.bottomLeft,
+                                    end: Alignment.topRight,
+                                    colors: <Color>[
+                                      CustomColors.purple[900]!,
+                                      CustomColors.purple[700]!,
+                                      CustomColors.blue[400]!,
+                                      CustomColors.green[400]!,
+                                      CustomColors.green[100]!,
+                                    ],
                                   ),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse(
-                                      "https://github.com/jofas/mgart",
-                                    ));
-                                  },
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
-                                  child: Text(
-                                    "Mgart.",
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: <InlineSpan>[
+                                        WidgetSpan(
+                                          child: Container(
+                                            height: 29,
+                                            child: TextButton(
+                                              style: _buttonStyle(
+                                                context,
+                                                padding: EdgeInsets.all(0),
+                                              ),
+                                              child: Text("Mgart."),
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(
+                                                  "https://github.com/jofas/mgart",
+                                                ));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              " Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -665,32 +708,52 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                TextButton(
-                                  child: GradientIcon(
-                                    Icons.receipt_long,
-                                    size: 80,
-                                    gradient: LinearGradient(
-                                      begin: Alignment.bottomLeft,
-                                      end: Alignment.topRight,
-                                      colors: <Color>[
-                                        CustomColors.purple[900]!,
-                                        CustomColors.purple[700]!,
-                                        CustomColors.blue[400]!,
-                                        CustomColors.green[400]!,
-                                        CustomColors.green[100]!,
-                                      ],
-                                    ),
+                                GradientIcon(
+                                  Icons.receipt_long,
+                                  size: 80,
+                                  gradient: LinearGradient(
+                                    begin: Alignment.bottomLeft,
+                                    end: Alignment.topRight,
+                                    colors: <Color>[
+                                      CustomColors.purple[900]!,
+                                      CustomColors.purple[700]!,
+                                      CustomColors.blue[400]!,
+                                      CustomColors.green[400]!,
+                                      CustomColors.green[100]!,
+                                    ],
                                   ),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse(
-                                      "https://github.com/jofas/BAREKEEPER",
-                                    ));
-                                  },
                                 ),
                                 Spacer.tileSpace,
                                 Expanded(
-                                  child: Text(
-                                    "BAREKEEPER.",
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: <InlineSpan>[
+                                        WidgetSpan(
+                                          child: Container(
+                                            height: 29,
+                                            child: TextButton(
+                                              style: _buttonStyle(
+                                                context,
+                                                padding: EdgeInsets.all(0),
+                                              ),
+                                              child: Text("BAREKEEPER."),
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(
+                                                  "https://github.com/jofas/BAREKEEPER",
+                                                ));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              " As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
