@@ -325,7 +325,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Software Architecture.",
+                                    "Software Architecture. Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
                                   ),
                                 ),
                               ],
@@ -340,7 +340,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Clean Code.",
+                                    "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read software instead of the next data leak.",
                                   ),
                                 ),
                               ],
@@ -355,7 +355,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Distributed Systems.",
+                                    "Distributed Systems. High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
                                   ),
                                 ),
                               ],
@@ -385,7 +385,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Cross Platform.",
+                                    "Cross Platform. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground.",
                                   ),
                                 ),
                               ],
