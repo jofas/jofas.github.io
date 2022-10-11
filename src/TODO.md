@@ -58,7 +58,7 @@
 
 * [x] tiles: make text to links instead of icons
 
-* [ ] style: handle overflowing pages (horizontal mobile screens)
+* [x] style: handle overflowing pages (horizontal mobile screens)
 
 * [ ] style: font size based on screen size
 

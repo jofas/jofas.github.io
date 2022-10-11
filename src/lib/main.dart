@@ -261,30 +261,33 @@ class MyHomePageState extends State<MyHomePage> {
                             maxWidth: _contentWidth(viewport.maxWidth),
                             maxHeight: viewport.maxHeight * 0.9,
                           ),
-                          child: ListView(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
-                            children: <Widget>[
-                              Text(
-                                "Jonas Fassbender",
-                                style: Theme.of(context).textTheme.headline2,
-                                textAlign: TextAlign.center,
-                              ),
-                              Spacer.headlineSpace,
-                              Text(
-                                "Software engineer and freelancer. In love with the craft.",
-                                textAlign: TextAlign.center,
-                              ),
-                              Spacer.paragraphSpace,
-                              Text(
-                                "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
-                                textAlign: TextAlign.center,
-                              ),
-                              Spacer.paragraphSpace,
-                              Text(
-                                "Since then I've successfully attained two higher education degrees in computing, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                          child: Center(
+                            child: ListView(
+                              padding: EdgeInsets.symmetric(horizontal: 30),
+                              shrinkWrap: true,
+                              children: <Widget>[
+                                Text(
+                                  "Jonas Fassbender",
+                                  style: Theme.of(context).textTheme.headline2,
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.headlineSpace,
+                                Text(
+                                  "Software engineer and freelancer. In love with the craft.",
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.paragraphSpace,
+                                Text(
+                                  "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.paragraphSpace,
+                                Text(
+                                  "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -297,95 +300,98 @@ class MyHomePageState extends State<MyHomePage> {
                         maxWidth: _contentWidth(viewport.maxWidth),
                         maxHeight: viewport.maxHeight * 0.9,
                       ),
-                      child: ListView(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        children: <Widget>[
-                          Text(
-                            "Key Competencies",
-                            style: Theme.of(context).textTheme.headline2,
-                            textAlign: TextAlign.center,
-                          ),
-                          Spacer.headlineSpace,
-                          Text(
-                            "What I can do to help you successfully realize your idea and mold it into software:",
-                            textAlign: TextAlign.center,
-                          ),
-                          Spacer.paragraphSpace,
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.architecture,
-                                size: 80,
-                              ),
-                              Spacer.tileSpace,
-                              Expanded(
-                                child: Text(
-                                  "Software Architecture. Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
+                      child: Center(
+                        child: ListView(
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          shrinkWrap: true,
+                          children: <Widget>[
+                            Text(
+                              "Key Competencies",
+                              style: Theme.of(context).textTheme.headline2,
+                              textAlign: TextAlign.center,
+                            ),
+                            Spacer.headlineSpace,
+                            Text(
+                              "What I can do to help you successfully realize your idea and mold it into software:",
+                              textAlign: TextAlign.center,
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.architecture,
+                                  size: 80,
                                 ),
-                              ),
-                            ],
-                          ),
-                          Spacer.paragraphSpace,
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.code,
-                                size: 80,
-                              ),
-                              Spacer.tileSpace,
-                              Expanded(
-                                child: Text(
-                                  "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read software to prevent the next big data leak.",
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Software Architecture. Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Spacer.paragraphSpace,
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.lan,
-                                size: 80,
-                              ),
-                              Spacer.tileSpace,
-                              Expanded(
-                                child: Text(
-                                  "Distributed Systems. High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.code,
+                                  size: 80,
                                 ),
-                              ),
-                            ],
-                          ),
-                          Spacer.paragraphSpace,
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.smart_toy,
-                                size: 80,
-                              ),
-                              Spacer.tileSpace,
-                              Expanded(
-                                child: Text(
-                                  "Machine Learning. The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read software to prevent the next big data leak.",
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Spacer.paragraphSpace,
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.devices,
-                                size: 80,
-                              ),
-                              Spacer.tileSpace,
-                              Expanded(
-                                child: Text(
-                                  "Cross Platform. In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.lan,
+                                  size: 80,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Distributed Systems. High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.smart_toy,
+                                  size: 80,
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Machine Learning. The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer.paragraphSpace,
+                            Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.devices,
+                                  size: 80,
+                                ),
+                                Spacer.tileSpace,
+                                Expanded(
+                                  child: Text(
+                                    "Cross Platform. In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -396,10 +402,10 @@ class MyHomePageState extends State<MyHomePage> {
                         maxWidth: _contentWidth(viewport.maxWidth),
                         maxHeight: viewport.maxHeight * 0.9,
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      child: Center(
+                        child: ListView(
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          shrinkWrap: true,
                           children: <Widget>[
                             Text(
                               "Professional Projects",
@@ -542,10 +548,10 @@ class MyHomePageState extends State<MyHomePage> {
                         maxWidth: _contentWidth(viewport.maxWidth),
                         maxHeight: viewport.maxHeight * 0.9,
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      child: Center(
+                        child: ListView(
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          shrinkWrap: true,
                           children: <Widget>[
                             Text(
                               "Open Source",
@@ -695,10 +701,10 @@ class MyHomePageState extends State<MyHomePage> {
                         maxWidth: _contentWidth(viewport.maxWidth),
                         maxHeight: viewport.maxHeight * 0.9,
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      child: Center(
+                        child: ListView(
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          shrinkWrap: true,
                           children: <Widget>[
                             Text(
                               "Personal Pursuits",
@@ -788,39 +794,41 @@ class MyHomePageState extends State<MyHomePage> {
                         child: Column(
                           children: <Widget>[
                             Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    "Contact",
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Spacer.headlineSpace,
-                                  Text(
-                                    "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Spacer.paragraphSpace,
-                                  Text(
-                                    "If you got something funny or wholesome and wish to share it with me, do so as well.",
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Spacer.paragraphSpace,
-                                  TextButton(
-                                    style: _buttonStyle(context),
-                                    child: const Text(
-                                      "jonas@fassbender.dev",
+                              child: Center(
+                                child: ListView(
+                                  shrinkWrap: true,
+                                  children: <Widget>[
+                                    Text(
+                                      "Contact",
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
                                       textAlign: TextAlign.center,
                                     ),
-                                    onPressed: () {
-                                      launchUrl(Uri.parse(
-                                        "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                                      ));
-                                    },
-                                  ),
-                                ],
+                                    Spacer.headlineSpace,
+                                    Text(
+                                      "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Spacer.paragraphSpace,
+                                    Text(
+                                      "If you got something funny or wholesome and wish to share it with me, do so as well.",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Spacer.paragraphSpace,
+                                    TextButton(
+                                      style: _buttonStyle(context),
+                                      child: const Text(
+                                        "jonas@fassbender.dev",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      onPressed: () {
+                                        launchUrl(Uri.parse(
+                                          "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                                        ));
+                                      },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Row(
