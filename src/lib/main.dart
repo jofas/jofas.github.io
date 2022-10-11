@@ -730,7 +730,7 @@ class MyHomePageState extends State<MyHomePage> {
                                       children: <InlineSpan>[
                                         WidgetSpan(
                                           child: Container(
-                                            height: 29,
+                                            height: 28,
                                             child: TextButton(
                                               style: _buttonStyle(
                                                 context,
