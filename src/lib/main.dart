@@ -641,7 +641,7 @@ class MyHomePageState extends State<MyHomePage> {
                                         ),
                                         TextSpan(
                                           text:
-                                              " Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and maybe you'll find something that can help you with your rust project.",
+                                              " Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText2,
