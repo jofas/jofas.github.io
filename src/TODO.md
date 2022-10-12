@@ -60,7 +60,7 @@
 
 * [x] style: handle overflowing pages (horizontal mobile screens)
 
-* [ ] style: font size based on screen size
+* [ ] style: font and icon size based on screen size (text, navbar, headline, footer, icons)
 
 * [ ] when text scaling is applied, make sure links look good
 
