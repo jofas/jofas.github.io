@@ -537,7 +537,8 @@ class MyHomePageState extends State<MyHomePage> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: " Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
+                                          text:
+                                              " Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText2,
