@@ -434,7 +434,7 @@ class MyHomePageState extends State<MyHomePage> {
                                       children: <InlineSpan>[
                                         WidgetSpan(
                                           child: Container(
-                                            height: 29,
+                                            height: 28,
                                             child: TextButton(
                                               style: _buttonStyle(
                                                 context,
@@ -448,6 +448,13 @@ class MyHomePageState extends State<MyHomePage> {
                                               },
                                             ),
                                           ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system with products specially designed for car dealerships.",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
                                         ),
                                       ],
                                     ),
@@ -469,14 +476,15 @@ class MyHomePageState extends State<MyHomePage> {
                                       children: <InlineSpan>[
                                         WidgetSpan(
                                           child: Container(
-                                            height: 29,
+                                            height: 28,
                                             child: TextButton(
                                               style: _buttonStyle(
                                                 context,
                                                 padding: EdgeInsets.all(0),
                                               ),
                                               child: Text(
-                                                  "German Sport University Cologne."),
+                                                "German Sport University Cologne.",
+                                              ),
                                               onPressed: () {
                                                 launchUrl(Uri.parse(
                                                   "https://www.dshs-koeln.de",
@@ -511,7 +519,7 @@ class MyHomePageState extends State<MyHomePage> {
                                       children: <InlineSpan>[
                                         WidgetSpan(
                                           child: Container(
-                                            height: 29,
+                                            height: 28,
                                             child: TextButton(
                                               style: _buttonStyle(
                                                 context,
@@ -580,7 +588,7 @@ class MyHomePageState extends State<MyHomePage> {
                                       children: <InlineSpan>[
                                         WidgetSpan(
                                           child: Container(
-                                            height: 29,
+                                            height: 28,
                                             child: TextButton(
                                               style: _buttonStyle(
                                                 context,
@@ -622,7 +630,7 @@ class MyHomePageState extends State<MyHomePage> {
                                       children: <InlineSpan>[
                                         WidgetSpan(
                                           child: Container(
-                                            height: 29,
+                                            height: 28,
                                             child: TextButton(
                                               style: _buttonStyle(
                                                 context,
@@ -664,7 +672,7 @@ class MyHomePageState extends State<MyHomePage> {
                                       children: <InlineSpan>[
                                         WidgetSpan(
                                           child: Container(
-                                            height: 29,
+                                            height: 28,
                                             child: TextButton(
                                               style: _buttonStyle(
                                                 context,
