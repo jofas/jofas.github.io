@@ -494,7 +494,8 @@ class MyHomePageState extends State<MyHomePage> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: " ",
+                                          text:
+                                              " Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText2,
