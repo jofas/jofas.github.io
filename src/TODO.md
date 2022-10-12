@@ -50,7 +50,7 @@
 
 * [x] content: key competencies
 
-* [ ] content: professional projects
+* [x] content: professional projects
 
 * [x] content: open source
 

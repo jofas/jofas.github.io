@@ -343,7 +343,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
-                                    "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read software to prevent the next big data leak.",
+                                    "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
                                   ),
                                 ),
                               ],
@@ -451,7 +451,7 @@ class MyHomePageState extends State<MyHomePage> {
                                         ),
                                         TextSpan(
                                           text:
-                                              " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system with products specially designed for car dealerships.",
+                                              " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system with insurance products specially designed for car dealerships.",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText2,
@@ -537,7 +537,7 @@ class MyHomePageState extends State<MyHomePage> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: " ",
+                                          text: " Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText2,
