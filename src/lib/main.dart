@@ -21,30 +21,175 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: CustomColors.indigo[900],
-        textTheme: Theme.of(context).textTheme.copyWith(
-              bodyText2: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                height: 1.5,
-                letterSpacing: 1,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewport) {
+        final screenSize = math.min(
+          viewport.maxWidth,
+          viewport.maxHeight,
+        );
+
+        late final fontSizeBody;
+        late final fontSizeHeadline;
+        late final iconSize;
+        late final tileSpace;
+
+        if (screenSize <= 640) {
+          // sm
+          fontSizeBody = 12;
+          fontSizeHeadline = 24;
+          iconSize = 40;
+          tileSpace = 10;
+        } else if (screenSize <= 768) {
+          // md
+          fontSizeBody = 16;
+          fontSizeHeadline = 40;
+          iconSize = 60;
+          tileSpace = 20;
+        } else {
+          // lg, xl, 2xl
+          fontSizeBody = 20;
+          fontSizeHeadline = 60;
+          iconSize = 80;
+          tileSpace = 30;
+        }
+
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            scaffoldBackgroundColor: CustomColors.indigo[900],
+            textTheme: Theme.of(context).textTheme.copyWith(
+                  bodyText2: TextStyle(
+                    color: Colors.white,
+                    fontSize: fontSizeBody,
+                    height: 1.5,
+                    letterSpacing: 1,
+                  ),
+                  headline2: TextStyle(
+                    color: Colors.white,
+                    fontSize: fontSizeHeadline,
+                    letterSpacing: 5,
+                  ),
+                ),
+            iconTheme: Theme.of(context).iconTheme.copyWith(
+                  color: Colors.white,
+                  size: iconSize,
+                ),
+          ),
+          home: MyHomePage(),
+        );
+      },
+    );
+  }
+}
+
+class ScrollProgressBar extends StatefulWidget {
+  final PageController controller;
+  final int pages;
+
+  ScrollProgressBar({
+    super.key,
+    required this.controller,
+    required this.pages,
+  });
+
+  @override
+  State<ScrollProgressBar> createState() => _ScrollProgressBarState();
+}
+
+class _ScrollProgressBarState extends State<ScrollProgressBar> {
+  double currPos = 0.0;
+  double prevPos = 0.0;
+  bool hasScrolled = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.controller.addListener(() {
+      setState(() {
+        prevPos = currPos;
+        currPos = widget.controller.page! / (widget.pages - 1);
+        hasScrolled = true;
+      });
+    });
+  }
+
+  void _nextPage() {
+    widget.controller.nextPage(
+      duration: Duration(seconds: 1),
+      curve: Curves.ease,
+    );
+  }
+
+  void _prevPage() {
+    widget.controller.previousPage(
+      duration: Duration(seconds: 1),
+      curve: Curves.ease,
+    );
+  }
+
+  Widget get _prevPageButton {
+    return IconButton(
+      icon: const Icon(Icons.expand_less, size: 20),
+      tooltip: "Page Up",
+      splashRadius: 1,
+      onPressed: _prevPage,
+    );
+  }
+
+  Widget get _nextPageButton {
+    final button = IconButton(
+      icon: const Icon(Icons.expand_more, size: 20),
+      tooltip: "Page Down",
+      splashRadius: 1,
+      onPressed: _nextPage,
+    );
+
+    if (hasScrolled) {
+      return button;
+    } else {
+      return JumpAnimation(
+        child: button,
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: TweenAnimationBuilder<double>(
+              duration: Duration(milliseconds: 100),
+              curve: Curves.linear,
+              tween: Tween<double>(
+                begin: prevPos,
+                end: currPos,
               ),
-              headline2: TextStyle(
-                color: Colors.white,
-                letterSpacing: 5,
-              ),
-              headline3: TextStyle(
-                color: Colors.white,
-              ),
+              builder: (BuildContext context, double value, _) {
+                return LinearProgressIndicator(
+                  value: value,
+                  backgroundColor: Colors.white,
+                  color: CustomColors.red[300],
+                  minHeight: 10,
+                );
+              },
             ),
-        iconTheme: Theme.of(context).iconTheme.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      home: MyHomePage(),
+          ),
+        ),
+        SizedBox(width: 25),
+        Text(
+          "${(currPos * (widget.pages - 1)).round() + 1}  /  ${widget.pages}",
+          style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                fontSize: 12,
+              ),
+        ),
+        SizedBox(width: 10),
+        _prevPageButton,
+        _nextPageButton,
+      ],
     );
   }
 }
@@ -61,37 +206,6 @@ class MyHomePage extends StatefulWidget {
 class MyHomePageState extends State<MyHomePage> {
   static const int NUM_PAGES = 7;
   static const double MAX_CONTENT_WIDTH = 1200;
-
-  double currPos = 0.0;
-  double prevPos = 0.0;
-  bool hasScrolled = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    widget.pageController.addListener(() {
-      setState(() {
-        prevPos = currPos;
-        currPos = widget.pageController.page! / (NUM_PAGES - 1);
-        hasScrolled = true;
-      });
-    });
-  }
-
-  void _nextPage() {
-    widget.pageController.nextPage(
-      duration: Duration(seconds: 1),
-      curve: Curves.ease,
-    );
-  }
-
-  void _prevPage() {
-    widget.pageController.previousPage(
-      duration: Duration(seconds: 1),
-      curve: Curves.ease,
-    );
-  }
 
   double _contentWidth(double w) {
     return w > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : w;
@@ -321,10 +435,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.architecture,
-                                  size: 80,
-                                ),
+                                Icon(Icons.architecture),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -336,10 +447,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.code,
-                                  size: 80,
-                                ),
+                                Icon(Icons.code),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -351,10 +459,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.lan,
-                                  size: 80,
-                                ),
+                                Icon(Icons.lan),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -366,10 +471,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.smart_toy,
-                                  size: 80,
-                                ),
+                                Icon(Icons.smart_toy),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -381,10 +483,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.devices,
-                                  size: 80,
-                                ),
+                                Icon(Icons.devices),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -423,10 +522,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.directions_car,
-                                  size: 80,
-                                ),
+                                Icon(Icons.directions_car),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text.rich(
@@ -465,10 +561,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.school,
-                                  size: 80,
-                                ),
+                                Icon(Icons.school),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text.rich(
@@ -509,10 +602,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.account_balance,
-                                  size: 80,
-                                ),
+                                Icon(Icons.account_balance),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text.rich(
@@ -579,10 +669,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  FontAwesomeIcons.rust,
-                                  size: 80,
-                                ),
+                                Icon(FontAwesomeIcons.rust),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text.rich(
@@ -621,10 +708,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.brush,
-                                  size: 80,
-                                ),
+                                Icon(Icons.brush),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text.rich(
@@ -663,10 +747,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.receipt_long,
-                                  size: 80,
-                                ),
+                                Icon(Icons.receipt_long),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text.rich(
@@ -732,10 +813,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.self_improvement,
-                                  size: 80,
-                                ),
+                                Icon(Icons.self_improvement),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -747,10 +825,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.science,
-                                  size: 80,
-                                ),
+                                Icon(Icons.science),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -762,10 +837,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.hiking,
-                                  size: 80,
-                                ),
+                                Icon(Icons.hiking),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -777,10 +849,7 @@ class MyHomePageState extends State<MyHomePage> {
                             Spacer.paragraphSpace,
                             Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.fitness_center,
-                                  size: 80,
-                                ),
+                                Icon(Icons.fitness_center),
                                 Spacer.tileSpace,
                                 Expanded(
                                   child: Text(
@@ -1007,40 +1076,9 @@ class MyHomePageState extends State<MyHomePage> {
                 width: _contentWidth(viewport.maxWidth),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: TweenAnimationBuilder<double>(
-                            duration: Duration(milliseconds: 100),
-                            curve: Curves.linear,
-                            tween: Tween<double>(
-                              begin: prevPos,
-                              end: currPos,
-                            ),
-                            builder: (BuildContext context, double value, _) {
-                              return LinearProgressIndicator(
-                                value: value,
-                                backgroundColor: Colors.white,
-                                color: CustomColors.red[300],
-                                minHeight: 10,
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 25),
-                      Text(
-                        "${(currPos * (NUM_PAGES - 1)).round() + 1}  /  $NUM_PAGES",
-                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                              fontSize: 12,
-                            ),
-                      ),
-                      SizedBox(width: 10),
-                      _prevPageButton,
-                      _nextPageButton,
-                    ],
+                  child: ScrollProgressBar(
+                    controller: widget.pageController,
+                    pages: NUM_PAGES,
                   ),
                 ),
               ),
@@ -1049,31 +1087,5 @@ class MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
-  }
-
-  Widget get _prevPageButton {
-    return IconButton(
-      icon: const Icon(Icons.expand_less),
-      tooltip: "Page Up",
-      splashRadius: 1,
-      onPressed: _prevPage,
-    );
-  }
-
-  Widget get _nextPageButton {
-    final button = IconButton(
-      icon: const Icon(Icons.expand_more),
-      tooltip: "Page Down",
-      splashRadius: 1,
-      onPressed: _nextPage,
-    );
-
-    if (hasScrolled) {
-      return button;
-    } else {
-      return JumpAnimation(
-        child: button,
-      );
-    }
   }
 }
