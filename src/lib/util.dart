@@ -168,7 +168,6 @@ class _NavButtonState extends State<NavButton> {
           Set<MaterialState> states,
         ) {
           final textStyle = Theme.of(context).textTheme.bodyText2!.copyWith(
-                fontSize: 20,
                 fontWeight: isActive ? FontWeight.bold : null,
               );
 

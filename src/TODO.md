@@ -84,9 +84,9 @@
 
 * [ ] abstract code into proper classes
 
-* [ ] content: about: add paragraph about what this website is
-
 * [ ] add xl and 2xl layouts (ScrollProgressBar, Link, OpenMenuButton!)
+
+* [ ] content: about: add paragraph about what this website is
 
 * [ ] content: values
 

@@ -160,11 +160,14 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       drawer: Drawer(
         backgroundColor: CustomColors.indigo[900],
-        child: ListView(
+        child: Column(
           children: <Widget>[
-            DrawerHeader(
+            SizedBox(
+              width: 100,
+              height: 100,
               child: Logo(),
             ),
+            Divider(),
             NavButton(
               text: "START",
               page: 0,
