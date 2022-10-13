@@ -72,8 +72,6 @@
 
 * [x] text link style
 
-* [ ] proper html meta for links and tabs
-
 * [ ] left navbar
 
 * [ ] left navbar: handle too small screen size (menu button?)
@@ -82,13 +80,15 @@
 
 * [ ] content: about: add paragraph about what this page is
 
-* [ ] add xl and 2xl layouts (ScrollProgressBar!)
+* [ ] add xl and 2xl layouts (ScrollProgressBar and Link!)
 
 * [ ] content: values
 
 * [ ] style: background
 
 * [ ] icon as favicon (logo as svg)
+
+* [ ] proper html meta for links and tabs
 
 * [ ] GitHub Pages: publish website in docs/ folder (Action)
 
