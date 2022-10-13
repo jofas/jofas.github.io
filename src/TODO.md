@@ -60,7 +60,7 @@
 
 * [x] style: handle overflowing pages (horizontal mobile screens)
 
-* [ ] code: make MyHomepage stateless and move state into a
+* [x] code: make MyHomepage stateless and move state into a
   ScrollProgressBar widget
 
 * [ ] style: font and icon size based on screen size (text, navbar, headline, footer, icons)
