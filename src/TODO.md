@@ -76,6 +76,8 @@
 
 * [ ] left navbar
 
+* [ ] abstract code into proper classes
+
 * [ ] style: background
 
 * [ ] try hero animation with icon
