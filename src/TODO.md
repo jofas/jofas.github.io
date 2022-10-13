@@ -72,7 +72,7 @@
 
 * [x] text link style
 
-* [ ] left navbar
+* [ ] left navbar (highlighting + proper action)
 
 * [ ] left navbar: handle too small screen size (menu button?)
 

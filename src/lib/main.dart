@@ -226,9 +226,9 @@ class MyHomePage extends StatelessWidget {
                         maxHeight: height * 0.9,
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        padding: EdgeInsets.symmetric(horizontal: 50),
                         child: Logo(Size(
-                          _contentWidth - 30,
+                          _contentWidth - 100,
                           height * 0.9,
                         )),
                       ),
@@ -282,7 +282,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       child: Center(
                         child: ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          padding: EdgeInsets.symmetric(horizontal: 50),
                           shrinkWrap: true,
                           children: <Widget>[
                             Text(
@@ -321,7 +321,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   child: Center(
                     child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      padding: EdgeInsets.symmetric(horizontal: 50),
                       shrinkWrap: true,
                       children: <Widget>[
                         Text(
@@ -408,7 +408,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   child: Center(
                     child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      padding: EdgeInsets.symmetric(horizontal: 50),
                       shrinkWrap: true,
                       children: <Widget>[
                         Text(
@@ -523,7 +523,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   child: Center(
                     child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      padding: EdgeInsets.symmetric(horizontal: 50),
                       shrinkWrap: true,
                       children: <Widget>[
                         Text(
@@ -638,7 +638,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   child: Center(
                     child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      padding: EdgeInsets.symmetric(horizontal: 50),
                       shrinkWrap: true,
                       children: <Widget>[
                         Text(
@@ -712,7 +712,7 @@ class MyHomePage extends StatelessWidget {
                     maxHeight: height * 0.9,
                   ),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    padding: EdgeInsets.symmetric(horizontal: 50),
                     child: Column(
                       children: <Widget>[
                         Expanded(
@@ -782,6 +782,12 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
           Positioned(
+            right: 5,
+            top: 10,
+            child: NavMenu(),
+          ),
+          /*
+          Positioned(
             left: 5,
             top: 0,
             child: RotatedBox(
@@ -835,6 +841,7 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
           ),
+          */
           Positioned(
             right: 5,
             bottom: 0,
@@ -869,7 +876,7 @@ class MyHomePage extends StatelessWidget {
             left: width / 2 - _contentWidth / 2,
             width: _contentWidth,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: 50),
               child: ScrollProgressBar(
                 controller: pageController,
                 pages: NUM_PAGES,

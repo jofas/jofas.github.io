@@ -121,6 +121,48 @@ class Link extends WidgetSpan {
   }
 }
 
+class NavMenu extends StatefulWidget {
+  @override
+  State<NavMenu> createState() => _NavMenuState();
+}
+
+class _NavMenuState extends State<NavMenu> with TickerProviderStateMixin {
+  late final AnimationController controller;
+
+  bool expanded = false;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      duration: Duration(milliseconds: 1000),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+        child: AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          progress: controller,
+        ),
+        onPressed: () {
+          if (expanded)
+            controller.reverse();
+          else
+            controller.forward();
+
+          expanded = !expanded;
+        });
+  }
+}
+
 class ScrollProgressBar extends StatefulWidget {
   final PageController controller;
   final int pages;
