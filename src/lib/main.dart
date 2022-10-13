@@ -276,7 +276,7 @@ class MyHomePage extends StatelessWidget {
                     child: Container(
                       constraints: BoxConstraints(
                         maxWidth: _contentWidth,
-                        maxHeight: height * 0.9,
+                        maxHeight: height - 30,
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 50),
@@ -328,7 +328,7 @@ class MyHomePage extends StatelessWidget {
                     child: Container(
                       constraints: BoxConstraints(
                         maxWidth: _contentWidth,
-                        maxHeight: height * 0.9,
+                        maxHeight: height - 30,
                       ),
                       child: Center(
                         child: ListView(
@@ -367,7 +367,7 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: _contentWidth,
-                    maxHeight: height * 0.9,
+                    maxHeight: height - 30,
                   ),
                   child: Center(
                     child: ListView(
@@ -454,7 +454,7 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: _contentWidth,
-                    maxHeight: height * 0.9,
+                    maxHeight: height - 30,
                   ),
                   child: Center(
                     child: ListView(
@@ -569,7 +569,7 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: _contentWidth,
-                    maxHeight: height * 0.9,
+                    maxHeight: height - 30,
                   ),
                   child: Center(
                     child: ListView(
@@ -684,7 +684,7 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: _contentWidth,
-                    maxHeight: height * 0.9,
+                    maxHeight: height - 30,
                   ),
                   child: Center(
                     child: ListView(
@@ -759,7 +759,7 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: _contentWidth,
-                    maxHeight: height * 0.9,
+                    maxHeight: height - 30,
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 50),

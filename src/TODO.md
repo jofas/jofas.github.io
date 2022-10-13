@@ -80,7 +80,7 @@
 
 * [x] menu button: change size based on screen size
 
-* [ ] layout: content size > 90%
+* [x] layout: content size > 90%
 
 * [ ] abstract code into proper classes
 
