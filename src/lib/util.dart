@@ -112,11 +112,11 @@ class Link extends WidgetSpan {
   static double _height(ScreenSize screenSize) {
     switch (screenSize) {
       case ScreenSize.sm:
-        return 18;
+        return 17.25;
       case ScreenSize.md:
-        return 23;
+        return 22.75;
       case ScreenSize.lg:
-        return 28;
+        return 28.5;
     }
   }
 }

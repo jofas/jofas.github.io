@@ -76,7 +76,11 @@
 
 * [ ] left navbar
 
+* [ ] left navbar: handle too small screen size (menu button?)
+
 * [ ] abstract code into proper classes
+
+* [ ] content: about: add paragraph about what this page is
 
 * [ ] add xl and 2xl layouts (ScrollProgressBar!)
 
