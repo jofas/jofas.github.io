@@ -827,7 +827,9 @@ class MyHomePage extends StatelessWidget {
           Positioned(
             left: 5,
             top: 10,
-            child: OpenMenuButton(),
+            child: OpenMenuButton(
+              screenSize: screenSize,
+            ),
           ),
           Positioned(
             right: 5,

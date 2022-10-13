@@ -78,15 +78,15 @@
 
 * [x] navbar: header = logo
 
-* [ ] layout: content size > 90%
+* [x] menu button: change size based on screen size
 
-* [ ] menu button: change size based on screen size
+* [ ] layout: content size > 90%
 
 * [ ] abstract code into proper classes
 
 * [ ] content: about: add paragraph about what this website is
 
-* [ ] add xl and 2xl layouts (ScrollProgressBar and Link!)
+* [ ] add xl and 2xl layouts (ScrollProgressBar, Link, OpenMenuButton!)
 
 * [ ] content: values
 

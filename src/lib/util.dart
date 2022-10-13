@@ -78,13 +78,28 @@ class _JumpAnimationState extends State<JumpAnimation>
 }
 
 class OpenMenuButton extends StatelessWidget {
+  final ScreenSize screenSize;
+
+  OpenMenuButton({required this.screenSize});
+
+  double get _iconSize {
+    switch (screenSize) {
+      case ScreenSize.sm:
+        return 20;
+      case ScreenSize.md:
+        return 25;
+      case ScreenSize.lg:
+        return 30;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
       child: Icon(
         Icons.menu,
         color: Colors.white,
-        size: 30,
+        size: _iconSize,
       ),
       onPressed: () {
         Scaffold.of(context).openDrawer();
