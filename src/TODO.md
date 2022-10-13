@@ -78,6 +78,8 @@
 
 * [x] navbar: header = logo
 
+* [ ] menu button: change size based on screen size
+
 * [ ] abstract code into proper classes
 
 * [ ] content: about: add paragraph about what this website is
