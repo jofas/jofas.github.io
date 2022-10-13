@@ -74,9 +74,9 @@
 
 * [x] navbar
 
-* [ ] unanimated logo
+* [x] unanimated logo
 
-* [ ] navbar: header = logo
+* [x] navbar: header = logo
 
 * [ ] abstract code into proper classes
 

@@ -149,8 +149,9 @@ class _NavButtonState extends State<NavButton> {
         foregroundColor: MaterialStateProperty.all<Color?>(
           isActive ? Colors.white : null,
         ),
-        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-            (Set<MaterialState> states) {
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
+          Set<MaterialState> states,
+        ) {
           final textStyle = Theme.of(context).textTheme.bodyText2!.copyWith(
                 fontSize: 20,
                 fontWeight: isActive ? FontWeight.bold : null,
@@ -226,8 +227,9 @@ class InlineLink extends WidgetSpan {
                 padding: MaterialStateProperty.all<EdgeInsets?>(
                   EdgeInsets.all(0),
                 ),
-                textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-                    (Set<MaterialState> states) {
+                textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
+                  Set<MaterialState> states,
+                ) {
                   if (states.contains(MaterialState.focused)) {
                     return textStyle.copyWith(
                       decoration: TextDecoration.underline,

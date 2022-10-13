@@ -6,16 +6,30 @@ import 'package:vector_math/vector_math.dart' hide Colors;
 
 import 'colors.dart';
 
-class Logo extends StatefulWidget {
-  final Size size;
-
-  Logo(this.size, {super.key});
-
+class Logo extends StatelessWidget {
   @override
-  State<Logo> createState() => _LogoState();
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (
+      BuildContext context,
+      BoxConstraints viewport,
+    ) {
+      return CustomPaint(
+        painter: LogoPainter(1),
+        size: Size(viewport.maxWidth, viewport.maxHeight),
+      );
+    });
+  }
 }
 
-class _LogoState extends State<Logo> with TickerProviderStateMixin {
+class AnimatedLogo extends StatefulWidget {
+  AnimatedLogo({super.key});
+
+  @override
+  State<AnimatedLogo> createState() => _AnimatedLogoState();
+}
+
+class _AnimatedLogoState extends State<AnimatedLogo>
+    with TickerProviderStateMixin {
   late final AnimationController controller;
 
   @override
@@ -36,7 +50,14 @@ class _LogoState extends State<Logo> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return LogoAnimation(size: widget.size, controller: controller);
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewport) {
+        return LogoAnimation(
+          size: Size(viewport.maxWidth, viewport.maxHeight),
+          controller: controller,
+        );
+      },
+    );
   }
 }
 

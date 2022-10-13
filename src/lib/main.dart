@@ -86,22 +86,30 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               size: iconSize,
             ),
+            dividerTheme: DividerThemeData(
+              color: Colors.white,
+              thickness: 2,
+            ),
             textButtonTheme: TextButtonThemeData(
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets?>(
-                    EdgeInsets.symmetric(horizontal: 10)),
+                  EdgeInsets.symmetric(horizontal: 10),
+                ),
                 minimumSize: MaterialStateProperty.all<Size?>(Size(0, 0)),
                 overlayColor: MaterialStateProperty.all<Color?>(
-                    Colors.white.withOpacity(0)),
-                foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
+                  Colors.white.withOpacity(0),
+                ),
+                foregroundColor: MaterialStateProperty.resolveWith<Color>((
+                  Set<MaterialState> states,
+                ) {
                   if (states.contains(MaterialState.hovered)) {
                     return Colors.white;
                   }
                   return Colors.grey[400]!;
                 }),
-                textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-                    (Set<MaterialState> states) {
+                textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
+                  Set<MaterialState> states,
+                ) {
                   final base = Theme.of(context).textTheme.bodyText2!.copyWith(
                         fontSize: textButtonSize,
                       );
@@ -154,6 +162,9 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: CustomColors.indigo[900],
         child: ListView(
           children: <Widget>[
+            DrawerHeader(
+              child: Logo(),
+            ),
             NavButton(
               text: "START",
               page: 0,
@@ -269,10 +280,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 50),
-                        child: Logo(Size(
-                          _contentWidth - 100,
-                          height * 0.9,
-                        )),
+                        child: AnimatedLogo(),
                       ),
                     ),
                   ),
