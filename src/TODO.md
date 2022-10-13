@@ -72,13 +72,15 @@
 
 * [x] text link style
 
-* [ ] left navbar (highlighting + proper action)
+* [x] navbar
 
-* [ ] left navbar: handle too small screen size (menu button?)
+* [ ] unanimated logo
+
+* [ ] navbar: header = logo
 
 * [ ] abstract code into proper classes
 
-* [ ] content: about: add paragraph about what this page is
+* [ ] content: about: add paragraph about what this website is
 
 * [ ] add xl and 2xl layouts (ScrollProgressBar and Link!)
 

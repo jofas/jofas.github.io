@@ -77,8 +77,143 @@ class _JumpAnimationState extends State<JumpAnimation>
   }
 }
 
-class Link extends WidgetSpan {
+class OpenMenuButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      child: Icon(
+        Icons.menu,
+        color: Colors.white,
+        size: 30,
+      ),
+      onPressed: () {
+        Scaffold.of(context).openDrawer();
+      },
+    );
+  }
+}
+
+class NavButton extends StatefulWidget {
+  final String text;
+  final int page;
+  final PageController controller;
+
+  NavButton({
+    required this.text,
+    required this.page,
+    required this.controller,
+  });
+
+  @override
+  State<NavButton> createState() => _NavButtonState();
+}
+
+class _NavButtonState extends State<NavButton> {
+  late final void Function() _listener;
+
+  bool isActive = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _listener = () {
+      _setState();
+    };
+
+    widget.controller.addListener(_listener);
+
+    _setState();
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_listener);
+
+    super.dispose();
+  }
+
+  void _setState() {
+    setState(() {
+      isActive = widget.controller.page!.round() as int == widget.page;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets?>(
+          EdgeInsets.only(top: 20),
+        ),
+        foregroundColor: MaterialStateProperty.all<Color?>(
+          isActive ? Colors.white : null,
+        ),
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+            (Set<MaterialState> states) {
+          final textStyle = Theme.of(context).textTheme.bodyText2!.copyWith(
+                fontSize: 20,
+                fontWeight: isActive ? FontWeight.bold : null,
+              );
+
+          if (states.contains(MaterialState.focused)) {
+            return textStyle.copyWith(
+              decoration: TextDecoration.underline,
+            );
+          }
+          return textStyle;
+        }),
+      ),
+      child: Text(widget.text),
+      onPressed: () {
+        if (!isActive) {
+          Scaffold.of(context).closeDrawer();
+          widget.controller.animateToPage(
+            widget.page,
+            duration: Duration(seconds: 1),
+            curve: Curves.ease,
+          );
+        }
+      },
+    );
+  }
+}
+
+class Link extends StatelessWidget {
+  final String text;
+  final String url;
+  final ScreenSize screenSize;
+  final TextStyle textStyle;
+  final TextAlign? textAlign;
+
   Link({
+    required this.text,
+    required this.url,
+    required this.screenSize,
+    required this.textStyle,
+    this.textAlign,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text.rich(
+      TextSpan(
+        children: <InlineSpan>[
+          InlineLink(
+            text: text,
+            url: url,
+            screenSize: screenSize,
+            textStyle: textStyle,
+          ),
+        ],
+      ),
+      textAlign: textAlign,
+    );
+  }
+}
+
+class InlineLink extends WidgetSpan {
+  InlineLink({
     required String text,
     required String url,
     required ScreenSize screenSize,
@@ -118,48 +253,6 @@ class Link extends WidgetSpan {
       case ScreenSize.lg:
         return 28.5;
     }
-  }
-}
-
-class NavMenu extends StatefulWidget {
-  @override
-  State<NavMenu> createState() => _NavMenuState();
-}
-
-class _NavMenuState extends State<NavMenu> with TickerProviderStateMixin {
-  late final AnimationController controller;
-
-  bool expanded = false;
-
-  @override
-  void initState() {
-    controller = AnimationController(
-      duration: Duration(milliseconds: 1000),
-      vsync: this,
-    );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-        child: AnimatedIcon(
-          icon: AnimatedIcons.menu_close,
-          progress: controller,
-        ),
-        onPressed: () {
-          if (expanded)
-            controller.reverse();
-          else
-            controller.forward();
-
-          expanded = !expanded;
-        });
   }
 }
 

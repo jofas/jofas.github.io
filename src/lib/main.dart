@@ -150,6 +150,48 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: CustomColors.indigo[900],
+        child: ListView(
+          children: <Widget>[
+            NavButton(
+              text: "START",
+              page: 0,
+              controller: pageController,
+            ),
+            NavButton(
+              text: "ABOUT",
+              page: 1,
+              controller: pageController,
+            ),
+            NavButton(
+              text: "KEY COMPETENCIES",
+              page: 2,
+              controller: pageController,
+            ),
+            NavButton(
+              text: "PROFESSIONAL PROJECTS",
+              page: 3,
+              controller: pageController,
+            ),
+            NavButton(
+              text: "OPEN SOURCE",
+              page: 4,
+              controller: pageController,
+            ),
+            NavButton(
+              text: "PERSONAL PURSUITS",
+              page: 5,
+              controller: pageController,
+            ),
+            NavButton(
+              text: "CONTACT",
+              page: 6,
+              controller: pageController,
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: <Widget>[
           PageView(
@@ -430,7 +472,7 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    Link(
+                                    InlineLink(
                                       text: "Carpolice.de.",
                                       url: "https://carpolice.de",
                                       screenSize: screenSize,
@@ -459,7 +501,7 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    Link(
+                                    InlineLink(
                                       text: "German Sport Univerity Cologne.",
                                       url: "https://www.dshs-koeln.de",
                                       screenSize: screenSize,
@@ -488,7 +530,7 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    Link(
+                                    InlineLink(
                                       text: "Undisclosed German bank.",
                                       url:
                                           "cp_for_loan_approval_prediction.pdf",
@@ -545,7 +587,7 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    Link(
+                                    InlineLink(
                                       text: "My Rust crates.",
                                       url: "https://crates.io/users/jofas",
                                       screenSize: screenSize,
@@ -574,7 +616,7 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    Link(
+                                    InlineLink(
                                       text: "Mgart.",
                                       url: "https://github.com/jofas/mgart",
                                       screenSize: screenSize,
@@ -603,7 +645,7 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    Link(
+                                    InlineLink(
                                       text: "BAREKEEPER.",
                                       url:
                                           "https://github.com/jofas/BAREKEEPER",
@@ -736,20 +778,13 @@ class MyHomePage extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                 ),
                                 Spacer.paragraphSpace,
-                                Text.rich(
-                                  TextSpan(
-                                    children: <InlineSpan>[
-                                      Link(
-                                        text: "jonas@fassbender.dev",
-                                        url:
-                                            "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                                        screenSize: screenSize,
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .bodyText2!,
-                                      ),
-                                    ],
-                                  ),
+                                Link(
+                                  text: "jonas@fassbender.dev",
+                                  url:
+                                      "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                                  screenSize: screenSize,
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyText2!,
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -782,9 +817,9 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
           Positioned(
-            right: 5,
+            left: 5,
             top: 10,
-            child: NavMenu(),
+            child: OpenMenuButton(),
           ),
           /*
           Positioned(
