@@ -78,6 +78,10 @@
 
 * [ ] abstract code into proper classes
 
+* [ ] add xl and 2xl layouts (ScrollProgressBar!)
+
+* [ ] content: values
+
 * [ ] style: background
 
 * [ ] try hero animation with icon
