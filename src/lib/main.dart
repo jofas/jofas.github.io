@@ -31,49 +31,75 @@ class MyApp extends StatelessWidget {
         late final fontSizeBody;
         late final fontSizeHeadline;
         late final iconSize;
-        late final tileSpace;
+        late final textButtonSize;
 
         if (screenSize <= 640) {
           // sm
           fontSizeBody = 12;
           fontSizeHeadline = 24;
-          iconSize = 40;
-          tileSpace = 10;
+          iconSize = 30;
+          textButtonSize = 8;
         } else if (screenSize <= 768) {
           // md
           fontSizeBody = 16;
           fontSizeHeadline = 40;
-          iconSize = 60;
-          tileSpace = 20;
+          iconSize = 50;
+          textButtonSize = 10;
         } else {
           // lg, xl, 2xl
           fontSizeBody = 20;
           fontSizeHeadline = 60;
-          iconSize = 80;
-          tileSpace = 30;
+          iconSize = 70;
+          textButtonSize = 12;
         }
 
         return MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
             scaffoldBackgroundColor: CustomColors.indigo[900],
-            textTheme: Theme.of(context).textTheme.copyWith(
-                  bodyText2: TextStyle(
-                    color: Colors.white,
-                    fontSize: fontSizeBody,
-                    height: 1.5,
-                    letterSpacing: 1,
-                  ),
-                  headline2: TextStyle(
-                    color: Colors.white,
-                    fontSize: fontSizeHeadline,
-                    letterSpacing: 5,
-                  ),
-                ),
-            iconTheme: Theme.of(context).iconTheme.copyWith(
-                  color: Colors.white,
-                  size: iconSize,
-                ),
+            textTheme: TextTheme(
+              bodyText2: TextStyle(
+                color: Colors.white,
+                fontSize: fontSizeBody,
+                height: 1.5,
+                letterSpacing: 1,
+              ),
+              headline2: TextStyle(
+                color: Colors.white,
+                fontSize: fontSizeHeadline,
+                letterSpacing: 5,
+              ),
+            ),
+            iconTheme: IconThemeData(
+              color: Colors.white,
+              size: iconSize,
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all<Color?>(
+                    Colors.white.withOpacity(0)),
+                foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.hovered)) {
+                    return Colors.white;
+                  }
+                  return Colors.grey[400]!;
+                }),
+                textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+                    (Set<MaterialState> states) {
+                  final base = Theme.of(context).textTheme.bodyText2!.copyWith(
+                        fontSize: textButtonSize,
+                      );
+
+                  if (states.contains(MaterialState.focused)) {
+                    return base.copyWith(
+                      decoration: TextDecoration.underline,
+                    );
+                  }
+                  return base;
+                }),
+              ),
+            ),
           ),
           home: MyHomePage(),
         );
@@ -90,38 +116,6 @@ class MyHomePage extends StatelessWidget {
 
   double _contentWidth(double w) {
     return w > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : w;
-  }
-
-  ButtonStyle _buttonStyle(
-    BuildContext context, {
-    double? fontSize,
-    EdgeInsets? padding,
-  }) {
-    return ButtonStyle(
-      padding: MaterialStateProperty.all<EdgeInsets?>(padding),
-      overlayColor:
-          MaterialStateProperty.all<Color?>(Colors.white.withOpacity(0)),
-      foregroundColor:
-          MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-        if (states.contains(MaterialState.hovered)) {
-          return Colors.white;
-        }
-        return Colors.grey[400]!;
-      }),
-      textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-          (Set<MaterialState> states) {
-        final base = Theme.of(context).textTheme.bodyText2!.copyWith(
-              fontSize: fontSize,
-            );
-
-        if (states.contains(MaterialState.focused)) {
-          return base.copyWith(
-            decoration: TextDecoration.underline,
-          );
-        }
-        return base;
-      }),
-    );
   }
 
   @override
@@ -413,10 +407,6 @@ class MyHomePage extends StatelessWidget {
                                           child: Container(
                                             height: 28,
                                             child: TextButton(
-                                              style: _buttonStyle(
-                                                context,
-                                                padding: EdgeInsets.all(0),
-                                              ),
                                               child: Text("Carpolice.de."),
                                               onPressed: () {
                                                 launchUrl(Uri.parse(
@@ -452,10 +442,6 @@ class MyHomePage extends StatelessWidget {
                                           child: Container(
                                             height: 28,
                                             child: TextButton(
-                                              style: _buttonStyle(
-                                                context,
-                                                padding: EdgeInsets.all(0),
-                                              ),
                                               child: Text(
                                                 "German Sport University Cologne.",
                                               ),
@@ -493,10 +479,6 @@ class MyHomePage extends StatelessWidget {
                                           child: Container(
                                             height: 28,
                                             child: TextButton(
-                                              style: _buttonStyle(
-                                                context,
-                                                padding: EdgeInsets.all(0),
-                                              ),
                                               child: Text(
                                                   "Undisclosed German bank."),
                                               onPressed: () {
@@ -560,10 +542,6 @@ class MyHomePage extends StatelessWidget {
                                           child: Container(
                                             height: 28,
                                             child: TextButton(
-                                              style: _buttonStyle(
-                                                context,
-                                                padding: EdgeInsets.all(0),
-                                              ),
                                               child: Text("My Rust crates."),
                                               onPressed: () {
                                                 launchUrl(Uri.parse(
@@ -599,10 +577,6 @@ class MyHomePage extends StatelessWidget {
                                           child: Container(
                                             height: 28,
                                             child: TextButton(
-                                              style: _buttonStyle(
-                                                context,
-                                                padding: EdgeInsets.all(0),
-                                              ),
                                               child: Text("Mgart."),
                                               onPressed: () {
                                                 launchUrl(Uri.parse(
@@ -638,10 +612,6 @@ class MyHomePage extends StatelessWidget {
                                           child: Container(
                                             height: 28,
                                             child: TextButton(
-                                              style: _buttonStyle(
-                                                context,
-                                                padding: EdgeInsets.all(0),
-                                              ),
                                               child: Text("BAREKEEPER."),
                                               onPressed: () {
                                                 launchUrl(Uri.parse(
@@ -778,7 +748,6 @@ class MyHomePage extends StatelessWidget {
                                     ),
                                     Spacer.paragraphSpace,
                                     TextButton(
-                                      style: _buttonStyle(context),
                                       child: const Text(
                                         "jonas@fassbender.dev",
                                         textAlign: TextAlign.center,
@@ -798,20 +767,12 @@ class MyHomePage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
                                 TextButton(
-                                  style: _buttonStyle(
-                                    context,
-                                    fontSize: 10,
-                                  ),
                                   child: const Text("Imprint (DE)"),
                                   onPressed: () {
                                     launchUrl(Uri.parse("imprint.html"));
                                   },
                                 ),
                                 TextButton(
-                                  style: _buttonStyle(
-                                    context,
-                                    fontSize: 10,
-                                  ),
                                   child: const Text("Privacy Policy (DE)"),
                                   onPressed: () {
                                     launchUrl(Uri.parse("privacy_policy.html"));
@@ -835,70 +796,42 @@ class MyHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("START"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("ABOUT"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("KEY COMPETENCIES"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("PROFESSIONAL PROJECTS"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("OPEN SOURCE"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("PERSONAL PURSUITS"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("CONTACT"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
@@ -917,30 +850,18 @@ class MyHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("GITHUB"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://github.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("GITLAB"),
                         onPressed: () {
                           launchUrl(Uri.parse("https://gitlab.com/jofas"));
                         },
                       ),
                       TextButton(
-                        style: _buttonStyle(
-                          context,
-                          fontSize: 12,
-                        ),
                         child: const Text("RESUME"),
                         onPressed: () {
                           launchUrl(Uri.parse("resume.pdf"));

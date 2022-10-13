@@ -63,9 +63,14 @@
 * [x] code: make MyHomepage stateless and move state into a
   ScrollProgressBar widget
 
-* [ ] style: font and icon size based on screen size (text, navbar, headline, footer, icons)
+* [x] style: font and icon size based on screen size 
 
-* [ ] when text scaling is applied, make sure text links still align
+* [ ] proper text links (not textbutton, own class)
+
+* [ ] style: padding to the sides + positioned is not looking right for
+  navbars + scrollprogressbar
+
+* [ ] scrollprogressbar breaks on layout changes 
 
 * [ ] proper html meta for links and tabs
 

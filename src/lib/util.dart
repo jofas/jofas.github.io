@@ -179,4 +179,3 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
     );
   }
 }
-
