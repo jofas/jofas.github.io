@@ -68,7 +68,7 @@
 * [x] style: padding to the sides + positioned is not looking right for
   navbars + scrollprogressbar
 
-* [ ] scrollprogressbar breaks on layout changes
+* [x] scrollprogressbar breaks on layout changes
 
 * [ ] proper text links (not textbutton, own class)
 

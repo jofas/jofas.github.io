@@ -13,11 +13,13 @@ import 'util.dart';
 import 'logo.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final PageController pageController = PageController();
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +120,7 @@ class MyApp extends StatelessWidget {
             screenSize: screenSize,
             width: viewport.maxWidth,
             height: viewport.maxHeight,
+            pageController: pageController,
           ),
         );
       },
@@ -129,15 +132,15 @@ class MyHomePage extends StatelessWidget {
   static const int NUM_PAGES = 7;
   static const double MAX_CONTENT_WIDTH = 1200;
 
-  final PageController pageController = PageController();
-
   final ScreenSize screenSize;
   final double width, height;
+  final PageController pageController;
 
   MyHomePage({
     required this.screenSize,
     required this.width,
     required this.height,
+    required this.pageController,
   });
 
   double get _contentWidth {
