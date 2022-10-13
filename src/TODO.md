@@ -84,8 +84,8 @@
 
 * [ ] style: background
 
-* [ ] try hero animation with icon
-
 * [ ] icon as favicon (logo as svg)
 
 * [ ] GitHub Pages: publish website in docs/ folder (Action)
+
+* [ ] publish!
