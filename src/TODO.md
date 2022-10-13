@@ -65,12 +65,12 @@
 
 * [x] style: font and icon size based on screen size 
 
-* [ ] proper text links (not textbutton, own class)
-
-* [ ] style: padding to the sides + positioned is not looking right for
+* [x] style: padding to the sides + positioned is not looking right for
   navbars + scrollprogressbar
 
-* [ ] scrollprogressbar breaks on layout changes 
+* [ ] scrollprogressbar breaks on layout changes
+
+* [ ] proper text links (not textbutton, own class)
 
 * [ ] proper html meta for links and tabs
 

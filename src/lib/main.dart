@@ -23,30 +23,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewport) {
-        final screenSize = math.min(
+        final minScreenSize = math.min(
           viewport.maxWidth,
           viewport.maxHeight,
         );
+
+        late final screenSize;
 
         late final fontSizeBody;
         late final fontSizeHeadline;
         late final iconSize;
         late final textButtonSize;
 
-        if (screenSize <= 640) {
-          // sm
+        if (minScreenSize <= 640) {
+          screenSize = ScreenSize.sm;
+
           fontSizeBody = 12;
           fontSizeHeadline = 24;
           iconSize = 30;
           textButtonSize = 8;
-        } else if (screenSize <= 768) {
-          // md
+        } else if (minScreenSize <= 768) {
+          screenSize = ScreenSize.md;
+
           fontSizeBody = 16;
           fontSizeHeadline = 40;
           iconSize = 50;
           textButtonSize = 10;
         } else {
-          // lg, xl, 2xl
+          screenSize = ScreenSize.lg;
+
           fontSizeBody = 20;
           fontSizeHeadline = 60;
           iconSize = 70;
@@ -69,6 +74,11 @@ class MyApp extends StatelessWidget {
                 fontSize: fontSizeHeadline,
                 letterSpacing: 5,
               ),
+              labelMedium: TextStyle(
+                color: Colors.white,
+                fontSize: textButtonSize,
+                letterSpacing: 1,
+              ),
             ),
             iconTheme: IconThemeData(
               color: Colors.white,
@@ -76,6 +86,9 @@ class MyApp extends StatelessWidget {
             ),
             textButtonTheme: TextButtonThemeData(
               style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets?>(
+                    EdgeInsets.symmetric(horizontal: 10)),
+                minimumSize: MaterialStateProperty.all<Size?>(Size(0, 0)),
                 overlayColor: MaterialStateProperty.all<Color?>(
                     Colors.white.withOpacity(0)),
                 foregroundColor: MaterialStateProperty.resolveWith<Color>(
@@ -101,7 +114,11 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: MyHomePage(),
+          home: MyHomePage(
+            screenSize: screenSize,
+            width: viewport.maxWidth,
+            height: viewport.maxHeight,
+          ),
         );
       },
     );
@@ -114,24 +131,31 @@ class MyHomePage extends StatelessWidget {
 
   final PageController pageController = PageController();
 
-  double _contentWidth(double w) {
-    return w > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : w;
+  final ScreenSize screenSize;
+  final double width, height;
+
+  MyHomePage({
+    required this.screenSize,
+    required this.width,
+    required this.height,
+  });
+
+  double get _contentWidth {
+    return width > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : width;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints viewport) {
-          return Stack(
+      body: Stack(
+        children: <Widget>[
+          PageView(
+            controller: pageController,
+            scrollDirection: Axis.vertical,
             children: <Widget>[
-              PageView(
-                controller: pageController,
-                scrollDirection: Axis.vertical,
+              Stack(
                 children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      /*
+                  /*
                       Positioned(
                         bottom: -1,
                         child: Transform.rotate(
@@ -191,27 +215,27 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                       */
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          constraints: BoxConstraints(
-                            maxWidth: _contentWidth(viewport.maxWidth),
-                            maxHeight: viewport.maxHeight * 0.9,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
-                            child: Logo(Size(
-                              _contentWidth(viewport.maxWidth) - 30,
-                              viewport.maxHeight * 0.9,
-                            )),
-                          ),
-                        ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      constraints: BoxConstraints(
+                        maxWidth: _contentWidth,
+                        maxHeight: height * 0.9,
                       ),
-                    ],
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Logo(Size(
+                          _contentWidth - 30,
+                          height * 0.9,
+                        )),
+                      ),
+                    ),
                   ),
-                  Stack(
-                    children: <Widget>[
-                      /*
+                ],
+              ),
+              Stack(
+                children: <Widget>[
+                  /*
                       Positioned(
                         top: -1,
                         child: Transform.rotate(
@@ -229,7 +253,7 @@ class MyHomePage extends StatelessWidget {
                               smoothness: 0.6,
                             ),
                             child: Container(
-                              width: viewport.maxWidth,
+                              width: height
                               height: 300,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
@@ -246,51 +270,12 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                       */
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          constraints: BoxConstraints(
-                            maxWidth: _contentWidth(viewport.maxWidth),
-                            maxHeight: viewport.maxHeight * 0.9,
-                          ),
-                          child: Center(
-                            child: ListView(
-                              padding: EdgeInsets.symmetric(horizontal: 30),
-                              shrinkWrap: true,
-                              children: <Widget>[
-                                Text(
-                                  "Jonas Fassbender",
-                                  style: Theme.of(context).textTheme.headline2,
-                                  textAlign: TextAlign.center,
-                                ),
-                                Spacer.headlineSpace,
-                                Text(
-                                  "Software engineer and freelancer. In love with the craft.",
-                                  textAlign: TextAlign.center,
-                                ),
-                                Spacer.paragraphSpace,
-                                Text(
-                                  "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
-                                  textAlign: TextAlign.center,
-                                ),
-                                Spacer.paragraphSpace,
-                                Text(
-                                  "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                   Align(
                     alignment: Alignment.topCenter,
                     child: Container(
                       constraints: BoxConstraints(
-                        maxWidth: _contentWidth(viewport.maxWidth),
-                        maxHeight: viewport.maxHeight * 0.9,
+                        maxWidth: _contentWidth,
+                        maxHeight: height * 0.9,
                       ),
                       child: Center(
                         child: ListView(
@@ -298,487 +283,24 @@ class MyHomePage extends StatelessWidget {
                           shrinkWrap: true,
                           children: <Widget>[
                             Text(
-                              "Key Competencies",
+                              "Jonas Fassbender",
                               style: Theme.of(context).textTheme.headline2,
                               textAlign: TextAlign.center,
                             ),
                             Spacer.headlineSpace,
                             Text(
-                              "What I can do to help you successfully realize your idea and mold it into software:",
+                              "Software engineer and freelancer. In love with the craft.",
                               textAlign: TextAlign.center,
                             ),
                             Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.architecture),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Software Architecture. Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.code),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.lan),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Distributed Systems. High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.smart_toy),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Machine Learning. The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.devices),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Cross Platform. In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: _contentWidth(viewport.maxWidth),
-                        maxHeight: viewport.maxHeight * 0.9,
-                      ),
-                      child: Center(
-                        child: ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
-                          shrinkWrap: true,
-                          children: <Widget>[
                             Text(
-                              "Professional Projects",
-                              style: Theme.of(context).textTheme.headline2,
+                              "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
                               textAlign: TextAlign.center,
                             ),
-                            Spacer.headlineSpace,
+                            Spacer.paragraphSpace,
                             Text(
-                              "The main projects I am working on or have worked on as a freelancing software engineer:",
+                              "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
                               textAlign: TextAlign.center,
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.directions_car),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: <InlineSpan>[
-                                        WidgetSpan(
-                                          child: Container(
-                                            height: 28,
-                                            child: TextButton(
-                                              child: Text("Carpolice.de."),
-                                              onPressed: () {
-                                                launchUrl(Uri.parse(
-                                                  "https://carpolice.de",
-                                                ));
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text:
-                                              " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system with insurance products specially designed for car dealerships.",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.school),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: <InlineSpan>[
-                                        WidgetSpan(
-                                          child: Container(
-                                            height: 28,
-                                            child: TextButton(
-                                              child: Text(
-                                                "German Sport University Cologne.",
-                                              ),
-                                              onPressed: () {
-                                                launchUrl(Uri.parse(
-                                                  "https://www.dshs-koeln.de",
-                                                ));
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text:
-                                              " Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.account_balance),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: <InlineSpan>[
-                                        WidgetSpan(
-                                          child: Container(
-                                            height: 28,
-                                            child: TextButton(
-                                              child: Text(
-                                                  "Undisclosed German bank."),
-                                              onPressed: () {
-                                                launchUrl(Uri.parse(
-                                                  "cp_for_loan_approval_prediction.pdf",
-                                                ));
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text:
-                                              " Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: _contentWidth(viewport.maxWidth),
-                        maxHeight: viewport.maxHeight * 0.9,
-                      ),
-                      child: Center(
-                        child: ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
-                          shrinkWrap: true,
-                          children: <Widget>[
-                            Text(
-                              "Open Source",
-                              style: Theme.of(context).textTheme.headline2,
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.headlineSpace,
-                            Text(
-                              "Open source projects I am currently working on:",
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(FontAwesomeIcons.rust),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: <InlineSpan>[
-                                        WidgetSpan(
-                                          child: Container(
-                                            height: 28,
-                                            child: TextButton(
-                                              child: Text("My Rust crates."),
-                                              onPressed: () {
-                                                launchUrl(Uri.parse(
-                                                  "https://crates.io/users/jofas",
-                                                ));
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text:
-                                              " Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.brush),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: <InlineSpan>[
-                                        WidgetSpan(
-                                          child: Container(
-                                            height: 28,
-                                            child: TextButton(
-                                              child: Text("Mgart."),
-                                              onPressed: () {
-                                                launchUrl(Uri.parse(
-                                                  "https://github.com/jofas/mgart",
-                                                ));
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text:
-                                              " Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.receipt_long),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: <InlineSpan>[
-                                        WidgetSpan(
-                                          child: Container(
-                                            height: 28,
-                                            child: TextButton(
-                                              child: Text("BAREKEEPER."),
-                                              onPressed: () {
-                                                launchUrl(Uri.parse(
-                                                  "https://github.com/jofas/BAREKEEPER",
-                                                ));
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text:
-                                              " As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: _contentWidth(viewport.maxWidth),
-                        maxHeight: viewport.maxHeight * 0.9,
-                      ),
-                      child: Center(
-                        child: ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
-                          shrinkWrap: true,
-                          children: <Widget>[
-                            Text(
-                              "Personal Pursuits",
-                              style: Theme.of(context).textTheme.headline2,
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.headlineSpace,
-                            Text(
-                              "Besides honing my skills as a software engineer and professional I particularly enjoy the following activities:",
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.self_improvement),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Meditation. I meditate to find truth and experience freedom, calmness and peace of mind.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.science),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Fermentation. Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.hiking),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Long distance hiking. My goal is to one day walk a 2000 mile trail.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer.paragraphSpace,
-                            Row(
-                              children: <Widget>[
-                                Icon(Icons.fitness_center),
-                                Spacer.tileSpace,
-                                Expanded(
-                                  child: Text(
-                                    "Olympic weightlifting. Few sports combine strength, speed and overall athleticism in such an aesthetic and rewarding way.",
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: _contentWidth(viewport.maxWidth),
-                        maxHeight: viewport.maxHeight * 0.9,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
-                          children: <Widget>[
-                            Expanded(
-                              child: Center(
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  children: <Widget>[
-                                    Text(
-                                      "Contact",
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    Spacer.headlineSpace,
-                                    Text(
-                                      "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    Spacer.paragraphSpace,
-                                    Text(
-                                      "If you got something funny or wholesome and wish to share it with me, do so as well.",
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    Spacer.paragraphSpace,
-                                    TextButton(
-                                      child: const Text(
-                                        "jonas@fassbender.dev",
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      onPressed: () {
-                                        launchUrl(Uri.parse(
-                                          "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                                        ));
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: <Widget>[
-                                TextButton(
-                                  child: const Text("Imprint (DE)"),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse("imprint.html"));
-                                  },
-                                ),
-                                TextButton(
-                                  child: const Text("Privacy Policy (DE)"),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse("privacy_policy.html"));
-                                  },
-                                ),
-                              ],
                             ),
                           ],
                         ),
@@ -787,106 +309,598 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              Positioned(
-                left: 5,
-                top: 0.02 * viewport.maxHeight,
-                child: RotatedBox(
-                  quarterTurns: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      TextButton(
-                        child: const Text("START"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("ABOUT"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("KEY COMPETENCIES"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("PROFESSIONAL PROJECTS"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("OPEN SOURCE"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("PERSONAL PURSUITS"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("CONTACT"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                    ],
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: _contentWidth,
+                    maxHeight: height * 0.9,
+                  ),
+                  child: Center(
+                    child: ListView(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        Text(
+                          "Key Competencies",
+                          style: Theme.of(context).textTheme.headline2,
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.headlineSpace,
+                        Text(
+                          "What I can do to help you successfully realize your idea and mold it into software:",
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.architecture),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Software Architecture. Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.code),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.lan),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Distributed Systems. High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.smart_toy),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Machine Learning. The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.devices),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Cross Platform. In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              Positioned(
-                right: 5,
-                bottom: 0.065 * viewport.maxHeight,
-                child: RotatedBox(
-                  quarterTurns: 3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      TextButton(
-                        child: const Text("GITHUB"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://github.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("GITLAB"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("https://gitlab.com/jofas"));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("RESUME"),
-                        onPressed: () {
-                          launchUrl(Uri.parse("resume.pdf"));
-                        },
-                      ),
-                    ],
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: _contentWidth,
+                    maxHeight: height * 0.9,
+                  ),
+                  child: Center(
+                    child: ListView(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        Text(
+                          "Professional Projects",
+                          style: Theme.of(context).textTheme.headline2,
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.headlineSpace,
+                        Text(
+                          "The main projects I am working on or have worked on as a freelancing software engineer:",
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.directions_car),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    WidgetSpan(
+                                      child: Container(
+                                        height: 28,
+                                        child: TextButton(
+                                          child: Text("Carpolice.de."),
+                                          onPressed: () {
+                                            launchUrl(Uri.parse(
+                                              "https://carpolice.de",
+                                            ));
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system with insurance products specially designed for car dealerships.",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.school),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    WidgetSpan(
+                                      child: Container(
+                                        height: 28,
+                                        child: TextButton(
+                                          child: Text(
+                                            "German Sport University Cologne.",
+                                          ),
+                                          onPressed: () {
+                                            launchUrl(Uri.parse(
+                                              "https://www.dshs-koeln.de",
+                                            ));
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          " Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.account_balance),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    WidgetSpan(
+                                      child: Container(
+                                        height: 28,
+                                        child: TextButton(
+                                          child:
+                                              Text("Undisclosed German bank."),
+                                          onPressed: () {
+                                            launchUrl(Uri.parse(
+                                              "cp_for_loan_approval_prediction.pdf",
+                                            ));
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          " Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 0.025 * viewport.maxHeight,
-                left: viewport.maxWidth / 2 -
-                    _contentWidth(viewport.maxWidth) / 2,
-                width: _contentWidth(viewport.maxWidth),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: ScrollProgressBar(
-                    controller: pageController,
-                    pages: NUM_PAGES,
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: _contentWidth,
+                    maxHeight: height * 0.9,
+                  ),
+                  child: Center(
+                    child: ListView(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        Text(
+                          "Open Source",
+                          style: Theme.of(context).textTheme.headline2,
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.headlineSpace,
+                        Text(
+                          "Open source projects I am currently working on:",
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(FontAwesomeIcons.rust),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    WidgetSpan(
+                                      child: Container(
+                                        height: 28,
+                                        child: TextButton(
+                                          child: Text("My Rust crates."),
+                                          onPressed: () {
+                                            launchUrl(Uri.parse(
+                                              "https://crates.io/users/jofas",
+                                            ));
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          " Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.brush),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    WidgetSpan(
+                                      child: Container(
+                                        height: 28,
+                                        child: TextButton(
+                                          child: Text("Mgart."),
+                                          onPressed: () {
+                                            launchUrl(Uri.parse(
+                                              "https://github.com/jofas/mgart",
+                                            ));
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          " Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.receipt_long),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    WidgetSpan(
+                                      child: Container(
+                                        height: 28,
+                                        child: TextButton(
+                                          child: Text("BAREKEEPER."),
+                                          onPressed: () {
+                                            launchUrl(Uri.parse(
+                                              "https://github.com/jofas/BAREKEEPER",
+                                            ));
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          " As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: _contentWidth,
+                    maxHeight: height * 0.9,
+                  ),
+                  child: Center(
+                    child: ListView(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        Text(
+                          "Personal Pursuits",
+                          style: Theme.of(context).textTheme.headline2,
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.headlineSpace,
+                        Text(
+                          "Besides honing my skills as a software engineer and professional I particularly enjoy the following activities:",
+                          textAlign: TextAlign.center,
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.self_improvement),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Meditation. I meditate to find truth and experience freedom, calmness and peace of mind.",
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.science),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Fermentation. Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.hiking),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Long distance hiking. My goal is to one day walk a 2000 mile trail.",
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer.paragraphSpace,
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.fitness_center),
+                            Spacer.tileSpace,
+                            Expanded(
+                              child: Text(
+                                "Olympic weightlifting. Few sports combine strength, speed and overall athleticism in such an aesthetic and rewarding way.",
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: _contentWidth,
+                    maxHeight: height * 0.9,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(
+                          child: Center(
+                            child: ListView(
+                              shrinkWrap: true,
+                              children: <Widget>[
+                                Text(
+                                  "Contact",
+                                  style: Theme.of(context).textTheme.headline2,
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.headlineSpace,
+                                Text(
+                                  "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.paragraphSpace,
+                                Text(
+                                  "If you got something funny or wholesome and wish to share it with me, do so as well.",
+                                  textAlign: TextAlign.center,
+                                ),
+                                Spacer.paragraphSpace,
+                                TextButton(
+                                  child: const Text(
+                                    "jonas@fassbender.dev",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  onPressed: () {
+                                    launchUrl(Uri.parse(
+                                      "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                                    ));
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            TextButton(
+                              child: const Text("Imprint (DE)"),
+                              onPressed: () {
+                                launchUrl(Uri.parse("imprint.html"));
+                              },
+                            ),
+                            TextButton(
+                              child: const Text("Privacy Policy (DE)"),
+                              onPressed: () {
+                                launchUrl(Uri.parse("privacy_policy.html"));
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ],
-          );
-        },
+          ),
+          Positioned(
+            left: 5,
+            top: 0,
+            child: RotatedBox(
+              quarterTurns: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextButton(
+                    child: const Text("START"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("ABOUT"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("KEY COMPETENCIES"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("PROFESSIONAL PROJECTS"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("OPEN SOURCE"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("PERSONAL PURSUITS"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("CONTACT"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            right: 5,
+            bottom: 0,
+            child: RotatedBox(
+              quarterTurns: 3,
+              child: Row(
+                children: <Widget>[
+                  TextButton(
+                    child: const Text("GITHUB"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("GITLAB"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://gitlab.com/jofas"));
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("RESUME"),
+                    onPressed: () {
+                      launchUrl(Uri.parse("resume.pdf"));
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 5,
+            left: width / 2 - _contentWidth / 2,
+            width: _contentWidth,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: ScrollProgressBar(
+                controller: pageController,
+                pages: NUM_PAGES,
+                screenSize: screenSize,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

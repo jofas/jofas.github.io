@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'colors.dart';
 
+enum ScreenSize {
+  sm,
+  md,
+  lg,
+  // xl, 2xl currently not used
+}
+
 class Spacer extends StatelessWidget {
   static final Spacer headlineSpace = Spacer(height: 30);
   static final Spacer paragraphSpace = Spacer(height: 40);
@@ -71,11 +78,13 @@ class _JumpAnimationState extends State<JumpAnimation>
 class ScrollProgressBar extends StatefulWidget {
   final PageController controller;
   final int pages;
+  final ScreenSize screenSize;
 
   ScrollProgressBar({
     super.key,
     required this.controller,
     required this.pages,
+    required this.screenSize,
   });
 
   @override
@@ -114,20 +123,38 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
     );
   }
 
+  double get _iconSize {
+    switch (widget.screenSize) {
+      case ScreenSize.sm:
+        return 14;
+      case ScreenSize.md:
+        return 16;
+      case ScreenSize.lg:
+        return 20;
+    }
+  }
+
+  double get _progressBarHeight {
+    switch (widget.screenSize) {
+      case ScreenSize.sm:
+        return 5;
+      case ScreenSize.md:
+        return 8;
+      case ScreenSize.lg:
+        return 10;
+    }
+  }
+
   Widget get _prevPageButton {
-    return IconButton(
-      icon: const Icon(Icons.expand_less, size: 20),
-      tooltip: "Page Up",
-      splashRadius: 1,
+    return TextButton(
+      child: Icon(Icons.expand_less, size: _iconSize),
       onPressed: _prevPage,
     );
   }
 
   Widget get _nextPageButton {
-    final button = IconButton(
-      icon: const Icon(Icons.expand_more, size: 20),
-      tooltip: "Page Down",
-      splashRadius: 1,
+    final button = TextButton(
+      child: Icon(Icons.expand_more, size: _iconSize),
       onPressed: _nextPage,
     );
 
@@ -159,20 +186,18 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
                   value: value,
                   backgroundColor: Colors.white,
                   color: CustomColors.red[300],
-                  minHeight: 10,
+                  minHeight: _progressBarHeight,
                 );
               },
             ),
           ),
         ),
-        SizedBox(width: 25),
+        SizedBox(width: 15),
         Text(
           "${(currPos * (widget.pages - 1)).round() + 1}  /  ${widget.pages}",
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                fontSize: 12,
-              ),
+          style: Theme.of(context).textTheme.labelMedium,
         ),
-        SizedBox(width: 10),
+        SizedBox(width: 5),
         _prevPageButton,
         _nextPageButton,
       ],
