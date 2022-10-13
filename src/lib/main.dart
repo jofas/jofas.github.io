@@ -430,18 +430,13 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    WidgetSpan(
-                                      child: Container(
-                                        height: 28,
-                                        child: TextButton(
-                                          child: Text("Carpolice.de."),
-                                          onPressed: () {
-                                            launchUrl(Uri.parse(
-                                              "https://carpolice.de",
-                                            ));
-                                          },
-                                        ),
-                                      ),
+                                    Link(
+                                      text: "Carpolice.de.",
+                                      url: "https://carpolice.de",
+                                      screenSize: screenSize,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!,
                                     ),
                                     TextSpan(
                                       text:
@@ -464,20 +459,13 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    WidgetSpan(
-                                      child: Container(
-                                        height: 28,
-                                        child: TextButton(
-                                          child: Text(
-                                            "German Sport University Cologne.",
-                                          ),
-                                          onPressed: () {
-                                            launchUrl(Uri.parse(
-                                              "https://www.dshs-koeln.de",
-                                            ));
-                                          },
-                                        ),
-                                      ),
+                                    Link(
+                                      text: "German Sport Univerity Cologne.",
+                                      url: "https://www.dshs-koeln.de",
+                                      screenSize: screenSize,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!,
                                     ),
                                     TextSpan(
                                       text:
@@ -500,19 +488,14 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    WidgetSpan(
-                                      child: Container(
-                                        height: 28,
-                                        child: TextButton(
-                                          child:
-                                              Text("Undisclosed German bank."),
-                                          onPressed: () {
-                                            launchUrl(Uri.parse(
-                                              "cp_for_loan_approval_prediction.pdf",
-                                            ));
-                                          },
-                                        ),
-                                      ),
+                                    Link(
+                                      text: "Undisclosed German bank.",
+                                      url:
+                                          "cp_for_loan_approval_prediction.pdf",
+                                      screenSize: screenSize,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!,
                                     ),
                                     TextSpan(
                                       text:
@@ -562,18 +545,13 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    WidgetSpan(
-                                      child: Container(
-                                        height: 28,
-                                        child: TextButton(
-                                          child: Text("My Rust crates."),
-                                          onPressed: () {
-                                            launchUrl(Uri.parse(
-                                              "https://crates.io/users/jofas",
-                                            ));
-                                          },
-                                        ),
-                                      ),
+                                    Link(
+                                      text: "My Rust crates.",
+                                      url: "https://crates.io/users/jofas",
+                                      screenSize: screenSize,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!,
                                     ),
                                     TextSpan(
                                       text:
@@ -596,18 +574,13 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    WidgetSpan(
-                                      child: Container(
-                                        height: 28,
-                                        child: TextButton(
-                                          child: Text("Mgart."),
-                                          onPressed: () {
-                                            launchUrl(Uri.parse(
-                                              "https://github.com/jofas/mgart",
-                                            ));
-                                          },
-                                        ),
-                                      ),
+                                    Link(
+                                      text: "Mgart.",
+                                      url: "https://github.com/jofas/mgart",
+                                      screenSize: screenSize,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!,
                                     ),
                                     TextSpan(
                                       text:
@@ -630,18 +603,14 @@ class MyHomePage extends StatelessWidget {
                               child: Text.rich(
                                 TextSpan(
                                   children: <InlineSpan>[
-                                    WidgetSpan(
-                                      child: Container(
-                                        height: 28,
-                                        child: TextButton(
-                                          child: Text("BAREKEEPER."),
-                                          onPressed: () {
-                                            launchUrl(Uri.parse(
-                                              "https://github.com/jofas/BAREKEEPER",
-                                            ));
-                                          },
-                                        ),
-                                      ),
+                                    Link(
+                                      text: "BAREKEEPER.",
+                                      url:
+                                          "https://github.com/jofas/BAREKEEPER",
+                                      screenSize: screenSize,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!,
                                     ),
                                     TextSpan(
                                       text:
@@ -767,16 +736,21 @@ class MyHomePage extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                 ),
                                 Spacer.paragraphSpace,
-                                TextButton(
-                                  child: const Text(
-                                    "jonas@fassbender.dev",
-                                    textAlign: TextAlign.center,
+                                Text.rich(
+                                  TextSpan(
+                                    children: <InlineSpan>[
+                                      Link(
+                                        text: "jonas@fassbender.dev",
+                                        url:
+                                            "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                                        screenSize: screenSize,
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2!,
+                                      ),
+                                    ],
                                   ),
-                                  onPressed: () {
-                                    launchUrl(Uri.parse(
-                                      "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                                    ));
-                                  },
+                                  textAlign: TextAlign.center,
                                 ),
                               ],
                             ),

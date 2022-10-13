@@ -70,7 +70,7 @@
 
 * [x] scrollprogressbar breaks on layout changes
 
-* [ ] proper text links (not textbutton, own class)
+* [x] text link style
 
 * [ ] proper html meta for links and tabs
 

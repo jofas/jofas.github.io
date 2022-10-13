@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 import 'colors.dart';
 
 enum ScreenSize {
@@ -72,6 +74,50 @@ class _JumpAnimationState extends State<JumpAnimation>
       position: animation,
       child: widget.child,
     );
+  }
+}
+
+class Link extends WidgetSpan {
+  Link({
+    required String text,
+    required String url,
+    required ScreenSize screenSize,
+    required TextStyle textStyle,
+  }) : super(
+          child: Container(
+            height: _height(screenSize),
+            child: TextButton(
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets?>(
+                  EdgeInsets.all(0),
+                ),
+                textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.focused)) {
+                    return textStyle.copyWith(
+                      decoration: TextDecoration.underline,
+                    );
+                  }
+                  return textStyle;
+                }),
+              ),
+              child: Text(text),
+              onPressed: () {
+                launchUrl(Uri.parse(url));
+              },
+            ),
+          ),
+        );
+
+  static double _height(ScreenSize screenSize) {
+    switch (screenSize) {
+      case ScreenSize.sm:
+        return 18;
+      case ScreenSize.md:
+        return 23;
+      case ScreenSize.lg:
+        return 28;
+    }
   }
 }
 
