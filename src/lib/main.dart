@@ -829,62 +829,6 @@ class MyHomePage extends StatelessWidget {
             top: 10,
             child: OpenMenuButton(),
           ),
-          /*
-          Positioned(
-            left: 5,
-            top: 0,
-            child: RotatedBox(
-              quarterTurns: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextButton(
-                    child: const Text("START"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("ABOUT"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("KEY COMPETENCIES"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("PROFESSIONAL PROJECTS"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("OPEN SOURCE"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("PERSONAL PURSUITS"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("CONTACT"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-          */
           Positioned(
             right: 5,
             bottom: 0,

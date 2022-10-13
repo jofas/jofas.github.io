@@ -78,6 +78,8 @@
 
 * [x] navbar: header = logo
 
+* [ ] layout: content size > 90%
+
 * [ ] menu button: change size based on screen size
 
 * [ ] abstract code into proper classes
