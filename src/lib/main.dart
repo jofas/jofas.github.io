@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
         late final scrollProgressBarHeight;
         late final scrollProgressBarIconSize;
         late final openNavbarButtonSize;
+        late final navbarLogoSize;
+        late final navbarLogoPadding;
 
         if (screenSize == ScreenSize.sm) {
           fontSizeBody = 12;
@@ -45,6 +47,8 @@ class MyApp extends StatelessWidget {
           scrollProgressBarHeight = 5;
           scrollProgressBarIconSize = 14;
           openNavbarButtonSize = 20;
+          navbarLogoSize = 60;
+          navbarLogoPadding = 10;
         } else if (screenSize == ScreenSize.md) {
           fontSizeBody = 16;
           fontSizeHeadline = 40;
@@ -54,6 +58,8 @@ class MyApp extends StatelessWidget {
           scrollProgressBarHeight = 8;
           scrollProgressBarIconSize = 16;
           openNavbarButtonSize = 25;
+          navbarLogoSize = 80;
+          navbarLogoPadding = 15;
         } else {
           fontSizeBody = 20;
           fontSizeHeadline = 60;
@@ -63,6 +69,8 @@ class MyApp extends StatelessWidget {
           scrollProgressBarHeight = 10;
           scrollProgressBarIconSize = 20;
           openNavbarButtonSize = 30;
+          navbarLogoSize = 100;
+          navbarLogoPadding = 20;
         }
 
         return MaterialApp(
@@ -145,6 +153,8 @@ class MyApp extends StatelessWidget {
             scrollProgressBarHeight: scrollProgressBarHeight,
             scrollProgressBarIconSize: scrollProgressBarIconSize,
             openNavbarButtonSize: openNavbarButtonSize,
+            navbarLogoSize: navbarLogoSize,
+            navbarLogoPadding: navbarLogoPadding,
           ),
         );
       },
@@ -163,6 +173,8 @@ class MyHomePage extends StatelessWidget {
   final double scrollProgressBarHeight;
   final double scrollProgressBarIconSize;
   final double openNavbarButtonSize;
+  final double navbarLogoSize;
+  final double navbarLogoPadding;
 
   MyHomePage({
     required this.width,
@@ -172,10 +184,16 @@ class MyHomePage extends StatelessWidget {
     required this.scrollProgressBarHeight,
     required this.scrollProgressBarIconSize,
     required this.openNavbarButtonSize,
+    required this.navbarLogoSize,
+    required this.navbarLogoPadding,
   });
 
   double get _contentWidth {
     return width > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : width;
+  }
+
+  double get _contentHeight {
+    return height - scrollProgressBarHeight * 2 - 20;
   }
 
   @override
@@ -186,10 +204,13 @@ class MyHomePage extends StatelessWidget {
         child: ListView(
           shrinkWrap: true,
           children: <Widget>[
-            SizedBox(
-              width: 100,
-              height: 100,
-              child: Logo(),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: navbarLogoPadding),
+              child: SizedBox(
+                width: navbarLogoSize,
+                height: navbarLogoSize,
+                child: Logo(),
+              ),
             ),
             Divider(),
             NavButton(
@@ -300,7 +321,7 @@ class MyHomePage extends StatelessWidget {
                       */
                   SingleChildPageContent(
                     width: _contentWidth,
-                    height: height - 30,
+                    height: _contentHeight,
                     child: AnimatedLogo(),
                   ),
                 ],
@@ -344,7 +365,7 @@ class MyHomePage extends StatelessWidget {
                       */
                   PageContent(
                     width: _contentWidth,
-                    height: height - 30,
+                    height: _contentHeight,
                     children: <Widget>[
                       Text(
                         "Jonas Fassbender",
@@ -372,7 +393,7 @@ class MyHomePage extends StatelessWidget {
               ),
               PageContent(
                 width: _contentWidth,
-                height: height - 30,
+                height: _contentHeight,
                 children: <Widget>[
                   Text(
                     "Key Competencies",
@@ -423,7 +444,7 @@ class MyHomePage extends StatelessWidget {
               ),
               PageContent(
                 width: _contentWidth,
-                height: height - 30,
+                height: _contentHeight,
                 children: <Widget>[
                   Text(
                     "Professional Projects",
@@ -466,7 +487,7 @@ class MyHomePage extends StatelessWidget {
               ),
               PageContent(
                 width: _contentWidth,
-                height: height - 30,
+                height: _contentHeight,
                 children: <Widget>[
                   Text(
                     "Open Source",
@@ -509,7 +530,7 @@ class MyHomePage extends StatelessWidget {
               ),
               PageContent(
                 width: _contentWidth,
-                height: height - 30,
+                height: _contentHeight,
                 children: <Widget>[
                   Text(
                     "Personal Pursuits",
@@ -552,7 +573,7 @@ class MyHomePage extends StatelessWidget {
               ),
               PageContent(
                 width: _contentWidth,
-                height: height - 30,
+                height: _contentHeight,
                 children: <Widget>[
                   Text(
                     "Contact",

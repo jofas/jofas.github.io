@@ -86,11 +86,13 @@
 
 * [x] abstract code into proper classes 
 
-* [ ] layout: content height responsive
+* [x] layout: content height responsive
 
-* [ ] layout: navbar: responsive icon padding + size
+* [x] layout: navbar: responsive icon padding + size
 
 * [ ] layout: paragraph and title spacing responsive
+
+* [ ] layout: content padding responsive
 
 * [ ] add xl and 2xl layouts
 
