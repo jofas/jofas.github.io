@@ -94,13 +94,13 @@
 
 * [x] layout: content padding responsive
 
-* [ ] add xl and 2xl layouts
-
-* [ ] content: about: add paragraph about what this website is
+* [x] content: about: add paragraph about what this website is
 
 * [ ] content: values
 
 * [ ] style: background
+
+* [ ] add xl and 2xl layouts
 
 * [ ] icon as favicon (logo as svg)
 

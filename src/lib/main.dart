@@ -422,6 +422,30 @@ class MyHomePage extends StatelessWidget {
                         "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
                         textAlign: TextAlign.center,
                       ),
+                      _paragraphSpace(),
+                      Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            TextSpan(
+                              text:
+                                  "This wesite serves as an introduction to myself, my work and the values it embodies. If you like what you see and think I could help you achive your ambitions, don't hesitate to ",
+                              style: Theme.of(context).textTheme.bodyText2!,
+                            ),
+                            InlineLink(
+                              text: "contact",
+                              url:
+                                  "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                              height: linkHeight,
+                              style: Theme.of(context).textTheme.bodyText2!,
+                            ),
+                            TextSpan(
+                              text: " me!",
+                              style: Theme.of(context).textTheme.bodyText2!,
+                            ),
+                          ],
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   ),
                 ],
