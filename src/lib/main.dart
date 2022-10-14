@@ -160,7 +160,8 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       drawer: Drawer(
         backgroundColor: CustomColors.indigo[900],
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
           children: <Widget>[
             SizedBox(
               width: 100,
