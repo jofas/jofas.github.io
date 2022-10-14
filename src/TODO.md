@@ -100,8 +100,6 @@
 
 * [ ] style: background
 
-* [ ] add xl and 2xl layouts
-
 * [ ] icon as favicon (logo as svg)
 
 * [ ] proper html meta for links and tabs
@@ -109,3 +107,8 @@
 * [ ] GitHub Pages: publish website in docs/ folder (Action)
 
 * [ ] publish!
+
+
+# MAYBEDO
+
+* [ ] add xl and 2xl layouts
