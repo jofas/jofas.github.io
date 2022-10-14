@@ -98,6 +98,8 @@
 
 * [x] content: values 
 
+* [ ] style: progress bar gradient with valueColor
+
 * [ ] style: background
 
 * [ ] icon as favicon (logo as svg)

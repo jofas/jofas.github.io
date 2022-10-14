@@ -29,8 +29,6 @@ ScreenSize screenSizeFromViewport(BoxConstraints viewport) {
 }
 
 class Spacer extends StatelessWidget {
-  static final Spacer headlineSpace = Spacer(height: 30);
-  static final Spacer paragraphSpace = Spacer(height: 40);
   static final Spacer tileSpace = Spacer(width: 10);
 
   final double width;
@@ -190,14 +188,18 @@ class Tile extends StatelessWidget {
     if (titleUrl == null) {
       return TextSpan(
         text: title,
-        style: textStyle,
+        style: textStyle.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
       );
     } else {
       return InlineLink(
         text: title,
         url: titleUrl!,
         height: linkHeight!,
-        style: textStyle,
+        style: textStyle.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
       );
     }
   }

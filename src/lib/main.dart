@@ -88,7 +88,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
-            scaffoldBackgroundColor: CustomColors.indigo[900],
+            scaffoldBackgroundColor: Colors.black,
             textTheme: TextTheme(
               bodyText2: TextStyle(
                 color: Colors.white,
@@ -229,7 +229,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        backgroundColor: CustomColors.indigo[900],
+        backgroundColor: Colors.black,
         child: ListView(
           shrinkWrap: true,
           children: <Widget>[
@@ -295,42 +295,8 @@ class MyHomePage extends StatelessWidget {
                 children: <Widget>[
                   /*
                       Positioned(
-                        bottom: -1,
-                        child: Transform.rotate(
-                          angle: 0.0 * math.pi,
-                          child: ClipPath(
-                            clipper: SmoothCurveClipper(
-                              points: <Vector2>[
-                                Vector2(0, 0.5),
-                                Vector2(0.25, 0.25),
-                                Vector2(0.5, 0.5),
-                                Vector2(0.75, 0.25),
-                                Vector2(1, 0.5),
-                              ],
-                              smoothness: 0.3,
-                            ),
-                            child: Container(
-                              width: viewport.maxWidth,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: <Color>[
-                                    CustomColors.violet[500]!,
-                                    CustomColors.red[500]!,
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 100,
-                        left: 100,
-                        child: Transform.rotate(
-                          angle: 0.0 * math.pi,
+                        top: 0.25 * height,
+                        left: 0.25 * width,
                           child: ClipPath(
                             clipper: SmoothShapeClipper(
                               points: <Vector2>[
@@ -345,9 +311,81 @@ class MyHomePage extends StatelessWidget {
                               smoothness: 0.66,
                             ),
                             child: Container(
-                              width: 600,
-                              height: 600,
-                              color: CustomColors.red[500],
+                              width: 0.6 * width,
+                              height: 0.6 * height,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomRight,
+                                  end: Alignment.topLeft,
+                                  colors: <Color>[
+                                    CustomColors.purple[600]!.withOpacity(0.8),
+                                    CustomColors.purple[800]!.withOpacity(0),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      Positioned(
+                        top: 0,
+                        child: Transform.rotate(
+                          angle: math.pi,
+                          child: ClipPath(
+                            clipper: SmoothCurveClipper(
+                              points: <Vector2>[
+                                Vector2(0, 0.1),
+                                Vector2(0.2, 0.2),
+                                Vector2(0.7, 0.3),
+                                Vector2(1, 0.25),
+                              ],
+                              smoothness: 0.5,
+                            ),
+                            child: Container(
+                              width: width,
+                              height: height * 0.6,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomCenter,
+                                  colors: <Color>[
+                                    CustomColors.blue[200]!.withOpacity(0.8),
+                                    CustomColors.blue[400]!.withOpacity(0.6),
+                                    CustomColors.blue[600]!.withOpacity(0.4),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        child: Transform.rotate(
+                          angle: math.pi,
+                          child: ClipPath(
+                            clipper: SmoothCurveClipper(
+                              points: <Vector2>[
+                                Vector2(0, 0.05),
+                                Vector2(0.3, 0.1),
+                                Vector2(0.8, 0.6),
+                                Vector2(1, 0.6),
+                              ],
+                              smoothness: 0.5,
+                            ),
+                            child: Container(
+                              width: width,
+                              height: height * 0.6,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomCenter,
+                                  colors: <Color>[
+                                    CustomColors.green[200]!.withOpacity(0.8),
+                                    CustomColors.green[400]!.withOpacity(0.6),
+                                    CustomColors.green[700]!.withOpacity(0.4),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
