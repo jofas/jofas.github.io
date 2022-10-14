@@ -84,9 +84,16 @@
 
 * [x] remove layout computation from widgets 
 
-* [ ] add xl and 2xl layouts
+* [ ] abstract code into proper classes (PageContent -- beware of 
+  footer, Tile)
 
-* [ ] abstract code into proper classes
+* [ ] layout: content height responsive
+
+* [ ] layout: navbar: responsive icon padding + size
+
+* [ ] layout: spacing responsive
+
+* [ ] add xl and 2xl layouts
 
 * [ ] content: about: add paragraph about what this website is
 

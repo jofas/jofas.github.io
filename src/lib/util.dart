@@ -94,10 +94,66 @@ class _JumpAnimationState extends State<JumpAnimation>
   }
 }
 
-class NavbarButton extends StatelessWidget {
+class Tile extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String content;
+
+  final String? titleUrl;
+  final double? linkHeight;
+
+  Tile({
+    required this.icon,
+    required this.title,
+    required this.content,
+    this.linkHeight,
+    this.titleUrl,
+  });
+
+  InlineSpan _titleWidget(TextStyle textStyle) {
+    if (titleUrl == null) {
+      return TextSpan(
+        text: title,
+        style: textStyle,
+      );
+    } else {
+      return InlineLink(
+        text: title,
+        url: titleUrl!,
+        height: linkHeight!,
+        style: textStyle,
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme.bodyText2!;
+
+    return Row(
+      children: <Widget>[
+        Icon(icon),
+        Spacer.tileSpace,
+        Expanded(
+          child: Text.rich(
+            TextSpan(children: <InlineSpan>[
+              _titleWidget(textStyle),
+              TextSpan(
+                text: " $content",
+                style: textStyle,
+              ),
+            ]),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class OpenNavbarButton extends StatelessWidget {
   final double size;
 
-  NavbarButton({required this.size});
+  OpenNavbarButton({required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -204,14 +260,14 @@ class Link extends StatelessWidget {
   final String text;
   final String url;
   final double height;
-  final TextStyle textStyle;
+  final TextStyle style;
   final TextAlign? textAlign;
 
   Link({
     required this.text,
     required this.url,
     required this.height,
-    required this.textStyle,
+    required this.style,
     this.textAlign,
   });
 
@@ -224,7 +280,7 @@ class Link extends StatelessWidget {
             text: text,
             url: url,
             height: height,
-            textStyle: textStyle,
+            style: style,
           ),
         ],
       ),
@@ -238,7 +294,7 @@ class InlineLink extends WidgetSpan {
     required String text,
     required String url,
     required double height,
-    required TextStyle textStyle,
+    required TextStyle style,
   }) : super(
           child: Container(
             height: height,
@@ -251,11 +307,11 @@ class InlineLink extends WidgetSpan {
                   Set<MaterialState> states,
                 ) {
                   if (states.contains(MaterialState.focused)) {
-                    return textStyle.copyWith(
+                    return style.copyWith(
                       decoration: TextDecoration.underline,
                     );
                   }
-                  return textStyle;
+                  return style;
                 }),
               ),
               child: Text(text),

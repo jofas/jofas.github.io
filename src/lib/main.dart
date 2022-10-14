@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         late final linkHeight;
         late final scrollProgressBarHeight;
         late final scrollProgressBarIconSize;
-        late final navbarButtonSize;
+        late final openNavbarButtonSize;
 
         if (screenSize == ScreenSize.sm) {
           fontSizeBody = 12;
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           linkHeight = 17.25;
           scrollProgressBarHeight = 5;
           scrollProgressBarIconSize = 14;
-          navbarButtonSize = 20;
+          openNavbarButtonSize = 20;
         } else if (screenSize == ScreenSize.md) {
           fontSizeBody = 16;
           fontSizeHeadline = 40;
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
           linkHeight = 22.75;
           scrollProgressBarHeight = 8;
           scrollProgressBarIconSize = 16;
-          navbarButtonSize = 25;
+          openNavbarButtonSize = 25;
         } else {
           fontSizeBody = 20;
           fontSizeHeadline = 60;
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
           linkHeight = 28.5;
           scrollProgressBarHeight = 10;
           scrollProgressBarIconSize = 20;
-          navbarButtonSize = 30;
+          openNavbarButtonSize = 30;
         }
 
         return MaterialApp(
@@ -136,7 +136,7 @@ class MyApp extends StatelessWidget {
             linkHeight: linkHeight,
             scrollProgressBarHeight: scrollProgressBarHeight,
             scrollProgressBarIconSize: scrollProgressBarIconSize,
-            navbarButtonSize: navbarButtonSize,
+            openNavbarButtonSize: openNavbarButtonSize,
           ),
         );
       },
@@ -154,7 +154,7 @@ class MyHomePage extends StatelessWidget {
   final double linkHeight;
   final double scrollProgressBarHeight;
   final double scrollProgressBarIconSize;
-  final double navbarButtonSize;
+  final double openNavbarButtonSize;
 
   MyHomePage({
     required this.width,
@@ -163,7 +163,7 @@ class MyHomePage extends StatelessWidget {
     required this.linkHeight,
     required this.scrollProgressBarHeight,
     required this.scrollProgressBarIconSize,
-    required this.navbarButtonSize,
+    required this.openNavbarButtonSize,
   });
 
   double get _contentWidth {
@@ -404,64 +404,39 @@ class MyHomePage extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.architecture),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Software Architecture. Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.architecture,
+                          title: "Software Architecture.",
+                          content:
+                              "Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.code),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Clean Code. A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.code,
+                          title: "Clean Code.",
+                          content:
+                              "A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.lan),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Distributed Systems. High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.lan,
+                          title: "Distributed Systems.",
+                          content:
+                              "High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.smart_toy),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Machine Learning. The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.smart_toy,
+                          title: "Machine Learning.",
+                          content:
+                              "The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.devices),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Cross Platform. In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.devices,
+                          title: "Cross Platform.",
+                          content:
+                              "In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
                         ),
                       ],
                     ),
@@ -491,92 +466,31 @@ class MyHomePage extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.directions_car),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text.rich(
-                                TextSpan(
-                                  children: <InlineSpan>[
-                                    InlineLink(
-                                      text: "Carpolice.de.",
-                                      url: "https://carpolice.de",
-                                      height: linkHeight,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!,
-                                    ),
-                                    TextSpan(
-                                      text:
-                                          " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system for selling insurance products specially designed for car dealerships.",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.directions_car,
+                          title: "Carpolice.de.",
+                          titleUrl: "https://carpolice.de",
+                          content:
+                              "The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system for selling insurance products specially designed for car dealerships.",
+                          linkHeight: linkHeight,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.school),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text.rich(
-                                TextSpan(
-                                  children: <InlineSpan>[
-                                    InlineLink(
-                                      text: "German Sport Univerity Cologne.",
-                                      url: "https://www.dshs-koeln.de",
-                                      height: linkHeight,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!,
-                                    ),
-                                    TextSpan(
-                                      text:
-                                          " Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.school,
+                          title: "German Sport Univerity Cologne.",
+                          titleUrl: "https://www.dshs-koeln.de",
+                          content:
+                              "Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
+                          linkHeight: linkHeight,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.account_balance),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text.rich(
-                                TextSpan(
-                                  children: <InlineSpan>[
-                                    InlineLink(
-                                      text: "Undisclosed German bank.",
-                                      url:
-                                          "cp_for_loan_approval_prediction.pdf",
-                                      height: linkHeight,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!,
-                                    ),
-                                    TextSpan(
-                                      text:
-                                          " Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.account_balance,
+                          title: "Undisclosed German bank.",
+                          titleUrl: "cp_for_loan_approval_prediction.pdf",
+                          content:
+                              "Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
+                          linkHeight: linkHeight,
                         ),
                       ],
                     ),
@@ -606,92 +520,31 @@ class MyHomePage extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(FontAwesomeIcons.rust),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text.rich(
-                                TextSpan(
-                                  children: <InlineSpan>[
-                                    InlineLink(
-                                      text: "My Rust crates.",
-                                      url: "https://crates.io/users/jofas",
-                                      height: linkHeight,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!,
-                                    ),
-                                    TextSpan(
-                                      text:
-                                          " Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: FontAwesomeIcons.rust,
+                          title: "My Rust crates.",
+                          titleUrl: "https://crates.io/users/jofas",
+                          content:
+                              "Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
+                          linkHeight: linkHeight,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.brush),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text.rich(
-                                TextSpan(
-                                  children: <InlineSpan>[
-                                    InlineLink(
-                                      text: "Mgart.",
-                                      url: "https://github.com/jofas/mgart",
-                                      height: linkHeight,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!,
-                                    ),
-                                    TextSpan(
-                                      text:
-                                          " Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.brush,
+                          title: "Mgart.",
+                          titleUrl: "https://github.com/jofas/mgart",
+                          content:
+                              "Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
+                          linkHeight: linkHeight,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.receipt_long),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text.rich(
-                                TextSpan(
-                                  children: <InlineSpan>[
-                                    InlineLink(
-                                      text: "BAREKEEPER.",
-                                      url:
-                                          "https://github.com/jofas/BAREKEEPER",
-                                      height: linkHeight,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!,
-                                    ),
-                                    TextSpan(
-                                      text:
-                                          " As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.receipt_long,
+                          title: "BAREKEEPER.",
+                          titleUrl: "https://github.com/jofas/BAREKEEPER",
+                          content:
+                              "As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
+                          linkHeight: linkHeight,
                         ),
                       ],
                     ),
@@ -721,52 +574,32 @@ class MyHomePage extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.self_improvement),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Meditation. I meditate to find truth and experience freedom, calmness and peace of mind.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.self_improvement,
+                          title: "Meditation.",
+                          content:
+                              "I meditate to find truth and experience freedom, calmness and peace of mind.",
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.science),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Fermentation. Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.science,
+                          title: "Fermentation.",
+                          content:
+                              "Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.hiking),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Long distance hiking. My goal is to one day walk a 2000 mile trail.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.hiking,
+                          title: "Long distance hiking.",
+                          content:
+                              "My goal is to one day walk a 2000 mile trail.",
                         ),
                         Spacer.paragraphSpace,
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.fitness_center),
-                            Spacer.tileSpace,
-                            Expanded(
-                              child: Text(
-                                "Olympic weightlifting. Few sports combine strength, speed and overall athleticism in such an aesthetic and rewarding way.",
-                              ),
-                            ),
-                          ],
+                        Tile(
+                          icon: Icons.fitness_center,
+                          title: "Olympic weightlifting.",
+                          content:
+                              "Few sports combine strength, speed and overall athleticism in such an aesthetic and rewarding way.",
                         ),
                       ],
                     ),
@@ -810,8 +643,7 @@ class MyHomePage extends StatelessWidget {
                                   url:
                                       "mailto://jonas@fassbender.dev?subject=Hi%20There!",
                                   height: linkHeight,
-                                  textStyle:
-                                      Theme.of(context).textTheme.bodyText2!,
+                                  style: Theme.of(context).textTheme.bodyText2!,
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -846,8 +678,8 @@ class MyHomePage extends StatelessWidget {
           Positioned(
             left: 5,
             top: 10,
-            child: NavbarButton(
-              size: navbarButtonSize,
+            child: OpenNavbarButton(
+              size: openNavbarButtonSize,
             ),
           ),
           Positioned(
