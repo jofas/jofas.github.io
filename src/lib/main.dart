@@ -31,6 +31,9 @@ class MyApp extends StatelessWidget {
         late final fontSizeHeadline;
         late final iconSize;
         late final textButtonSize;
+        late final headlineSpace;
+        late final paragraphSpace;
+        late final contentPadding;
         late final linkHeight;
         late final scrollProgressBarHeight;
         late final scrollProgressBarIconSize;
@@ -43,6 +46,9 @@ class MyApp extends StatelessWidget {
           fontSizeHeadline = 24;
           iconSize = 30;
           textButtonSize = 8;
+          headlineSpace = 10;
+          contentPadding = 50;
+          paragraphSpace = 20;
           linkHeight = 17.25;
           scrollProgressBarHeight = 5;
           scrollProgressBarIconSize = 14;
@@ -54,6 +60,9 @@ class MyApp extends StatelessWidget {
           fontSizeHeadline = 40;
           iconSize = 50;
           textButtonSize = 10;
+          headlineSpace = 20;
+          paragraphSpace = 30;
+          contentPadding = 60;
           linkHeight = 22.75;
           scrollProgressBarHeight = 8;
           scrollProgressBarIconSize = 16;
@@ -65,6 +74,9 @@ class MyApp extends StatelessWidget {
           fontSizeHeadline = 60;
           iconSize = 70;
           textButtonSize = 12;
+          headlineSpace = 30;
+          paragraphSpace = 40;
+          contentPadding = 70;
           linkHeight = 28.5;
           scrollProgressBarHeight = 10;
           scrollProgressBarIconSize = 20;
@@ -149,6 +161,9 @@ class MyApp extends StatelessWidget {
             width: viewport.maxWidth,
             height: viewport.maxHeight,
             pageController: pageController,
+            headlineSpace: headlineSpace,
+            paragraphSpace: paragraphSpace,
+            contentPadding: contentPadding,
             linkHeight: linkHeight,
             scrollProgressBarHeight: scrollProgressBarHeight,
             scrollProgressBarIconSize: scrollProgressBarIconSize,
@@ -169,6 +184,9 @@ class MyHomePage extends StatelessWidget {
   final PageController pageController;
   final double width, height;
 
+  final double headlineSpace;
+  final double paragraphSpace;
+  final double contentPadding;
   final double linkHeight;
   final double scrollProgressBarHeight;
   final double scrollProgressBarIconSize;
@@ -180,6 +198,9 @@ class MyHomePage extends StatelessWidget {
     required this.width,
     required this.height,
     required this.pageController,
+    required this.headlineSpace,
+    required this.paragraphSpace,
+    required this.contentPadding,
     required this.linkHeight,
     required this.scrollProgressBarHeight,
     required this.scrollProgressBarIconSize,
@@ -194,6 +215,14 @@ class MyHomePage extends StatelessWidget {
 
   double get _contentHeight {
     return height - scrollProgressBarHeight * 2 - 20;
+  }
+
+  Widget _headlineSpace() {
+    return Spacer(height: headlineSpace);
+  }
+
+  Widget _paragraphSpace() {
+    return Spacer(height: paragraphSpace);
   }
 
   @override
@@ -322,6 +351,9 @@ class MyHomePage extends StatelessWidget {
                   SingleChildPageContent(
                     width: _contentWidth,
                     height: _contentHeight,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: contentPadding,
+                    ),
                     child: AnimatedLogo(),
                   ),
                 ],
@@ -366,23 +398,26 @@ class MyHomePage extends StatelessWidget {
                   PageContent(
                     width: _contentWidth,
                     height: _contentHeight,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: contentPadding,
+                    ),
                     children: <Widget>[
                       Text(
                         "Jonas Fassbender",
                         style: Theme.of(context).textTheme.headline2,
                         textAlign: TextAlign.center,
                       ),
-                      Spacer.headlineSpace,
+                      _headlineSpace(),
                       Text(
                         "Software engineer and freelancer. In love with the craft.",
                         textAlign: TextAlign.center,
                       ),
-                      Spacer.paragraphSpace,
+                      _paragraphSpace(),
                       Text(
                         "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
                         textAlign: TextAlign.center,
                       ),
-                      Spacer.paragraphSpace,
+                      _paragraphSpace(),
                       Text(
                         "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
                         textAlign: TextAlign.center,
@@ -394,46 +429,49 @@ class MyHomePage extends StatelessWidget {
               PageContent(
                 width: _contentWidth,
                 height: _contentHeight,
+                padding: EdgeInsets.symmetric(
+                  horizontal: contentPadding,
+                ),
                 children: <Widget>[
                   Text(
                     "Key Competencies",
                     style: Theme.of(context).textTheme.headline2,
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.headlineSpace,
+                  _headlineSpace(),
                   Text(
                     "What I can do to help you successfully realize your idea and mold it into software:",
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.architecture,
                     title: "Software Architecture.",
                     content:
                         "Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.code,
                     title: "Clean Code.",
                     content:
                         "A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.lan,
                     title: "Distributed Systems.",
                     content:
                         "High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.smart_toy,
                     title: "Machine Learning.",
                     content:
                         "The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.devices,
                     title: "Cross Platform.",
@@ -445,18 +483,21 @@ class MyHomePage extends StatelessWidget {
               PageContent(
                 width: _contentWidth,
                 height: _contentHeight,
+                padding: EdgeInsets.symmetric(
+                  horizontal: contentPadding,
+                ),
                 children: <Widget>[
                   Text(
                     "Professional Projects",
                     style: Theme.of(context).textTheme.headline2,
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.headlineSpace,
+                  _headlineSpace(),
                   Text(
                     "The main projects I am working on or have worked on as a freelancing software engineer:",
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.directions_car,
                     title: "Carpolice.de.",
@@ -465,7 +506,7 @@ class MyHomePage extends StatelessWidget {
                         "The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system for selling insurance products specially designed for car dealerships.",
                     linkHeight: linkHeight,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.school,
                     title: "German Sport Univerity Cologne.",
@@ -474,7 +515,7 @@ class MyHomePage extends StatelessWidget {
                         "Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
                     linkHeight: linkHeight,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.account_balance,
                     title: "Undisclosed German bank.",
@@ -488,18 +529,21 @@ class MyHomePage extends StatelessWidget {
               PageContent(
                 width: _contentWidth,
                 height: _contentHeight,
+                padding: EdgeInsets.symmetric(
+                  horizontal: contentPadding,
+                ),
                 children: <Widget>[
                   Text(
                     "Open Source",
                     style: Theme.of(context).textTheme.headline2,
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.headlineSpace,
+                  _headlineSpace(),
                   Text(
                     "Open source projects I am currently working on:",
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: FontAwesomeIcons.rust,
                     title: "My Rust crates.",
@@ -508,7 +552,7 @@ class MyHomePage extends StatelessWidget {
                         "Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
                     linkHeight: linkHeight,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.brush,
                     title: "Mgart.",
@@ -517,7 +561,7 @@ class MyHomePage extends StatelessWidget {
                         "Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
                     linkHeight: linkHeight,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.receipt_long,
                     title: "BAREKEEPER.",
@@ -531,38 +575,41 @@ class MyHomePage extends StatelessWidget {
               PageContent(
                 width: _contentWidth,
                 height: _contentHeight,
+                padding: EdgeInsets.symmetric(
+                  horizontal: contentPadding,
+                ),
                 children: <Widget>[
                   Text(
                     "Personal Pursuits",
                     style: Theme.of(context).textTheme.headline2,
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.headlineSpace,
+                  _headlineSpace(),
                   Text(
                     "Besides honing my skills as a software engineer and professional I particularly enjoy the following activities:",
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.self_improvement,
                     title: "Meditation.",
                     content:
                         "I meditate to find truth and experience freedom, calmness and peace of mind.",
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.science,
                     title: "Fermentation.",
                     content:
                         "Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.hiking,
                     title: "Long distance hiking.",
                     content: "My goal is to one day walk a 2000 mile trail.",
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Tile(
                     icon: Icons.fitness_center,
                     title: "Olympic weightlifting.",
@@ -574,23 +621,26 @@ class MyHomePage extends StatelessWidget {
               PageContent(
                 width: _contentWidth,
                 height: _contentHeight,
+                padding: EdgeInsets.symmetric(
+                  horizontal: contentPadding,
+                ),
                 children: <Widget>[
                   Text(
                     "Contact",
                     style: Theme.of(context).textTheme.headline2,
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.headlineSpace,
+                  _headlineSpace(),
                   Text(
                     "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Text(
                     "If you got something funny or wholesome and wish to share it with me, do so as well.",
                     textAlign: TextAlign.center,
                   ),
-                  Spacer.paragraphSpace,
+                  _paragraphSpace(),
                   Link(
                     text: "jonas@fassbender.dev",
                     url: "mailto://jonas@fassbender.dev?subject=Hi%20There!",

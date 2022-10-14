@@ -96,11 +96,13 @@ class _JumpAnimationState extends State<JumpAnimation>
 
 class SingleChildPageContent extends StatelessWidget {
   final double width, height;
+  final EdgeInsets padding;
   final Widget child;
 
   SingleChildPageContent({
     required this.width,
     required this.height,
+    required this.padding,
     required this.child,
   });
 
@@ -114,7 +116,7 @@ class SingleChildPageContent extends StatelessWidget {
           maxHeight: height,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: padding,
           child: Center(
             child: child,
           ),
@@ -126,12 +128,14 @@ class SingleChildPageContent extends StatelessWidget {
 
 class PageContent extends StatelessWidget {
   final double width, height;
+  final EdgeInsets padding;
   final List<Widget> children;
   final Widget? footer;
 
   PageContent({
     required this.width,
     required this.height,
+    required this.padding,
     required this.children,
     this.footer,
   });
@@ -146,7 +150,7 @@ class PageContent extends StatelessWidget {
           maxHeight: height,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: padding,
           child: Column(
             children: <Widget>[
               Expanded(
