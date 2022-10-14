@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -9,6 +11,21 @@ enum ScreenSize {
   md,
   lg,
   // xl, 2xl currently not used
+}
+
+ScreenSize screenSizeFromViewport(BoxConstraints viewport) {
+  final minScreenSize = math.min(
+    viewport.maxWidth,
+    viewport.maxHeight,
+  );
+
+  if (minScreenSize <= 640) {
+    return ScreenSize.sm;
+  } else if (minScreenSize <= 768) {
+    return ScreenSize.md;
+  } else {
+    return ScreenSize.lg;
+  }
 }
 
 class Spacer extends StatelessWidget {
@@ -77,21 +94,10 @@ class _JumpAnimationState extends State<JumpAnimation>
   }
 }
 
-class OpenMenuButton extends StatelessWidget {
-  final ScreenSize screenSize;
+class NavbarButton extends StatelessWidget {
+  final double size;
 
-  OpenMenuButton({required this.screenSize});
-
-  double get _iconSize {
-    switch (screenSize) {
-      case ScreenSize.sm:
-        return 20;
-      case ScreenSize.md:
-        return 25;
-      case ScreenSize.lg:
-        return 30;
-    }
-  }
+  NavbarButton({required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +105,7 @@ class OpenMenuButton extends StatelessWidget {
       child: Icon(
         Icons.menu,
         color: Colors.white,
-        size: _iconSize,
+        size: size,
       ),
       onPressed: () {
         Scaffold.of(context).openDrawer();
@@ -197,14 +203,14 @@ class _NavButtonState extends State<NavButton> {
 class Link extends StatelessWidget {
   final String text;
   final String url;
-  final ScreenSize screenSize;
+  final double height;
   final TextStyle textStyle;
   final TextAlign? textAlign;
 
   Link({
     required this.text,
     required this.url,
-    required this.screenSize,
+    required this.height,
     required this.textStyle,
     this.textAlign,
   });
@@ -217,7 +223,7 @@ class Link extends StatelessWidget {
           InlineLink(
             text: text,
             url: url,
-            screenSize: screenSize,
+            height: height,
             textStyle: textStyle,
           ),
         ],
@@ -231,11 +237,11 @@ class InlineLink extends WidgetSpan {
   InlineLink({
     required String text,
     required String url,
-    required ScreenSize screenSize,
+    required double height,
     required TextStyle textStyle,
   }) : super(
           child: Container(
-            height: _height(screenSize),
+            height: height,
             child: TextButton(
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets?>(
@@ -259,29 +265,19 @@ class InlineLink extends WidgetSpan {
             ),
           ),
         );
-
-  static double _height(ScreenSize screenSize) {
-    switch (screenSize) {
-      case ScreenSize.sm:
-        return 17.25;
-      case ScreenSize.md:
-        return 22.75;
-      case ScreenSize.lg:
-        return 28.5;
-    }
-  }
 }
 
 class ScrollProgressBar extends StatefulWidget {
   final PageController controller;
   final int pages;
-  final ScreenSize screenSize;
+  final double height, iconSize;
 
   ScrollProgressBar({
     super.key,
     required this.controller,
     required this.pages,
-    required this.screenSize,
+    required this.height,
+    required this.iconSize,
   });
 
   @override
@@ -320,38 +316,16 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
     );
   }
 
-  double get _iconSize {
-    switch (widget.screenSize) {
-      case ScreenSize.sm:
-        return 14;
-      case ScreenSize.md:
-        return 16;
-      case ScreenSize.lg:
-        return 20;
-    }
-  }
-
-  double get _progressBarHeight {
-    switch (widget.screenSize) {
-      case ScreenSize.sm:
-        return 5;
-      case ScreenSize.md:
-        return 8;
-      case ScreenSize.lg:
-        return 10;
-    }
-  }
-
   Widget get _prevPageButton {
     return TextButton(
-      child: Icon(Icons.expand_less, size: _iconSize),
+      child: Icon(Icons.expand_less, size: widget.iconSize),
       onPressed: _prevPage,
     );
   }
 
   Widget get _nextPageButton {
     final button = TextButton(
-      child: Icon(Icons.expand_more, size: _iconSize),
+      child: Icon(Icons.expand_more, size: widget.iconSize),
       onPressed: _nextPage,
     );
 
@@ -383,7 +357,7 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
                   value: value,
                   backgroundColor: Colors.white,
                   color: CustomColors.red[300],
-                  minHeight: _progressBarHeight,
+                  minHeight: widget.height,
                 );
               },
             ),

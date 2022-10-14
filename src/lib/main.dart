@@ -25,39 +25,44 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewport) {
-        final minScreenSize = math.min(
-          viewport.maxWidth,
-          viewport.maxHeight,
-        );
-
-        late final screenSize;
+        final screenSize = screenSizeFromViewport(viewport);
 
         late final fontSizeBody;
         late final fontSizeHeadline;
         late final iconSize;
         late final textButtonSize;
+        late final linkHeight;
+        late final scrollProgressBarHeight;
+        late final scrollProgressBarIconSize;
+        late final navbarButtonSize;
 
-        if (minScreenSize <= 640) {
-          screenSize = ScreenSize.sm;
-
+        if (screenSize == ScreenSize.sm) {
           fontSizeBody = 12;
           fontSizeHeadline = 24;
           iconSize = 30;
           textButtonSize = 8;
-        } else if (minScreenSize <= 768) {
-          screenSize = ScreenSize.md;
-
+          linkHeight = 17.25;
+          scrollProgressBarHeight = 5;
+          scrollProgressBarIconSize = 14;
+          navbarButtonSize = 20;
+        } else if (screenSize == ScreenSize.md) {
           fontSizeBody = 16;
           fontSizeHeadline = 40;
           iconSize = 50;
           textButtonSize = 10;
+          linkHeight = 22.75;
+          scrollProgressBarHeight = 8;
+          scrollProgressBarIconSize = 16;
+          navbarButtonSize = 25;
         } else {
-          screenSize = ScreenSize.lg;
-
           fontSizeBody = 20;
           fontSizeHeadline = 60;
           iconSize = 70;
           textButtonSize = 12;
+          linkHeight = 28.5;
+          scrollProgressBarHeight = 10;
+          scrollProgressBarIconSize = 20;
+          navbarButtonSize = 30;
         }
 
         return MaterialApp(
@@ -125,10 +130,13 @@ class MyApp extends StatelessWidget {
             ),
           ),
           home: MyHomePage(
-            screenSize: screenSize,
             width: viewport.maxWidth,
             height: viewport.maxHeight,
             pageController: pageController,
+            linkHeight: linkHeight,
+            scrollProgressBarHeight: scrollProgressBarHeight,
+            scrollProgressBarIconSize: scrollProgressBarIconSize,
+            navbarButtonSize: navbarButtonSize,
           ),
         );
       },
@@ -140,15 +148,22 @@ class MyHomePage extends StatelessWidget {
   static const int NUM_PAGES = 7;
   static const double MAX_CONTENT_WIDTH = 1200;
 
-  final ScreenSize screenSize;
-  final double width, height;
   final PageController pageController;
+  final double width, height;
+
+  final double linkHeight;
+  final double scrollProgressBarHeight;
+  final double scrollProgressBarIconSize;
+  final double navbarButtonSize;
 
   MyHomePage({
-    required this.screenSize,
     required this.width,
     required this.height,
     required this.pageController,
+    required this.linkHeight,
+    required this.scrollProgressBarHeight,
+    required this.scrollProgressBarIconSize,
+    required this.navbarButtonSize,
   });
 
   double get _contentWidth {
@@ -487,7 +502,7 @@ class MyHomePage extends StatelessWidget {
                                     InlineLink(
                                       text: "Carpolice.de.",
                                       url: "https://carpolice.de",
-                                      screenSize: screenSize,
+                                      height: linkHeight,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .bodyText2!,
@@ -516,7 +531,7 @@ class MyHomePage extends StatelessWidget {
                                     InlineLink(
                                       text: "German Sport Univerity Cologne.",
                                       url: "https://www.dshs-koeln.de",
-                                      screenSize: screenSize,
+                                      height: linkHeight,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .bodyText2!,
@@ -546,7 +561,7 @@ class MyHomePage extends StatelessWidget {
                                       text: "Undisclosed German bank.",
                                       url:
                                           "cp_for_loan_approval_prediction.pdf",
-                                      screenSize: screenSize,
+                                      height: linkHeight,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .bodyText2!,
@@ -602,7 +617,7 @@ class MyHomePage extends StatelessWidget {
                                     InlineLink(
                                       text: "My Rust crates.",
                                       url: "https://crates.io/users/jofas",
-                                      screenSize: screenSize,
+                                      height: linkHeight,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .bodyText2!,
@@ -631,7 +646,7 @@ class MyHomePage extends StatelessWidget {
                                     InlineLink(
                                       text: "Mgart.",
                                       url: "https://github.com/jofas/mgart",
-                                      screenSize: screenSize,
+                                      height: linkHeight,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .bodyText2!,
@@ -661,7 +676,7 @@ class MyHomePage extends StatelessWidget {
                                       text: "BAREKEEPER.",
                                       url:
                                           "https://github.com/jofas/BAREKEEPER",
-                                      screenSize: screenSize,
+                                      height: linkHeight,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .bodyText2!,
@@ -794,7 +809,7 @@ class MyHomePage extends StatelessWidget {
                                   text: "jonas@fassbender.dev",
                                   url:
                                       "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                                  screenSize: screenSize,
+                                  height: linkHeight,
                                   textStyle:
                                       Theme.of(context).textTheme.bodyText2!,
                                   textAlign: TextAlign.center,
@@ -831,8 +846,8 @@ class MyHomePage extends StatelessWidget {
           Positioned(
             left: 5,
             top: 10,
-            child: OpenMenuButton(
-              screenSize: screenSize,
+            child: NavbarButton(
+              size: navbarButtonSize,
             ),
           ),
           Positioned(
@@ -873,7 +888,8 @@ class MyHomePage extends StatelessWidget {
               child: ScrollProgressBar(
                 controller: pageController,
                 pages: NUM_PAGES,
-                screenSize: screenSize,
+                height: scrollProgressBarHeight,
+                iconSize: scrollProgressBarIconSize,
               ),
             ),
           ),

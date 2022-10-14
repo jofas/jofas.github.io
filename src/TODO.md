@@ -82,7 +82,7 @@
 
 * [x] layout: content size > 90%
 
-* [ ] remove layout computation from widgets (ScrollProgressBar, Link, OpenMenuButton)
+* [x] remove layout computation from widgets 
 
 * [ ] add xl and 2xl layouts
 
