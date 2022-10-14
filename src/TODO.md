@@ -82,9 +82,11 @@
 
 * [x] layout: content size > 90%
 
-* [ ] abstract code into proper classes
+* [ ] remove layout computation from widgets (ScrollProgressBar, Link, OpenMenuButton)
 
-* [ ] add xl and 2xl layouts (ScrollProgressBar, Link, OpenMenuButton!)
+* [ ] add xl and 2xl layouts
+
+* [ ] abstract code into proper classes
 
 * [ ] content: about: add paragraph about what this website is
 

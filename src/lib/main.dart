@@ -494,7 +494,7 @@ class MyHomePage extends StatelessWidget {
                                     ),
                                     TextSpan(
                                       text:
-                                          " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system with insurance products specially designed for car dealerships.",
+                                          " The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system for selling insurance products specially designed for car dealerships.",
                                       style:
                                           Theme.of(context).textTheme.bodyText2,
                                     ),
