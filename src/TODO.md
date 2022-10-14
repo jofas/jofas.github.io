@@ -96,7 +96,7 @@
 
 * [x] content: about: add paragraph about what this website is
 
-* [ ] content: values (NUM_PAGES, navbar)
+* [x] content: values 
 
 * [ ] style: background
 
