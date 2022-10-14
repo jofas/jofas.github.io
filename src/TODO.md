@@ -90,7 +90,7 @@
 
 * [ ] layout: navbar: responsive icon padding + size
 
-* [ ] layout: spacing responsive
+* [ ] layout: paragraph and title spacing responsive
 
 * [ ] add xl and 2xl layouts
 

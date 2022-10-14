@@ -129,6 +129,14 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+          scrollBehavior: ScrollBehavior().copyWith(
+            scrollbars: false,
+            dragDevices: {
+              PointerDeviceKind.touch,
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.stylus,
+            },
+          ),
           home: MyHomePage(
             width: viewport.maxWidth,
             height: viewport.maxHeight,
