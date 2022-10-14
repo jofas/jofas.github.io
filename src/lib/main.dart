@@ -178,8 +178,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  static const int NUM_PAGES = 7;
-  static const double MAX_CONTENT_WIDTH = 1200;
+  static const int NUM_PAGES = 8;
+  static const double MAX_CONTENT_WIDTH = 1536;
 
   final PageController pageController;
   final double width, height;
@@ -258,23 +258,28 @@ class MyHomePage extends StatelessWidget {
               controller: pageController,
             ),
             NavButton(
-              text: "PROFESSIONAL PROJECTS",
+              text: "CORE VALUES",
               page: 3,
               controller: pageController,
             ),
             NavButton(
-              text: "OPEN SOURCE",
+              text: "PROFESSIONAL PROJECTS",
               page: 4,
               controller: pageController,
             ),
             NavButton(
-              text: "PERSONAL PURSUITS",
+              text: "OPEN SOURCE",
               page: 5,
               controller: pageController,
             ),
             NavButton(
-              text: "CONTACT",
+              text: "PERSONAL PURSUITS",
               page: 6,
+              controller: pageController,
+            ),
+            NavButton(
+              text: "CONTACT",
+              page: 7,
               controller: pageController,
             ),
           ],
@@ -501,6 +506,49 @@ class MyHomePage extends StatelessWidget {
                     title: "Cross Platform.",
                     content:
                         "In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
+                  ),
+                ],
+              ),
+              PageContent(
+                width: _contentWidth,
+                height: _contentHeight,
+                padding: EdgeInsets.symmetric(
+                  horizontal: contentPadding,
+                ),
+                children: <Widget>[
+                  Text(
+                    "Core Values",
+                    style: Theme.of(context).textTheme.headline2,
+                    textAlign: TextAlign.center,
+                  ),
+                  _headlineSpace(),
+                  Text(
+                    "Software engineering is an idealistic endeavor. I became a freelancer, partly because I didn't want to compromise on what I think software should be. To create synergies and subsequently an environment that fosters collaboration and creativity, core values must match.",
+                    textAlign: TextAlign.center,
+                  ),
+                  _paragraphSpace(),
+                  Tile(
+                    icon: Icons.spa,
+                    title: "Care.",
+                    content: "",
+                  ),
+                  _paragraphSpace(),
+                  Tile(
+                    icon: Icons.lightbulb,
+                    title: "Curiousness.",
+                    content: "",
+                  ),
+                  _paragraphSpace(),
+                  Tile(
+                    icon: Icons.data_object,
+                    title: "Minimalism.",
+                    content: "",
+                  ),
+                  _paragraphSpace(),
+                  Tile(
+                    icon: Icons.done,
+                    title: "Thoroughness.",
+                    content: "",
                   ),
                 ],
               ),
