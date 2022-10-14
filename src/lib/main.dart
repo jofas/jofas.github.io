@@ -290,18 +290,10 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                       */
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: _contentWidth,
-                        maxHeight: height - 30,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 50),
-                        child: AnimatedLogo(),
-                      ),
-                    ),
+                  SingleChildPageContent(
+                    width: _contentWidth,
+                    height: height - 30,
+                    child: AnimatedLogo(),
                   ),
                 ],
               ),
@@ -342,335 +334,259 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                       */
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: _contentWidth,
-                        maxHeight: height - 30,
+                  PageContent(
+                    width: _contentWidth,
+                    height: height - 30,
+                    children: <Widget>[
+                      Text(
+                        "Jonas Fassbender",
+                        style: Theme.of(context).textTheme.headline2,
+                        textAlign: TextAlign.center,
                       ),
-                      child: Center(
-                        child: ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 50),
-                          shrinkWrap: true,
-                          children: <Widget>[
-                            Text(
-                              "Jonas Fassbender",
-                              style: Theme.of(context).textTheme.headline2,
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.headlineSpace,
-                            Text(
-                              "Software engineer and freelancer. In love with the craft.",
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.paragraphSpace,
-                            Text(
-                              "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer.paragraphSpace,
-                            Text(
-                              "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
+                      Spacer.headlineSpace,
+                      Text(
+                        "Software engineer and freelancer. In love with the craft.",
+                        textAlign: TextAlign.center,
                       ),
-                    ),
+                      Spacer.paragraphSpace,
+                      Text(
+                        "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer.paragraphSpace,
+                      Text(
+                        "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: _contentWidth,
-                    maxHeight: height - 30,
+              PageContent(
+                width: _contentWidth,
+                height: height - 30,
+                children: <Widget>[
+                  Text(
+                    "Key Competencies",
+                    style: Theme.of(context).textTheme.headline2,
+                    textAlign: TextAlign.center,
                   ),
-                  child: Center(
-                    child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      shrinkWrap: true,
-                      children: <Widget>[
-                        Text(
-                          "Key Competencies",
-                          style: Theme.of(context).textTheme.headline2,
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.headlineSpace,
-                        Text(
-                          "What I can do to help you successfully realize your idea and mold it into software:",
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.architecture,
-                          title: "Software Architecture.",
-                          content:
-                              "Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.code,
-                          title: "Clean Code.",
-                          content:
-                              "A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.lan,
-                          title: "Distributed Systems.",
-                          content:
-                              "High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.smart_toy,
-                          title: "Machine Learning.",
-                          content:
-                              "The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.devices,
-                          title: "Cross Platform.",
-                          content:
-                              "In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
-                        ),
-                      ],
-                    ),
+                  Spacer.headlineSpace,
+                  Text(
+                    "What I can do to help you successfully realize your idea and mold it into software:",
+                    textAlign: TextAlign.center,
                   ),
-                ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.architecture,
+                    title: "Software Architecture.",
+                    content:
+                        "Microservices or a monolith? On-premises, cloud, hybrid or multi-cloud? Which 3rd-party vendors or open source technologies fit best? Together we will figure that out. We will deconstruct your problem using Domain Driven Design and create a scalable and maintainable application for you.",
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.code,
+                    title: "Clean Code.",
+                    content:
+                        "A maintainable software project that will run for a long time may start with a good, domain-driven architecture. But in the end, it's about the implementation. Let's make the internet a tiny bit better by writing well-tested and easy-to-read code to prevent the next big data leak.",
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.lan,
+                    title: "Distributed Systems.",
+                    content:
+                        "High performance and high availability computing is fun. Unfortunately, distributed systems are still very complex. It's hard to figure out communication, synchronization and fault tolerance. Together we will scale up your system while keeping track of all the moving parts.",
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.smart_toy,
+                    title: "Machine Learning.",
+                    content:
+                        "The idea of teaching computers how to solve complex tasks from data is very alluring and shows promising results. Having experience with supervised machine learning and conformal prediction on real-world data sets, I'd love to teach computers to make descisions based on your data.",
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.devices,
+                    title: "Cross Platform.",
+                    content:
+                        "In the end, software is all about people. And most people interact with computers through a graphical user interface. Having experience with Flutter and Material Design in production, I can help you get your Flutter app off the ground and reach your clients on every device.",
+                  ),
+                ],
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: _contentWidth,
-                    maxHeight: height - 30,
+              PageContent(
+                width: _contentWidth,
+                height: height - 30,
+                children: <Widget>[
+                  Text(
+                    "Professional Projects",
+                    style: Theme.of(context).textTheme.headline2,
+                    textAlign: TextAlign.center,
                   ),
-                  child: Center(
-                    child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      shrinkWrap: true,
-                      children: <Widget>[
-                        Text(
-                          "Professional Projects",
-                          style: Theme.of(context).textTheme.headline2,
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.headlineSpace,
-                        Text(
-                          "The main projects I am working on or have worked on as a freelancing software engineer:",
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.directions_car,
-                          title: "Carpolice.de.",
-                          titleUrl: "https://carpolice.de",
-                          content:
-                              "The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system for selling insurance products specially designed for car dealerships.",
-                          linkHeight: linkHeight,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.school,
-                          title: "German Sport Univerity Cologne.",
-                          titleUrl: "https://www.dshs-koeln.de",
-                          content:
-                              "Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
-                          linkHeight: linkHeight,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.account_balance,
-                          title: "Undisclosed German bank.",
-                          titleUrl: "cp_for_loan_approval_prediction.pdf",
-                          content:
-                              "Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
-                          linkHeight: linkHeight,
-                        ),
-                      ],
-                    ),
+                  Spacer.headlineSpace,
+                  Text(
+                    "The main projects I am working on or have worked on as a freelancing software engineer:",
+                    textAlign: TextAlign.center,
                   ),
-                ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.directions_car,
+                    title: "Carpolice.de.",
+                    titleUrl: "https://carpolice.de",
+                    content:
+                        "The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system for selling insurance products specially designed for car dealerships.",
+                    linkHeight: linkHeight,
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.school,
+                    title: "German Sport Univerity Cologne.",
+                    titleUrl: "https://www.dshs-koeln.de",
+                    content:
+                        "Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
+                    linkHeight: linkHeight,
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.account_balance,
+                    title: "Undisclosed German bank.",
+                    titleUrl: "cp_for_loan_approval_prediction.pdf",
+                    content:
+                        "Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
+                    linkHeight: linkHeight,
+                  ),
+                ],
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: _contentWidth,
-                    maxHeight: height - 30,
+              PageContent(
+                width: _contentWidth,
+                height: height - 30,
+                children: <Widget>[
+                  Text(
+                    "Open Source",
+                    style: Theme.of(context).textTheme.headline2,
+                    textAlign: TextAlign.center,
                   ),
-                  child: Center(
-                    child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      shrinkWrap: true,
-                      children: <Widget>[
-                        Text(
-                          "Open Source",
-                          style: Theme.of(context).textTheme.headline2,
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.headlineSpace,
-                        Text(
-                          "Open source projects I am currently working on:",
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: FontAwesomeIcons.rust,
-                          title: "My Rust crates.",
-                          titleUrl: "https://crates.io/users/jofas",
-                          content:
-                              "Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
-                          linkHeight: linkHeight,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.brush,
-                          title: "Mgart.",
-                          titleUrl: "https://github.com/jofas/mgart",
-                          content:
-                              "Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
-                          linkHeight: linkHeight,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.receipt_long,
-                          title: "BAREKEEPER.",
-                          titleUrl: "https://github.com/jofas/BAREKEEPER",
-                          content:
-                              "As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
-                          linkHeight: linkHeight,
-                        ),
-                      ],
-                    ),
+                  Spacer.headlineSpace,
+                  Text(
+                    "Open source projects I am currently working on:",
+                    textAlign: TextAlign.center,
                   ),
-                ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: FontAwesomeIcons.rust,
+                    title: "My Rust crates.",
+                    titleUrl: "https://crates.io/users/jofas",
+                    content:
+                        "Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
+                    linkHeight: linkHeight,
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.brush,
+                    title: "Mgart.",
+                    titleUrl: "https://github.com/jofas/mgart",
+                    content:
+                        "Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
+                    linkHeight: linkHeight,
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.receipt_long,
+                    title: "BAREKEEPER.",
+                    titleUrl: "https://github.com/jofas/BAREKEEPER",
+                    content:
+                        "As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
+                    linkHeight: linkHeight,
+                  ),
+                ],
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: _contentWidth,
-                    maxHeight: height - 30,
+              PageContent(
+                width: _contentWidth,
+                height: height - 30,
+                children: <Widget>[
+                  Text(
+                    "Personal Pursuits",
+                    style: Theme.of(context).textTheme.headline2,
+                    textAlign: TextAlign.center,
                   ),
-                  child: Center(
-                    child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      shrinkWrap: true,
-                      children: <Widget>[
-                        Text(
-                          "Personal Pursuits",
-                          style: Theme.of(context).textTheme.headline2,
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.headlineSpace,
-                        Text(
-                          "Besides honing my skills as a software engineer and professional I particularly enjoy the following activities:",
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.self_improvement,
-                          title: "Meditation.",
-                          content:
-                              "I meditate to find truth and experience freedom, calmness and peace of mind.",
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.science,
-                          title: "Fermentation.",
-                          content:
-                              "Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.hiking,
-                          title: "Long distance hiking.",
-                          content:
-                              "My goal is to one day walk a 2000 mile trail.",
-                        ),
-                        Spacer.paragraphSpace,
-                        Tile(
-                          icon: Icons.fitness_center,
-                          title: "Olympic weightlifting.",
-                          content:
-                              "Few sports combine strength, speed and overall athleticism in such an aesthetic and rewarding way.",
-                        ),
-                      ],
-                    ),
+                  Spacer.headlineSpace,
+                  Text(
+                    "Besides honing my skills as a software engineer and professional I particularly enjoy the following activities:",
+                    textAlign: TextAlign.center,
                   ),
-                ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.self_improvement,
+                    title: "Meditation.",
+                    content:
+                        "I meditate to find truth and experience freedom, calmness and peace of mind.",
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.science,
+                    title: "Fermentation.",
+                    content:
+                        "Kimchi, sauerkraut, hot sauce or veggies. There is no greater joy than eating a slice of freshly made sourdough bread.",
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.hiking,
+                    title: "Long distance hiking.",
+                    content: "My goal is to one day walk a 2000 mile trail.",
+                  ),
+                  Spacer.paragraphSpace,
+                  Tile(
+                    icon: Icons.fitness_center,
+                    title: "Olympic weightlifting.",
+                    content:
+                        "Few sports combine strength, speed and overall athleticism in such an aesthetic and rewarding way.",
+                  ),
+                ],
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: _contentWidth,
-                    maxHeight: height - 30,
+              PageContent(
+                width: _contentWidth,
+                height: height - 30,
+                children: <Widget>[
+                  Text(
+                    "Contact",
+                    style: Theme.of(context).textTheme.headline2,
+                    textAlign: TextAlign.center,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: Center(
-                            child: ListView(
-                              shrinkWrap: true,
-                              children: <Widget>[
-                                Text(
-                                  "Contact",
-                                  style: Theme.of(context).textTheme.headline2,
-                                  textAlign: TextAlign.center,
-                                ),
-                                Spacer.headlineSpace,
-                                Text(
-                                  "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
-                                  textAlign: TextAlign.center,
-                                ),
-                                Spacer.paragraphSpace,
-                                Text(
-                                  "If you got something funny or wholesome and wish to share it with me, do so as well.",
-                                  textAlign: TextAlign.center,
-                                ),
-                                Spacer.paragraphSpace,
-                                Link(
-                                  text: "jonas@fassbender.dev",
-                                  url:
-                                      "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                                  height: linkHeight,
-                                  style: Theme.of(context).textTheme.bodyText2!,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            TextButton(
-                              child: const Text("Imprint (DE)"),
-                              onPressed: () {
-                                launchUrl(Uri.parse("imprint.html"));
-                              },
-                            ),
-                            TextButton(
-                              child: const Text("Privacy Policy (DE)"),
-                              onPressed: () {
-                                launchUrl(Uri.parse("privacy_policy.html"));
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                  Spacer.headlineSpace,
+                  Text(
+                    "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
+                    textAlign: TextAlign.center,
+                  ),
+                  Spacer.paragraphSpace,
+                  Text(
+                    "If you got something funny or wholesome and wish to share it with me, do so as well.",
+                    textAlign: TextAlign.center,
+                  ),
+                  Spacer.paragraphSpace,
+                  Link(
+                    text: "jonas@fassbender.dev",
+                    url: "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                    height: linkHeight,
+                    style: Theme.of(context).textTheme.bodyText2!,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+                footer: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    TextButton(
+                      child: const Text("Imprint (DE)"),
+                      onPressed: () {
+                        launchUrl(Uri.parse("imprint.html"));
+                      },
                     ),
-                  ),
+                    TextButton(
+                      child: const Text("Privacy Policy (DE)"),
+                      onPressed: () {
+                        launchUrl(Uri.parse("privacy_policy.html"));
+                      },
+                    ),
+                  ],
                 ),
               ),
             ],

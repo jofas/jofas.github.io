@@ -94,6 +94,78 @@ class _JumpAnimationState extends State<JumpAnimation>
   }
 }
 
+class SingleChildPageContent extends StatelessWidget {
+  final double width, height;
+  final Widget child;
+
+  SingleChildPageContent({
+    required this.width,
+    required this.height,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        constraints: BoxConstraints(
+          maxWidth: width,
+          maxHeight: height,
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          child: Center(
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PageContent extends StatelessWidget {
+  final double width, height;
+  final List<Widget> children;
+  final Widget? footer;
+
+  PageContent({
+    required this.width,
+    required this.height,
+    required this.children,
+    this.footer,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        constraints: BoxConstraints(
+          maxWidth: width,
+          maxHeight: height,
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: Center(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: children,
+                  ),
+                ),
+              ),
+              footer == null ? Container() : footer!,
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class Tile extends StatelessWidget {
   final IconData icon;
   final String title;

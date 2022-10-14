@@ -84,8 +84,7 @@
 
 * [x] remove layout computation from widgets 
 
-* [ ] abstract code into proper classes (PageContent -- beware of 
-  footer, Tile)
+* [x] abstract code into proper classes 
 
 * [ ] layout: content height responsive
 
