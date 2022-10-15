@@ -131,8 +131,6 @@ class _OpenNavbarButtonState extends State<OpenNavbarButton> {
     _listener = () {
       final newPage = ((widget.controller.page ?? 0) + 0.02).floor();
 
-      print("newPage: $newPage");
-
       if (newPage != page) {
         setState(() {
           page = newPage;

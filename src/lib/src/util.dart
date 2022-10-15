@@ -227,6 +227,13 @@ class InlineLink extends WidgetSpan {
                 padding: MaterialStateProperty.all<EdgeInsets?>(
                   EdgeInsets.all(0),
                 ),
+                foregroundColor: MaterialStateProperty.resolveWith<Color?>((
+                  Set<MaterialState> states,
+                ) {
+                  if (states.contains(MaterialState.hovered)) {
+                    return style.color;
+                  }
+                }),
                 textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
                   Set<MaterialState> states,
                 ) {
