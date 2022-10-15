@@ -45,40 +45,39 @@ class _LinkbarState extends State<Linkbar> {
   Widget build(BuildContext context) {
     final inverted = page % 2 == 1;
 
-            return RotatedBox(
-              quarterTurns: 3,
-              child: Row(
-                children: <Widget>[
-                  TextButton(
-          style: inverted
-              ? Theme.of(context).textButtonTheme!.style!.inverse()
-              : Theme.of(context).textButtonTheme!.style!,
-                    child: const Text("GITHUB"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-          style: inverted
-              ? Theme.of(context).textButtonTheme!.style!.inverse()
-              : Theme.of(context).textButtonTheme!.style!,
-                    child: const Text("GITLAB"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://gitlab.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-          style: inverted
-              ? Theme.of(context).textButtonTheme!.style!.inverse()
-              : Theme.of(context).textButtonTheme!.style!,
-                    child: const Text("RESUME"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("resume.pdf"));
-                    },
-                  ),
-                ],
-              ),
-            );
-
+    return RotatedBox(
+      quarterTurns: 3,
+      child: Row(
+        children: <Widget>[
+          TextButton(
+            style: inverted
+                ? Theme.of(context).textButtonTheme!.style!.inverse()
+                : Theme.of(context).textButtonTheme!.style!,
+            child: const Text("GITHUB"),
+            onPressed: () {
+              launchUrl(Uri.parse("https://github.com/jofas"));
+            },
+          ),
+          TextButton(
+            style: inverted
+                ? Theme.of(context).textButtonTheme!.style!.inverse()
+                : Theme.of(context).textButtonTheme!.style!,
+            child: const Text("GITLAB"),
+            onPressed: () {
+              launchUrl(Uri.parse("https://gitlab.com/jofas"));
+            },
+          ),
+          TextButton(
+            style: inverted
+                ? Theme.of(context).textButtonTheme!.style!.inverse()
+                : Theme.of(context).textButtonTheme!.style!,
+            child: const Text("RESUME"),
+            onPressed: () {
+              launchUrl(Uri.parse("resume.pdf"));
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -44,6 +44,41 @@ class Spacer extends StatelessWidget {
   }
 }
 
+class Page extends StatelessWidget {
+  double? width;
+  double? height;
+  final Widget child;
+  final bool inverted;
+
+  Page({
+    required this.child,
+    this.inverted: false,
+    this.width,
+    this.height,
+  });
+
+  Page.inverted({
+    required double width,
+    required double height,
+    required Widget child,
+  }) : this(
+          width: width,
+          height: height,
+          child: child,
+          inverted: true,
+        );
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      color: inverted ? Colors.white : null,
+      child: child,
+    );
+  }
+}
+
 class SingleChildPageContent extends StatelessWidget {
   final double width, height;
   final EdgeInsets padding;
@@ -127,6 +162,7 @@ class Tile extends StatelessWidget {
 
   final String? titleUrl;
   final double? linkHeight;
+  final TextStyle? style;
 
   Tile({
     required this.icon,
@@ -134,6 +170,7 @@ class Tile extends StatelessWidget {
     required this.content,
     this.linkHeight,
     this.titleUrl,
+    this.style,
   });
 
   InlineSpan _titleWidget(TextStyle textStyle) {
@@ -158,11 +195,11 @@ class Tile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.bodyText2!;
+    final textStyle = style ?? Theme.of(context).textTheme.bodyText2!;
 
     return Row(
       children: <Widget>[
-        Icon(icon),
+        Icon(icon, color: textStyle.color),
         Spacer.tileSpace,
         Expanded(
           child: Text.rich(

@@ -98,9 +98,7 @@
 
 * [x] content: values 
 
-* [ ] find good abstration for inverse colors
-
-* [ ] style: chessboard
+* [x] style: chessboard
 
 * [ ] logo: glitch and hallucination effects (ldr?)
 
