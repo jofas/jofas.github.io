@@ -22,12 +22,9 @@ class Navbar extends StatefulWidget {
 class _NavbarState extends State<Navbar> {
   int page = 0;
 
-  late final void Function() _listener;
-
   @override
   void initState() {
     super.initState();
-
     page = widget.controller.page!.round();
   }
 
@@ -111,18 +108,54 @@ class _NavbarState extends State<Navbar> {
   }
 }
 
-class OpenNavbarButton extends StatelessWidget {
+class OpenNavbarButton extends StatefulWidget {
+  final PageController controller;
+
   final double size;
 
-  OpenNavbarButton({required this.size});
+  OpenNavbarButton({required this.controller, required this.size});
+
+  @override
+  State<OpenNavbarButton> createState() => _OpenNavbarButtonState();
+}
+
+class _OpenNavbarButtonState extends State<OpenNavbarButton> {
+  late final void Function() _listener;
+
+  int page = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _listener = () {
+      final newPage = ((widget.controller.page ?? 0) + 0.02).floor();
+
+      print("newPage: $newPage");
+
+      if (newPage != page) {
+        setState(() {
+          page = newPage;
+        });
+      }
+    };
+
+    widget.controller.addListener(_listener);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_listener);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       child: Icon(
         Icons.menu,
-        color: Colors.white,
-        size: size,
+        color: page % 2 == 0 ? Colors.white : Colors.black,
+        size: widget.size,
       ),
       onPressed: () {
         Scaffold.of(context).openDrawer();

@@ -623,6 +623,7 @@ class MyHomePage extends StatelessWidget {
             left: 5,
             top: 10,
             child: OpenNavbarButton(
+              controller: pageController,
               size: openNavbarButtonSize,
             ),
           ),
