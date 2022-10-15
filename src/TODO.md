@@ -98,9 +98,9 @@
 
 * [x] content: values 
 
-* [ ] style: progress bar gradient with valueColor
+* [ ] logo: glitch and hallucination effects (ldr?)
 
-* [ ] style: background
+* [ ] style: chessboard?
 
 * [ ] icon as favicon (logo as svg)
 

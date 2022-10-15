@@ -569,7 +569,7 @@ class MyHomePage extends StatelessWidget {
                     icon: Icons.spa,
                     title: "Care.",
                     content:
-                        "Bugs in production are annoying and potentially dangerous. Mistakes should be caught as early in the development cycle as possible. Not only to prevent security issues, but also from the standpoint of cost. Two days spent on a decent test suite today has the potential of saving a lot of time and money tomorrow.",
+                        "My code, my responsibility. Bugs in production are annoying and potentially dangerous. Mistakes should be caught as early in the development cycle as possible. Not only to prevent security issues, but also from the standpoint of cost. Two days spent on a decent test suite today has the potential of saving a lot of time and money tomorrow.",
                   ),
                   _paragraphSpace(),
                   Tile(

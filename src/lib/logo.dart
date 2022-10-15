@@ -145,18 +145,6 @@ class LogoPainter extends CustomPainter {
     animate_long(c, r, p8, p9, p10);
   }
 
-  Paint circleColor(Vector2 center, double r) {
-    return Paint()
-      ..shader = ui.Gradient.linear(
-        Offset(center.x - r, center.y - r),
-        Offset(center.x + r, center.y + r),
-        [
-          CustomColors.yellow[300]!,
-          CustomColors.red[500]!,
-        ],
-      );
-  }
-
   void animate_short(Canvas c, double r, Vector2 p1, Vector2 p2) {
     if (state <= 0.05) {
       // pause at the beginning
@@ -170,10 +158,7 @@ class LogoPainter extends CustomPainter {
       c.drawCircle(
         p1.asOffset(),
         r * factor,
-        circleColor(
-          p1,
-          r * factor,
-        ),
+        white,
       );
     } else if (state <= 0.5) {
       // draw line
@@ -184,31 +169,6 @@ class LogoPainter extends CustomPainter {
       final pos = p1 + (p2 - p1) * factor;
 
       c.drawPath(line(p1, pos, magnitude: r), white);
-
-      c.drawCircle(
-        pos.asOffset(),
-        r,
-        circleColor(
-          pos,
-          r,
-        ),
-      );
-    } else if (state <= 0.55) {
-      // let circle fade out
-
-      double factor = state.normalize(min: 0.5, max: 0.55);
-      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
-
-      c.drawPath(line(p1, p2, magnitude: r), white);
-
-      c.drawCircle(
-        p2.asOffset(),
-        r * (1 - factor),
-        circleColor(
-          p2,
-          r * (1 - factor),
-        ),
-      );
     } else {
       // pause at the end
 
@@ -235,10 +195,7 @@ class LogoPainter extends CustomPainter {
       c.drawCircle(
         p1.asOffset(),
         r * factor,
-        circleColor(
-          p1,
-          r * factor,
-        ),
+        white,
       );
     } else if (state <= 0.3) {
       // draw first line
@@ -249,15 +206,6 @@ class LogoPainter extends CustomPainter {
       final pos = p1 + (p2 - p1) * factor;
 
       c.drawPath(line(p1, pos, magnitude: r), white);
-
-      c.drawCircle(
-        pos.asOffset(),
-        r,
-        circleColor(
-          pos,
-          r,
-        ),
-      );
     } else if (state <= 0.5) {
       // draw second line
 
@@ -268,32 +216,6 @@ class LogoPainter extends CustomPainter {
 
       c.drawPath(line(p1, p2, magnitude: r), white);
       c.drawPath(line(p2, pos, magnitude: r), white);
-
-      c.drawCircle(
-        pos.asOffset(),
-        r,
-        circleColor(
-          pos,
-          r,
-        ),
-      );
-    } else if (state <= 0.55) {
-      // let circle fade out
-
-      double factor = state.normalize(min: 0.5, max: 0.55);
-      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
-
-      c.drawPath(line(p1, p2, magnitude: r), white);
-      c.drawPath(line(p2, p3, magnitude: r), white);
-
-      c.drawCircle(
-        p3.asOffset(),
-        r * (1 - factor),
-        circleColor(
-          p3,
-          r * (1 - factor),
-        ),
-      );
     } else {
       // pause at the end
 
