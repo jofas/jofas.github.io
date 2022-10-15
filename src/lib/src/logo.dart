@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' hide Colors;
 
 class Logo extends StatelessWidget {
+  final Color color;
+
+  Logo({this.color: Colors.white});
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (
@@ -12,7 +16,7 @@ class Logo extends StatelessWidget {
       BoxConstraints viewport,
     ) {
       return CustomPaint(
-        painter: LogoPainter(1),
+        painter: LogoPainter(1, color: color),
         size: Size(viewport.maxWidth, viewport.maxHeight),
       );
     });
@@ -93,11 +97,13 @@ extension AsOffset on Vector2 {
 }
 
 class LogoPainter extends CustomPainter {
-  final white = Paint()..color = Colors.white;
+  late final Paint strokeColor;
 
   final double state;
 
-  LogoPainter(this.state);
+  LogoPainter(this.state, {Color color: Colors.white}) {
+    strokeColor = Paint()..color = color;
+  }
 
   @override
   void paint(Canvas c, Size s) {
@@ -156,7 +162,7 @@ class LogoPainter extends CustomPainter {
       c.drawCircle(
         p1.asOffset(),
         r * factor,
-        white,
+        strokeColor,
       );
     } else if (state <= 0.5) {
       // draw line
@@ -166,11 +172,11 @@ class LogoPainter extends CustomPainter {
 
       final pos = p1 + (p2 - p1) * factor;
 
-      c.drawPath(line(p1, pos, magnitude: r), white);
+      c.drawPath(line(p1, pos, magnitude: r), strokeColor);
     } else {
       // pause at the end
 
-      c.drawPath(line(p1, p2, magnitude: r), white);
+      c.drawPath(line(p1, p2, magnitude: r), strokeColor);
     }
   }
 
@@ -193,7 +199,7 @@ class LogoPainter extends CustomPainter {
       c.drawCircle(
         p1.asOffset(),
         r * factor,
-        white,
+        strokeColor,
       );
     } else if (state <= 0.3) {
       // draw first line
@@ -203,7 +209,7 @@ class LogoPainter extends CustomPainter {
 
       final pos = p1 + (p2 - p1) * factor;
 
-      c.drawPath(line(p1, pos, magnitude: r), white);
+      c.drawPath(line(p1, pos, magnitude: r), strokeColor);
     } else if (state <= 0.5) {
       // draw second line
 
@@ -212,13 +218,13 @@ class LogoPainter extends CustomPainter {
 
       final pos = p2 + (p3 - p2) * factor;
 
-      c.drawPath(line(p1, p2, magnitude: r), white);
-      c.drawPath(line(p2, pos, magnitude: r), white);
+      c.drawPath(line(p1, p2, magnitude: r), strokeColor);
+      c.drawPath(line(p2, pos, magnitude: r), strokeColor);
     } else {
       // pause at the end
 
-      c.drawPath(line(p1, p2, magnitude: r), white);
-      c.drawPath(line(p2, p3, magnitude: r), white);
+      c.drawPath(line(p1, p2, magnitude: r), strokeColor);
+      c.drawPath(line(p2, p3, magnitude: r), strokeColor);
     }
   }
 

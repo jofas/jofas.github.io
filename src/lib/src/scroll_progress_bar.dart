@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'colors.dart' show CustomColors;
-import 'util.dart' show InverseTextStyle;
+import 'util.dart' show InverseTextStyle, InverseButtonStyle;
 
 class ScrollProgressBar extends StatefulWidget {
   final PageController controller;
@@ -52,15 +52,17 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
     );
   }
 
-  Widget get _prevPageButton {
+  Widget _prevPageButton({required ButtonStyle style}) {
     return TextButton(
+      style: style,
       child: Icon(Icons.expand_less, size: widget.iconSize),
       onPressed: _prevPage,
     );
   }
 
-  Widget get _nextPageButton {
+  Widget _nextPageButton({required ButtonStyle style}) {
     final button = TextButton(
+      style: style,
       child: Icon(Icons.expand_more, size: widget.iconSize),
       onPressed: _nextPage,
     );
@@ -110,8 +112,16 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
               : Theme.of(context).textTheme.labelMedium,
         ),
         SizedBox(width: 5),
-        _prevPageButton,
-        _nextPageButton,
+        _prevPageButton(
+          style: inverted
+              ? Theme.of(context).textButtonTheme!.style!.inverse()
+              : Theme.of(context).textButtonTheme!.style!,
+        ),
+        _nextPageButton(
+          style: inverted
+              ? Theme.of(context).textButtonTheme!.style!.inverse()
+              : Theme.of(context).textButtonTheme!.style!,
+        ),
       ],
     );
   }

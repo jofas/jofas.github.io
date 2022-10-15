@@ -104,6 +104,8 @@
 
 * [ ] logo: glitch and hallucination effects (ldr?)
 
+* [ ] split logo and animated logo on painter level
+
 * [ ] icon as favicon (logo as svg)
 
 * [ ] proper html meta for links and tabs

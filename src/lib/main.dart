@@ -141,7 +141,7 @@ class MyApp extends StatelessWidget {
                   if (states.contains(MaterialState.hovered)) {
                     return Colors.white;
                   }
-                  return Colors.grey[400]!;
+                  return Colors.grey[500]!;
                 }),
                 textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
                   Set<MaterialState> states,

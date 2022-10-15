@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'logo.dart' show Logo;
+import 'util.dart' show InverseTextStyle;
 
 class Navbar extends StatefulWidget {
   final PageController controller;
@@ -19,10 +20,25 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
+  int page = 0;
+
+  late final void Function() _listener;
+
+  @override
+  void initState() {
+    super.initState();
+
+    page = widget.controller.page!.round();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme.bodyText2!;
+
+    final inverted = page % 2 == 0;
+
     return Drawer(
-      backgroundColor: Colors.black,
+      backgroundColor: inverted ? Colors.white : Colors.black,
       child: ListView(
         shrinkWrap: true,
         children: <Widget>[
@@ -33,49 +49,61 @@ class _NavbarState extends State<Navbar> {
             child: SizedBox(
               width: widget.logoSize,
               height: widget.logoSize,
-              child: Logo(),
+              child: Logo(
+                color: inverted ? Colors.black : Colors.white,
+              ),
             ),
           ),
-          Divider(),
+          Divider(
+            color: inverted ? Colors.black : Colors.white,
+          ),
           NavButton(
             text: "START",
             page: 0,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
           NavButton(
             text: "ABOUT",
             page: 1,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
           NavButton(
             text: "KEY COMPETENCIES",
             page: 2,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
           NavButton(
             text: "CORE VALUES",
             page: 3,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
           NavButton(
             text: "PROFESSIONAL PROJECTS",
             page: 4,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
           NavButton(
             text: "OPEN SOURCE",
             page: 5,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
           NavButton(
             text: "PERSONAL PURSUITS",
             page: 6,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
           NavButton(
             text: "CONTACT",
             page: 7,
             controller: widget.controller,
+            textStyle: inverted ? textStyle.inverse() : textStyle,
           ),
         ],
       ),
@@ -103,50 +131,21 @@ class OpenNavbarButton extends StatelessWidget {
   }
 }
 
-class NavButton extends StatefulWidget {
+class NavButton extends StatelessWidget {
   final String text;
   final int page;
   final PageController controller;
+  final TextStyle textStyle;
+
+  late final bool _isActive;
 
   NavButton({
     required this.text,
     required this.page,
     required this.controller,
-  });
-
-  @override
-  State<NavButton> createState() => _NavButtonState();
-}
-
-class _NavButtonState extends State<NavButton> {
-  late final void Function() _listener;
-
-  bool isActive = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _listener = () {
-      _setState();
-    };
-
-    widget.controller.addListener(_listener);
-
-    _setState();
-  }
-
-  @override
-  void dispose() {
-    widget.controller.removeListener(_listener);
-
-    super.dispose();
-  }
-
-  void _setState() {
-    setState(() {
-      isActive = widget.controller.page!.round() as int == widget.page;
-    });
+    required this.textStyle,
+  }) {
+    _isActive = controller.page!.round() == page;
   }
 
   @override
@@ -156,30 +155,34 @@ class _NavButtonState extends State<NavButton> {
         padding: MaterialStateProperty.all<EdgeInsets?>(
           EdgeInsets.only(top: 20),
         ),
-        foregroundColor: MaterialStateProperty.all<Color?>(
-          isActive ? Colors.white : null,
-        ),
+        foregroundColor: MaterialStateProperty.resolveWith<Color?>((
+          Set<MaterialState> states,
+        ) {
+          if (_isActive || states.contains(MaterialState.hovered)) {
+            return textStyle.color;
+          }
+        }),
         textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
           Set<MaterialState> states,
         ) {
-          final textStyle = Theme.of(context).textTheme.bodyText2!.copyWith(
-                fontWeight: isActive ? FontWeight.bold : null,
-              );
+          final style = textStyle.copyWith(
+            fontWeight: _isActive ? FontWeight.bold : null,
+          );
 
           if (states.contains(MaterialState.focused)) {
-            return textStyle.copyWith(
+            return style.copyWith(
               decoration: TextDecoration.underline,
             );
           }
-          return textStyle;
+          return style;
         }),
       ),
-      child: Text(widget.text),
+      child: Text(text),
       onPressed: () {
-        if (!isActive) {
+        if (!_isActive) {
           Scaffold.of(context).closeDrawer();
-          widget.controller.animateToPage(
-            widget.page,
+          controller.animateToPage(
+            page,
             duration: Duration(seconds: 1),
             curve: Curves.ease,
           );

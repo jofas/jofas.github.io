@@ -12,25 +12,18 @@ extension InverseTextStyle on TextStyle {
   }
 }
 
-enum ScreenSize {
-  sm,
-  md,
-  lg,
-  // xl, 2xl currently not used
-}
-
-ScreenSize screenSizeFromViewport(BoxConstraints viewport) {
-  final minScreenSize = math.min(
-    viewport.maxWidth,
-    viewport.maxHeight,
-  );
-
-  if (minScreenSize <= 640) {
-    return ScreenSize.sm;
-  } else if (minScreenSize <= 768) {
-    return ScreenSize.md;
-  } else {
-    return ScreenSize.lg;
+extension InverseButtonStyle on ButtonStyle {
+  ButtonStyle inverse() {
+    return this.copyWith(
+      foregroundColor: MaterialStateProperty.resolveWith<Color>((
+        Set<MaterialState> states,
+      ) {
+        if (states.contains(MaterialState.hovered)) {
+          return Colors.black;
+        }
+        return Colors.grey[500]!;
+      }),
+    );
   }
 }
 
