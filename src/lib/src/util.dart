@@ -1,10 +1,36 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import 'colors.dart';
+
 extension InverseTextStyle on TextStyle {
   TextStyle inverse() {
     return this.copyWith(color: Colors.black);
+  }
+}
+
+enum ScreenSize {
+  sm,
+  md,
+  lg,
+  // xl, 2xl currently not used
+}
+
+ScreenSize screenSizeFromViewport(BoxConstraints viewport) {
+  final minScreenSize = math.min(
+    viewport.maxWidth,
+    viewport.maxHeight,
+  );
+
+  if (minScreenSize <= 640) {
+    return ScreenSize.sm;
+  } else if (minScreenSize <= 768) {
+    return ScreenSize.md;
+  } else {
+    return ScreenSize.lg;
   }
 }
 

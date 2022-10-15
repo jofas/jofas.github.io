@@ -98,9 +98,11 @@
 
 * [x] content: values 
 
-* [ ] logo: glitch and hallucination effects (ldr?)
+* [ ] find good abstration for inverse colors
 
-* [ ] style: chessboard?
+* [ ] style: chessboard
+
+* [ ] logo: glitch and hallucination effects (ldr?)
 
 * [ ] icon as favicon (logo as svg)
 

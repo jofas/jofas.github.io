@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:vector_math/vector_math.dart' hide Colors;
 
-import 'colors.dart';
-
 class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

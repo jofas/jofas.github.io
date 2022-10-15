@@ -4,13 +4,21 @@ import 'package:flutter/material.dart' hide Spacer;
 import 'package:flutter/gestures.dart';
 
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vector_math/vector_math.dart' hide Colors;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'colors.dart';
-import 'clipper.dart';
-import 'util.dart';
-import 'logo.dart';
+import 'src/logo.dart' show AnimatedLogo;
+import 'src/navbar.dart' show Navbar, OpenNavbarButton;
+import 'src/scroll_progress_bar.dart' show ScrollProgressBar;
+import 'src/util.dart'
+    show
+        InverseTextStyle,
+        ScreenSize,
+        Spacer,
+        SingleChildPageContent,
+        PageContent,
+        Tile,
+        Link,
+        InlineLink;
 
 void main() {
   runApp(MyApp());
@@ -25,7 +33,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewport) {
-        final screenSize = screenSizeFromViewport(viewport);
+        final screenSize = math.min(
+          viewport.maxWidth,
+          viewport.maxHeight,
+        );
 
         late final fontSizeBody;
         late final fontSizeHeadline;
@@ -41,7 +52,7 @@ class MyApp extends StatelessWidget {
         late final navbarLogoSize;
         late final navbarLogoPadding;
 
-        if (screenSize == ScreenSize.sm) {
+        if (screenSize <= 640) {
           fontSizeBody = 12;
           fontSizeHeadline = 24;
           iconSize = 30;
@@ -55,7 +66,7 @@ class MyApp extends StatelessWidget {
           openNavbarButtonSize = 20;
           navbarLogoSize = 60;
           navbarLogoPadding = 10;
-        } else if (screenSize == ScreenSize.md) {
+        } else if (screenSize <= 768) {
           fontSizeBody = 16;
           fontSizeHeadline = 40;
           iconSize = 50;
@@ -228,62 +239,10 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.black,
-        child: ListView(
-          shrinkWrap: true,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: navbarLogoPadding),
-              child: SizedBox(
-                width: navbarLogoSize,
-                height: navbarLogoSize,
-                child: Logo(),
-              ),
-            ),
-            Divider(),
-            NavButton(
-              text: "START",
-              page: 0,
-              controller: pageController,
-            ),
-            NavButton(
-              text: "ABOUT",
-              page: 1,
-              controller: pageController,
-            ),
-            NavButton(
-              text: "KEY COMPETENCIES",
-              page: 2,
-              controller: pageController,
-            ),
-            NavButton(
-              text: "CORE VALUES",
-              page: 3,
-              controller: pageController,
-            ),
-            NavButton(
-              text: "PROFESSIONAL PROJECTS",
-              page: 4,
-              controller: pageController,
-            ),
-            NavButton(
-              text: "OPEN SOURCE",
-              page: 5,
-              controller: pageController,
-            ),
-            NavButton(
-              text: "PERSONAL PURSUITS",
-              page: 6,
-              controller: pageController,
-            ),
-            NavButton(
-              text: "CONTACT",
-              page: 7,
-              controller: pageController,
-            ),
-          ],
-        ),
+      drawer: Navbar(
+        controller: pageController,
+        logoPadding: navbarLogoPadding,
+        logoSize: navbarLogoSize,
       ),
       body: Stack(
         children: <Widget>[
@@ -291,207 +250,83 @@ class MyHomePage extends StatelessWidget {
             controller: pageController,
             scrollDirection: Axis.vertical,
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  /*
-                      Positioned(
-                        top: 0.25 * height,
-                        left: 0.25 * width,
-                          child: ClipPath(
-                            clipper: SmoothShapeClipper(
-                              points: <Vector2>[
-                                Vector2(0.1, 0.5),
-                                Vector2(0.5, 0.6),
-                                Vector2(0.2, 0.3),
-                                Vector2(0.5, 0.1),
-                                Vector2(0.6, 0.5),
-                                Vector2(0.8, 0.8),
-                                Vector2(0.5, 0.9),
-                              ],
-                              smoothness: 0.66,
-                            ),
-                            child: Container(
-                              width: 0.6 * width,
-                              height: 0.6 * height,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.bottomRight,
-                                  end: Alignment.topLeft,
-                                  colors: <Color>[
-                                    CustomColors.purple[600]!.withOpacity(0.8),
-                                    CustomColors.purple[800]!.withOpacity(0),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      Positioned(
-                        top: 0,
-                        child: Transform.rotate(
-                          angle: math.pi,
-                          child: ClipPath(
-                            clipper: SmoothCurveClipper(
-                              points: <Vector2>[
-                                Vector2(0, 0.1),
-                                Vector2(0.2, 0.2),
-                                Vector2(0.7, 0.3),
-                                Vector2(1, 0.25),
-                              ],
-                              smoothness: 0.5,
-                            ),
-                            child: Container(
-                              width: width,
-                              height: height * 0.6,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topRight,
-                                  end: Alignment.bottomCenter,
-                                  colors: <Color>[
-                                    CustomColors.blue[200]!.withOpacity(0.8),
-                                    CustomColors.blue[400]!.withOpacity(0.6),
-                                    CustomColors.blue[600]!.withOpacity(0.4),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 0,
-                        child: Transform.rotate(
-                          angle: math.pi,
-                          child: ClipPath(
-                            clipper: SmoothCurveClipper(
-                              points: <Vector2>[
-                                Vector2(0, 0.05),
-                                Vector2(0.3, 0.1),
-                                Vector2(0.8, 0.6),
-                                Vector2(1, 0.6),
-                              ],
-                              smoothness: 0.5,
-                            ),
-                            child: Container(
-                              width: width,
-                              height: height * 0.6,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomCenter,
-                                  colors: <Color>[
-                                    CustomColors.green[200]!.withOpacity(0.8),
-                                    CustomColors.green[400]!.withOpacity(0.6),
-                                    CustomColors.green[700]!.withOpacity(0.4),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      */
-                  SingleChildPageContent(
-                    width: _contentWidth,
-                    height: _contentHeight,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: contentPadding,
-                    ),
-                    child: AnimatedLogo(),
-                  ),
-                ],
+              SingleChildPageContent(
+                width: _contentWidth,
+                height: _contentHeight,
+                padding: EdgeInsets.symmetric(
+                  horizontal: contentPadding,
+                ),
+                child: AnimatedLogo(),
               ),
-              Stack(
-                children: <Widget>[
-                  /*
-                      Positioned(
-                        top: -1,
-                        child: Transform.rotate(
-                          angle: math.pi,
-                          child: ClipPath(
-                            clipper: SmoothCurveClipper(
-                              points: <Vector2>[
-                                Vector2(0, 0.5),
-                                Vector2(0.2, 0.4),
-                                Vector2(0.1, 0.2),
-                                Vector2(0.7, 0.6),
-                                Vector2(0.85, 0.4),
-                                Vector2(1, 0.7),
-                              ],
-                              smoothness: 0.6,
-                            ),
-                            child: Container(
-                              width: height
-                              height: 300,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: <Color>[
-                                    CustomColors.yellow[500]!,
-                                    CustomColors.red[500]!,
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      */
-                  PageContent(
-                    width: _contentWidth,
-                    height: _contentHeight,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: contentPadding,
-                    ),
-                    children: <Widget>[
-                      Text(
-                        "Jonas Fassbender",
-                        style: Theme.of(context).textTheme.headline2,
-                        textAlign: TextAlign.center,
-                      ),
-                      _headlineSpace(),
-                      Text(
-                        "Software engineer and freelancer. In love with the craft.",
-                        textAlign: TextAlign.center,
-                      ),
-                      _paragraphSpace(),
-                      Text(
-                        "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
-                        textAlign: TextAlign.center,
-                      ),
-                      _paragraphSpace(),
-                      Text(
-                        "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
-                        textAlign: TextAlign.center,
-                      ),
-                      _paragraphSpace(),
-                      Text.rich(
-                        TextSpan(
-                          children: <InlineSpan>[
-                            TextSpan(
-                              text:
-                                  "This wesite serves as an introduction to myself, my work and the values it embodies. If you like what you see and think I could help you achive your ambitions, don't hesitate to ",
-                              style: Theme.of(context).textTheme.bodyText2!,
-                            ),
-                            InlineLink(
-                              text: "contact",
-                              url:
-                                  "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                              height: linkHeight,
-                              style: Theme.of(context).textTheme.bodyText2!,
-                            ),
-                            TextSpan(
-                              text: " me!",
-                              style: Theme.of(context).textTheme.bodyText2!,
-                            ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+              Container(
+                width: width,
+                height: height,
+                color: Colors.white,
+                child: PageContent(
+                  width: _contentWidth,
+                  height: _contentHeight,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: contentPadding,
                   ),
-                ],
+                  children: <Widget>[
+                    Text(
+                      "Jonas Fassbender",
+                      style: Theme.of(context).textTheme.headline2!.inverse(),
+                      textAlign: TextAlign.center,
+                    ),
+                    _headlineSpace(),
+                    Text(
+                      "Software engineer and freelancer. In love with the craft.",
+                      style: Theme.of(context).textTheme.bodyText2!.inverse(),
+                      textAlign: TextAlign.center,
+                    ),
+                    _paragraphSpace(),
+                    Text(
+                      "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
+                      style: Theme.of(context).textTheme.bodyText2!.inverse(),
+                      textAlign: TextAlign.center,
+                    ),
+                    _paragraphSpace(),
+                    Text(
+                      "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
+                      style: Theme.of(context).textTheme.bodyText2!.inverse(),
+                      textAlign: TextAlign.center,
+                    ),
+                    _paragraphSpace(),
+                    Text.rich(
+                      TextSpan(
+                        children: <InlineSpan>[
+                          TextSpan(
+                            text:
+                                "This wesite serves as an introduction to myself, my work and the values it embodies. If you like what you see and think I could help you achive your ambitions, don't hesitate to ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .inverse(),
+                          ),
+                          InlineLink(
+                            text: "contact",
+                            url:
+                                "mailto://jonas@fassbender.dev?subject=Hi%20There!",
+                            height: linkHeight,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .inverse(),
+                          ),
+                          TextSpan(
+                            text: " me!",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .inverse(),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
               PageContent(
                 width: _contentWidth,
