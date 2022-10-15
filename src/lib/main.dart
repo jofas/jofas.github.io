@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'src/logo.dart' show AnimatedLogo;
 import 'src/navbar.dart' show Navbar, OpenNavbarButton;
+import 'src/linkbar.dart' show Linkbar;
 import 'src/scroll_progress_bar.dart' show ScrollProgressBar;
 import 'src/util.dart'
     show
@@ -630,30 +631,8 @@ class MyHomePage extends StatelessWidget {
           Positioned(
             right: 5,
             bottom: 0,
-            child: RotatedBox(
-              quarterTurns: 3,
-              child: Row(
-                children: <Widget>[
-                  TextButton(
-                    child: const Text("GITHUB"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://github.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("GITLAB"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("https://gitlab.com/jofas"));
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("RESUME"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("resume.pdf"));
-                    },
-                  ),
-                ],
-              ),
+            child: Linkbar(
+              controller: pageController,
             ),
           ),
           Positioned(
