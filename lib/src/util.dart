@@ -27,6 +27,16 @@ extension InverseButtonStyle on ButtonStyle {
   }
 }
 
+class MenuButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      child: Icon(Icons.menu, size: 24),
+      onPressed: () => Scaffold.of(context).openDrawer(),
+    );
+  }
+}
+
 class Spacer extends StatelessWidget {
   static final Spacer tileSpace = Spacer(width: 10);
 
