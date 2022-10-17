@@ -100,8 +100,6 @@
 
 * [x] style: chessboard
 
-* [ ] logo: glitch and hallucination effects (ldr?)
-
 * [ ] split logo and animated logo on painter level
 
 * [ ] icon as favicon (logo as svg)
@@ -116,3 +114,5 @@
 # MAYBEDO
 
 * [ ] add xl and 2xl layouts
+
+* [ ] logo: glitch and hallucination effects (ldr?)
