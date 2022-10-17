@@ -8,6 +8,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Build website
         run: flutter build web --release
       - name: Copy website into docs dir
@@ -16,5 +19,3 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'build website'
-          author_name: Jonas Fassbender
-          author_email: jonas@fc-web.de
