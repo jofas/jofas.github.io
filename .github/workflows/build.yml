@@ -11,7 +11,7 @@ jobs:
       - name: Build website
         run: flutter build web --release
       - name: Copy website into docs dir
-        run: mv -f build/web/* docs/
+        run: cp -r build/web/* docs/
       - name: Apply build
         uses: EndBug/add-and-commit@v9
         with:
