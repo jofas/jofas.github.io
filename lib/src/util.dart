@@ -55,81 +55,42 @@ class Spacer extends StatelessWidget {
 }
 
 class Page extends StatelessWidget {
-  double? width;
-  double? height;
   final Widget child;
-  final bool inverted;
+  final List<Color> colors;
 
   Page({
     required this.child,
-    this.inverted: false,
-    this.width,
-    this.height,
-  });
-
-  Page.inverted({
-    required double width,
-    required double height,
-    required Widget child,
-  }) : this(
-          width: width,
-          height: height,
-          child: child,
-          inverted: true,
-        );
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      color: inverted ? Colors.white : null,
-      child: child,
-    );
-  }
-}
-
-class SingleChildPageContent extends StatelessWidget {
-  final double width, height;
-  final EdgeInsets padding;
-  final Widget child;
-
-  SingleChildPageContent({
-    required this.width,
-    required this.height,
-    required this.padding,
-    required this.child,
+    required this.colors,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        constraints: BoxConstraints(
-          maxWidth: width,
-          maxHeight: height,
-        ),
-        child: Padding(
-          padding: padding,
-          child: Center(
-            child: child,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewport) {
+        return Container(
+          width: viewport.maxWidth,
+          height: viewport.maxHeight,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: colors,
+            ),
           ),
-        ),
-      ),
+          child: child,
+        );
+      },
     );
   }
 }
 
 class PageContent extends StatelessWidget {
-  final double width, height;
+  final double width;
   final EdgeInsets padding;
   final List<Widget> children;
   final Widget? footer;
 
   PageContent({
     required this.width,
-    required this.height,
+    double? height,
     required this.padding,
     required this.children,
     this.footer,
@@ -137,13 +98,9 @@ class PageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
+    return Center(
       child: Container(
-        constraints: BoxConstraints(
-          maxWidth: width,
-          maxHeight: height,
-        ),
+        width: width,
         child: Padding(
           padding: padding,
           child: Column(

@@ -6,21 +6,12 @@ import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'src/logo.dart' show AnimatedLogo, Logo;
-import 'src/navbar.dart' show Navbar, OpenNavbarButton;
+import 'src/colors.dart' show CustomColors;
+import 'src/logo.dart' show Logo;
+import 'src/navbar.dart' show Navbar;
 import 'src/scroll_progress_bar.dart' show ScrollProgressBar;
 import 'src/util.dart'
-    show
-        InverseTextStyle,
-        InverseButtonStyle,
-        MenuButton,
-        Spacer,
-        Page,
-        SingleChildPageContent,
-        PageContent,
-        Tile,
-        Link,
-        InlineLink;
+    show MenuButton, Spacer, Page, PageContent, Tile, Link, InlineLink;
 
 void main() {
   runApp(MyApp());
@@ -101,7 +92,6 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Jonas Fassbender',
           theme: ThemeData(
-            scaffoldBackgroundColor: Colors.black,
             primaryColor: Colors.white,
             textTheme: TextTheme(
               bodyText2: TextStyle(
@@ -192,7 +182,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  static const int NUM_PAGES = 8;
+  static const int NUM_PAGES = 7;
   static const double MAX_CONTENT_WIDTH = 1536;
 
   final PageController pageController;
@@ -288,46 +278,32 @@ class MyHomePage extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           Page(
-            child: SingleChildPageContent(
-              width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
-              child: AnimatedLogo(),
-            ),
-          ),
-          Page.inverted(
-            width: width,
-            height: height,
+            colors: <Color>[
+              CustomColors.green[700]!,
+              CustomColors.green[800]!,
+            ],
             child: PageContent(
               width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
+              padding: EdgeInsets.all(16),
               children: <Widget>[
                 Text(
                   "Jonas Fassbender",
-                  style: Theme.of(context).textTheme.headline2!.inverse(),
+                  style: Theme.of(context).textTheme.headline2,
                   textAlign: TextAlign.center,
                 ),
                 _headlineSpace(),
                 Text(
                   "Software engineer and freelancer. In love with the craft.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                   textAlign: TextAlign.center,
                 ),
                 _paragraphSpace(),
                 Text(
                   "In the summer of 2015 I wrote my first program (a Windows Forms app written in VB.NET, believe it or not). Over the course of that fateful summer I quickly became so deeply enamored with programming that I made it my profession.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                   textAlign: TextAlign.center,
                 ),
                 _paragraphSpace(),
                 Text(
                   "Since then I've successfully attained two higher education degrees in computing, lived in two countries, became a freelancer and open source contributor, created and maintained a microservice application with over seventy thousand lines of code all by myself, programmed supercomputers including a neuromorphic one with over one million cores (SpiNNaker), tried to teach machines how to see and how to conservatively predict whether a loan request is likely to default, learned a lot, failed many times and had the time of my life doing it all.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                   textAlign: TextAlign.center,
                 ),
                 _paragraphSpace(),
@@ -337,18 +313,18 @@ class MyHomePage extends StatelessWidget {
                       TextSpan(
                         text:
                             "This wesite serves as an introduction to myself, my work and the values it embodies. If you like what you see and think I could help you achive your ambitions, don't hesitate to ",
-                        style: Theme.of(context).textTheme.bodyText2!.inverse(),
+                        style: Theme.of(context).textTheme.bodyText2,
                       ),
                       InlineLink(
                         text: "contact",
                         url:
                             "mailto://jonas@fassbender.dev?subject=Hi%20There!",
                         height: linkHeight,
-                        style: Theme.of(context).textTheme.bodyText2!.inverse(),
+                        style: Theme.of(context).textTheme.bodyText2!,
                       ),
                       TextSpan(
                         text: " me!",
-                        style: Theme.of(context).textTheme.bodyText2!.inverse(),
+                        style: Theme.of(context).textTheme.bodyText2!,
                       ),
                     ],
                   ),
@@ -358,12 +334,13 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Page(
+            colors: <Color>[
+              CustomColors.green[800]!,
+              CustomColors.blue[800]!,
+            ],
             child: PageContent(
               width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
+              padding: EdgeInsets.all(16),
               children: <Widget>[
                 Text(
                   "Key Competencies",
@@ -413,25 +390,23 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
-          Page.inverted(
-            width: width,
-            height: height,
+          Page(
+            colors: <Color>[
+              CustomColors.blue[800]!,
+              CustomColors.purple[800]!,
+            ],
             child: PageContent(
               width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
+              padding: EdgeInsets.all(16),
               children: <Widget>[
                 Text(
                   "Core Values",
-                  style: Theme.of(context).textTheme.headline2!.inverse(),
+                  style: Theme.of(context).textTheme.headline2,
                   textAlign: TextAlign.center,
                 ),
                 _headlineSpace(),
                 Text(
                   "Software engineering is an idealistic endeavor. I became a freelancer, partly because I didn't want to compromise on what I think software should be. To create synergies and subsequently an environment that fosters collaboration and creativity, core values must match.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                   textAlign: TextAlign.center,
                 ),
                 _paragraphSpace(),
@@ -440,7 +415,6 @@ class MyHomePage extends StatelessWidget {
                   title: "Care.",
                   content:
                       "My code, my responsibility. Bugs in production are annoying and potentially dangerous. Mistakes should be caught as early in the development cycle as possible. Not only to prevent security issues, but also from the standpoint of cost. Two days spent on a decent test suite today has the potential of saving a lot of time and money tomorrow.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -448,7 +422,6 @@ class MyHomePage extends StatelessWidget {
                   title: "Curiousness.",
                   content:
                       "Software engineering has a lot to do with gut feeling. Sometimes you find ideas along the way that feel like they have the potential of creating something amazing. Instead of rigidly focusing on the backlog, I believe these ideas have to be explored immediately. I give myself the freedom to do so.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -456,7 +429,6 @@ class MyHomePage extends StatelessWidget {
                   title: "Minimalism.",
                   content:
                       "Deleting code is better than writing it. Feature creep and decay result in software that dies before it should, a very costly event. I apply teachings from the Extreme Programming and UNIX philosophies to my work. My focus lies on creating lean, extensible, decoupled and long-living software. If I think a feature does not fit these design principles, I will tell you so and I expect you to be open to negotiation.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -464,18 +436,18 @@ class MyHomePage extends StatelessWidget {
                   title: "Thoroughness.",
                   content:
                       "Deadlines are artificial constructs. Estimates are faulty and seldom correct. A billion dollar industry has evolved to solve these problems that really aren't problems but just paper tigers. I refuse to partake in this hoax as much as I can, focusing on my work, on doing it the right way, rather than getting caught up in this wasteful game.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                 ),
               ],
             ),
           ),
           Page(
+            colors: <Color>[
+              CustomColors.purple[800]!,
+              CustomColors.violet[800]!,
+            ],
             child: PageContent(
               width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
+              padding: EdgeInsets.all(16),
               children: <Widget>[
                 Text(
                   "Professional Projects",
@@ -517,25 +489,23 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
-          Page.inverted(
-            width: width,
-            height: height,
+          Page(
+            colors: <Color>[
+              CustomColors.violet[800]!,
+              CustomColors.red[800]!,
+            ],
             child: PageContent(
               width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
+              padding: EdgeInsets.all(16),
               children: <Widget>[
                 Text(
                   "Open Source",
-                  style: Theme.of(context).textTheme.headline2!.inverse(),
+                  style: Theme.of(context).textTheme.headline2,
                   textAlign: TextAlign.center,
                 ),
                 _headlineSpace(),
                 Text(
                   "Open source projects I am currently working on:",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                   textAlign: TextAlign.center,
                 ),
                 _paragraphSpace(),
@@ -546,7 +516,6 @@ class MyHomePage extends StatelessWidget {
                   content:
                       "Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
                   linkHeight: linkHeight,
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -556,7 +525,6 @@ class MyHomePage extends StatelessWidget {
                   content:
                       "Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
                   linkHeight: linkHeight,
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -566,18 +534,18 @@ class MyHomePage extends StatelessWidget {
                   content:
                       "As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
                   linkHeight: linkHeight,
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                 ),
               ],
             ),
           ),
           Page(
+            colors: <Color>[
+              CustomColors.red[800]!,
+              CustomColors.orange[800]!,
+            ],
             child: PageContent(
               width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
+              padding: EdgeInsets.all(16),
               children: <Widget>[
                 Text(
                   "Personal Pursuits",
@@ -619,31 +587,28 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
-          Page.inverted(
-            width: width,
-            height: height,
+          Page(
+            colors: <Color>[
+              CustomColors.orange[800]!,
+              CustomColors.yellow[800]!,
+            ],
             child: PageContent(
               width: _contentWidth,
-              height: _contentHeight,
-              padding: EdgeInsets.symmetric(
-                horizontal: contentPadding,
-              ),
+              padding: EdgeInsets.all(16),
               children: <Widget>[
                 Text(
                   "Contact",
-                  style: Theme.of(context).textTheme.headline2!.inverse(),
+                  style: Theme.of(context).textTheme.headline2,
                   textAlign: TextAlign.center,
                 ),
                 _headlineSpace(),
                 Text(
                   "If you are interested in collaborating on a project, be that professional work or open source, feel free to write me an email.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                   textAlign: TextAlign.center,
                 ),
                 _paragraphSpace(),
                 Text(
                   "If you got something funny or wholesome and wish to share it with me, do so as well.",
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
                   textAlign: TextAlign.center,
                 ),
                 _paragraphSpace(),
@@ -651,7 +616,7 @@ class MyHomePage extends StatelessWidget {
                   text: "jonas@fassbender.dev",
                   url: "mailto://jonas@fassbender.dev?subject=Hi%20There!",
                   height: linkHeight,
-                  style: Theme.of(context).textTheme.bodyText2!.inverse(),
+                  style: Theme.of(context).textTheme.bodyText2!,
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -660,14 +625,12 @@ class MyHomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   TextButton(
-                    style: Theme.of(context).textButtonTheme!.style!.inverse(),
                     child: const Text("Imprint (DE)"),
                     onPressed: () {
                       launchUrl(Uri.parse("imprint.html"));
                     },
                   ),
                   TextButton(
-                    style: Theme.of(context).textButtonTheme!.style!.inverse(),
                     child: const Text("Privacy Policy (DE)"),
                     onPressed: () {
                       launchUrl(Uri.parse("privacy_policy.html"));
