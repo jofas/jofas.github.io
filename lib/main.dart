@@ -100,7 +100,7 @@ class MyApp extends StatelessWidget {
         }
 
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Jonas Fassbender',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.black,
             textTheme: TextTheme(
