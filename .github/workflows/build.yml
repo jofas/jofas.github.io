@@ -13,8 +13,8 @@ jobs:
           cd main
           flutter build web --release
           cp -r build/web/* docs/
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name jofas
+          git config user.email jonas@fc-web.de
           git add .
           git commit -m "build website"
           git push
