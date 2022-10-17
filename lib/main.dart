@@ -263,7 +263,7 @@ class MyHomePage extends StatelessWidget {
             },
           ),
           TextButton(
-            child: const Text("RESUME"),
+            child: const Text("RÉSUMÉ"),
             onPressed: () {
               launchUrl(Uri.parse("resume.pdf"));
             },
