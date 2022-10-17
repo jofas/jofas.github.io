@@ -100,15 +100,32 @@
 
 * [x] style: chessboard
 
+* [x] proper html meta
+
+* [x] GitHub Pages: publish website in docs/ folder (Action)
+
+* [ ] pages horizontal
+
+* [ ] linkbar -> appbar
+
+* [ ] chessboard pattern -> each page with a nice gradient
+
+* [ ] logo in appbar, not on first page
+
+* [ ] space -> padding
+
+* [ ] scrollprogressbar -> bottom appbar 
+
+* [ ] launchUrl on mobile behaves weirdly
+
+* [ ] don't do fancy stuff with links, it won't scale to more than
+  one device
+
 * [ ] split logo and animated logo on painter level
 
-* [ ] icon as favicon (logo as svg)
+* [ ] icon as favicon + manifest.json (logo as svg)
 
-* [ ] proper html meta for links and tabs
-
-* [ ] GitHub Pages: publish website in docs/ folder (Action)
-
-* [ ] publish!
+* [ ] try google lighthouse
 
 
 # MAYBEDO
