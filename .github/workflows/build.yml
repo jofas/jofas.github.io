@@ -1,0 +1,20 @@
+name: Build
+on: [push]
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    container:
+      image: cirrusci/flutter:latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: main
+      - run: |
+          cd main
+          flutter build web --release
+          cp -r build/web/* docs/
+          git config user.name jofas
+          git config user.email jonas@fc-web.de
+          git add .
+          git commit -m "build website"
+          git push

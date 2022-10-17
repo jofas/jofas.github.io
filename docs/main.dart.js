@@ -32491,7 +32491,7 @@ b.sa7(100)
 a.sa7(20)}s=A.a7_(q,q,q,A.lW(q,q,B.i,q,q,q,q,q,q,q,q,m.aa(),q,q,q,q,1.5,!0,q,1,q,q,q,q,q,q),q,q,q,A.lW(q,q,B.i,q,q,q,q,q,q,q,q,l.aa(),q,q,q,q,q,!0,q,5,q,q,q,q,q,q),q,q,q,q,A.lW(q,q,B.i,q,q,q,q,q,q,q,q,j.aa(),q,q,q,q,q,!0,q,1,q,q,q,q,q,q),q,q,q,q)
 s=A.aaS(q,new A.mX(B.i,q,2,q,q),new A.co(B.i,q,k.aa(),q),B.h,new A.os(A.q1(q,q,q,q,q,q,new A.ee(new A.T3(),t.qn),q,new A.c7(new A.V(0,0),t.pY),q,new A.c7(A.ba(0,255,255,255),t.hl),new A.c7(new A.aB(10,0,10,0),t.m_),q,q,q,q,q,q,new A.ee(new A.T4(a0,j),t.uN),q)),s,q)
 r=new A.DG().TX(A.cI([B.bD,B.aU,B.j9],t.A),!1)
-return new A.lf(new A.Bt(this.a.c,p,o,i.aa(),h.aa(),g.aa(),f.aa(),e.aa(),d.aa(),c.aa(),b.aa(),a.aa(),q),"Flutter Demo",s,r,q)},
+return new A.lf(new A.Bt(this.a.c,p,o,i.aa(),h.aa(),g.aa(),f.aa(),e.aa(),d.aa(),c.aa(),b.aa(),a.aa(),q),"Jonas Fassbender",s,r,q)},
 $S:279}
 A.T3.prototype={
 $1(a){if(a.v(0,B.aS))return B.i
