@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'colors.dart' show CustomColors;
-import 'util.dart' show InverseTextStyle, InverseButtonStyle;
 
 class ScrollProgressBar extends StatefulWidget {
   final PageController controller;
   final int pages;
-  final double height, iconSize;
 
   ScrollProgressBar({
     super.key,
     required this.controller,
     required this.pages,
-    required this.height,
-    required this.iconSize,
   });
 
   @override
@@ -52,18 +48,22 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
     );
   }
 
-  Widget _prevPageButton({required ButtonStyle style}) {
+  Widget _prevPageButton() {
     return TextButton(
-      style: style,
-      child: Icon(Icons.expand_less, size: widget.iconSize),
+      child: RotatedBox(
+        quarterTurns: 3,
+        child: Icon(Icons.expand_less, size: 20),
+      ),
       onPressed: _prevPage,
     );
   }
 
-  Widget _nextPageButton({required ButtonStyle style}) {
+  Widget _nextPageButton() {
     final button = TextButton(
-      style: style,
-      child: Icon(Icons.expand_more, size: widget.iconSize),
+      child: RotatedBox(
+        quarterTurns: 3,
+        child: Icon(Icons.expand_more, size: 20),
+      ),
       onPressed: _nextPage,
     );
 
@@ -78,9 +78,6 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
 
   @override
   Widget build(BuildContext context) {
-    final page = ((widget.controller.page ?? 0) - 0.015).ceil();
-    final inverted = page % 2 == 1;
-
     return Row(
       children: <Widget>[
         Expanded(
@@ -96,9 +93,9 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
               builder: (BuildContext context, double value, _) {
                 return LinearProgressIndicator(
                   value: value,
-                  backgroundColor: inverted ? Colors.black : Colors.white,
+                  backgroundColor: Colors.red[50],
                   color: CustomColors.red[300],
-                  minHeight: widget.height,
+                  minHeight: 16,
                 );
               },
             ),
@@ -107,21 +104,11 @@ class _ScrollProgressBarState extends State<ScrollProgressBar> {
         SizedBox(width: 15),
         Text(
           "${(currPos * (widget.pages - 1)).round() + 1}  /  ${widget.pages}",
-          style: inverted
-              ? Theme.of(context).textTheme.labelMedium!.inverse()
-              : Theme.of(context).textTheme.labelMedium,
+          style: Theme.of(context).textTheme.labelMedium,
         ),
         SizedBox(width: 5),
-        _prevPageButton(
-          style: inverted
-              ? Theme.of(context).textButtonTheme!.style!.inverse()
-              : Theme.of(context).textButtonTheme!.style!,
-        ),
-        _nextPageButton(
-          style: inverted
-              ? Theme.of(context).textButtonTheme!.style!.inverse()
-              : Theme.of(context).textButtonTheme!.style!,
-        ),
+        _prevPageButton(),
+        _nextPageButton(),
       ],
     );
   }
@@ -152,7 +139,7 @@ class _JumpAnimationState extends State<JumpAnimation>
 
     animation = Tween<Offset>(
       begin: Offset(0, 0),
-      end: Offset(0, -0.2),
+      end: Offset(0.2, 0),
     ).animate(CurvedAnimation(
       parent: controller,
       curve: Curves.elasticIn,

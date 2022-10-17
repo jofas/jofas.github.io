@@ -116,9 +116,8 @@ class MyApp extends StatelessWidget {
                 letterSpacing: 5,
               ),
               labelMedium: TextStyle(
-                color: Colors.white,
-                fontSize: textButtonSize,
-                letterSpacing: 1,
+                color: Colors.black,
+                fontSize: 14,
               ),
             ),
             appBarTheme: AppBarTheme(
@@ -126,7 +125,7 @@ class MyApp extends StatelessWidget {
               elevation: 0,
             ),
             bottomAppBarTheme: BottomAppBarTheme(
-              color: Colors.black,
+              color: Colors.white,
               elevation: 0,
             ),
             iconTheme: IconThemeData(
@@ -271,11 +270,12 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: ScrollProgressBar(
-          controller: pageController,
-          pages: NUM_PAGES,
-          height: scrollProgressBarHeight,
-          iconSize: scrollProgressBarIconSize,
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: ScrollProgressBar(
+            controller: pageController,
+            pages: NUM_PAGES,
+          ),
         ),
       ),
       drawer: Navbar(
