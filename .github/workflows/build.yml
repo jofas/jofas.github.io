@@ -6,14 +6,10 @@ jobs:
     container:
       image: cirrusci/flutter:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Build website
-        run: flutter build web --release
-      - name: Copy website into docs dir
-        run: cp -r build/web/* docs/
-      - name: Apply build
-        run: |
+      - uses: actions/checkout@v3
+      - run: |
+          flutter build web --release
+          cp -r build/web/* docs/
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
