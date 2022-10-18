@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'logo.dart' show Logo;
 
 class OpenNavbarButton extends StatelessWidget {
+  final double size;
+
+  OpenNavbarButton({required this.size});
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Icon(Icons.menu, size: 24),
+      child: Icon(Icons.menu, size: size),
       onPressed: () => Scaffold.of(context).openDrawer(),
     );
   }
