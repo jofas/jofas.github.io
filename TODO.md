@@ -132,10 +132,12 @@
 
 * [x] favicon + meta on imprint and data safety
 
-* [ ] try google lighthouse
+* [x] try google lighthouse
 
 
 # MAYBEDO
+
+* [ ] photo on about page
 
 * [ ] add xl and 2xl layouts
 
