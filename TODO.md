@@ -112,7 +112,7 @@
 
 * [x] logo in appbar, not on first page
 
-* [ ] navbar
+* [x] navbar
 
 * [x] scrollprogressbar -> bottom appbar 
 

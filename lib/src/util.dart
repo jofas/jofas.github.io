@@ -6,37 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'colors.dart';
 
-extension InverseTextStyle on TextStyle {
-  TextStyle inverse() {
-    return this.copyWith(color: Colors.black);
-  }
-}
-
-extension InverseButtonStyle on ButtonStyle {
-  ButtonStyle inverse() {
-    return this.copyWith(
-      foregroundColor: MaterialStateProperty.resolveWith<Color>((
-        Set<MaterialState> states,
-      ) {
-        if (states.contains(MaterialState.hovered)) {
-          return Colors.black;
-        }
-        return Colors.grey[500]!;
-      }),
-    );
-  }
-}
-
-class MenuButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      child: Icon(Icons.menu, size: 24),
-      onPressed: () => Scaffold.of(context).openDrawer(),
-    );
-  }
-}
-
 class Spacer extends StatelessWidget {
   static final Spacer tileSpace = Spacer(width: 10);
 

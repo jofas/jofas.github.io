@@ -8,10 +8,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'src/colors.dart' show CustomColors;
 import 'src/logo.dart' show Logo;
-import 'src/navbar.dart' show Navbar;
+import 'src/navbar.dart' show Navbar, OpenNavbarButton;
 import 'src/scroll_progress_bar.dart' show ScrollProgressBar;
-import 'src/util.dart'
-    show MenuButton, Spacer, Page, PageContent, Tile, Link, InlineLink;
+import 'src/util.dart' show Spacer, Page, PageContent, Tile, Link, InlineLink;
 
 void main() {
   runApp(MyApp());
@@ -123,7 +122,7 @@ class MyApp extends StatelessWidget {
               size: iconSize,
             ),
             dividerTheme: DividerThemeData(
-              color: Colors.white,
+              color: Colors.black,
               thickness: 2,
             ),
             textButtonTheme: TextButtonThemeData(
@@ -233,7 +232,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: MenuButton(),
+        leading: OpenNavbarButton(),
         title: SizedBox(
           height: 24,
           child: Logo(color: Colors.black),
