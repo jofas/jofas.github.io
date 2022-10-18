@@ -96,7 +96,6 @@ class MyApp extends StatelessWidget {
               ),
             ),
             appBarTheme: AppBarTheme(
-              toolbarHeight: kToolbarHeight,
               color: Colors.white,
               elevation: 0,
             ),
