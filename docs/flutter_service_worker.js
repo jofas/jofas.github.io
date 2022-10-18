@@ -8,10 +8,10 @@ const RESOURCES = {
 "privacy_policy.html": "037693b6a81bfeec70b80cc3b8e3865a",
 "cp_for_loan_approval_prediction.pdf": "49cc7828da8b12a5bf92b22b614960f9",
 "logo.svg": "bb76d50ff7551bfcb0f3ce25492250da",
-"index.html": "ac0a05841b2e98e196bacb680afa1976",
-"/": "ac0a05841b2e98e196bacb680afa1976",
+"index.html": "48c0c88249b83ad33c07d893b0649ef5",
+"/": "48c0c88249b83ad33c07d893b0649ef5",
 "flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
-"manifest.json": "103b9a29d6d58db3be032c72c9d271cf",
+"manifest.json": "b3b1d875a690a58d4f2e074f80dfc812",
 "canvaskit/canvaskit.js": "2bc454a691c631b07a9307ac4ca47797",
 "canvaskit/canvaskit.wasm": "bf50631470eb967688cca13ee181af62",
 "canvaskit/profiling/canvaskit.js": "38164e5a72bdad0faa4ce740c9b8e564",
@@ -27,8 +27,6 @@ const RESOURCES = {
 "version.json": "c324d11394fdd1dd27cda93eb8927adb",
 "imprint.html": "d90629244ad95dfec1a7f701b2542af0",
 "icons/logo_512.png": "c1d63fe350e58835abc5ab5407c8cc27",
-"icons/logo_192_maskable.png": "c5de3082c8f10c39bd03dbf1836785c6",
-"icons/logo_512_maskable.png": "c1d63fe350e58835abc5ab5407c8cc27",
 "icons/logo_192.png": "c5de3082c8f10c39bd03dbf1836785c6"
 };
 
