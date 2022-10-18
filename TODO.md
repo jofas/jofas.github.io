@@ -122,7 +122,7 @@
 
 * [x] bottom app bar less vertical padding
 
-* [ ] navbar variable padding
+* [x] navbar button padding
 
 * [ ] list view hide scroll animation
 

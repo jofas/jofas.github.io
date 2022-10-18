@@ -122,7 +122,7 @@ class NavButton extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsets?>(
-          EdgeInsets.only(top: 20),
+          EdgeInsets.symmetric(vertical: 5),
         ),
         textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
           Set<MaterialState> states,
