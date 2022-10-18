@@ -104,22 +104,21 @@
 
 * [x] GitHub Pages: publish website in docs/ folder (Action)
 
-* [ ] pages horizontal
+* [x] pages horizontal
 
-* [ ] linkbar -> appbar
+* [x] linkbar -> appbar
 
-* [ ] chessboard pattern -> each page with a nice gradient
+* [x] chessboard pattern -> each page with a nice gradient
 
-* [ ] logo in appbar, not on first page
+* [x] logo in appbar, not on first page
 
-* [ ] space -> padding
+* [x] navbar
 
-* [ ] scrollprogressbar -> bottom appbar 
+* [x] scrollprogressbar -> bottom appbar 
+
+* [x] text links 
 
 * [ ] launchUrl on mobile behaves weirdly
-
-* [ ] don't do fancy stuff with links, it won't scale to more than
-  one device
 
 * [ ] split logo and animated logo on painter level
 
