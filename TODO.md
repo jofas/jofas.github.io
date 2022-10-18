@@ -126,9 +126,11 @@
 
 * [x] deploy pages with action
 
-* [ ] list view hide scroll animation
+* [x] list view hide scroll animation
 
-* [ ] icon as favicon + manifest.json (logo as svg)
+* [x] icon as favicon + manifest.json (logo as svg)
+
+* [ ] favicon + meta on imprint and data safety
 
 * [ ] try google lighthouse
 
