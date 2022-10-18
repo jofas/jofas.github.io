@@ -88,6 +88,27 @@ class PageContent extends StatelessWidget {
   }
 }
 
+class Section extends StatelessWidget {
+  final List<Widget> children;
+  final double width;
+
+  Section({required this.children, required this.width});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: width,
+        padding: EdgeInsets.symmetric(vertical: 150),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: children,
+        ),
+      ),
+    );
+  }
+}
+
 class Tile extends StatelessWidget {
   final IconData icon;
   final String title;

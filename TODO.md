@@ -136,7 +136,15 @@
 
 * [x] imprint + dp buttons into menu
 
-* [ ] vertical scrolling only
+* [x] max width into Section, show scrollbar
+
+* [x] vertical scrolling only
+
+* [x] spacing between sections
+
+* [ ] gradient while scrolling
+
+* [ ] footer with imprint and dp
 
 
 # MAYBEDO
