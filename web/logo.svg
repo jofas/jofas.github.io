@@ -1,8 +1,8 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 1500 1100"
-  width="512px"
-  height="512px">
+  width="100%"
+  height="100%">
   <style>
     path {
       fill: black;
