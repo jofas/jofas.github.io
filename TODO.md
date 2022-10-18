@@ -136,6 +136,8 @@
 
 * [x] imprint + dp buttons into menu
 
+* [ ] vertical scrolling only
+
 
 # MAYBEDO
 
