@@ -84,6 +84,7 @@ class PageContent extends StatelessWidget {
               Expanded(
                 child: Center(
                   child: ListView(
+                    physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     children: children,
                   ),
