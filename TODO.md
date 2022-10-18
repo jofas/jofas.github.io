@@ -122,6 +122,8 @@
 
 * [ ] app bars variable size
 
+* [ ] list view hide scroll animation
+
 * [ ] icon as favicon + manifest.json (logo as svg)
 
 * [ ] try google lighthouse

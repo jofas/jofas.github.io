@@ -47,10 +47,10 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 8;
           fontSizeHeadline = 24;
           iconSize = 30;
-          textButtonSize = 8;
+          textButtonSize = 12;
           headlineSpace = 10;
           paragraphSpace = 20;
-          appbarLogoSize = 12;
+          appbarLogoSize = 24;
           navbarLogoSize = 60;
           navbarLogoPadding = 10;
         } else if (screenSize <= 768) {
@@ -58,10 +58,10 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 10;
           fontSizeHeadline = 40;
           iconSize = 50;
-          textButtonSize = 10;
+          textButtonSize = 12;
           headlineSpace = 20;
           paragraphSpace = 30;
-          appbarLogoSize = 20;
+          appbarLogoSize = 24;
           navbarLogoSize = 80;
           navbarLogoPadding = 15;
         } else {
@@ -104,6 +104,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
             appBarTheme: AppBarTheme(
+              toolbarHeight: kToolbarHeight,
               color: Colors.white,
               elevation: 0,
             ),
@@ -211,13 +212,6 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: OpenNavbarButton(size: appbarLogoSize),
-        title: Center(
-          child: SizedBox(
-            height: appbarLogoSize,
-            width: appbarLogoSize,
-            child: Logo(color: Colors.black),
-          ),
-        ),
         actions: <Widget>[
           TextButton(
             child: const Text("GITHUB"),
