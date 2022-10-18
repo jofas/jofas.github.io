@@ -1,10 +1,18 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
 import 'colors.dart';
+
+void openLink(String url) {
+  launchUrl(
+    Uri.parse(url),
+    webOnlyWindowName: "_blank",
+  );
+}
 
 class Spacer extends StatelessWidget {
   static final Spacer tileSpace = Spacer(width: 10);
@@ -59,7 +67,6 @@ class PageContent extends StatelessWidget {
 
   PageContent({
     required this.width,
-    double? height,
     required this.padding,
     required this.children,
     this.footer,
@@ -97,14 +104,12 @@ class Tile extends StatelessWidget {
   final String content;
 
   final String? titleUrl;
-  final double? linkHeight;
   final TextStyle? style;
 
   Tile({
     required this.icon,
     required this.title,
     required this.content,
-    this.linkHeight,
     this.titleUrl,
     this.style,
   });
@@ -121,7 +126,6 @@ class Tile extends StatelessWidget {
       return InlineLink(
         text: title,
         url: titleUrl!,
-        height: linkHeight!,
         style: textStyle.copyWith(
           fontWeight: FontWeight.bold,
         ),
@@ -156,14 +160,12 @@ class Tile extends StatelessWidget {
 class Link extends StatelessWidget {
   final String text;
   final String url;
-  final double height;
   final TextStyle style;
   final TextAlign? textAlign;
 
   Link({
     required this.text,
     required this.url,
-    required this.height,
     required this.style,
     this.textAlign,
   });
@@ -176,7 +178,6 @@ class Link extends StatelessWidget {
           InlineLink(
             text: text,
             url: url,
-            height: height,
             style: style,
           ),
         ],
@@ -186,43 +187,20 @@ class Link extends StatelessWidget {
   }
 }
 
-class InlineLink extends WidgetSpan {
+class InlineLink extends TextSpan {
   InlineLink({
     required String text,
     required String url,
-    required double height,
     required TextStyle style,
   }) : super(
-          child: Container(
-            height: height,
-            child: TextButton(
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all<EdgeInsets?>(
-                  EdgeInsets.all(0),
-                ),
-                foregroundColor: MaterialStateProperty.resolveWith<Color?>((
-                  Set<MaterialState> states,
-                ) {
-                  if (states.contains(MaterialState.hovered)) {
-                    return style.color;
-                  }
-                }),
-                textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
-                  Set<MaterialState> states,
-                ) {
-                  if (states.contains(MaterialState.focused)) {
-                    return style.copyWith(
-                      decoration: TextDecoration.underline,
-                    );
-                  }
-                  return style;
-                }),
-              ),
-              child: Text(text),
-              onPressed: () {
-                launchUrl(Uri.parse(url));
-              },
-            ),
+          text: text,
+          mouseCursor: SystemMouseCursors.click,
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              openLink(url);
+            },
+          style: style.copyWith(
+            decoration: TextDecoration.underline,
           ),
         );
 }

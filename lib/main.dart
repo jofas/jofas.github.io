@@ -10,7 +10,8 @@ import 'src/colors.dart' show CustomColors;
 import 'src/logo.dart' show Logo;
 import 'src/navbar.dart' show Navbar, OpenNavbarButton;
 import 'src/scroll_progress_bar.dart' show ScrollProgressBar;
-import 'src/util.dart' show Spacer, Page, PageContent, Tile, Link, InlineLink;
+import 'src/util.dart'
+    show openLink, Spacer, Page, PageContent, Tile, Link, InlineLink;
 
 void main() {
   runApp(MyApp());
@@ -31,59 +32,39 @@ class MyApp extends StatelessWidget {
         );
 
         late final fontSizeBody;
+        late final fontSizeCaption;
         late final fontSizeHeadline;
         late final iconSize;
-        late final textButtonSize;
         late final headlineSpace;
         late final paragraphSpace;
-        late final contentPadding;
-        late final linkHeight;
-        late final scrollProgressBarHeight;
-        late final scrollProgressBarIconSize;
-        late final openNavbarButtonSize;
         late final navbarLogoSize;
         late final navbarLogoPadding;
 
         if (screenSize <= 640) {
           fontSizeBody = 12;
+          fontSizeCaption = 8;
           fontSizeHeadline = 24;
           iconSize = 30;
-          textButtonSize = 8;
           headlineSpace = 10;
-          contentPadding = 50;
           paragraphSpace = 20;
-          linkHeight = 17.25;
-          scrollProgressBarHeight = 5;
-          scrollProgressBarIconSize = 14;
-          openNavbarButtonSize = 20;
           navbarLogoSize = 60;
           navbarLogoPadding = 10;
         } else if (screenSize <= 768) {
           fontSizeBody = 16;
+          fontSizeCaption = 10;
           fontSizeHeadline = 40;
           iconSize = 50;
-          textButtonSize = 10;
           headlineSpace = 20;
           paragraphSpace = 30;
-          contentPadding = 60;
-          linkHeight = 22.75;
-          scrollProgressBarHeight = 8;
-          scrollProgressBarIconSize = 16;
-          openNavbarButtonSize = 25;
           navbarLogoSize = 80;
           navbarLogoPadding = 15;
         } else {
           fontSizeBody = 20;
+          fontSizeCaption = 12;
           fontSizeHeadline = 60;
           iconSize = 70;
-          textButtonSize = 12;
           headlineSpace = 30;
           paragraphSpace = 40;
-          contentPadding = 70;
-          linkHeight = 28.5;
-          scrollProgressBarHeight = 10;
-          scrollProgressBarIconSize = 20;
-          openNavbarButtonSize = 30;
           navbarLogoSize = 100;
           navbarLogoPadding = 20;
         }
@@ -103,6 +84,11 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
                 fontSize: fontSizeHeadline,
                 letterSpacing: 5,
+              ),
+              caption: TextStyle(
+                color: Colors.white,
+                fontSize: fontSizeCaption,
+                letterSpacing: 1,
               ),
               labelMedium: TextStyle(
                 color: Colors.black,
@@ -166,11 +152,6 @@ class MyApp extends StatelessWidget {
             pageController: pageController,
             headlineSpace: headlineSpace,
             paragraphSpace: paragraphSpace,
-            contentPadding: contentPadding,
-            linkHeight: linkHeight,
-            scrollProgressBarHeight: scrollProgressBarHeight,
-            scrollProgressBarIconSize: scrollProgressBarIconSize,
-            openNavbarButtonSize: openNavbarButtonSize,
             navbarLogoSize: navbarLogoSize,
             navbarLogoPadding: navbarLogoPadding,
           ),
@@ -189,11 +170,6 @@ class MyHomePage extends StatelessWidget {
 
   final double headlineSpace;
   final double paragraphSpace;
-  final double contentPadding;
-  final double linkHeight;
-  final double scrollProgressBarHeight;
-  final double scrollProgressBarIconSize;
-  final double openNavbarButtonSize;
   final double navbarLogoSize;
   final double navbarLogoPadding;
 
@@ -203,21 +179,12 @@ class MyHomePage extends StatelessWidget {
     required this.pageController,
     required this.headlineSpace,
     required this.paragraphSpace,
-    required this.contentPadding,
-    required this.linkHeight,
-    required this.scrollProgressBarHeight,
-    required this.scrollProgressBarIconSize,
-    required this.openNavbarButtonSize,
     required this.navbarLogoSize,
     required this.navbarLogoPadding,
   });
 
   double get _contentWidth {
     return width > MAX_CONTENT_WIDTH ? MAX_CONTENT_WIDTH : width;
-  }
-
-  double get _contentHeight {
-    return height - scrollProgressBarHeight * 2 - 20;
   }
 
   Widget _headlineSpace() {
@@ -241,19 +208,19 @@ class MyHomePage extends StatelessWidget {
           TextButton(
             child: const Text("GITHUB"),
             onPressed: () {
-              launchUrl(Uri.parse("https://github.com/jofas"));
+              openLink("https://github.com/jofas");
             },
           ),
           TextButton(
             child: const Text("GITLAB"),
             onPressed: () {
-              launchUrl(Uri.parse("https://gitlab.com/jofas"));
+              openLink("https://gitlab.com/jofas");
             },
           ),
           TextButton(
             child: const Text("RÉSUMÉ"),
             onPressed: () {
-              launchUrl(Uri.parse("resume.pdf"));
+              openLink("resume.pdf");
             },
           ),
         ],
@@ -318,7 +285,6 @@ class MyHomePage extends StatelessWidget {
                         text: "contact",
                         url:
                             "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                        height: linkHeight,
                         style: Theme.of(context).textTheme.bodyText2!,
                       ),
                       TextSpan(
@@ -465,7 +431,6 @@ class MyHomePage extends StatelessWidget {
                   titleUrl: "https://carpolice.de",
                   content:
                       "The carpolice.de InsurTech platform serves car dealers who want to provide their customers with an all-inclusive offer including car insurance. Carpolice.de provides car dealers with an easy-to-use system for selling insurance products specially designed for car dealerships.",
-                  linkHeight: linkHeight,
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -474,7 +439,6 @@ class MyHomePage extends StatelessWidget {
                   titleUrl: "https://www.dshs-koeln.de",
                   content:
                       "Written the technical domain specification for an application enabling teachers to generate rich semester plans applying inquiry-based learning. The tool should guide teachers through the generation steps with the help of a recommendation system. Currently in the stage of raising funds for the development.",
-                  linkHeight: linkHeight,
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -483,7 +447,6 @@ class MyHomePage extends StatelessWidget {
                   titleUrl: "cp_for_loan_approval_prediction.pdf",
                   content:
                       "Applied an adaptation of the conformal prediction method to the consumer loan data of a German bank. The goal was to save the bank money by rejecting loan requests likely to default as early in the approval process as possible. 17% of all declined requests were filtered out by the algorithm while retaining an accuracy of 98%.",
-                  linkHeight: linkHeight,
                 ),
               ],
             ),
@@ -514,7 +477,6 @@ class MyHomePage extends StatelessWidget {
                   titleUrl: "https://crates.io/users/jofas",
                   content:
                       "Mainly declarative and procedural macros, serde and actix-web related utility crates.  Browse through them and hopefully you'll find something that can help you with your Rust project.",
-                  linkHeight: linkHeight,
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -523,7 +485,6 @@ class MyHomePage extends StatelessWidget {
                   titleUrl: "https://github.com/jofas/mgart",
                   content:
                       "Pronounced \"em-gart.\" I find the beauty of mathematical structures and algorithms very enticing. So I build a program that lets you generate your own algorithmic art with a simple-to-use declarative API.",
-                  linkHeight: linkHeight,
                 ),
                 _paragraphSpace(),
                 Tile(
@@ -532,7 +493,6 @@ class MyHomePage extends StatelessWidget {
                   titleUrl: "https://github.com/jofas/BAREKEEPER",
                   content:
                       "As a freelancer, you have several options when it comes to making your taxes and other business needs, like invoicing or hour tracking. None fit my needs, so I created a free bare-metal tool where you have full control over your data. Best part? You don't even have to leave your terminal.",
-                  linkHeight: linkHeight,
                 ),
               ],
             ),
@@ -614,7 +574,6 @@ class MyHomePage extends StatelessWidget {
                 Link(
                   text: "jonas@fassbender.dev",
                   url: "mailto://jonas@fassbender.dev?subject=Hi%20There!",
-                  height: linkHeight,
                   style: Theme.of(context).textTheme.bodyText2!,
                   textAlign: TextAlign.center,
                 ),
@@ -623,17 +582,16 @@ class MyHomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
-                  TextButton(
-                    child: const Text("Imprint (DE)"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("imprint.html"));
-                    },
+                  Link(
+                    text: "Imprint (DE)",
+                    url: "imprint.html",
+                    style: Theme.of(context).textTheme.caption!,
                   ),
-                  TextButton(
-                    child: const Text("Privacy Policy (DE)"),
-                    onPressed: () {
-                      launchUrl(Uri.parse("privacy_policy.html"));
-                    },
+                  Spacer(width: 40),
+                  Link(
+                    text: "Privacy Policy (DE)",
+                    url: "privacy_policy.html",
+                    style: Theme.of(context).textTheme.caption!,
                   ),
                 ],
               ),

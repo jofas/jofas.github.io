@@ -116,9 +116,9 @@
 
 * [x] scrollprogressbar -> bottom appbar 
 
-* [ ] launchUrl on mobile behaves weirdly
+* [x] text links 
 
-* [ ] text links 
+* [ ] launchUrl on mobile behaves weirdly
 
 * [ ] split logo and animated logo on painter level
 
