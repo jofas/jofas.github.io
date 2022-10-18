@@ -118,7 +118,7 @@
 
 * [x] text links 
 
-* [ ] launchUrl on mobile behaves weirdly
+* [ ] app bars variable size
 
 * [ ] split logo and animated logo on painter level
 

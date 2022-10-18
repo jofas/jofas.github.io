@@ -200,9 +200,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: OpenNavbarButton(),
-        title: SizedBox(
-          height: 24,
-          child: Logo(color: Colors.black),
+        title: Center(
+          child: SizedBox(
+            height: 24,
+            width: 24,
+            child: Logo(color: Colors.black),
+          ),
         ),
         actions: <Widget>[
           TextButton(
