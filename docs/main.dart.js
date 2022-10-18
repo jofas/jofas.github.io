@@ -32771,7 +32771,7 @@ q.d=r},
 I(a){var s=this,r=null,q=s.a,p=q.e,o=q.d
 return new A.zV(B.i,A.a9U(A.a([new A.fs(new A.aB(0,p,0,p),A.jU(new A.Bo(B.j,r),o,o),r),new A.zy(r),A.nC(q.c,0,"ABOUT"),A.nC(s.a.c,1,"KEY COMPETENCIES"),A.nC(s.a.c,2,"CORE VALUES"),A.nC(s.a.c,3,"PROFESSIONAL PROJECTS"),A.nC(s.a.c,4,"OPEN SOURCE"),A.nC(s.a.c,5,"PERSONAL PURSUITS"),A.nC(s.a.c,6,"CONTACT")],t.E),r,!0),r)}}
 A.BN.prototype={
-I(a){var s=null,r=A.MQ(s,s,s,s,s,s,s,s,s,s,s,new A.c7(new A.aB(0,5,0,5),t.m_),s,s,s,s,s,s,new A.ke(new A.Th(this,a),t.uN),s)
+I(a){var s=null,r=A.MQ(s,s,s,s,s,s,s,s,s,s,s,new A.c7(new A.aB(0,2.5,0,2.5),t.m_),s,s,s,s,s,s,new A.ke(new A.Th(this,a),t.uN),s)
 return A.oq(A.dd(this.c,s,s),new A.Ti(this,a),r)}}
 A.Th.prototype={
 $1(a){var s,r,q=A.aC(this.b).RG.z
