@@ -120,7 +120,9 @@
 
 * [x] no more animated logo
 
-* [ ] app bars variable size
+* [x] bottom app bar less vertical padding
+
+* [ ] navbar variable padding
 
 * [ ] list view hide scroll animation
 

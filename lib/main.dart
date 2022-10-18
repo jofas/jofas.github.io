@@ -35,10 +35,8 @@ class MyApp extends StatelessWidget {
         late final fontSizeCaption;
         late final fontSizeHeadline;
         late final iconSize;
-        late final textButtonSize;
         late final headlineSpace;
         late final paragraphSpace;
-        late final appbarLogoSize;
         late final navbarLogoSize;
         late final navbarLogoPadding;
 
@@ -47,10 +45,8 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 8;
           fontSizeHeadline = 24;
           iconSize = 30;
-          textButtonSize = 12;
           headlineSpace = 10;
           paragraphSpace = 20;
-          appbarLogoSize = 24;
           navbarLogoSize = 60;
           navbarLogoPadding = 10;
         } else if (screenSize <= 768) {
@@ -58,10 +54,8 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 10;
           fontSizeHeadline = 40;
           iconSize = 50;
-          textButtonSize = 12;
           headlineSpace = 20;
           paragraphSpace = 30;
-          appbarLogoSize = 24;
           navbarLogoSize = 80;
           navbarLogoPadding = 15;
         } else {
@@ -69,10 +63,8 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 12;
           fontSizeHeadline = 60;
           iconSize = 70;
-          textButtonSize = 12;
           headlineSpace = 30;
           paragraphSpace = 40;
-          appbarLogoSize = 24;
           navbarLogoSize = 100;
           navbarLogoPadding = 20;
         }
@@ -134,7 +126,7 @@ class MyApp extends StatelessWidget {
                   Set<MaterialState> states,
                 ) {
                   final base = Theme.of(context).textTheme.bodyText2!.copyWith(
-                        fontSize: textButtonSize,
+                        fontSize: 12,
                       );
 
                   if (states.contains(MaterialState.focused)) {
@@ -161,7 +153,6 @@ class MyApp extends StatelessWidget {
             pageController: pageController,
             headlineSpace: headlineSpace,
             paragraphSpace: paragraphSpace,
-            appbarLogoSize: appbarLogoSize,
             navbarLogoSize: navbarLogoSize,
             navbarLogoPadding: navbarLogoPadding,
           ),
@@ -180,7 +171,6 @@ class MyHomePage extends StatelessWidget {
 
   final double headlineSpace;
   final double paragraphSpace;
-  final double appbarLogoSize;
   final double navbarLogoSize;
   final double navbarLogoPadding;
 
@@ -190,7 +180,6 @@ class MyHomePage extends StatelessWidget {
     required this.pageController,
     required this.headlineSpace,
     required this.paragraphSpace,
-    required this.appbarLogoSize,
     required this.navbarLogoSize,
     required this.navbarLogoPadding,
   });
@@ -211,7 +200,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: OpenNavbarButton(size: appbarLogoSize),
+        leading: OpenNavbarButton(size: 24),
         actions: <Widget>[
           TextButton(
             child: const Text("GITHUB"),
@@ -235,7 +224,10 @@ class MyHomePage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
           child: ScrollProgressBar(
             controller: pageController,
             pages: NUM_PAGES,
