@@ -5,19 +5,23 @@ on:
       - "master"
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
   group: "pages"
   cancel-in-progress: true
 jobs:
-  Build:
+  BuildAndDeploy:
     runs-on: ubuntu-latest
     container:
-      image: cirrusci/flutter:latest
+      image: cirrusci/flutter:latest      
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Build website
+        uses: actions/checkout@v3
         with:
           path: main
       - run: |
@@ -29,23 +33,13 @@ jobs:
           git add .
           git commit -m "build website"
           git push
-
-  Deploy:
-    needs: Build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+          cd ..
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './docs'
+          path: 'main/docs'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
