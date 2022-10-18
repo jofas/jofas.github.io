@@ -142,9 +142,9 @@
 
 * [x] spacing between sections
 
-* [ ] gradient while scrolling
+* [x] gradient while scrolling
 
-* [ ] footer with imprint and dp
+* [x] footer with imprint and dp
 
 
 # MAYBEDO

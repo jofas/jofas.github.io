@@ -31,78 +31,37 @@ class Spacer extends StatelessWidget {
   }
 }
 
-class Page extends StatelessWidget {
-  final Widget child;
-  final List<Color> colors;
-
-  Page({
-    required this.child,
-    required this.colors,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints viewport) {
-        return Container(
-          width: viewport.maxWidth,
-          height: viewport.maxHeight,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: colors,
-            ),
-          ),
-          child: child,
-        );
-      },
-    );
-  }
-}
-
-class PageContent extends StatelessWidget {
-  final double width;
-  final EdgeInsets padding;
-  final List<Widget> children;
-
-  PageContent({
-    required this.width,
-    required this.padding,
-    required this.children,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: width,
-        child: Center(
-          child: ListView(
-            padding: padding,
-            physics: BouncingScrollPhysics(),
-            shrinkWrap: true,
-            children: children,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class Section extends StatelessWidget {
   final List<Widget> children;
   final double width;
+  final List<Color> colors;
+  final EdgeInsets padding;
 
-  Section({required this.children, required this.width});
+  Section({
+    required this.children,
+    required this.width,
+    required this.colors,
+    required this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: width,
-        padding: EdgeInsets.symmetric(vertical: 150),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: children,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0, -1),
+          end: Alignment(0, 1),
+          colors: colors,
+        ),
+      ),
+      child: Center(
+        child: Container(
+          width: width,
+          padding: padding,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: children,
+          ),
         ),
       ),
     );

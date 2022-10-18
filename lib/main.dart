@@ -1,15 +1,11 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart' hide Spacer, Page;
-import 'package:flutter/gestures.dart';
 
-import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'src/colors.dart' show CustomColors;
 import 'src/logo.dart' show Logo;
-import 'src/navbar.dart' show Navbar, OpenNavbarButton;
-import 'src/scroll_progress_bar.dart' show ScrollProgressBar;
 import 'src/util.dart' show openLink, Spacer, Section, Tile, Link, InlineLink;
 
 void main() {
@@ -17,8 +13,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final PageController pageController = PageController();
-
   MyApp({super.key});
 
   @override
@@ -36,8 +30,6 @@ class MyApp extends StatelessWidget {
         late final iconSize;
         late final headlineSpace;
         late final paragraphSpace;
-        late final navbarLogoSize;
-        late final navbarLogoPadding;
 
         if (screenSize <= 640) {
           fontSizeBody = 12;
@@ -46,8 +38,6 @@ class MyApp extends StatelessWidget {
           iconSize = 30;
           headlineSpace = 10;
           paragraphSpace = 20;
-          navbarLogoSize = 60;
-          navbarLogoPadding = 10;
         } else if (screenSize <= 768) {
           fontSizeBody = 16;
           fontSizeCaption = 10;
@@ -55,8 +45,6 @@ class MyApp extends StatelessWidget {
           iconSize = 50;
           headlineSpace = 20;
           paragraphSpace = 30;
-          navbarLogoSize = 80;
-          navbarLogoPadding = 15;
         } else {
           fontSizeBody = 20;
           fontSizeCaption = 12;
@@ -64,8 +52,6 @@ class MyApp extends StatelessWidget {
           iconSize = 70;
           headlineSpace = 30;
           paragraphSpace = 40;
-          navbarLogoSize = 100;
-          navbarLogoPadding = 20;
         }
 
         return MaterialApp(
@@ -137,21 +123,10 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          scrollBehavior: ScrollBehavior().copyWith(
-            dragDevices: {
-              PointerDeviceKind.touch,
-              PointerDeviceKind.mouse,
-              PointerDeviceKind.stylus,
-            },
-          ),
           home: MyHomePage(
             width: viewport.maxWidth,
-            height: viewport.maxHeight,
-            pageController: pageController,
             headlineSpace: headlineSpace,
             paragraphSpace: paragraphSpace,
-            navbarLogoSize: navbarLogoSize,
-            navbarLogoPadding: navbarLogoPadding,
           ),
         );
       },
@@ -163,22 +138,15 @@ class MyHomePage extends StatelessWidget {
   static const int NUM_PAGES = 7;
   static const double MAX_CONTENT_WIDTH = 1536;
 
-  final PageController pageController;
-  final double width, height;
+  final double width;
 
   final double headlineSpace;
   final double paragraphSpace;
-  final double navbarLogoSize;
-  final double navbarLogoPadding;
 
   MyHomePage({
     required this.width,
-    required this.height,
-    required this.pageController,
     required this.headlineSpace,
     required this.paragraphSpace,
-    required this.navbarLogoSize,
-    required this.navbarLogoPadding,
   });
 
   double get _contentWidth {
@@ -227,17 +195,19 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Stack(
         children: <Widget>[
-          Container(
-            height: height,
-            width: width,
-            color: Colors.black,
-          ),
           ListView(
-            padding: EdgeInsets.all(16),
             physics: BouncingScrollPhysics(),
             children: <Widget>[
               Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 150,
+                  horizontal: 16,
+                ),
                 width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.green[700]!,
+                  CustomColors.blue[700]!,
+                ],
                 children: <Widget>[
                   Text(
                     "Jonas Fassbender",
@@ -285,7 +255,15 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 150,
+                  horizontal: 16,
+                ),
                 width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.blue[700]!,
+                  CustomColors.purple[700]!,
+                ],
                 children: <Widget>[
                   Text(
                     "Key Competencies",
@@ -335,7 +313,15 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 150,
+                  horizontal: 16,
+                ),
                 width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.purple[700]!,
+                  CustomColors.violet[700]!,
+                ],
                 children: <Widget>[
                   Text(
                     "Core Values",
@@ -378,7 +364,15 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 150,
+                  horizontal: 16,
+                ),
                 width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.violet[700]!,
+                  CustomColors.red[700]!,
+                ],
                 children: <Widget>[
                   Text(
                     "Professional Projects",
@@ -417,7 +411,15 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 150,
+                  horizontal: 16,
+                ),
                 width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.red[700]!,
+                  CustomColors.orange[700]!,
+                ],
                 children: <Widget>[
                   Text(
                     "Open Source",
@@ -456,7 +458,15 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 150,
+                  horizontal: 16,
+                ),
                 width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.orange[700]!,
+                  CustomColors.yellow[700]!,
+                ],
                 children: <Widget>[
                   Text(
                     "Personal Pursuits",
@@ -498,7 +508,15 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 150,
+                  horizontal: 16,
+                ),
                 width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.yellow[700]!,
+                  CustomColors.yellow[500]!,
+                ],
                 children: <Widget>[
                   Text(
                     "Contact",
@@ -521,6 +539,36 @@ class MyHomePage extends StatelessWidget {
                     url: "mailto://jonas@fassbender.dev?subject=Hi%20There!",
                     style: Theme.of(context).textTheme.bodyText2!,
                     textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              Section(
+                padding: EdgeInsets.symmetric(
+                  vertical: 50,
+                  horizontal: 16,
+                ),
+                width: _contentWidth,
+                colors: <Color>[
+                  CustomColors.yellow[500]!,
+                  CustomColors.yellow[300]!,
+                ],
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      TextButton(
+                        child: const Text("Imprint (DE)"),
+                        onPressed: () {
+                          openLink("imprint.html");
+                        },
+                      ),
+                      TextButton(
+                        child: const Text("Privacy Policy (DE)"),
+                        onPressed: () {
+                          openLink("privacy_policy.html");
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
