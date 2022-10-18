@@ -63,13 +63,11 @@ class PageContent extends StatelessWidget {
   final double width;
   final EdgeInsets padding;
   final List<Widget> children;
-  final Widget? footer;
 
   PageContent({
     required this.width,
     required this.padding,
     required this.children,
-    this.footer,
   });
 
   @override
@@ -77,21 +75,12 @@ class PageContent extends StatelessWidget {
     return Center(
       child: Container(
         width: width,
-        child: Padding(
-          padding: padding,
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: Center(
-                  child: ListView(
-                    physics: BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    children: children,
-                  ),
-                ),
-              ),
-              footer == null ? Container() : footer!,
-            ],
+        child: Center(
+          child: ListView(
+            padding: padding,
+            physics: BouncingScrollPhysics(),
+            shrinkWrap: true,
+            children: children,
           ),
         ),
       ),

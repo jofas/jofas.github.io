@@ -134,6 +134,8 @@
 
 * [x] try google lighthouse
 
+* [x] imprint + dp buttons into menu
+
 
 # MAYBEDO
 

@@ -577,23 +577,6 @@ class MyHomePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ],
-              footer: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Link(
-                    text: "Imprint (DE)",
-                    url: "imprint.html",
-                    style: Theme.of(context).textTheme.caption!,
-                  ),
-                  Spacer(width: 40),
-                  Link(
-                    text: "Privacy Policy (DE)",
-                    url: "privacy_policy.html",
-                    style: Theme.of(context).textTheme.caption!,
-                  ),
-                ],
-              ),
             ),
           ),
         ],

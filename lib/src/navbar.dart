@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'logo.dart' show Logo;
+import 'util.dart' show openLink;
 
 class OpenNavbarButton extends StatelessWidget {
   final double size;
@@ -96,6 +97,21 @@ class _NavbarState extends State<Navbar> {
             page: 6,
             controller: widget.controller,
           ),
+          Divider(),
+          TextButton(
+            style: NavButtonStyle(context),
+            child: const Text("Imprint (DE)"),
+            onPressed: () {
+              openLink("imprint.html");
+            },
+          ),
+          TextButton(
+            style: NavButtonStyle(context),
+            child: const Text("Privacy Policy (DE)"),
+            onPressed: () {
+              openLink("privacy_policy.html");
+            },
+          ),
         ],
       ),
     );
@@ -120,25 +136,7 @@ class NavButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all<EdgeInsets?>(
-          EdgeInsets.symmetric(vertical: 2.5),
-        ),
-        textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
-          Set<MaterialState> states,
-        ) {
-          final style = Theme.of(context).textTheme.bodyText2!.copyWith(
-                fontWeight: _isActive ? FontWeight.bold : null,
-              );
-
-          if (states.contains(MaterialState.focused)) {
-            return style.copyWith(
-              decoration: TextDecoration.underline,
-            );
-          }
-          return style;
-        }),
-      ),
+      style: NavButtonStyle(context, bold: _isActive),
       child: Text(text),
       onPressed: () {
         if (!_isActive) {
@@ -152,4 +150,29 @@ class NavButton extends StatelessWidget {
       },
     );
   }
+}
+
+class NavButtonStyle extends ButtonStyle {
+  NavButtonStyle(
+    BuildContext context, {
+    bool bold: false,
+  }) : super(
+          padding: MaterialStateProperty.all<EdgeInsets?>(
+            EdgeInsets.symmetric(vertical: 2.5),
+          ),
+          textStyle: MaterialStateProperty.resolveWith<TextStyle?>((
+            Set<MaterialState> states,
+          ) {
+            final style = Theme.of(context).textTheme.bodyText2!.copyWith(
+                  fontWeight: bold ? FontWeight.bold : null,
+                );
+
+            if (states.contains(MaterialState.focused)) {
+              return style.copyWith(
+                decoration: TextDecoration.underline,
+              );
+            }
+            return style;
+          }),
+        );
 }
