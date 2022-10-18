@@ -11,97 +11,21 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (
-      BuildContext context,
-      BoxConstraints viewport,
-    ) {
-      return CustomPaint(
-        painter: LogoPainter(1, color: color),
-        size: Size(viewport.maxWidth, viewport.maxHeight),
-      );
-    });
-  }
-}
-
-class AnimatedLogo extends StatefulWidget {
-  AnimatedLogo({super.key});
-
-  @override
-  State<AnimatedLogo> createState() => _AnimatedLogoState();
-}
-
-class _AnimatedLogoState extends State<AnimatedLogo>
-    with TickerProviderStateMixin {
-  late final AnimationController controller;
-
-  @override
-  void initState() {
-    controller = AnimationController(
-      duration: Duration(seconds: 8),
-      vsync: this,
-    )..repeat(
-        reverse: true,
-      );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewport) {
-        return LogoAnimation(
+        return CustomPaint(
+          painter: LogoPainter(color: color),
           size: Size(viewport.maxWidth, viewport.maxHeight),
-          controller: controller,
         );
       },
     );
   }
 }
 
-class LogoAnimation extends AnimatedWidget {
-  final Size size;
-
-  LogoAnimation({
-    super.key,
-    required this.size,
-    required Animation<double> controller,
-  }) : super(listenable: controller);
-
-  Animation<double> get _progress => listenable as Animation<double>;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: LogoPainter(_progress.value),
-      size: size,
-      willChange: true,
-    );
-  }
-}
-
-extension Normalize on double {
-  double normalize({double min: 0, double max: 1}) {
-    return (this - min) / (max - min);
-  }
-}
-
-extension AsOffset on Vector2 {
-  Offset asOffset() {
-    return Offset(this.x, this.y);
-  }
-}
-
 class LogoPainter extends CustomPainter {
   late final Paint strokeColor;
 
-  final double state;
-
-  LogoPainter(this.state, {Color color: Colors.white}) {
+  LogoPainter({Color color: Colors.white}) {
     strokeColor = Paint()..color = color;
   }
 
@@ -129,103 +53,39 @@ class LogoPainter extends CustomPainter {
     final p1 = Vector2(2 * wunit + woffset, 2 * hunit + hoffset);
     final p2 = Vector2(6 * wunit + woffset, 2 * hunit + hoffset);
 
-    animate_short(c, r, p1, p2);
+    draw_short(c, r, p1, p2);
 
     final p3 = Vector2(2 * wunit + woffset, 9 * hunit + hoffset);
     final p4 = Vector2(6 * wunit + woffset, 9 * hunit + hoffset);
     final p5 = Vector2(6 * wunit + woffset, 5 * hunit + hoffset);
 
-    animate_long(c, r, p3, p4, p5);
+    draw_long(c, r, p3, p4, p5);
 
     final p6 = Vector2(13 * wunit + woffset, 2 * hunit + hoffset);
     final p7 = Vector2(9 * wunit + woffset, 2 * hunit + hoffset);
 
-    animate_short(c, r, p6, p7);
+    draw_short(c, r, p6, p7);
 
     final p8 = Vector2(13 * wunit + woffset, 5 * hunit + hoffset);
     final p9 = Vector2(9 * wunit + woffset, 5 * hunit + hoffset);
     final p10 = Vector2(9 * wunit + woffset, 9 * hunit + hoffset);
 
-    animate_long(c, r, p8, p9, p10);
+    draw_long(c, r, p8, p9, p10);
   }
 
-  void animate_short(Canvas c, double r, Vector2 p1, Vector2 p2) {
-    if (state <= 0.05) {
-      // pause at the beginning
-    }
-    if (state <= 0.1) {
-      // let circle fade in
-
-      double factor = state.normalize(min: 0.05, max: 0.1);
-      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
-
-      c.drawCircle(
-        p1.asOffset(),
-        r * factor,
-        strokeColor,
-      );
-    } else if (state <= 0.5) {
-      // draw line
-
-      double factor = state.normalize(min: 0.1, max: 0.5);
-      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
-
-      final pos = p1 + (p2 - p1) * factor;
-
-      c.drawPath(line(p1, pos, magnitude: r), strokeColor);
-    } else {
-      // pause at the end
-
-      c.drawPath(line(p1, p2, magnitude: r), strokeColor);
-    }
+  void draw_short(Canvas c, double r, Vector2 p1, Vector2 p2) {
+    c.drawPath(line(p1, p2, magnitude: r), strokeColor);
   }
 
-  void animate_long(
+  void draw_long(
     Canvas c,
     double r,
     Vector2 p1,
     Vector2 p2,
     Vector2 p3,
   ) {
-    if (state <= 0.05) {
-      // pause at the beginning
-    }
-    if (state <= 0.1) {
-      // let circle fade in
-
-      double factor = state.normalize(min: 0.05, max: 0.1);
-      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
-
-      c.drawCircle(
-        p1.asOffset(),
-        r * factor,
-        strokeColor,
-      );
-    } else if (state <= 0.3) {
-      // draw first line
-
-      double factor = state.normalize(min: 0.1, max: 0.3);
-      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
-
-      final pos = p1 + (p2 - p1) * factor;
-
-      c.drawPath(line(p1, pos, magnitude: r), strokeColor);
-    } else if (state <= 0.5) {
-      // draw second line
-
-      double factor = state.normalize(min: 0.3, max: 0.5);
-      factor = Curves.easeInOut.transform(factor.clamp(0, 1));
-
-      final pos = p2 + (p3 - p2) * factor;
-
-      c.drawPath(line(p1, p2, magnitude: r), strokeColor);
-      c.drawPath(line(p2, pos, magnitude: r), strokeColor);
-    } else {
-      // pause at the end
-
-      c.drawPath(line(p1, p2, magnitude: r), strokeColor);
-      c.drawPath(line(p2, p3, magnitude: r), strokeColor);
-    }
+    c.drawPath(line(p1, p2, magnitude: r), strokeColor);
+    c.drawPath(line(p2, p3, magnitude: r), strokeColor);
   }
 
   Path line(
@@ -275,5 +135,5 @@ class LogoPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(LogoPainter old) => old.state != state;
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

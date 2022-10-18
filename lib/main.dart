@@ -47,10 +47,10 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 8;
           fontSizeHeadline = 24;
           iconSize = 30;
-          textButtonSize = 10;
+          textButtonSize = 8;
           headlineSpace = 10;
           paragraphSpace = 20;
-          appbarLogoSize = 16;
+          appbarLogoSize = 12;
           navbarLogoSize = 60;
           navbarLogoPadding = 10;
         } else if (screenSize <= 768) {
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 10;
           fontSizeHeadline = 40;
           iconSize = 50;
-          textButtonSize = 12;
+          textButtonSize = 10;
           headlineSpace = 20;
           paragraphSpace = 30;
           appbarLogoSize = 20;
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
           fontSizeCaption = 12;
           fontSizeHeadline = 60;
           iconSize = 70;
-          textButtonSize = 14;
+          textButtonSize = 12;
           headlineSpace = 30;
           paragraphSpace = 40;
           appbarLogoSize = 24;

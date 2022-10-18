@@ -118,13 +118,15 @@
 
 * [x] text links 
 
-* [ ] app bars variable size
+* [x] no more animated logo
 
-* [ ] split logo and animated logo on painter level
+* [ ] app bars variable size
 
 * [ ] icon as favicon + manifest.json (logo as svg)
 
 * [ ] try google lighthouse
+
+* [ ] deploy pages with action
 
 
 # MAYBEDO
