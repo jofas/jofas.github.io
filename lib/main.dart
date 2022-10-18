@@ -385,14 +385,14 @@ class MyHomePage extends StatelessWidget {
                   icon: Icons.lightbulb,
                   title: "Curiousness.",
                   content:
-                      "Software engineering has a lot to do with gut feeling. Sometimes you find ideas along the way that feel like they have the potential of creating something amazing. Instead of rigidly focusing on the backlog, I believe these ideas have to be explored immediately. I give myself the freedom to do so.",
+                      "Software engineering has a lot to do with gut feeling. Sometimes you find ideas along the way that feel like they have the potential of creating something amazing. Instead of rigidly focusing on the backlog, I believe these ideas have to be explored immediately. I grant myself the freedom to do so.",
                 ),
                 _paragraphSpace(),
                 Tile(
                   icon: Icons.data_object,
                   title: "Minimalism.",
                   content:
-                      "Deleting code is better than writing it. Feature creep and decay result in software that dies before it should, a very costly event. I apply teachings from the Extreme Programming and UNIX philosophies to my work. My focus lies on creating lean, extensible, decoupled and long-living software. If I think a feature does not fit these design principles, I will tell you so and I expect you to be open to negotiation.",
+                      "Deleting code is better than writing it. Feature creep and entropy result in software that dies before it should, a very costly event. I apply teachings from the Extreme Programming and UNIX philosophies to my work. My focus lies on creating lean, extensible, decoupled and long-living software. If I think a feature does not fit these design principles, I will tell you so and I expect you to be open to negotiation.",
                 ),
                 _paragraphSpace(),
                 Tile(
