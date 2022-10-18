@@ -130,7 +130,7 @@
 
 * [x] icon as favicon + manifest.json (logo as svg)
 
-* [ ] favicon + meta on imprint and data safety
+* [x] favicon + meta on imprint and data safety
 
 * [ ] try google lighthouse
 
