@@ -133,7 +133,7 @@ p {
 }
 
 #menus a {
-  @apply text-xl;
+  @apply text-3xl;
 }
 
 .icon {
