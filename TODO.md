@@ -160,14 +160,20 @@
 
 * [x] flutter to native html + css with tailwind
 
-* [ ] merge native
+* [x] merge native
 
-* [ ] new action
+* [x] new action
+
+* [ ] fix sizes on mobile screens
+
+* [ ] optimize lighthouse
 
 * [ ] pwa
 
 
 # MAYBEDO
+
+* [ ] optimized duckduckgo privacy grade
 
 * [ ] photo on about page
 
