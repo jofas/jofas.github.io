@@ -146,7 +146,7 @@
 
 * [x] footer with imprint and dp
 
-* [ ] more text on personal pursuits
+* [x] more text on personal pursuits
 
 * [ ] app bar
 
