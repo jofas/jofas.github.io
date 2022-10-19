@@ -154,9 +154,9 @@
 
 * [x] links
 
-* [ ] bundle everything and create a nice and clean package
+* [x] material desing icons self-hosted
 
-* [ ] material desing icons self-hosted
+* [ ] bundle everything and create a nice and clean package
 
 * [ ] flutter to native html + css with tailwind
 
