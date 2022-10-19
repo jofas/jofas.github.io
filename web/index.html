@@ -27,24 +27,70 @@
   <!-- font awesome free icons -->
   <link href="assets/fa/css/fontawesome.css" rel="stylesheet">
   <link href="assets/fa/css/brands.css" rel="stylesheet">
+  <script>
+    function showDrawer() {
+      document.getElementById("nav-drawer-bg").style.display = "block";
+      document.getElementById("nav-drawer").style.transform = "translateX(0%)";
+    }
+
+    function hideDrawer() {
+      document.getElementById("nav-drawer-bg").style.display = "none";
+      document.getElementById("nav-drawer").style.transform = "translateX(-100%)";
+    }
+  </script>
 </head>
 <body class="relative">
-  <div class="fixed px-4 py-1 top-0 left-0 right-0 bg-white flex flex-row justify-between">
-    <img class="h-12 w-12 align-center" src="icons/logo.svg"/>
-    <div class="self-center">
-      <a class="px-2 text-black text-sm" href="https://github.com/jofas" target="_blank">
-        GITHUB
+  <div>
+    <div class="fixed px-4 py-1 top-0 left-0 right-0 bg-white flex flex-row justify-between">
+      <a class="hover:cursor-pointer text-black self-center material-symbols-outlined" onclick="showDrawer()">
+        menu
       </a>
-      <a class="px-2 text-black text-sm" href="https://gitlab.com/jofas" target="_blank">
-        GITLAB
-      </a>
-      <a class="px-2 text-black text-sm" href="static/resume.pdf" target="_blank">
-        RÉSUMÉ
-      </a>
+      <img class="h-12 w-12 self-center" src="icons/logo.svg"/>
+      <div class="self-center">
+        <a class="px-2 text-black text-sm" href="https://github.com/jofas" target="_blank">
+          GITHUB
+        </a>
+        <a class="px-2 text-black text-sm" href="https://gitlab.com/jofas" target="_blank">
+          GITLAB
+        </a>
+        <a class="px-2 text-black text-sm" href="static/resume.pdf" target="_blank">
+          RÉSUMÉ
+        </a>
+      </div>
+    </div>
+    <div id="nav-drawer-bg" class="fixed top-0 left-0 bottom-0 right-0 bg-black/25" style="display:none" onclick="hideDrawer()">
+    </div>
+    <div id="nav-drawer" class="fixed top-0 left-0 bottom-0 w-3/4 sm:w-80 bg-white overflow-y-scroll">
+      <div class="flex flex-col">
+        <img class="h-36 w-36 self-center py-8" src="icons/logo.svg"/>
+        <div class="border-t-4 border-black pb-8"></div>
+        <a class="self-center py-2 text-black text-center" href="#about" onclick="hideDrawer()">
+          ABOUT
+        </a>
+        <a class="self-center py-2 text-black text-center" href="#key-competencies" onclick="hideDrawer()">
+          KEY COMPETENCIES
+        </a>
+        <a class="self-center py-2 text-black text-center" href="#core-values" onclick="hideDrawer()">
+          CORE VALUES
+        </a>
+        <a class="self-center py-2 text-black text-center" href="#professional-projects" onclick="hideDrawer()">
+          PROFESSIONAL PROJECTS
+        </a>
+        <a class="self-center py-2 text-black text-center" href="#open-source" onclick="hideDrawer()">
+          OPEN SOURCE
+        </a>
+        <a class="self-center py-2 text-black text-center" href="#personal-pursuits" onclick="hideDrawer()">
+          PERSONAL PURSUITS
+        </a>
+        <a class="self-center py-2 text-black text-center" href="#contact" onclick="hideDrawer()">
+          CONTACT
+        </a>
+      </div>
     </div>
   </div>
+
   <div class="flex flex-col">
-    <div class="self-center px-4 py-64 max-w-screen-2xl">
+    <div id="about" class="self-center px-4 py-64 max-w-screen-2xl">
       <h1>Jonas Fassbender</h1>
       <p class="text-center paragraph-padding">
         Software engineer and freelancer. In love with the craft.
@@ -77,7 +123,7 @@
       </p>
     </div>
 
-    <div class="self-center px-4 py-64 max-w-screen-2xl">
+    <div id="key-competencies" class="self-center px-4 py-64 max-w-screen-2xl">
       <h1>Key Competencies</h1>
       <p class="paragraph-padding text-center">
         What I can do to help you successfully realize your idea and mold it
@@ -172,7 +218,7 @@
       </div>
     </div>
 
-    <div class="self-center px-4 py-64 max-w-screen-2xl">
+    <div id="core-values" class="self-center px-4 py-64 max-w-screen-2xl">
       <h1>Core Values</h1>
       <p class="paragraph-padding text-center">
         Software engineering is an idealistic endeavor.
@@ -264,7 +310,7 @@
       </div>
     </div>
 
-    <div class="self-center px-4 py-64 max-w-screen-2xl">
+    <div id="professional-projects" class="self-center px-4 py-64 max-w-screen-2xl">
       <h1>Professional Projects</h1>
       <p class="paragraph-padding text-center">
         The main projects I am working on or have worked on as a freelancing
@@ -325,7 +371,7 @@
       </div>
     </div>
 
-    <div class="self-center px-4 py-64 max-w-screen-2xl">
+    <div id="open-source" class="self-center px-4 py-64 max-w-screen-2xl">
       <h1>Open Source</h1>
       <p class="paragraph-padding text-center">
         Open source projects I am currently working on:
@@ -382,7 +428,7 @@
       </div>
     </div>
 
-    <div class="self-center px-4 py-64 max-w-screen-2xl">
+    <div id="personal-pursuits" class="self-center px-4 py-64 max-w-screen-2xl">
       <h1>Personal Pursuits</h1>
       <p class="paragraph-padding text-center">
         Besides honing my skills as a software engineer and professional I
@@ -471,7 +517,7 @@
       </div>
     </div>
 
-    <div class="self-center px-4 py-64 max-w-screen-2xl">
+    <div id="contact" class="self-center px-4 py-64 max-w-screen-2xl">
       <h1>Contact</h1>
       <p class="text-center paragraph-padding">
         If you are interested in collaborating on a project, be that

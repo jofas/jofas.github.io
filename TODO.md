@@ -148,9 +148,9 @@
 
 * [x] more text on personal pursuits
 
-* [ ] app bar
+* [x] app bar
 
-* [ ] navbar
+* [x] navbar
 
 * [x] links
 

@@ -118,3 +118,8 @@ p {
 .tile-padding {
   @apply pt-28 md:pt-32 lg:pt-36;
 }
+
+#nav-drawer {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
