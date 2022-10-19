@@ -170,7 +170,7 @@
 
 * [x] optimize lighthouse
 
-* [ ] make website look nicer on desktop (and maybe tablet?)
+* [ ] make website look nicer on desktop
 
 * [ ] photo on about page
 
