@@ -106,5 +106,3 @@ h1 {
 p {
   @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-xl;
 }
-
-
