@@ -146,7 +146,7 @@
 
 * [x] footer with imprint and dp
 
-* [ ] width of pp and contact
+* [ ] more text on personal pursuits
 
 * [ ] app bar
 
