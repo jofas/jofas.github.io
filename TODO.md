@@ -146,13 +146,19 @@
 
 * [x] footer with imprint and dp
 
-* [ ] flutter to native html + css with tailwind
+* [ ] width of pp and contact
 
-* [ ] links
+* [ ] app bar
+
+* [ ] navbar
+
+* [x] links
 
 * [ ] bundle everything and create a nice and clean package
 
 * [ ] material desing icons self-hosted
+
+* [ ] flutter to native html + css with tailwind
 
 * [ ] pwa
 
