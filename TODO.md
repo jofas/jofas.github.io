@@ -146,6 +146,26 @@
 
 * [x] footer with imprint and dp
 
+* [x] more text on personal pursuits
+
+* [x] app bar
+
+* [x] navbar
+
+* [x] links
+
+* [x] material desing icons self-hosted
+
+* [x] bundle everything and create a nice and clean package
+
+* [x] flutter to native html + css with tailwind
+
+* [ ] merge native
+
+* [ ] new action
+
+* [ ] pwa
+
 
 # MAYBEDO
 
