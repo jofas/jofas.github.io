@@ -132,6 +132,10 @@ p {
   @apply text-3xl;
 }
 
+#menus a {
+  @apply text-xl;
+}
+
 .icon {
   @apply text-9xl;
 }
