@@ -156,9 +156,13 @@
 
 * [x] material desing icons self-hosted
 
-* [ ] bundle everything and create a nice and clean package
+* [x] bundle everything and create a nice and clean package
 
-* [ ] flutter to native html + css with tailwind
+* [x] flutter to native html + css with tailwind
+
+* [ ] merge native
+
+* [ ] new action
 
 * [ ] pwa
 
