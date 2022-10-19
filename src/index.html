@@ -39,10 +39,10 @@
 <body class="relative">
   <div id="menus">
     <div class="fixed px-8 py-4 top-0 left-0 right-0 bg-white flex flex-row justify-between">
-      <div class="hover:cursor-pointer text-black text-5xl self-center material-symbols-outlined" onclick="showDrawer()">
+      <div id="icon-menu" class="hover:cursor-pointer text-black self-center material-symbols-outlined" onclick="showDrawer()">
         menu
       </div>
-      <img class="h-20 w-20 self-center" src="icons/logo.svg" alt="JF"/>
+      <img id="logo-appbar" class="self-center" src="icons/logo.svg" alt="JF"/>
       <div class="self-center">
         <a class="px-8 text-black" href="https://github.com/jofas" target="_blank">
           GITHUB
@@ -59,7 +59,7 @@
     </div>
     <div id="nav-drawer" class="fixed top-0 left-0 bottom-0 w-3/4 sm:w-96 bg-white overflow-y-scroll">
       <div class="flex flex-col">
-        <img class="h-36 w-36 self-center py-8" src="icons/logo.svg" alt="JF"/>
+        <img id="logo-navbar" class="self-center py-8" src="icons/logo.svg" alt="JF"/>
         <div class="border-t-4 border-black pb-8"></div>
         <a class="self-center py-4 text-black text-center" href="#about" onclick="hideDrawer()">
           ABOUT
