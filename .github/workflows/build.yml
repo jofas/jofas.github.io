@@ -5,7 +5,7 @@ on:
       - "master"
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 concurrency:
@@ -15,7 +15,7 @@ jobs:
   BuildAndDeploy:
     runs-on: ubuntu-latest
     container:
-      image: cirrusci/flutter:latest      
+      image: node:latest      
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -26,20 +26,15 @@ jobs:
           path: main
       - run: |
           cd main
-          flutter build web --release
-          cp -r build/web/* docs/
-          git config user.name jofas
-          git config user.email jonas@fc-web.de
-          git add .
-          git commit -m "build website"
-          git push
+          npm install -D tailwindcss
+          npx tailwindcss -o src/tailwind.css -i src/style.css --minify
           cd ..
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'main/docs'
+          path: 'main/src'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
