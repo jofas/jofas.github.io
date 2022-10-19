@@ -5,6 +5,8 @@
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Software engineer and freelancer.">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="white">
@@ -38,26 +40,26 @@
 </head>
 <body class="relative">
   <div id="menus">
-    <div class="fixed px-8 py-4 top-0 left-0 right-0 bg-white flex flex-row justify-between">
+    <div class="fixed p-4 top-0 left-0 right-0 bg-white flex flex-row justify-between">
       <div id="icon-menu" class="hover:cursor-pointer text-black self-center material-symbols-outlined" onclick="showDrawer()">
         menu
       </div>
       <img id="logo-appbar" class="self-center" src="icons/logo.svg" alt="JF"/>
       <div class="self-center">
-        <a class="px-8 text-black" href="https://github.com/jofas" target="_blank">
+        <a class="pr-2 text-black" href="https://github.com/jofas" target="_blank">
           GITHUB
         </a>
-        <a class="px-8 text-black" href="https://gitlab.com/jofas" target="_blank">
+        <a class="px-2 text-black" href="https://gitlab.com/jofas" target="_blank">
           GITLAB
         </a>
-        <a class="px-8 text-black" href="static/resume.pdf" target="_blank">
+        <a class="pl-2 text-black" href="static/resume.pdf" target="_blank">
           RÉSUMÉ
         </a>
       </div>
     </div>
     <div id="nav-drawer-bg" class="fixed top-0 left-0 bottom-0 right-0 bg-black/25" style="display:none" onclick="hideDrawer()">
     </div>
-    <div id="nav-drawer" class="fixed top-0 left-0 bottom-0 w-3/4 sm:w-96 bg-white overflow-y-scroll">
+    <div id="nav-drawer" class="fixed top-0 left-0 bottom-0 bg-white overflow-y-scroll">
       <div class="flex flex-col">
         <img id="logo-navbar" class="self-center py-8" src="icons/logo.svg" alt="JF"/>
         <div class="border-t-4 border-black pb-8"></div>
@@ -87,7 +89,7 @@
   </div>
 
   <div class="flex flex-col">
-    <div id="about" class="self-center px-8 py-64 max-w-screen-2xl">
+    <div id="about" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Jonas Fassbender</h1>
       <p class="text-center paragraph-padding">
         Software engineer and freelancer. In love with the craft.
@@ -120,11 +122,11 @@
       </p>
     </div>
 
-    <div id="key-competencies" class="self-center px-8 py-64 max-w-screen-2xl">
+    <div id="key-competencies" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Key Competencies</h1>
       <p class="paragraph-padding text-center">
         What I can do to help you successfully realize your idea and mold it
-        into software:
+        into software.
       </p>
       <div class="tile-padding lg:flex lg:flex-row">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
@@ -215,7 +217,7 @@
       </div>
     </div>
 
-    <div id="core-values" class="self-center px-8 py-64 max-w-screen-2xl">
+    <div id="core-values" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Core Values</h1>
       <p class="paragraph-padding text-center">
         Software engineering is an idealistic endeavor.
@@ -307,11 +309,11 @@
       </div>
     </div>
 
-    <div id="professional-projects" class="self-center px-8 py-64 max-w-screen-2xl">
+    <div id="professional-projects" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Professional Projects</h1>
       <p class="paragraph-padding text-center">
         The main projects I am working on or have worked on as a freelancing
-        software engineer:
+        software engineer
       </p>
       <div class="tile-padding lg:flex lg:flex-row">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://carpolice.de" target="_blank">
@@ -368,10 +370,14 @@
       </div>
     </div>
 
-    <div id="open-source" class="self-center px-8 py-64 max-w-screen-2xl">
+    <div id="open-source" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Open Source</h1>
       <p class="paragraph-padding text-center">
-        Open source projects I am currently working on:
+        Open source projects I am currently working on.
+        You can find more projects on
+        <a class="underline" href="https://github.com/jofas" target="_blank">
+          GitHub.
+        </a>
       </p>
       <div class="tile-padding lg:flex lg:flex-row">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://crates.io/users/jofas" target="_blank">
@@ -425,7 +431,7 @@
       </div>
     </div>
 
-    <div id="personal-pursuits" class="self-center px-8 py-64 max-w-screen-2xl">
+    <div id="personal-pursuits" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Personal Pursuits</h1>
       <p class="paragraph-padding text-center">
         Besides honing my skills as a software engineer and professional I
@@ -514,7 +520,7 @@
       </div>
     </div>
 
-    <div id="contact" class="self-center px-8 py-64 max-w-screen-2xl">
+    <div id="contact" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Contact</h1>
       <p class="text-center paragraph-padding">
         If you are interested in collaborating on a project, be that
@@ -531,7 +537,7 @@
       </p>
     </div>
 
-    <div class="self-center px-8 py-12">
+    <div id="footer" class="self-center px-8 py-12">
       <div class="flex flex-row">
         <a class="pr-8 underline" href="imprint.html">Imprint (DE)</a>
         <a class="pl-8 underline" href="privacy_policy.html">Privacy Policy (DE)</a>

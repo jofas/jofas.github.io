@@ -121,46 +121,55 @@ body {
 }
 
 h1 {
-  @apply text-center text-7xl;
+  @apply text-center text-5xl;
 }
 
 h2 {
-  @apply font-bold text-center text-5xl px-6;
+  @apply font-bold text-center text-lg px-6;
 }
 
 p {
-  @apply text-3xl;
-}
-
-#menus a {
-  @apply text-3xl md:text-xl;
-}
-
-#icon-menu {
-  @apply text-5xl md:text-4xl;
-}
-
-#logo-appbar {
-  @apply h-20 w-20 md:h-16 md:w-16;
-}
-
-#logo-navbar {
-  @apply h-36 w-36;
+  @apply text-base;
 }
 
 .icon {
-  @apply text-9xl;
+  @apply text-7xl;
+}
+
+.section-padding {
+  @apply py-32;
 }
 
 .paragraph-padding {
-  @apply pt-7;
+  @apply pt-8;
 }
 
 .tile-padding {
-  @apply pt-64;
+  @apply pt-32;
+}
+
+#menus a {
+  @apply text-sm;
+}
+
+#icon-menu {
+  @apply text-xl;
+}
+
+#logo-appbar {
+  @apply h-8 w-8;
+}
+
+#logo-navbar {
+  @apply h-24 w-24;
+}
+
+#footer a {
+  @apply text-xs;
 }
 
 #nav-drawer {
+  @apply w-3/4 sm:w-80;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
