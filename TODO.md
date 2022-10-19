@@ -148,6 +148,14 @@
 
 * [ ] flutter to native html + css with tailwind
 
+* [ ] links
+
+* [ ] bundle everything and create a nice and clean package
+
+* [ ] material desing icons self-hosted
+
+* [ ] pwa
+
 
 # MAYBEDO
 
