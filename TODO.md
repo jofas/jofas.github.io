@@ -168,16 +168,18 @@
 
 * [x] fix sizes on mobile screens
 
-* [ ] optimize lighthouse
+* [x] optimize lighthouse
 
-* [ ] pwa
+* [ ] make website look nicer on desktop (and maybe tablet?)
+
+* [ ] photo on about page
 
 
 # MAYBEDO
 
 * [ ] optimized duckduckgo privacy grade
 
-* [ ] photo on about page
+* [ ] pwa
 
 * [ ] add xl and 2xl layouts
 
