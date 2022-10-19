@@ -146,6 +146,8 @@
 
 * [x] footer with imprint and dp
 
+* [ ] flutter to native html + css with tailwind
+
 
 # MAYBEDO
 
