@@ -164,6 +164,8 @@
 
 * [x] new action
 
+* [x] on mobile: text-center for tiles 
+
 * [ ] fix sizes on mobile screens
 
 * [ ] optimize lighthouse

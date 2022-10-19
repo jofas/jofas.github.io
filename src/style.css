@@ -121,15 +121,19 @@ body {
 }
 
 h1 {
-  @apply text-center text-5xl;
+  @apply text-center text-7xl;
 }
 
 h2 {
-  @apply font-bold text-center text-3xl;
+  @apply font-bold text-center text-5xl;
 }
 
 p {
-  @apply text-xl;
+  @apply text-3xl;
+}
+
+.icon {
+  @apply text-9xl;
 }
 
 .paragraph-padding {
@@ -137,7 +141,7 @@ p {
 }
 
 .tile-padding {
-  @apply pt-36;
+  @apply pt-64;
 }
 
 #nav-drawer {
