@@ -170,6 +170,10 @@
 
 * [x] optimize lighthouse
 
+* [x] simplicity tile in core values
+
+* [ ] synopsis paragraph in about section
+
 * [ ] make website look nicer on desktop
 
 * [ ] photo on about page
