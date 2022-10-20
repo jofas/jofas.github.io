@@ -172,9 +172,9 @@
 
 * [x] simplicity tile in core values
 
-* [ ] synopsis paragraph in about section
+* [x] make website look nicer on desktop
 
-* [ ] make website look nicer on desktop
+* [ ] synopsis paragraph in about section
 
 * [ ] photo on about page
 

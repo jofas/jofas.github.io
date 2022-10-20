@@ -121,31 +121,31 @@ body {
 }
 
 h1 {
-  @apply text-center text-5xl;
+  @apply text-center text-5xl lg:text-7xl;
 }
 
 h2 {
-  @apply font-bold text-center text-lg px-6;
+  @apply font-bold text-center px-6 text-lg lg:text-3xl;
 }
 
 p {
-  @apply text-base;
+  @apply text-base lg:text-xl;
 }
 
 .icon {
-  @apply text-7xl;
+  @apply text-7xl lg:text-9xl;
 }
 
 .section-padding {
-  @apply py-32;
+  @apply py-32 lg:py-64;
 }
 
 .paragraph-padding {
-  @apply pt-8;
+  @apply pt-8 lg:pt-12;
 }
 
 .tile-padding {
-  @apply pt-32;
+  @apply pt-32 lg:pt-64;
 }
 
 #menus a {
