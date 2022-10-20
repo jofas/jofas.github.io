@@ -165,7 +165,7 @@ p {
 }
 
 #img-me {
-  @apply w-64 h-64 lg:w-80 lg:h-80;
+  @apply w-64 h-64 lg:w-80 lg:h-80 mb-16 lg:mb-24;
 }
 
 #footer a {
