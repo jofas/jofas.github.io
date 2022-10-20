@@ -174,9 +174,7 @@
 
 * [x] make website look nicer on desktop
 
-* [ ] synopsis paragraph in about section
-
-* [ ] photo on about page
+* [x] photo on about page
 
 
 # MAYBEDO
