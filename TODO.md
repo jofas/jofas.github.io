@@ -176,6 +176,10 @@
 
 * [x] photo on about page
 
+* [x] appbar logo as link
+
+* [ ] swipe gesture for closing drawer
+
 
 # MAYBEDO
 
