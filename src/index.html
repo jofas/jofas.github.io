@@ -27,81 +27,7 @@
   <link href="assets/fa/css/brands.css" rel="stylesheet">
 
   <script>
-    function showDrawer() {
-      document.getElementById("nav-drawer-bg").style.display = "block";
-      document.getElementById("nav-drawer").style.transform = "translateX(0%)";
-    }
 
-    function hideDrawer() {
-      document.getElementById("nav-drawer-bg").style.display = "none";
-      document.getElementById("nav-drawer").style.transform = "translateX(-100%)";
-    }
-
-    const directions = Object.freeze({
-      UP: 'up',
-      DOWN: 'down',
-      RIGHT: 'right',
-      LEFT: 'left'
-    });
-
-    // See https://stackoverflow.com/a/58719294
-    function detectSwipe(id, func, deltaMin = 60) {
-      const swipe_det = {
-        sX: 0,
-        sY: 0,
-        eX: 0,
-        eY: 0
-      };
-
-      const el = document.getElementById(id);
-
-      el.addEventListener(
-        'touchstart',
-        function(e) {
-          const t = e.touches[0];
-          swipe_det.sX = t.screenX;
-          swipe_det.sY = t.screenY;
-        },
-        false,
-      );
-
-      el.addEventListener(
-        'touchmove',
-        function(e) {
-          // Prevent default will stop user from scrolling, use with care
-          // e.preventDefault();
-          const t = e.touches[0];
-          swipe_det.eX = t.screenX;
-          swipe_det.eY = t.screenY;
-        },
-        false,
-      );
-
-      el.addEventListener(
-        'touchend',
-        function(e) {
-          const deltaX = swipe_det.eX - swipe_det.sX;
-          const deltaY = swipe_det.eY - swipe_det.sY;
-
-          if (deltaX ** 2 + deltaY ** 2 < deltaMin ** 2) {
-            return;
-          }
-
-          let direction = null;
-
-          if (deltaY === 0 || Math.abs(deltaX / deltaY) > 1) {
-            direction = deltaX > 0 ? directions.RIGHT : directions.LEFT;
-          } else {
-            direction = deltaY > 0 ? directions.UP : directions.DOWN
-          }
-
-          func(direction);
-        },
-        false,
-      );
-    }
-
-    detectSwipe("nav-drawer", (d) => d == directions.LEFT ? hideDrawer() : null);
   </script>
 </head>
 <body class="relative">
@@ -643,5 +569,88 @@
       </div>
     </div>
   </div>
+  <script>
+    const drawer = document.getElementById("nav-drawer");
+    const drawer_bg = document.getElementById("nav-drawer-bg");
+
+    function showDrawer() {
+      drawer.style.transform = "translateX(0%)";
+      drawer_bg.style.display = "block";
+    }
+
+    function hideDrawer() {
+      drawer.style.transform = "translateX(-100%)";
+      drawer_bg.style.display = "none";
+    }
+
+    const directions = Object.freeze({
+      UP: 'up',
+      DOWN: 'down',
+      RIGHT: 'right',
+      LEFT: 'left'
+    });
+
+    const swipe_det = {
+      sX: 0,
+      sY: 0,
+      eX: 0,
+      eY: 0,
+      dX: 0,
+      dY: 0,
+    };
+
+    function touchstart(e) {
+      const t = e.touches[0];
+      swipe_det.sX = t.screenX;
+      swipe_det.sY = t.screenY;
+      swipe_det.eX = t.screenX;
+      swipe_det.eY = t.screenY;
+      swipe_det.dX = 0;
+      swipe_det.dY = 0;
+    }
+
+    function touchmove(e) {
+      const t = e.touches[0];
+
+      swipe_det.eX = t.screenX;
+      swipe_det.eY = t.screenY;
+
+      swipe_det.dX = swipe_det.eX - swipe_det.sX;
+      swipe_det.dY = swipe_det.eY - swipe_det.sY;
+
+      const d = direction();
+
+      if (d == directions.LEFT) {
+        drawer.style.transform = "translateX(" + swipe_det.dX + "px)";
+      }
+    }
+
+    function touchend(e) {
+      const d = direction();
+
+      if (d == directions.LEFT && swipe_det.dX < -90) {
+        hideDrawer();
+      } else {
+        drawer.style.transform = "translateX(" + 0 + "px)";
+      }
+    }
+
+    function direction() {
+      if (swipe_det.dX === 0 || Math.abs(swipe_det.dX / swipe_det.dY) > 1) {
+        return swipe_det.dX > 0 ? directions.RIGHT : directions.LEFT;
+      } else {
+        return swipe_det.dY > 0 ? directions.UP : directions.DOWN;
+      }
+    }
+
+    drawer.addEventListener('touchstart', touchstart, false);
+    drawer_bg.addEventListener('touchstart', touchstart, false);
+
+    drawer.addEventListener('touchmove', touchmove, false);
+    drawer_bg.addEventListener('touchmove', touchmove, false);
+
+    drawer.addEventListener('touchend', touchend, false);
+    drawer_bg.addEventListener('touchend', touchend, false);
+  </script>
 </body>
 </html>

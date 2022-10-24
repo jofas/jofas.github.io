@@ -178,7 +178,7 @@
 
 * [x] appbar logo as link
 
-* [ ] swipe gesture for closing drawer
+* [x] swipe gesture for closing drawer
 
 
 # MAYBEDO
