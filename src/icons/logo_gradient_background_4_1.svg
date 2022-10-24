@@ -1,0 +1,116 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 4400 1100"
+  width="100%"
+  height="100%">
+  <style>
+    .logo {
+      fill: white;
+    }
+  </style>
+
+  <g>
+    <defs>
+      <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#C60184" />
+        <stop offset="33%" stop-color="#E02950" />
+        <stop offset="50%" stop-color="#FE8A4F" />
+        <stop offset="75%" stop-color="#FFD567" />
+      </linearGradient>
+      <linearGradient id="g2" x1="0%" x2="100%" y1="0%" y2="0%" gradientTransform="rotate(33)">
+        <stop offset="0%" stop-color="#F690FF" />
+        <stop offset="50%" stop-color="#AC71FF" />
+        <stop offset="75%" stop-color="#7543E3" />
+      </linearGradient>
+      <linearGradient id="g3" x1="0%" x2="100%" y1="0%" y2="50%">
+        <stop offset="0%" stop-color="#53FEBE" />
+        <stop offset="100%" stop-color="#068989" />
+      </linearGradient>
+      <linearGradient id="g4" x1="0%" x2="100%" y1="0%" y2="125%">
+        <stop offset="0%" stop-color="#46279E" />
+        <stop offset="100%" stop-color="#80EAFF" />
+      </linearGradient>
+      <linearGradient id="g5">
+        <stop offset="0%" stop-color="#00DDFF" />
+        <stop offset="100%" stop-color="#0250BC" />
+      </linearGradient>
+    </defs>
+
+    <path d="M 0 0
+             L 2800 0
+             L 2800 1100
+             L 0 1100
+             Z"
+          fill="url(#g1)" />
+
+    <path d="M 0 500
+             C 600 200 800 800 2000 1100
+             L 0 1100
+             Z"
+          fill="url(#g2)" />
+
+    <path d="M 2400 500
+             C 2600 375 2700 125 2800 0
+             L 4400 0
+             L 4400 500
+             Z"
+          fill="url(#g3)" />
+
+    <path d="M 700 1100
+             C 1400 1000 1600 0 2500 200
+             C 3400 600 4000 600 4400 100
+             L 4400 1100
+             Z"
+          fill="url(#g4)" />
+
+    <path d="M 2800 1100
+             C 3200 600 4000 500 4400 800
+             L 4400 1100
+             Z"
+          fill="url(#g5)" />
+  </g>
+
+  <g>
+    <path d="M 1650 125
+             L 2050 125
+             A 5 5 0 0 1 2050 275
+             L 1650 275
+             A 5 5 0 0 1 1650 125 Z" class="logo"/>
+
+    <path d="M 1650 825
+             L 2050 825
+             A 5 5 0 0 1 2050 975
+             L 1650 975
+             A 5 5 0 0 1 1650 825 Z" class="logo"/>
+
+    <path d="M 1975 900
+             L 1975 500
+             A 5 5 0 0 1 2125 500
+             L 2125 900
+             A 5 5 0 0 1 1975 900 Z" class="logo"/>
+  </g>
+
+  <g>
+    <path d="M 2350 125
+             L 2750 125
+             A 5 5 0 0 1 2750 275
+             L 2350 275
+             A 5 5 0 0 1 2350 125 Z" class="logo"/>
+
+    <path d="M 2350 425
+             L 2750 425
+             A 5 5 0 0 1 2750 575
+             L 2350 575
+             A 5 5 0 0 1 2350 425 Z" class="logo"/>
+
+    <path d="M 2275 900
+             L 2275 500
+             A 5 5 0 0 1 2425 500
+             L 2425 900
+             A 5 5 0 0 1 2275 900 Z" class="logo"/>
+  </g>
+
+  <text fill="white">
+    https://fassbender.dev
+  </text>
+</svg>
