@@ -180,6 +180,8 @@
 
 * [x] swipe gesture for closing drawer
 
+* [x] when drawer open prevent body from scrolling
+
 
 # MAYBEDO
 

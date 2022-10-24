@@ -572,11 +572,13 @@
     function showDrawer() {
       drawer.style.transform = "translateX(0%)";
       drawer_bg.style.display = "block";
+      document.body.style.overflow = "hidden";
     }
 
     function hideDrawer() {
       drawer.style.transform = "translateX(-100%)";
       drawer_bg.style.display = "none";
+      document.body.style.overflow = "scroll";
     }
 
     const directions = Object.freeze({
