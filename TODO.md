@@ -186,7 +186,7 @@
 
 * [x] more links 
 
-* [ ] linkedin
+* [x] linkedin
 
 
 # MAYBEDO

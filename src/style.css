@@ -149,7 +149,7 @@ p {
 }
 
 #menus a {
-  @apply text-sm;
+  @apply text-xs lg:text-sm;
 }
 
 #icon-menu {
