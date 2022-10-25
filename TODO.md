@@ -182,6 +182,12 @@
 
 * [x] when drawer open prevent body from scrolling
 
+* [x] simplicity tile less harsh
+
+* [ ] more links (spinnaker + master thesis)
+
+* [ ] linkedin
+
 
 # MAYBEDO
 
