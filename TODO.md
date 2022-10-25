@@ -184,7 +184,7 @@
 
 * [x] simplicity tile less harsh
 
-* [ ] more links (spinnaker + master thesis)
+* [x] more links 
 
 * [ ] linkedin
 
