@@ -73,5 +73,5 @@
 
     <circle r="300" cx="3400" cy="900" fill="url(#g5)" />
     <circle r="150" cx="4000" cy="1000" fill="url(#g5)" />
-    <circle r="100" cx="3100" cy="1100" fill="url(#g5)" />
+    <circle r="100" cx="3000" cy="1100" fill="url(#g5)" />
 </svg>
