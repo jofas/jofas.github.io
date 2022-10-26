@@ -5,10 +5,8 @@
   height="100%">
     <defs>
       <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#C60184" />
-        <stop offset="33%" stop-color="#E02950" />
-        <stop offset="50%" stop-color="#FE8A4F" />
-        <stop offset="75%" stop-color="#FFD567" />
+        <stop offset="0%" stop-color="#FFD567" />
+        <stop offset="100%" stop-color="#FE8A4F" />
       </linearGradient>
       <linearGradient id="g2" x1="0%" x2="100%" y1="0%" y2="0%" gradientTransform="rotate(55)">
         <stop offset="0%" stop-color="#F690FF" />
@@ -16,14 +14,20 @@
         <stop offset="85%" stop-color="#7543E3" />
       </linearGradient>
       <linearGradient id="g3" x1="0%" x2="100%" y1="0%" y2="50%">
+        <stop offset="0%" stop-color="#E02950" />
+        <stop offset="100%" stop-color="#C60184" />
+      </linearGradient>
+      <!--
+      <linearGradient id="g3" x1="0%" x2="100%" y1="0%" y2="50%">
         <stop offset="0%" stop-color="#53FEBE" />
         <stop offset="100%" stop-color="#068989" />
       </linearGradient>
+      -->
       <linearGradient id="g4" x1="0%" x2="100%" y1="0%" y2="125%">
-        <stop offset="0%" stop-color="#46279E" />
+        <stop offset="0%" stop-color="#073072" />
         <stop offset="100%" stop-color="#80EAFF" />
       </linearGradient>
-      <linearGradient id="g5">
+      <linearGradient id="g5" gradientTransform="rotate(45)">
         <stop offset="0%" stop-color="#00DDFF" />
         <stop offset="100%" stop-color="#0250BC" />
       </linearGradient>
@@ -58,10 +62,16 @@
              Z"
           fill="url(#g4)" />
 
-    <path d="M 2800 1100
-             C 3200 600 4000 500 4400 800
+    <!--
+    <path d="M 3600 1100
+             C 3800 600 4000 500 4400 800
              L 4400 1400
-             C 4000 1700 3200 1600 2800 1100
+             C 4000 1700 3800 1600 3600 1100
              "
           fill="url(#g5)" />
+      -->
+
+    <circle r="300" cx="3400" cy="900" fill="url(#g5)" />
+    <circle r="150" cx="4000" cy="1000" fill="url(#g5)" />
+    <circle r="100" cx="3100" cy="1100" fill="url(#g5)" />
 </svg>
