@@ -188,6 +188,8 @@
 
 * [x] linkedin
 
+* [ ] hero landing page
+
 
 # MAYBEDO
 
