@@ -107,7 +107,8 @@
 }
 
 body {
-  @apply font-sans text-white;
+  @apply font-sans text-white bg-black;
+  /*
   background: linear-gradient(
     var(--cc-green-700),
     var(--cc-blue-700),
@@ -118,6 +119,7 @@ body {
     var(--cc-orange-700),
     var(--cc-yellow-700)
   );
+  */
 }
 
 h1 {
