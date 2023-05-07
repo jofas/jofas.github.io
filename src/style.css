@@ -59,14 +59,6 @@ p {
   @apply text-xl;
 }
 
-#logo-appbar {
-  @apply h-8 w-8;
-}
-
-#logo-navbar {
-  @apply h-24 w-24;
-}
-
 #footer a {
   @apply text-xs;
 }

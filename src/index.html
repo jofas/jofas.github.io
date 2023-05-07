@@ -19,58 +19,94 @@
   <link rel="icon" type="image/png" href="icons/logo_192.png"/>
 
   <title>Jonas Fassbender</title>
-  <!-- Currently no PWA support
-  <link rel="manifest" href="manifest.json">
-  -->
 
   <link rel="stylesheet" href="tailwind.css">
+  <link rel="stylesheet" href="theme-toggle.css">
 
   <link href="assets/fa/css/fontawesome.min.css" rel="stylesheet">
   <link href="assets/fa/css/brands.min.css" rel="stylesheet">
+
+  <script>
+    var isDarkTheme = false;
+
+    let theme = localStorage.getItem("theme");
+    let os_default = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    isDarkTheme = theme == "dark" || os_default;
+
+    if (isDarkTheme) {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
 </head>
-<body class="font-sans text-zinc-800 bg-white" class="relative">
+<body class="font-sans text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-900" class="relative">
   <div id="menus">
-    <div class="fixed px-4 py-2 top-0 left-0 right-0 bg-white flex flex-row justify-between shadow-lg shadlow-black/50">
+    <div class="fixed px-4 py-2 top-0 left-0 right-0 bg-white dark:bg-zinc-800 flex flex-row justify-between shadow-lg shadlow-black/50">
       <div id="icon-menu" class="hover:cursor-pointer self-center material-symbols-outlined" onclick="showDrawer()">
         menu
       </div>
       <a href="/">
-        <img id="logo-appbar" class="self-center" src="icons/logo.svg" alt="JF"/>
+        <img class="self-center h-8 w-8 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
+        <img class="self-center h-8 w-8 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
       </a>
-      <div class="self-center">
-        <a class="pr-1 lg:pr-2 text-black" href="blog">
+      <div class="flex flex-row self-center items-center">
+        <div class="inline-block pr-1 lg:pr-2">
+          <input type="checkbox" id="theme-toggle"/>
+          <label for="theme-toggle" class="toggle">
+            <span class="toggle-button">
+              <span class="crater crater-1"></span>
+              <span class="crater crater-2"></span>
+              <span class="crater crater-3"></span>
+              <span class="crater crater-4"></span>
+              <span class="crater crater-5"></span>
+              <span class="crater crater-6"></span>
+              <span class="crater crater-7"></span>
+            </span>
+            <span class="star star-1"></span>
+            <span class="star star-2"></span>
+            <span class="star star-3"></span>
+            <span class="star star-4"></span>
+            <span class="star star-5"></span>
+            <span class="star star-6"></span>
+            <span class="star star-7"></span>
+            <span class="star star-8"></span>
+          </label>
+        </div>
+        <a class="px-1 lg:px-2" href="blog">
           BLOG
         </a>
-        <a class="pl-1 lg:pl-2 text-black" href="static/resume.pdf" target="_blank">
+        <a class="pl-1 lg:pl-2" href="static/resume.pdf" target="_blank">
           RÉSUMÉ
         </a>
       </div>
     </div>
-    <div id="nav-drawer-bg" class="fixed top-0 left-0 bottom-0 right-0 bg-black/25" style="display:none" onclick="hideDrawer()">
+    <div id="nav-drawer-bg" class="fixed top-0 left-0 bottom-0 right-0 bg-black/50" style="display:none" onclick="hideDrawer()">
     </div>
-    <div id="nav-drawer" class="fixed top-0 left-0 bottom-0 bg-white overflow-y-auto">
-      <div class="flex flex-col">
-        <img id="logo-navbar" class="self-center py-8" src="icons/logo.svg" alt="JF"/>
-        <div class="border-t-2 border-black pb-8"></div>
-        <a class="self-center py-4 text-black text-center" href="#about" onclick="hideDrawer()">
+    <div id="nav-drawer" class="bg-white dark:bg-zinc-800 fixed top-0 left-0 bottom-0 overflow-y-auto">
+      <div class="flex flex-col items-center">
+        <div class="w-full flex justify-center border-b-2 border-zinc-800 dark:border-zinc-100 mb-8">
+          <img class="py-8 h-24 w-24 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
+          <img class="py-8 h-24 w-24 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
+        </div>
+        <a class="py-4 text-center" href="#about" onclick="hideDrawer()">
           ABOUT
         </a>
-        <a class="self-center py-4 text-black text-center" href="#key-competencies" onclick="hideDrawer()">
+        <a class="py-4 text-center" href="#key-competencies" onclick="hideDrawer()">
           KEY COMPETENCIES
         </a>
-        <a class="self-center py-4 text-black text-center" href="#core-values" onclick="hideDrawer()">
+        <a class="py-4 text-center" href="#core-values" onclick="hideDrawer()">
           CORE VALUES
         </a>
-        <a class="self-center py-4 text-black text-center" href="#professional-projects" onclick="hideDrawer()">
+        <a class="py-4 text-center" href="#professional-projects" onclick="hideDrawer()">
           PROFESSIONAL PROJECTS
         </a>
-        <a class="self-center py-4 text-black text-center" href="#open-source" onclick="hideDrawer()">
+        <a class="py-4 text-center" href="#open-source" onclick="hideDrawer()">
           OPEN SOURCE
         </a>
-        <a class="self-center py-4 text-black text-center" href="#personal-pursuits" onclick="hideDrawer()">
+        <a class="py-4 text-center" href="#personal-pursuits" onclick="hideDrawer()">
           PERSONAL PURSUITS
         </a>
-        <a class="self-center py-4 text-black text-center" href="#contact" onclick="hideDrawer()">
+        <a class="py-4 text-center" href="#contact" onclick="hideDrawer()">
           CONTACT
         </a>
       </div>
@@ -673,6 +709,25 @@
 
     drawer.addEventListener('touchend', touchend, false);
     drawer_bg.addEventListener('touchend', touchend, false);
+  </script>
+  <script>
+    const checkbox = document.getElementById("theme-toggle");
+
+    if (isDarkTheme) {
+      checkbox.checked = true;
+    }
+
+    checkbox.onchange = function () {
+      isDarkTheme = !isDarkTheme;
+
+      if (isDarkTheme) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.removeItem("theme");
+      }
+    }
   </script>
 </body>
 </html>
