@@ -68,3 +68,19 @@ p {
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
+
+#top-menu {
+  transition: background-color 0.3s ease;
+}
+
+html[data-scroll="0"] #top-menu {
+  @apply bg-transparent shadow-none text-zinc-100;
+}
+
+html[data-scroll="0"] #icon-light {
+  @apply hidden;
+}
+
+html[data-scroll="0"] #icon-dark {
+  @apply hidden;
+}
