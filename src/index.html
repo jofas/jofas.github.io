@@ -38,16 +38,39 @@
       document.documentElement.classList.add("dark");
     }
   </script>
+  <script>
+    function debounce(fn) {
+      let frame;
+
+      return (...params) => {
+        if (frame) {
+            cancelAnimationFrame(frame);
+        }
+
+        frame = requestAnimationFrame(() => {
+            fn(...params);
+        });
+      };
+    }
+
+    function storeScroll () {
+      document.documentElement.dataset.scroll = window.scrollY;
+    }
+
+    document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+
+    storeScroll();
+  </script>
 </head>
 <body class="font-sans text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-900" class="relative">
   <div id="menus">
-    <div class="fixed px-4 py-2 top-0 left-0 right-0 bg-white dark:bg-zinc-800 flex flex-row justify-between shadow-lg shadlow-black/50">
+    <div id="top-menu" class="fixed px-4 py-2 top-0 left-0 right-0 h-12 bg-white dark:bg-zinc-800 flex flex-row justify-between shadow-lg shadlow-black/50">
       <div id="icon-menu" class="hover:cursor-pointer self-center material-symbols-outlined" onclick="showDrawer()">
         menu
       </div>
       <a href="/">
-        <img class="self-center h-8 w-8 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
-        <img class="self-center h-8 w-8 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
+        <img id="icon-light" class="self-center h-8 w-8 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
+        <img id="icon-dark" class="self-center h-8 w-8 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
       </a>
       <div class="flex flex-row self-center items-center">
         <div class="inline-block pr-1 lg:pr-2">
