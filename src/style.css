@@ -2,89 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --cc-green-50: #E3FFF3;
-  --cc-green-100: #D0FFED;
-  --cc-green-200: #B3FFE3;
-  --cc-green-300: #88FFD1;
-  --cc-green-400: #53FEBE;
-  --cc-green-500: #3FE1B0;
-  --cc-green-600: #2BC4A2;
-  --cc-green-700: #068989;
-  --cc-green-800: #005E5D;
-  --cc-green-900: #083F37;
-  --cc-green-50: #ACF1FF;
-  --cc-blue-100: #80EAFF;
-  --cc-blue-200: #00DDFF;
-  --cc-blue-300: #00B3F5;
-  --cc-blue-400: #0290EE;
-  --cc-blue-500: #0060E0;
-  --cc-blue-600: #0250BC;
-  --cc-blue-700: #063F96;
-  --cc-blue-800: #073072;
-  --cc-blue-900: #0A214D;
-  --cc-indigo-50: #E6DFFF;
-  --cc-indigo-100: #D9BFFF;
-  --cc-indigo-200: #CC9EFF;
-  --cc-indigo-300: #C588FF;
-  --cc-indigo-400: #AC71FF;
-  --cc-indigo-500: #9059FF;
-  --cc-indigo-600: #7543E3;
-  --cc-indigo-700: #582ACB;
-  --cc-indigo-800: #46278E;
-  --cc-indigo-900: #321C64;
-  --cc-purple-50: #F7E3FF;
-  --cc-purple-100: #F6B9FF;
-  --cc-purple-200: #F690FF;
-  --cc-purple-300: #F564FF;
-  --cc-purple-400: #D64CF1;
-  --cc-purple-500: #B933E1;
-  --cc-purple-600: #962BB9;
-  --cc-purple-700: #712290;
-  --cc-purple-800: #4D1A69;
-  --cc-purple-900: #2B1141;
-  --cc-violet-50: #FFDFF0;
-  --cc-violet-100: #FFB4DB;
-  --cc-violet-200: #FF8AC6;
-  --cc-violet-300: #FF6BBB;
-  --cc-violet-400: #FE4AA3;
-  --cc-violet-500: #FF2A8A;
-  --cc-violet-600: #E11586;
-  --cc-violet-700: #C60184;
-  --cc-violet-800: #7F165B;
-  --cc-violet-900: #50134C;
-  --cc-red-50: #FFE0E8;
-  --cc-red-100: #FFBEC6;
-  --cc-red-200: #FF9AA2;
-  --cc-red-300: #FF848C;
-  --cc-red-400: #FF6A75;
-  --cc-red-500: #FF505F;
-  --cc-red-600: #E02950;
-  --cc-red-700: #C50143;
-  --cc-red-800: #800220;
-  --cc-red-900: #440307;
-  --cc-orange-50: #FFF4DE;
-  --cc-orange-100: #FFD6B2;
-  --cc-orange-200: #FFB588;
-  --cc-orange-300: #FEA365;
-  --cc-orange-400: #FE8A4F;
-  --cc-orange-500: #FF7139;
-  --cc-orange-600: #E25821;
-  --cc-orange-700: #CD3D00;
-  --cc-orange-800: #9D280C;
-  --cc-orange-900: #7B1604;
-  --cc-yellow-50: #FFFFCD;
-  --cc-yellow-100: #FEFF95;
-  --cc-yellow-200: #FFEA7F;
-  --cc-yellow-300: #FFD567;
-  --cc-yellow-400: #FFBD4F;
-  --cc-yellow-500: #FFA537;
-  --cc-yellow-600: #E17F2E;
-  --cc-yellow-700: #C45A28;
-  --cc-yellow-800: #A7341F;
-  --cc-yellow-900: #960F18;
-}
-
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
@@ -104,20 +21,6 @@
   direction: ltr;
   -moz-font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  @apply font-sans text-white;
-  background: linear-gradient(
-    var(--cc-green-700),
-    var(--cc-blue-700),
-    var(--cc-indigo-700),
-    var(--cc-purple-700),
-    var(--cc-violet-700),
-    var(--cc-red-700),
-    var(--cc-orange-700),
-    var(--cc-yellow-700)
-  );
 }
 
 h1 {
