@@ -107,7 +107,7 @@
 }
 
 body {
-  @apply font-sans text-white bg-black;
+  @apply font-sans text-black bg-white;
   /*
   background: linear-gradient(
     var(--cc-green-700),
