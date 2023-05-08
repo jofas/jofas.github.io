@@ -55,16 +55,7 @@ p {
   @apply text-xs lg:text-sm;
 }
 
-#icon-menu {
-  @apply text-xl;
-}
-
-#footer a {
-  @apply text-xs;
-}
-
 #nav-drawer {
-  @apply w-3/4 sm:w-80;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -77,10 +68,6 @@ html[data-scroll="0"] #top-menu {
   @apply bg-transparent shadow-none text-zinc-100;
 }
 
-html[data-scroll="0"] #icon-light {
-  @apply hidden;
-}
-
-html[data-scroll="0"] #icon-dark {
+html[data-scroll="0"] #top-menu img {
   @apply hidden;
 }
