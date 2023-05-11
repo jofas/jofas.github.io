@@ -3,5 +3,5 @@ watch:
 
 release:
 	mkdir -p public
-	cp -r static public
+	cp -r static/* public
 	npx tailwindcss -o public/tailwind.css -i src/style.css --minify
