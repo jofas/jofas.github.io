@@ -24,7 +24,6 @@ jobs:
         run: |
           apt-get update
           apt-get install build-essential
-          npm install -D tailwindcss
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Build
