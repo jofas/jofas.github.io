@@ -20,21 +20,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Build website
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install build-essential
+      - Checkout repository
         uses: actions/checkout@v3
-        with:
-          path: main
-      - run: |
-          cd main
-          npm install -D tailwindcss
-          npx tailwindcss -o src/tailwind.css -i src/style.css --minify
-          cd ..
+      - name: Build
+        run: make release
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'main/src'
+          path: 'public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
