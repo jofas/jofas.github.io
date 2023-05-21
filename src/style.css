@@ -40,11 +40,11 @@ p {
 }
 
 .section-padding {
-  @apply py-32 lg:py-64;
+  @apply pt-20 lg:pt-24 pb-32 lg:pb-64 min-h-screen;
 }
 
 .paragraph-padding {
-  @apply pt-8 lg:pt-12;
+  @apply pt-12 lg:pt-16;
 }
 
 .tile-padding {
