@@ -743,14 +743,14 @@
       }
     }
 
-    drawer.addEventListener('touchstart', touchstart, false, { passive: true });
-    drawer_bg.addEventListener('touchstart', touchstart, false, { passive: true });
+    drawer.addEventListener('touchstart', touchstart, { passive: true });
+    drawer_bg.addEventListener('touchstart', touchstart, { passive: true });
 
-    drawer.addEventListener('touchmove', touchmove, false, { passive: true });
-    drawer_bg.addEventListener('touchmove', touchmove, false, { passive: true });
+    drawer.addEventListener('touchmove', touchmove, { passive: true });
+    drawer_bg.addEventListener('touchmove', touchmove, { passive: true });
 
-    drawer.addEventListener('touchend', touchend, false, { passive: true });
-    drawer_bg.addEventListener('touchend', touchend, false, { passive: true });
+    drawer.addEventListener('touchend', touchend, { passive: true });
+    drawer_bg.addEventListener('touchend', touchend, { passive: true });
   </script>
   <script>
     const checkbox = document.getElementById("theme-toggle");
