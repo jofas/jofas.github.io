@@ -41,7 +41,7 @@ p {
 }
 
 .section-padding {
-  @apply pt-20 lg:pt-24 pb-32 lg:pb-64 min-h-screen;
+  @apply pt-20 lg:pt-24 pb-32 lg:pb-48;
 }
 
 .paragraph-padding {
