@@ -62,9 +62,9 @@
     storeScroll();
   </script>
 </head>
-<body class="font-sans text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-900" class="relative">
+<body class="font-sans text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-800" class="relative">
   <div id="menus">
-    <div id="top-menu" class="fixed px-4 py-2 top-0 left-0 right-0 h-12 bg-white dark:bg-zinc-800 flex flex-row justify-between shadow-lg shadlow-black/50">
+    <div id="top-menu" class="fixed px-4 py-2 top-0 left-0 right-0 h-12 bg-white dark:bg-zinc-700 flex flex-row justify-between shadow-lg shadlow-black/50">
       <div id="icon-menu" class="hover:cursor-pointer text-xl self-center material-symbols-outlined" onclick="showDrawer()">
         menu
       </div>
@@ -111,25 +111,25 @@
           <img class="py-8 h-24 w-24 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
           <img class="py-8 h-24 w-24 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
         </div>
-        <a class="py-4 text-center" href="#about" onclick="hideDrawer()">
+        <a class="py-4" href="#about" onclick="hideDrawer()">
           ABOUT
         </a>
-        <a class="py-4 text-center" href="#key-competencies" onclick="hideDrawer()">
+        <a class="py-4" href="#key-competencies" onclick="hideDrawer()">
           KEY COMPETENCIES
         </a>
-        <a class="py-4 text-center" href="#core-values" onclick="hideDrawer()">
+        <a class="py-4" href="#core-values" onclick="hideDrawer()">
           CORE VALUES
         </a>
-        <a class="py-4 text-center" href="#professional-projects" onclick="hideDrawer()">
+        <a class="py-4" href="#professional-projects" onclick="hideDrawer()">
           PROFESSIONAL PROJECTS
         </a>
-        <a class="py-4 text-center" href="#open-source" onclick="hideDrawer()">
+        <a class="py-4" href="#open-source" onclick="hideDrawer()">
           OPEN SOURCE
         </a>
-        <a class="py-4 text-center" href="#personal-pursuits" onclick="hideDrawer()">
+        <a class="py-4" href="#personal-pursuits" onclick="hideDrawer()">
           PERSONAL PURSUITS
         </a>
-        <a class="py-4 text-center" href="#contact" onclick="hideDrawer()">
+        <a class="py-4" href="#contact" onclick="hideDrawer()">
           CONTACT
         </a>
       </div>
@@ -141,12 +141,14 @@
         <div class="mb-12 lg:mb-16">
           <img class="rounded-full shadow-lg shadow-black/50 block m-auto w-52 h-52 lg:w-64 lg:h-64" src="static/me.webp" alt="JF"/>
           </div>
-            <h1>
-              Jonas Fassbender
-            </h1>
-            <p class="text-center paragraph-padding">
-              Software engineer and freelancer. In love with the craft.
-            </p>
+            <div class="self-center text-center">
+              <h1>
+                Jonas Fassbender
+              </h1>
+              <p class="paragraph-padding">
+                Software engineer and freelancer. In love with the craft.
+              </p>
+            </div>
             <div class="flex flex-row justify-center text-3xl mt-12">
               <a class="pr-4 lg:pr-8" href="https://github.com/jofas" aria-label="GitHub" target="_blank">
                 <i class="fab fa-github"></i>
@@ -172,13 +174,13 @@
       <h1>
         About
       </h1>
-      <p class="text-center paragraph-padding">
+      <p class="paragraph-padding">
         In the summer of 2016 I wrote my first program (a Windows Forms app
         written in VB.NET, believe it or not).
         Quickly afterwards I became so enamored with programming that I made
         it my profession.
       </p>
-      <p class="text-center paragraph-padding">
+      <p class="paragraph-padding">
         Since then I've successfully attained two higher education degrees in
         computing, lived in two countries, became a FLOSS contributor,
         created and maintained a microservice application with over seventy
@@ -193,7 +195,7 @@
         I learned a lot, failed many times and had the time of my life doing it
         all.
       </p>
-      <p class="text-center paragraph-padding">
+      <p class="paragraph-padding">
         After graduating in the fall of 2020 I became a freelancing software
         engineer, because I wanted to explore and experience the process of
         developing software to the fullest.
@@ -204,7 +206,7 @@
         Therefore I'm trying my best to develop simple, well-tested, secure,
         useful and accessible software.
       </p>
-      <p class="text-center paragraph-padding">
+      <p class="paragraph-padding">
         This website serves as an introduction to myself, my work and the values
         it embodies.
         If you like what you see and think I could help you achive your
@@ -220,97 +222,100 @@
 
     <div id="key-competencies" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Key Competencies</h1>
-      <p class="paragraph-padding text-center">
+      <p class="paragraph-padding">
         What I can do to help you successfully realize your idea and mold it
         into software.
       </p>
-      <div class="tile-padding lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            architecture
-          </p>
-          <h2 class="self-center">
-            Architecture
-          </h2>
+      <div class="paragraph-padding">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              architecture
+            </p>
+            <h2 class="pb-6 lg:pb-12">
+              Architecture
+            </h2>
+            <p class="">
+              Microservices or a monolith? On-premises, cloud, hybrid or
+              multi-cloud? Which 3rd-party vendors or open source technologies fit
+              best? Together we will figure that out. We will deconstruct your
+              problem using Domain Driven Design and create a scalable and
+              maintainable application for you.
+            </p>
+          </div>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
-          Microservices or a monolith? On-premises, cloud, hybrid or
-          multi-cloud? Which 3rd-party vendors or open source technologies fit
-          best? Together we will figure that out. We will deconstruct your
-          problem using Domain Driven Design and create a scalable and
-          maintainable application for you.
-        </p>
-      </div>
-      <div class="tile-padding lg:flex lg:flex-row-reverse">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            code
+        <!-- TODO: to new tile format -->
+        <div class="lg:flex lg:flex-row-reverse">
+          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
+            <p class="self-center icon material-symbols-outlined">
+              code
+            </p>
+            <h2 class="self-center">
+              Clean Code
+            </h2>
+          </div>
+          <p class="self-center lg:text-left lg:basis-2/3">
+            A maintainable software project that will run for a long time may
+            start with a good, domain-driven architecture. But in the end, it's
+            about the implementation. Let's make the internet a tiny bit better by
+            writing well-tested and simple code to prevent the next big data
+            leak.
           </p>
-          <h2 class="self-center">
-            Clean Code
-          </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
-          A maintainable software project that will run for a long time may
-          start with a good, domain-driven architecture. But in the end, it's
-          about the implementation. Let's make the internet a tiny bit better by
-          writing well-tested and simple code to prevent the next big data
-          leak.
-        </p>
-      </div>
-      <div class="tile-padding lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            lan
+        <div class="lg:flex lg:flex-row">
+          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
+            <p class="self-center icon material-symbols-outlined">
+              lan
+            </p>
+            <h2 class="self-center">
+              Distributed Systems
+            </h2>
+          </div>
+          <p class="self-center lg:text-left lg:basis-2/3">
+            High performance and high availability computing is fun.
+            Unfortunately, distributed systems are still very complex.
+            It's hard to figure out communication, synchronization and fault
+            tolerance.
+            Together we will scale up your system while keeping track of all the
+            moving parts.
           </p>
-          <h2 class="self-center">
-            Distributed Systems
-          </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
-          High performance and high availability computing is fun.
-          Unfortunately, distributed systems are still very complex.
-          It's hard to figure out communication, synchronization and fault
-          tolerance.
-          Together we will scale up your system while keeping track of all the
-          moving parts.
-        </p>
-      </div>
-      <div class="tile-padding lg:flex lg:flex-row-reverse">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            smart_toy
+        <div class="lg:flex lg:flex-row-reverse">
+          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
+            <p class="self-center icon material-symbols-outlined">
+              smart_toy
+            </p>
+            <h2 class="self-center">
+              Machine Learning
+            </h2>
+          </div>
+          <p class="self-center lg:text-left lg:basis-2/3">
+            The idea of teaching computers how to solve complex tasks based on
+            data instead of instructions is very alluring and shows promising
+            results.
+            Having experience with supervised machine learning and conformal
+            prediction on real-world data sets, I'd love to teach computers to make
+            descisions based on your data.
           </p>
-          <h2 class="self-center">
-            Machine Learning
-          </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
-          The idea of teaching computers how to solve complex tasks based on
-          data instead of instructions is very alluring and shows promising
-          results.
-          Having experience with supervised machine learning and conformal
-          prediction on real-world data sets, I'd love to teach computers to make
-          descisions based on your data.
-        </p>
-      </div>
-      <div class="tile-padding lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            devices
+        <div class="lg:flex lg:flex-row">
+          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
+            <p class="self-center icon material-symbols-outlined">
+              devices
+            </p>
+            <h2 class="self-center">
+              Cross Platform
+            </h2>
+          </div>
+          <p class="self-center lg:text-left lg:basis-2/3">
+            In the end, software is all about people.
+            And most people interact with computers through a graphical user
+            interface.
+            Having experience with Flutter and Material Design in production, I
+            can help you get your Flutter app off the ground and reach your
+            clients on every device.
           </p>
-          <h2 class="self-center">
-            Cross Platform
-          </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
-          In the end, software is all about people.
-          And most people interact with computers through a graphical user
-          interface.
-          Having experience with Flutter and Material Design in production, I
-          can help you get your Flutter app off the ground and reach your
-          clients on every device.
-        </p>
       </div>
     </div>
 
@@ -319,14 +324,14 @@
 
     <div id="core-values" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Core Values</h1>
-      <p class="paragraph-padding text-center">
+      <p class="paragraph-padding">
         I have a clear vision of what I think software should and can be.
         These are the core values I apply to my work to bring that vision
         to life.
         To create synergies and subsequently an environment that fosters
         collaboration and creativity, core values must match.
       </p>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             spa
@@ -335,7 +340,7 @@
             Care
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           My code, my responsibility.
           Bugs in production are annoying and potentially dangerous.
           Mistakes should be caught as early in the development cycle as
@@ -346,7 +351,7 @@
           saving a lot of time and money tomorrow.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row-reverse">
+      <div class="lg:flex lg:flex-row-reverse">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             lightbulb
@@ -355,7 +360,7 @@
             Curiouseness
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           Software engineering has a lot to do with gut feeling.
           Sometimes you find ideas along the way that feel like they have the
           potential of creating something amazing.
@@ -364,7 +369,7 @@
           I grant myself the freedom to do so.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             data_object
@@ -373,7 +378,7 @@
             Minimalism
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           Deleting code is better than writing it.
           Feature creep and entropy result in software that dies before it
           should.
@@ -385,7 +390,7 @@
           you so and I expect you to be open to negotiation.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row-reverse">
+      <div class="lg:flex lg:flex-row-reverse">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             radio_button_unchecked
@@ -394,7 +399,7 @@
             Simplicity
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           Programming is the art of expressing computation for a computer to
           execute.
           Software engineering is the art of enabling other engineers to
@@ -408,7 +413,7 @@
           (III) by developing a self-explanatory and consistent API.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             done
@@ -417,7 +422,7 @@
             Thoroughness
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           I don't think code that is hacked together by a sleep-deprived
           individual at two o'clock in the morning, right before a deadline is
           ever ready for production.
@@ -437,11 +442,11 @@
 
     <div id="professional-projects" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Professional Projects</h1>
-      <p class="paragraph-padding text-center">
+      <p class="paragraph-padding">
         The main projects I am working on or have worked on as a freelancing
         software engineer.
       </p>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://carpolice.de" target="_blank">
           <p class="self-center icon material-symbols-outlined">
             directions_car
@@ -450,7 +455,7 @@
             Carpolice.de
           </h2>
         </a>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           The carpolice.de InsurTech platform serves car dealers who want to
           provide their customers with an all-inclusive offer including car
           insurance.
@@ -458,7 +463,7 @@
           selling insurance products specially designed for car dealerships.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row-reverse">
+      <div class="lg:flex lg:flex-row-reverse">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://www.dshs-koeln.de" target="_blank">
           <p class="self-center icon material-symbols-outlined">
             school
@@ -467,7 +472,7 @@
             German Sport Univerity Cologne
           </h2>
         </a>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           I wrote the technical domain specification for an application enabling
           teachers to generate rich semester plans applying inquiry-based
           learning.
@@ -476,7 +481,7 @@
           Currently in the stage of raising funds for the development.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="static/cp_for_loan_approval_prediction.pdf" target="_blank">
           <p class="self-center icon material-symbols-outlined">
             account_balance
@@ -485,7 +490,7 @@
             Undisclosed German Bank
           </h2>
         </a>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           Applied an adaptation of the conformal prediction method to the
           consumer loan data of a German bank.
           The goal was to save the bank money by rejecting loan requests likely
@@ -501,9 +506,9 @@
 
     <div id="open-source" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>FLOSS</h1>
-      <p class="paragraph-padding text-center">
+      <p class="paragraph-padding">
         I came here, because I fell in love with programming.
-        I stayed, because of FLOSS (Free/Libre and Open Source Software).
+        I stayed, because of FLOSS (<b>F</b>ree/<b>L</b>ibre and <b>O</b>pen <b>S</b>ource <b>S</b>oftware).
         People freely sharing their work and knowledge has impressed me so
         greatly, that I wanted to do the same.
         These are some of my personal FLOSS projects.
@@ -512,7 +517,7 @@
           GitHub.
         </a>
       </p>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://crates.io/users/jofas" target="_blank">
           <p class="self-center icon fa-brands fa-rust">
           </p>
@@ -520,14 +525,14 @@
             My Rust Crates
           </h2>
         </a>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           Mainly declarative and procedural macros, serde and actix-web related
           utility crates.
           Browse through them and hopefully you'll find something that can help
           you with your next Rust project.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row-reverse">
+      <div class="lg:flex lg:flex-row-reverse">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://github.com/jofas/mgart" target="_blank">
           <p class="self-center icon material-symbols-outlined">
             brush
@@ -536,7 +541,7 @@
             Mgart
           </h2>
         </a>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           Short for <b>M</b>achine <b>G</b>enerated <b>Art</b> and pronounced "em-gart."
           I find the beauty of mathematical structures and algorithms very
           enticing.
@@ -545,7 +550,7 @@
           The images on this page are generated with Mgart.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://github.com/jofas/BAREKEEPER" target="_blank">
           <p class="self-center icon material-symbols-outlined">
             receipt_long
@@ -554,7 +559,7 @@
             BAREKEEPER
           </h2>
         </a>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           As a freelancer, you have a lot of options when it comes to making
           your taxes and other business needs, like invoicing or hour tracking.
           None fit my needs, so I created a free bare-metal tool where you have
@@ -570,11 +575,11 @@
 
     <div id="personal-pursuits" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Personal Pursuits</h1>
-      <p class="paragraph-padding text-center">
+      <p class="paragraph-padding">
         Besides honing my skills as a software engineer and professional, I
         particularly enjoy the following activities.
       </p>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             science
@@ -583,7 +588,7 @@
             Fermentation
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           I make my own kimchi, sauerkraut, hot sauce, tomato sauce,
           lacto-fermented and pickled veggies, preserved lemons, vinegar,
           kombucha, tibicos, kefir and natural cheese.
@@ -598,7 +603,7 @@
           trout intestines).
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row-reverse">
+      <div class="lg:flex lg:flex-row-reverse">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             hiking
@@ -607,7 +612,7 @@
             Long Distance Hiking
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
           It all started 2020 during the first wave of COVID-19.
           Because traveling abroad was virtually impossible due to quarantine
           measurements, a couple of friends decided to spend a three day weekend
@@ -621,7 +626,7 @@
           My goal is to one day walk a two thousand mile trail.
         </p>
       </div>
-      <div class="tile-padding lg:flex lg:flex-row">
+      <div class="lg:flex lg:flex-row">
         <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
           <p class="self-center icon material-symbols-outlined">
             fitness_center
@@ -630,7 +635,7 @@
             Sports
           </h2>
         </div>
-        <p class="self-center text-center lg:text-left lg:basis-2/3">
+        <p class="self-center lg:text-left lg:basis-2/3">
             I've done sports almost all my life.
             Exercising is one of my most beloved routines,
             hugely important for my happiness and well-being.
@@ -650,21 +655,21 @@
 
     <div id="contact" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Contact</h1>
-      <p class="text-center paragraph-padding">
+      <p class="paragraph-padding">
         If you are interested in collaborating on a project, be that
         professional work or FLOSS, feel free to write me an email.
       </p>
-      <p class="text-center paragraph-padding">
+      <p class="paragraph-padding">
         If you got something funny or wholesome and wish to share it with me, do
         so as well.
       </p>
-      <p class="text-center paragraph-padding">
+      <p class="paragraph-padding">
         <a class="underline decoration-1" href="mailto:jonas@fassbender.dev?subject=Hi%20There!">
         jonas@fassbender.dev
         </a>
       </p>
     </div>
-    <div id="footer" class="self-center px-8 py-12">
+    <div id="footer" class="px-8 py-12">
       <div class="flex flex-row">
         <a class="pr-8 underline decoration-1 text-xs" href="imprint.html">Imprint (DE)</a>
         <a class="pl-8 underline decoration-1 text-xs" href="privacy_policy.html">Privacy Policy (DE)</a>

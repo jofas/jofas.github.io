@@ -25,19 +25,19 @@
 }
 
 h1 {
-  @apply text-center text-5xl lg:text-7xl;
+  @apply text-6xl lg:text-7xl;
 }
 
 h2 {
-  @apply font-bold text-center px-6 text-lg lg:text-3xl;
+  @apply font-bold text-4xl lg:text-6xl;
 }
 
 p {
-  @apply text-base lg:text-xl;
+  @apply font-mono text-base/loose lg:text-xl/loose;
 }
 
 .icon {
-  @apply text-7xl lg:text-9xl;
+  @apply text-[12rem] lg:text-[15rem];
 }
 
 .section-padding {
@@ -46,10 +46,6 @@ p {
 
 .paragraph-padding {
   @apply pt-12 lg:pt-16;
-}
-
-.tile-padding {
-  @apply pt-32 lg:pt-64;
 }
 
 #menus a {
