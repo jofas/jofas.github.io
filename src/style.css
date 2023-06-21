@@ -30,27 +30,27 @@ body {
 }
 
 h1 {
-  @apply text-6xl lg:text-7xl;
+  @apply text-6xl ;
 }
 
 h2 {
-  @apply font-bold text-4xl lg:text-6xl;
+  @apply font-bold text-4xl ;
 }
 
 p {
-  @apply font-mono text-base/loose lg:text-xl/loose;
+  @apply font-mono text-base/loose ;
 }
 
 .icon {
-  @apply text-[12rem] lg:text-[15rem];
+  @apply text-[12rem];
 }
 
 .section-padding {
-  @apply pt-20 lg:pt-24 pb-32 lg:pb-48;
+  @apply pt-20 lg:pt-24 pb-32;
 }
 
 .paragraph-padding {
-  @apply pt-12 lg:pt-16;
+  @apply pt-12;
 }
 
 #menus a {
