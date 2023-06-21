@@ -1,5 +1,6 @@
 watch:
-	npx tailwindcss -o static/tailwind.css -i src/style.css --watch
+	npx tailwindcss -o static/tailwind.css -i src/style.css --watch &
+	ls static/* | entr make static
 
 .PHONY: static
 static:
