@@ -24,6 +24,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 h1 {
   @apply text-6xl lg:text-7xl;
 }
