@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Software engineer and freelancer.">
+  <meta name="description" content="Freelancing Software Engineer.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -105,31 +105,31 @@
     </div>
     <div id="nav-drawer-bg" class="fixed top-0 left-0 bottom-0 right-0 bg-black/50" style="display: none" onclick="hideDrawer()">
     </div>
-    <div id="nav-drawer" class="w-3/4 sm:w-80 bg-white dark:bg-zinc-800 fixed top-0 left-0 bottom-0 overflow-y-auto">
-      <div class="flex flex-col items-center">
+    <div id="nav-drawer" class="w-64 lg:w-80 bg-white dark:bg-zinc-800 fixed top-0 left-0 bottom-0 overflow-y-auto">
+      <div class="flex flex-col">
         <div class="w-full flex justify-center border-b-2 border-zinc-800 dark:border-zinc-100 mb-8">
           <img class="py-8 h-24 w-24 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
           <img class="py-8 h-24 w-24 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
         </div>
-        <a class="py-4" href="#about" onclick="hideDrawer()">
+        <a class="p-4" href="#about" onclick="hideDrawer()">
           ABOUT
         </a>
-        <a class="py-4" href="#key-competencies" onclick="hideDrawer()">
+        <a class="p-4" href="#key-competencies" onclick="hideDrawer()">
           KEY COMPETENCIES
         </a>
-        <a class="py-4" href="#core-values" onclick="hideDrawer()">
+        <a class="p-4" href="#core-values" onclick="hideDrawer()">
           CORE VALUES
         </a>
-        <a class="py-4" href="#professional-projects" onclick="hideDrawer()">
+        <a class="p-4" href="#professional-projects" onclick="hideDrawer()">
           PROFESSIONAL PROJECTS
         </a>
-        <a class="py-4" href="#open-source" onclick="hideDrawer()">
-          OPEN SOURCE
+        <a class="p-4" href="#open-source" onclick="hideDrawer()">
+          FLOSS PROJECTS
         </a>
-        <a class="py-4" href="#personal-pursuits" onclick="hideDrawer()">
+        <a class="p-4" href="#personal-pursuits" onclick="hideDrawer()">
           PERSONAL PURSUITS
         </a>
-        <a class="py-4" href="#contact" onclick="hideDrawer()">
+        <a class="p-4" href="#contact" onclick="hideDrawer()">
           CONTACT
         </a>
       </div>
@@ -146,7 +146,7 @@
                 Jonas Fassbender
               </h1>
               <p class="paragraph-padding">
-                Software engineer and freelancer. In love with the craft.
+                Freelancing Software Engineer. In love with the craft.
               </p>
             </div>
             <div class="flex flex-row justify-center text-3xl mt-12">
@@ -226,8 +226,7 @@
         What I can do to help you successfully realize your idea and mold it
         into software.
       </p>
-      <!-- TODO: grid -->
-      <div class="paragraph-padding">
+      <div class="paragraph-padding grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
           <div class="p-8 flex flex-col">
             <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
@@ -236,7 +235,7 @@
             <h2 class="pb-6 lg:pb-12">
               Architecture
             </h2>
-            <p class="">
+            <p>
               Microservices or a monolith? On-premises, cloud, hybrid or
               multi-cloud? Which 3rd-party vendors or open source technologies fit
               best? Together we will figure that out. We will deconstruct your
@@ -245,77 +244,76 @@
             </p>
           </div>
         </div>
-        <!-- TODO: to new tile format -->
-        <div class="lg:flex lg:flex-row-reverse">
-          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-            <p class="self-center icon material-symbols-outlined">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
               code
             </p>
-            <h2 class="self-center">
+            <h2 class="pb-6 lg:pb-12">
               Clean Code
             </h2>
+            <p>
+              A maintainable software project that will run for a long time may
+              start with a good, domain-driven architecture. But in the end, it's
+              about the implementation. Let's make the internet a tiny bit better by
+              writing well-tested and simple code to prevent the next big data
+              leak.
+            </p>
           </div>
-          <p class="self-center lg:text-left lg:basis-2/3">
-            A maintainable software project that will run for a long time may
-            start with a good, domain-driven architecture. But in the end, it's
-            about the implementation. Let's make the internet a tiny bit better by
-            writing well-tested and simple code to prevent the next big data
-            leak.
-          </p>
         </div>
-        <div class="lg:flex lg:flex-row">
-          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-            <p class="self-center icon material-symbols-outlined">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
               lan
             </p>
-            <h2 class="self-center">
+            <h2 class="pb-6 lg:pb-12">
               Distributed Systems
             </h2>
+            <p>
+              High performance and high availability computing is fun.
+              Unfortunately, distributed systems are still very complex.
+              It's hard to figure out communication, synchronization and fault
+              tolerance.
+              Together we will scale up your system while keeping track of all the
+              moving parts.
+            </p>
           </div>
-          <p class="self-center lg:text-left lg:basis-2/3">
-            High performance and high availability computing is fun.
-            Unfortunately, distributed systems are still very complex.
-            It's hard to figure out communication, synchronization and fault
-            tolerance.
-            Together we will scale up your system while keeping track of all the
-            moving parts.
-          </p>
         </div>
-        <div class="lg:flex lg:flex-row-reverse">
-          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-            <p class="self-center icon material-symbols-outlined">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
               smart_toy
             </p>
-            <h2 class="self-center">
+            <h2 class="pb-6 lg:pb-12">
               Machine Learning
             </h2>
+            <p>
+              The idea of teaching computers how to solve complex tasks based on
+              data instead of instructions is very alluring and shows promising
+              results.
+              Having experience with supervised machine learning and conformal
+              prediction on real-world data sets, I'd love to teach computers to make
+              descisions based on your data.
+            </p>
           </div>
-          <p class="self-center lg:text-left lg:basis-2/3">
-            The idea of teaching computers how to solve complex tasks based on
-            data instead of instructions is very alluring and shows promising
-            results.
-            Having experience with supervised machine learning and conformal
-            prediction on real-world data sets, I'd love to teach computers to make
-            descisions based on your data.
-          </p>
         </div>
-        <div class="lg:flex lg:flex-row">
-          <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-            <p class="self-center icon material-symbols-outlined">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
               devices
             </p>
-            <h2 class="self-center">
+            <h2 class="pb-6 lg:pb-12">
               Cross Platform
             </h2>
+            <p>
+              In the end, software is all about people.
+              And most people interact with computers through a graphical user
+              interface.
+              Having experience with Flutter and Material Design in production, I
+              can help you get your Flutter app off the ground and reach your
+              clients on every device.
+            </p>
           </div>
-          <p class="self-center lg:text-left lg:basis-2/3">
-            In the end, software is all about people.
-            And most people interact with computers through a graphical user
-            interface.
-            Having experience with Flutter and Material Design in production, I
-            can help you get your Flutter app off the ground and reach your
-            clients on every device.
-          </p>
         </div>
       </div>
     </div>
@@ -326,115 +324,111 @@
     <div id="core-values" class="self-center px-8 section-padding max-w-screen-2xl">
       <h1>Core Values</h1>
       <p class="paragraph-padding">
-        I have a clear vision of what I think software should and can be.
+        I have a clear vision of what I think software can and should be.
         These are the core values I apply to my work to bring that vision
         to life.
         To create synergies and subsequently an environment that fosters
         collaboration and creativity, core values must match.
       </p>
-      <div class="lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            spa
-          </p>
-          <h2 class="self-center">
-            Care
-          </h2>
+      <div class="paragraph-padding grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              spa
+            </p>
+            <h2 class="pb-6 lg:pb-12">
+              Care
+            </h2>
+            <p>
+              My code, my responsibility.
+              Bugs in production are annoying and potentially dangerous.
+              Mistakes should be caught as early in the development cycle as
+              possible.
+              Not only to prevent security issues, but also from the standpoint of
+              cost.
+              Two days spent on a decent test suite today has the potential of
+              saving a lot of time and money tomorrow.
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          My code, my responsibility.
-          Bugs in production are annoying and potentially dangerous.
-          Mistakes should be caught as early in the development cycle as
-          possible.
-          Not only to prevent security issues, but also from the standpoint of
-          cost.
-          Two days spent on a decent test suite today has the potential of
-          saving a lot of time and money tomorrow.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row-reverse">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            lightbulb
-          </p>
-          <h2 class="self-center">
-            Curiouseness
-          </h2>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              lightbulb
+            </p>
+            <h2 class="pb-6 lg:pb-12">
+              Curiousness
+            </h2>
+            <p>
+              Software engineering has a lot to do with gut feeling.
+              Sometimes you find ideas along the way that feel like they have the
+              potential of creating something amazing.
+              Instead of rigidly focusing on the backlog, I believe these ideas
+              have to be explored immediately.
+              I grant myself the freedom to do so.
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          Software engineering has a lot to do with gut feeling.
-          Sometimes you find ideas along the way that feel like they have the
-          potential of creating something amazing.
-          Instead of rigidly focusing on the backlog, I believe these ideas
-          have to be explored immediately.
-          I grant myself the freedom to do so.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            data_object
-          </p>
-          <h2 class="self-center">
-            Minimalism
-          </h2>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              data_object
+            </p>
+            <h2 class="pb-6 lg:pb-12">
+              Minimalism
+            </h2>
+            <p>
+              Deleting code is better than writing it.
+              Feature creep and entropy result in software that dies before it
+              should.
+              I apply teachings from the Extreme Programming, UNIX and TDD
+              philosophies to my work.
+              My focus lies on creating lean, extensible, decoupled and long-living
+              software.
+              If I think a feature does not fit these design principles, I will tell
+              you so and I expect you to be open to negotiation.
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          Deleting code is better than writing it.
-          Feature creep and entropy result in software that dies before it
-          should.
-          I apply teachings from the Extreme Programming, UNIX and TDD
-          philosophies to my work.
-          My focus lies on creating lean, extensible, decoupled and long-living
-          software.
-          If I think a feature does not fit these design principles, I will tell
-          you so and I expect you to be open to negotiation.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row-reverse">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            radio_button_unchecked
-          </p>
-          <h2 class="self-center">
-            Simplicity
-          </h2>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              radio_button_unchecked
+            </p>
+            <h2 class="pb-6 lg:pb-12">
+              Simplicity
+            </h2>
+            <p>
+              Programming is the art of expressing computation for a computer to
+              execute.
+              Software engineering is the art of enabling other engineers to
+              understand, use, change and extend a program.
+              I'm striving to find the simplest possible solution by (I) using the
+              right level of abstraction, (II) sensibly dividing a problem into
+              more manageable sub-problems and (III) by developing a
+              self-explanatory and consistent API.
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          Programming is the art of expressing computation for a computer to
-          execute.
-          Software engineering is the art of enabling other engineers to
-          understand, use, change and extend a program.
-          Simple software that can be understood by many people is better than
-          complex software only the author can read, even though it might be
-          faster, or achieves the same in less lines of code.
-          I'm striving to find the simplest possible solution by (I) using the
-          right level of abstraction, (II) applying divide and conquer to
-          sensibly structure a problem into more manageable sub-problems and
-          (III) by developing a self-explanatory and consistent API.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            done
-          </p>
-          <h2 class="self-center">
-            Thoroughness
-          </h2>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              done
+            </p>
+            <h2 class="pb-6 lg:pb-12">
+              Thoroughness
+            </h2>
+            <p>
+              I think code that is hacked together by a sleep-deprived
+              individual at two o'clock in the morning, right before a deadline
+              is never ready for production.
+              Deadlines are artificial constructs.
+              Estimates are faulty and seldom correct.
+              I prefer to focus on my work, on doing it the right way, rather
+              than getting caught up in this wasteful game.
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          I don't think code that is hacked together by a sleep-deprived
-          individual at two o'clock in the morning, right before a deadline is
-          ever ready for production.
-          Deadlines are artificial constructs.
-          Estimates are faulty and seldom correct.
-          A billion dollar industry has evolved to solve these problems that
-          really aren't problems but just paper tigers.
-          I refuse to partake in this hoax as much as I can, focusing on my
-          work, on doing it the right way, rather than getting caught up in
-          this wasteful game.
-        </p>
       </div>
     </div>
 
@@ -447,58 +441,66 @@
         The main projects I am working on or have worked on as a freelancing
         software engineer.
       </p>
-      <div class="lg:flex lg:flex-row">
-        <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://carpolice.de" target="_blank">
-          <p class="self-center icon material-symbols-outlined">
-            directions_car
-          </p>
-          <h2 class="underline self-center">
-            Carpolice.de
-          </h2>
-        </a>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          The carpolice.de InsurTech platform serves car dealers who want to
-          provide their customers with an all-inclusive offer including car
-          insurance.
-          Carpolice.de provides car dealers with an easy-to-use system for
-          selling insurance products specially designed for car dealerships.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row-reverse">
-        <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://www.dshs-koeln.de" target="_blank">
-          <p class="self-center icon material-symbols-outlined">
-            school
-          </p>
-          <h2 class="underline self-center">
-            German Sport Univerity Cologne
-          </h2>
-        </a>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          I wrote the technical domain specification for an application enabling
-          teachers to generate rich semester plans applying inquiry-based
-          learning.
-          The tool should guide teachers through the generation steps with the
-          help of a recommendation system.
-          Currently in the stage of raising funds for the development.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row">
-        <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="static/cp_for_loan_approval_prediction.pdf" target="_blank">
-          <p class="self-center icon material-symbols-outlined">
-            account_balance
-          </p>
-          <h2 class="underline self-center">
-            Undisclosed German Bank
-          </h2>
-        </a>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          Applied an adaptation of the conformal prediction method to the
-          consumer loan data of a German bank.
-          The goal was to save the bank money by rejecting loan requests likely
-          to default as early in the approval process as possible.
-          17% of all declined requests were filtered out by the algorithm while
-          retaining an accuracy of 98%.
-        </p>
+      <div class="paragraph-padding grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <a class="block flex flex-col" href="https://carpolice.de" target="_blank">
+              <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+                directions_car
+              </p>
+              <h2 class="pb-6 lg:pb-12 underline">
+                Carpolice.de
+              </h2>
+            </a>
+            <p>
+              The carpolice.de InsurTech platform serves car dealers who want to
+              provide their customers with an all-inclusive offer including car
+              insurance.
+              Carpolice.de provides car dealers with an easy-to-use system for
+              selling insurance products specially designed for car dealerships.
+            </p>
+          </div>
+        </div>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <a class="block flex flex-col" href="https://www.dshs-koeln.de" target="_blank">
+              <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+                school
+              </p>
+              <h2 class="pb-6 lg:pb-12 underline">
+                German Sport Univerity Cologne
+              </h2>
+            </a>
+            <p>
+              I wrote the technical domain specification for an application enabling
+              teachers to generate rich semester plans based on the inquiry-based
+              learning method.
+              The tool should guide teachers through the generation steps with the
+              help of a recommendation system.
+              Currently in the stage of raising funds for the development.
+            </p>
+          </div>
+        </div>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <a class="block flex flex-col" href="static/cp_for_loan_approval_prediction.pdf" target="_blank">
+              <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+                account_balance
+              </p>
+              <h2 class="pb-6 lg:pb-12 underline">
+                Undisclosed German Bank
+              </h2>
+            </a>
+            <p>
+              Applied an adaptation of the conformal prediction method to the
+              consumer loan data of a German bank.
+              The goal was to save the bank money by rejecting loan requests likely
+              to default as early in the approval process as possible.
+              17% of all declined requests were filtered out by the algorithm while
+              retaining an accuracy of 98%.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -506,7 +508,7 @@
     </div>
 
     <div id="open-source" class="self-center px-8 section-padding max-w-screen-2xl">
-      <h1>FLOSS</h1>
+      <h1>FLOSS Projects</h1>
       <p class="paragraph-padding">
         I came here, because I fell in love with programming.
         I stayed, because of FLOSS (<b>F</b>ree/<b>L</b>ibre and <b>O</b>pen <b>S</b>ource <b>S</b>oftware).
@@ -518,56 +520,64 @@
           GitHub.
         </a>
       </p>
-      <div class="lg:flex lg:flex-row">
-        <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://crates.io/users/jofas" target="_blank">
-          <p class="self-center icon fa-brands fa-rust">
-          </p>
-          <h2 class="underline self-center">
-            My Rust Crates
-          </h2>
-        </a>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          Mainly declarative and procedural macros, serde and actix-web related
-          utility crates.
-          Browse through them and hopefully you'll find something that can help
-          you with your next Rust project.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row-reverse">
-        <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://github.com/jofas/mgart" target="_blank">
-          <p class="self-center icon material-symbols-outlined">
-            brush
-          </p>
-          <h2 class="underline self-center">
-            Mgart
-          </h2>
-        </a>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          Short for <b>M</b>achine <b>G</b>enerated <b>Art</b> and pronounced "em-gart."
-          I find the beauty of mathematical structures and algorithms very
-          enticing.
-          So I build a program that lets you generate your own algorithmic art
-          with a simple-to-use declarative API.
-          The images on this page are generated with Mgart.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row">
-        <a class="block lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col" href="https://github.com/jofas/BAREKEEPER" target="_blank">
-          <p class="self-center icon material-symbols-outlined">
-            receipt_long
-          </p>
-          <h2 class="self-center underline">
-            BAREKEEPER
-          </h2>
-        </a>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          As a freelancer, you have a lot of options when it comes to making
-          your taxes and other business needs, like invoicing or hour tracking.
-          None fit my needs, so I created a free bare-metal tool where you have
-          full control over your data.
-          The best part?
-          You don't even have to leave your terminal.
-        </p>
+      <div class="paragraph-padding grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <a class="block flex flex-col" href="https://crates.io/users/jofas" target="_blank">
+              <p class="self-center pb-12 lg:pb-18 self-center icon fa-brands fa-rust">
+              </p>
+              <h2 class="pb-6 lg:pb-12 underline">
+                My Rust Crates
+              </h2>
+            </a>
+            <p>
+              Mainly declarative and procedural macros, serde and actix-web related
+              utility crates.
+              Browse through them and hopefully you'll find something that can help
+              you with your next Rust project.
+            </p>
+          </div>
+        </div>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <a class="block flex flex-col" href="https://github.com/jofas/mgart" target="_blank">
+              <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+                brush
+              </p>
+              <h2 class="pb-6 lg:pb-12 underline">
+                Mgart
+              </h2>
+            </a>
+            <p>
+              Short for <b>M</b>achine <b>G</b>enerated <b>Art</b> and pronounced "em-gart."
+              I find the beauty of mathematical structures and algorithms very
+              enticing.
+              So I build a program that lets you generate your own algorithmic art
+              with a simple-to-use declarative API.
+              The images on this page are generated with Mgart.
+            </p>
+          </div>
+        </div>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <a class="block flex flex-col" href="https://github.com/jofas/BAREKEEPER" target="_blank">
+              <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+                receipt_long
+              </p>
+              <h2 class="pb-6 lg:pb-12 underline">
+                BAREKEEPER
+              </h2>
+            </a>
+            <p>
+              As a freelancer, you have a lot of options when it comes to making
+              your taxes and other business needs, like invoicing or hour tracking.
+              None fit my needs, so I created a free bare-metal tool where you have
+              full control over your data.
+              The best part?
+              You don't even have to leave your terminal.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -580,74 +590,76 @@
         Besides honing my skills as a software engineer and professional, I
         particularly enjoy the following activities.
       </p>
-      <div class="lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            science
-          </p>
-          <h2 class="self-center">
-            Fermentation
-          </h2>
+      <div class="paragraph-padding grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              science
+            </p>
+            <h2 class="pb-6 lg:pb-12 underline">
+              Fermentation
+            </h2>
+            <p>
+              I make my own kimchi, sauerkraut, hot sauce, tomato sauce,
+              lacto-fermented and pickled veggies, preserved lemons, vinegar,
+              kombucha, tibicos, kefir and natural cheese.
+              In short, I ferment pretty much everything I can lay my hands on.
+              But my biggest pride is my sourdough.
+              There is no greater joy than eating a slice of freshly made sourdough
+              bread.
+              Or pizza.
+              Or brioche.
+              Next I'd like to get more into alcoholic drinks like beer or mead
+              and the really weird stuff (I have a bucket full of maturing garum
+              made from trout intestines I can't wait to try).
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          I make my own kimchi, sauerkraut, hot sauce, tomato sauce,
-          lacto-fermented and pickled veggies, preserved lemons, vinegar,
-          kombucha, tibicos, kefir and natural cheese.
-          In short, I ferment pretty much everything I can lay my hands on.
-          But my biggest pride is my sourdough.
-          There is no greater joy than eating a slice of freshly made sourdough
-          bread.
-          Or pizza.
-          Or brioche.
-          Next I'd like to get more into alcoholic drinks like beer or mead
-          and the really weird stuff (I have my eyes set on garum made from
-          trout intestines).
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row-reverse">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            hiking
-          </p>
-          <h2 class="self-center">
-            Long Distance Hiking
-          </h2>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              hiking
+            </p>
+            <h2 class="pb-6 lg:pb-12 underline">
+              Long Distance Hiking
+            </h2>
+            <p>
+              It all started 2020 during the first wave of COVID-19.
+              Because traveling abroad was virtually impossible due to quarantine
+              measurements, a couple of friends decided to spend a three day weekend
+              holiday trip exploring the countryside of the Bergisches Land, our
+              birthland.
+              I joined and instantly fell in love with backpacking.
+              Since then I did a few trips through Germany and the Scottish
+              Highlands.
+              The longest hike I did so far was a hundred miles from Fort William to
+              Aviemore in seven days.
+              My goal is to one day walk a two thousand mile trail.
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-          It all started 2020 during the first wave of COVID-19.
-          Because traveling abroad was virtually impossible due to quarantine
-          measurements, a couple of friends decided to spend a three day weekend
-          holiday trip exploring the countryside of the Bergisches Land, our
-          birthland.
-          I joined and instantly fell in love with backpacking.
-          Since then I did a few trips through Germany and the Scottish
-          Highlands.
-          The longest hike I did so far was a hundred miles from Fort William to
-          Aviemore in seven days.
-          My goal is to one day walk a two thousand mile trail.
-        </p>
-      </div>
-      <div class="lg:flex lg:flex-row">
-        <div class="lg:self-center pb-7 lg:pb-0 lg:basis-1/3 flex flex-col">
-          <p class="self-center icon material-symbols-outlined">
-            fitness_center
-          </p>
-          <h2 class="self-center">
-            Sports
-          </h2>
+        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-lg shadow-xs shadow-black/50">
+          <div class="p-8 flex flex-col">
+            <p class="pb-12 lg:pb-18 self-center icon material-symbols-outlined">
+              fitness_center
+            </p>
+            <h2 class="pb-6 lg:pb-12 underline">
+              Sports
+            </h2>
+            <p>
+              I've done sports almost all my life.
+              Exercising is one of my most beloved routines,
+              hugely important for my happiness and well-being.
+              In my childhood and youth I played basketball in a club.
+              Nowadays my focus lies more on functional fitness and being a
+              healthy, fit and injury-free person.
+              I like to perform the occasional olympic or power lift and enjoy
+              squash.
+              I recently started to go running again and was tremendously
+              surprised how good it felt.
+            </p>
+          </div>
         </div>
-        <p class="self-center lg:text-left lg:basis-2/3">
-            I've done sports almost all my life.
-            Exercising is one of my most beloved routines,
-            hugely important for my happiness and well-being.
-            In my childhood and youth I played basketball in a club.
-            Nowadays my focus lies more on functional fitness and being a
-            healthy, fit and injury-free person.
-            I like to perform the occasional olympic or power lift and enjoy
-            squash.
-            I recently started to go running again and was tremendously
-            surprised how good it felt.
-        </p>
       </div>
     </div>
 
@@ -671,7 +683,7 @@
       </p>
     </div>
     <div id="footer" class="px-8 py-12">
-      <div class="flex flex-row">
+      <div class="flex flex-row justify-center">
         <a class="pr-8 underline decoration-1 text-xs" href="imprint.html">Imprint (DE)</a>
         <a class="pl-8 underline decoration-1 text-xs" href="privacy_policy.html">Privacy Policy (DE)</a>
       </div>
