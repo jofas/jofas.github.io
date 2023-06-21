@@ -64,43 +64,45 @@
 </head>
 <body class="font-sans text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-800" class="relative">
   <div id="menus">
-    <div id="top-menu" class="fixed px-4 py-2 top-0 left-0 right-0 h-12 bg-white dark:bg-zinc-700 flex flex-row justify-between shadow-lg shadlow-black/50">
-      <div id="icon-menu" class="hover:cursor-pointer text-xl self-center material-symbols-outlined" onclick="showDrawer()">
-        menu
-      </div>
-      <a href="/" aria-label="Logo">
-        <img id="icon-light" class="self-center h-8 w-8 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
-        <img id="icon-dark" class="self-center h-8 w-8 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
-      </a>
-      <div class="flex flex-row self-center items-center">
-        <div class="inline-block pr-1 lg:pr-2">
-          <input type="checkbox" id="theme-toggle" aria-label="Theme Toggle"/>
-          <label for="theme-toggle" class="toggle">
-            <span class="toggle-button">
-              <span class="crater crater-1"></span>
-              <span class="crater crater-2"></span>
-              <span class="crater crater-3"></span>
-              <span class="crater crater-4"></span>
-              <span class="crater crater-5"></span>
-              <span class="crater crater-6"></span>
-              <span class="crater crater-7"></span>
-            </span>
-            <span class="star star-1"></span>
-            <span class="star star-2"></span>
-            <span class="star star-3"></span>
-            <span class="star star-4"></span>
-            <span class="star star-5"></span>
-            <span class="star star-6"></span>
-            <span class="star star-7"></span>
-            <span class="star star-8"></span>
-          </label>
+    <div id="top-menu" class="fixed top-0 left-0 right-0 bg-white dark:bg-zinc-700 shadow-lg shadlow-black/50">
+      <div class="px-4 py-2 h-12 flex flex-row justify-between">
+        <div id="icon-menu" class="hover:cursor-pointer text-xl self-center material-symbols-outlined" onclick="showDrawer()">
+          menu
         </div>
-        <a class="px-1 lg:px-2" href="blog">
-          BLOG
+        <a href="/" aria-label="Logo">
+          <img id="icon-light" class="self-center h-8 w-8 block dark:hidden" src="icons/logo-light.svg" alt="JF"/>
+          <img id="icon-dark" class="self-center h-8 w-8 hidden dark:block" src="icons/logo-dark.svg" alt="JF"/>
         </a>
-        <a class="pl-1 lg:pl-2" href="static/resume.pdf" target="_blank">
-          RÉSUMÉ
-        </a>
+        <div class="flex flex-row self-center items-center">
+          <div class="inline-block pr-1 lg:pr-2">
+            <input type="checkbox" id="theme-toggle" aria-label="Theme Toggle"/>
+            <label for="theme-toggle" class="toggle">
+              <span class="toggle-button">
+                <span class="crater crater-1"></span>
+                <span class="crater crater-2"></span>
+                <span class="crater crater-3"></span>
+                <span class="crater crater-4"></span>
+                <span class="crater crater-5"></span>
+                <span class="crater crater-6"></span>
+                <span class="crater crater-7"></span>
+              </span>
+              <span class="star star-1"></span>
+              <span class="star star-2"></span>
+              <span class="star star-3"></span>
+              <span class="star star-4"></span>
+              <span class="star star-5"></span>
+              <span class="star star-6"></span>
+              <span class="star star-7"></span>
+              <span class="star star-8"></span>
+            </label>
+          </div>
+          <a class="px-1 lg:px-2" href="blog">
+            BLOG
+          </a>
+          <a class="pl-1 lg:pl-2" href="static/resume.pdf" target="_blank">
+            RÉSUMÉ
+          </a>
+        </div>
       </div>
     </div>
     <div id="nav-drawer-bg" class="fixed top-0 left-0 bottom-0 right-0 bg-black/50" style="display: none" onclick="hideDrawer()">
