@@ -46,7 +46,7 @@ p {
 }
 
 .section-padding {
-  @apply pt-20 lg:pt-24 pb-32;
+  @apply pt-20 pb-32;
 }
 
 .paragraph-padding {
