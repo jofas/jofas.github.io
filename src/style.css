@@ -30,15 +30,15 @@ body {
 }
 
 h1 {
-  @apply text-6xl ;
+  @apply text-6xl;
 }
 
 h2 {
-  @apply font-bold text-4xl ;
+  @apply font-bold text-4xl;
 }
 
 p {
-  @apply font-mono text-base/loose ;
+  @apply font-mono text-base/loose;
 }
 
 .icon {
