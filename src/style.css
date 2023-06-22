@@ -54,7 +54,7 @@ p {
 }
 
 #menus a {
-  @apply text-xs lg:text-sm;
+  @apply text-sm;
 }
 
 #nav-drawer {
