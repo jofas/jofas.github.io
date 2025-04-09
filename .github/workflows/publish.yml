@@ -15,7 +15,7 @@ jobs:
   Publish:
     runs-on: ubuntu-latest
     container:
-      image: node:latest
+      image: node:20.17.0
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
