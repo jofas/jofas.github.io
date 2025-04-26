@@ -10,4 +10,4 @@ static: create-public-dir
 	cp -r static/* public
 
 release: static
-	npx tailwindcss -i src/style.css -o public/tailwind.css --minify
+	npx @tailwindcss/cli@4.1.3 -i src/style.css -o public/tailwind.css --minify
