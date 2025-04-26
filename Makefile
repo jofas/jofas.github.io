@@ -2,7 +2,7 @@ create-public-dir:
 	mkdir -p public
 
 watch: create-public-dir
-	npx tailwindcss@3.4.17 -o public/tailwind.css -i src/style.css --watch=always &
+	npx tailwindcss -i src/style.css -o public/tailwind.css --watch &
 	ls static/* | entr make static
 
 .PHONY: static
@@ -10,4 +10,4 @@ static: create-public-dir
 	cp -r static/* public
 
 release: static
-	npx tailwindcss@3.4.17 -o public/tailwind.css -i src/style.css --minify
+	npx tailwindcss -i src/style.css -o public/tailwind.css --minify
