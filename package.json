@@ -1,0 +1,11 @@
+{
+  "name": "jofas.github.io",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tailwindcss --watch"
+  },
+  "dependencies": {
+    "tailwindcss": "^4.1.4",
+    "@tailwindcss/cli": "^4.1.4"
+  }
+}
