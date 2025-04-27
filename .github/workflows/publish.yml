@@ -15,17 +15,19 @@ jobs:
   Publish:
     runs-on: ubuntu-latest
     container:
-      image: node:20.17.0
+      image: node:23.11.0
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Install dependencies
+      - name: Install sys dependencies
         run: |
           apt-get update
           apt-get install build-essential
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
       - name: Build
         run: make release
       - name: Setup Pages
